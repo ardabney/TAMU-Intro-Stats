@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Confidence Intervals | Probability and Statistics: Making Principled Decisions in an Uncertain World</title>
+  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Confidence Intervals | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Confidence Intervals | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
+  
+  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  
+
+<meta name="author" content="Alan Dabney, Scott Crawford, Darren Homrighausen" />
+
+
+<meta name="date" content="2026-07-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chap-sampling-distributions.html"/>
+<link rel="next" href="chap-hypothesis-testing.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.12.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about"><i class="fa fa-check"></i><b>1.1</b> About</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#r"><i class="fa fa-check"></i><b>1.2</b> R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#supplemental-resources"><i class="fa fa-check"></i><b>1.3</b> Supplemental Resources</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.4</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap-foundations.html"><a href="chap-foundations.html"><i class="fa fa-check"></i><b>2</b> Foundations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chap-foundations.html"><a href="chap-foundations.html#what-is-statistics"><i class="fa fa-check"></i><b>2.1</b> What is Statistics?</a></li>
+<li class="chapter" data-level="2.2" data-path="chap-foundations.html"><a href="chap-foundations.html#populations-and-parameters-samples-and-statistics"><i class="fa fa-check"></i><b>2.2</b> Populations and Parameters, Samples and Statistics</a></li>
+<li class="chapter" data-level="2.3" data-path="chap-foundations.html"><a href="chap-foundations.html#obtaining-data"><i class="fa fa-check"></i><b>2.3</b> Obtaining Data</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="chap-foundations.html"><a href="chap-foundations.html#chap-foundations-sampling"><i class="fa fa-check"></i><b>2.3.1</b> Sampling</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chap-foundations.html"><a href="chap-foundations.html#chap-foundations-observational-experiment"><i class="fa fa-check"></i><b>2.3.2</b> Observational Studies and Experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="chap-foundations.html"><a href="chap-foundations.html#sec-foundations-nature-of-data"><i class="fa fa-check"></i><b>2.4</b> The Nature of Data</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="chap-foundations.html"><a href="chap-foundations.html#randomness-and-uncertainty"><i class="fa fa-check"></i><b>2.4.1</b> Randomness and Uncertainty</a></li>
+<li class="chapter" data-level="2.4.2" data-path="chap-foundations.html"><a href="chap-foundations.html#random-variables"><i class="fa fa-check"></i><b>2.4.2</b> Random Variables</a></li>
+<li class="chapter" data-level="2.4.3" data-path="chap-foundations.html"><a href="chap-foundations.html#notation"><i class="fa fa-check"></i><b>2.4.3</b> Notation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="chap-foundations.html"><a href="chap-foundations.html#numerical-summaries"><i class="fa fa-check"></i><b>2.5</b> Summary Statistics</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="chap-foundations.html"><a href="chap-foundations.html#mean"><i class="fa fa-check"></i><b>2.5.1</b> Mean</a></li>
+<li class="chapter" data-level="2.5.2" data-path="chap-foundations.html"><a href="chap-foundations.html#sec-percentiles-median"><i class="fa fa-check"></i><b>2.5.2</b> Percentiles and Median</a></li>
+<li class="chapter" data-level="2.5.3" data-path="chap-foundations.html"><a href="chap-foundations.html#variance-and-standard-deviation"><i class="fa fa-check"></i><b>2.5.3</b> Variance and Standard Deviation</a></li>
+<li class="chapter" data-level="2.5.4" data-path="chap-foundations.html"><a href="chap-foundations.html#extreme-values-and-robust-statistics"><i class="fa fa-check"></i><b>2.5.4</b> Extreme Values and Robust Statistics</a></li>
+<li class="chapter" data-level="2.5.5" data-path="chap-foundations.html"><a href="chap-foundations.html#frequency-and-relative-frequency"><i class="fa fa-check"></i><b>2.5.5</b> Frequency and Relative Frequency</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="chap-foundations.html"><a href="chap-foundations.html#graphical-summaries"><i class="fa fa-check"></i><b>2.6</b> Graphical Summaries</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="chap-foundations.html"><a href="chap-foundations.html#boxplot"><i class="fa fa-check"></i><b>2.6.1</b> Boxplot</a></li>
+<li class="chapter" data-level="2.6.2" data-path="chap-foundations.html"><a href="chap-foundations.html#histogram"><i class="fa fa-check"></i><b>2.6.2</b> Histogram</a></li>
+<li class="chapter" data-level="2.6.3" data-path="chap-foundations.html"><a href="chap-foundations.html#the-shape-of-a-distribution"><i class="fa fa-check"></i><b>2.6.3</b> The Shape of a Distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-probability.html"><a href="chap-probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chap-probability.html"><a href="chap-probability.html#motivation-and-intuition"><i class="fa fa-check"></i><b>3.1</b> Motivation and Intuition</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="chap-probability.html"><a href="chap-probability.html#previewing-statistical-inference"><i class="fa fa-check"></i><b>3.1.1</b> Previewing Statistical Inference</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chap-probability.html"><a href="chap-probability.html#probability-a-long-run-average"><i class="fa fa-check"></i><b>3.1.2</b> Probability: A "Long-Run Average"</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chap-probability.html"><a href="chap-probability.html#sample-spaces-and-events"><i class="fa fa-check"></i><b>3.2</b> Sample Spaces and Events</a></li>
+<li class="chapter" data-level="3.3" data-path="chap-probability.html"><a href="chap-probability.html#axioms-and-properties"><i class="fa fa-check"></i><b>3.3</b> Axioms and Properties</a></li>
+<li class="chapter" data-level="3.4" data-path="chap-probability.html"><a href="chap-probability.html#sec-probability-counting"><i class="fa fa-check"></i><b>3.4</b> Counting</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="chap-probability.html"><a href="chap-probability.html#product-rule"><i class="fa fa-check"></i><b>3.4.1</b> Product Rule</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chap-probability.html"><a href="chap-probability.html#permutations-and-combinations"><i class="fa fa-check"></i><b>3.4.2</b> Permutations and Combinations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chap-probability.html"><a href="chap-probability.html#conditional-probability"><i class="fa fa-check"></i><b>3.5</b> Conditional Probability</a></li>
+<li class="chapter" data-level="3.6" data-path="chap-probability.html"><a href="chap-probability.html#independence"><i class="fa fa-check"></i><b>3.6</b> Independence</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html"><i class="fa fa-check"></i><b>4</b> Random Variables and Probability Distributions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#random-variables-1"><i class="fa fa-check"></i><b>4.1</b> Random Variables</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#probability-functions"><i class="fa fa-check"></i><b>4.2</b> Probability Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#probability-mass-function-discrete-rvs"><i class="fa fa-check"></i><b>4.2.1</b> Probability Mass Function (Discrete RVs)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#chap-rvs-sec-pdf"><i class="fa fa-check"></i><b>4.2.2</b> Probability Density Function (Continuous RVs)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#chap-rvs-sec-cdf"><i class="fa fa-check"></i><b>4.3</b> Cumulative Distribution Function</a></li>
+<li class="chapter" data-level="4.4" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#discrete-distributions"><i class="fa fa-check"></i><b>4.4</b> Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>4.4.1</b> Binomial Distribution</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#distributions-related-to-the-bernoulli"><i class="fa fa-check"></i><b>4.4.2</b> Distributions Related to the Bernoulli</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#continuous-distributions"><i class="fa fa-check"></i><b>4.5</b> Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#sec-exponential"><i class="fa fa-check"></i><b>4.5.1</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="4.5.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>4.5.2</b> Gamma Distribution</a></li>
+<li class="chapter" data-level="4.5.3" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#sec-chi-squared-distribution"><i class="fa fa-check"></i><b>4.5.3</b> Chi-Squared Distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-expected-value.html"><a href="chap-expected-value.html"><i class="fa fa-check"></i><b>5</b> Expected Value</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chap-expected-value.html"><a href="chap-expected-value.html#expected-value-for-discrete-variables"><i class="fa fa-check"></i><b>5.1</b> Expected Value for Discrete Variables</a></li>
+<li class="chapter" data-level="5.2" data-path="chap-expected-value.html"><a href="chap-expected-value.html#expected-value-for-continuous-variables"><i class="fa fa-check"></i><b>5.2</b> Expected Value for Continuous Variables</a></li>
+<li class="chapter" data-level="5.3" data-path="chap-expected-value.html"><a href="chap-expected-value.html#expected-value-for-linear-functions"><i class="fa fa-check"></i><b>5.3</b> Expected Value for Linear Functions</a></li>
+<li class="chapter" data-level="5.4" data-path="chap-expected-value.html"><a href="chap-expected-value.html#variance-and-standard-deviation-1"><i class="fa fa-check"></i><b>5.4</b> Variance and Standard Deviation</a></li>
+<li class="chapter" data-level="5.5" data-path="chap-expected-value.html"><a href="chap-expected-value.html#means-and-variances-of-common-distributions"><i class="fa fa-check"></i><b>5.5</b> Means and Variances of Common Distributions</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="chap-expected-value.html"><a href="chap-expected-value.html#binomial"><i class="fa fa-check"></i><b>5.5.1</b> Binomial</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-expected-value.html"><a href="chap-expected-value.html#hypergeometric"><i class="fa fa-check"></i><b>5.5.2</b> Hypergeometric</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-expected-value.html"><a href="chap-expected-value.html#negative-binomial"><i class="fa fa-check"></i><b>5.5.3</b> Negative Binomial</a></li>
+<li class="chapter" data-level="5.5.4" data-path="chap-expected-value.html"><a href="chap-expected-value.html#poisson"><i class="fa fa-check"></i><b>5.5.4</b> Poisson</a></li>
+<li class="chapter" data-level="5.5.5" data-path="chap-expected-value.html"><a href="chap-expected-value.html#exponential"><i class="fa fa-check"></i><b>5.5.5</b> Exponential</a></li>
+<li class="chapter" data-level="5.5.6" data-path="chap-expected-value.html"><a href="chap-expected-value.html#gamma"><i class="fa fa-check"></i><b>5.5.6</b> Gamma</a></li>
+<li class="chapter" data-level="5.5.7" data-path="chap-expected-value.html"><a href="chap-expected-value.html#chi-squared"><i class="fa fa-check"></i><b>5.5.7</b> Chi-Squared</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="chap-expected-value.html"><a href="chap-expected-value.html#moment-generating-functions"><i class="fa fa-check"></i><b>5.6</b> Moment Generating Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html"><i class="fa fa-check"></i><b>6</b> The Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#the-normal-and-standard-normal-distributions"><i class="fa fa-check"></i><b>6.1</b> The Normal and Standard Normal Distributions</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-non-standard-normal"><i class="fa fa-check"></i><b>6.1.1</b> The Normal Distribution</a></li>
+<li class="chapter" data-level="6.1.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-standard-normal"><i class="fa fa-check"></i><b>6.1.2</b> The Standard Normal Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#standardization"><i class="fa fa-check"></i><b>6.2</b> Standardization</a></li>
+<li class="chapter" data-level="6.3" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#z-scores"><i class="fa fa-check"></i><b>6.3</b> <span class="math inline">\(z\)</span>-scores</a></li>
+<li class="chapter" data-level="6.4" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#probabilities"><i class="fa fa-check"></i><b>6.4</b> Probabilities</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#computing-standard-normal-probabilities"><i class="fa fa-check"></i><b>6.4.1</b> Computing Standard Normal Probabilities</a></li>
+<li class="chapter" data-level="6.4.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#computing-normal-probabilities"><i class="fa fa-check"></i><b>6.4.2</b> Computing Normal Probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#quantiles"><i class="fa fa-check"></i><b>6.5</b> Quantiles</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-normal-percentiles-visual"><i class="fa fa-check"></i><b>6.5.1</b> Computing Standard Normal Quantiles</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-normal-percentiles"><i class="fa fa-check"></i><b>6.5.2</b> Computing Normal Quantiles</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking Normality</a></li>
+<li class="chapter" data-level="6.7" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-t-distribution"><i class="fa fa-check"></i><b>6.7</b> t Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html"><i class="fa fa-check"></i><b>7</b> Joint and Conditional Distributions</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#jointly-distributed-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly Distributed Random Variables</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#discrete-random-variables"><i class="fa fa-check"></i><b>7.1.1</b> Discrete Random Variables</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#continuous-random-variables"><i class="fa fa-check"></i><b>7.1.2</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="7.1.3" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#more-than-two-random-variables"><i class="fa fa-check"></i><b>7.1.3</b> More Than Two Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#independence-1"><i class="fa fa-check"></i><b>7.2</b> Independence</a></li>
+<li class="chapter" data-level="7.3" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#conditional-probability-functions"><i class="fa fa-check"></i><b>7.3</b> Conditional Probability Functions</a></li>
+<li class="chapter" data-level="7.4" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#sec-conditional-expectation"><i class="fa fa-check"></i><b>7.4</b> Conditional Expected Values</a></li>
+<li class="chapter" data-level="7.5" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#sec-cov-and-corr"><i class="fa fa-check"></i><b>7.5</b> Covariance and Correlation</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#covariance"><i class="fa fa-check"></i><b>7.5.1</b> Covariance</a></li>
+<li class="chapter" data-level="7.5.2" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#correlation"><i class="fa fa-check"></i><b>7.5.2</b> Correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html"><i class="fa fa-check"></i><b>8</b> Sampling Distributions and Central Limit Theorem</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#what-is-a-sampling-distribution-and-why-should-you-care"><i class="fa fa-check"></i><b>8.1</b> What Is a Sampling Distribution, and Why Should You Care?</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#preliminary-definitions"><i class="fa fa-check"></i><b>8.1.1</b> Preliminary Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#illustration-via-simulation"><i class="fa fa-check"></i><b>8.2</b> Illustration Via Simulation</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#chap-sampling-distributions-sim-normal"><i class="fa fa-check"></i><b>8.2.1</b> Simulation Setup: Normal Population</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#sec-distn-sample-mean"><i class="fa fa-check"></i><b>8.3</b> The Distribution of the Sample Mean</a></li>
+<li class="chapter" data-level="8.4" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>8.4</b> The Central Limit Theorem</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#simulation-setup-non-normal-population"><i class="fa fa-check"></i><b>8.4.1</b> Simulation Setup: Non-Normal Population</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html"><i class="fa fa-check"></i><b>9</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-pivot-method"><i class="fa fa-check"></i><b>9.2</b> Motivation and Pivots</a></li>
+<li class="chapter" data-level="9.3" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-mean"><i class="fa fa-check"></i><b>9.3</b> Confidence Interval for the Population Mean <span class="math inline">\(\mu\)</span></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-samp-dist-normal"><i class="fa fa-check"></i><b>9.3.1</b> Sampling Distribution conditions</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-mean-known-sigma"><i class="fa fa-check"></i><b>9.3.2</b> When <span class="math inline">\(\sigma\)</span> is known (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="9.3.3" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-mean-unknown-sigma"><i class="fa fa-check"></i><b>9.3.3</b> When <span class="math inline">\(\sigma\)</span> is unknown (Using the t Distribution)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-matchedPairs"><i class="fa fa-check"></i><b>9.4</b> Confidence Interval for Matched Pairs</a></li>
+<li class="chapter" data-level="9.5" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-proportion"><i class="fa fa-check"></i><b>9.5</b> Confidence Interval for a Population Proportion (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="9.6" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-variance"><i class="fa fa-check"></i><b>9.6</b> Confidence Interval for a Population Variance (Using the <span class="math inline">\(\chi^2\)</span> Distribution)</a></li>
+<li class="chapter" data-level="9.7" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-ci-interpret"><i class="fa fa-check"></i><b>9.7</b> Interpreting a Confidence Interval</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#chap-confidence-intervals-simulation"><i class="fa fa-check"></i><b>9.7.1</b> A Deeper Look at the Idea of Confidence</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-precision-sample-size"><i class="fa fa-check"></i><b>9.8</b> Finding the Sample Size (<span class="math inline">\(n\)</span>) for a Particular Confidence Interval</a></li>
+<li class="chapter" data-level="9.9" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#other-types-of-intervals"><i class="fa fa-check"></i><b>9.9</b> Other Types of Intervals</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-ci-prediction"><i class="fa fa-check"></i><b>9.9.1</b> Prediction Intervals</a></li>
+<li class="chapter" data-level="9.9.2" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#tolerance-intervals"><i class="fa fa-check"></i><b>9.9.2</b> Tolerance Intervals</a></li>
+<li class="chapter" data-level="9.9.3" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#bootstrap-confidence-intervals"><i class="fa fa-check"></i><b>9.9.3</b> Bootstrap Confidence Intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html"><i class="fa fa-check"></i><b>10</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#logic-and-language-of-hypothesis-testing"><i class="fa fa-check"></i><b>10.1</b> Logic and Language of Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#chap-ht-definitions"><i class="fa fa-check"></i><b>10.1.1</b> Type I Error, Type II error, and Power</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-test-mean"><i class="fa fa-check"></i><b>10.2</b> Hypothesis Test for a Population Mean</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-mean-known-sigma"><i class="fa fa-check"></i><b>10.2.1</b> When <span class="math inline">\(\sigma\)</span> is known (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="10.2.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-mean-unknown-sigma"><i class="fa fa-check"></i><b>10.2.2</b> When <span class="math inline">\(\sigma\)</span> is unknown (Using the t Distribution)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#hypothesis-test-for-matched-pairs"><i class="fa fa-check"></i><b>10.3</b> Hypothesis Test for Matched Pairs</a></li>
+<li class="chapter" data-level="10.4" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-proportion"><i class="fa fa-check"></i><b>10.4</b> Hypothesis Test for a Population Proportion</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#hypothesis-test-for-a-population-variance"><i class="fa fa-check"></i><b>10.4.1</b> Hypothesis Test for a Population Variance</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-one-vs-two"><i class="fa fa-check"></i><b>10.5</b> Two-sided and One-sided Tests</a></li>
+<li class="chapter" data-level="10.6" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-power"><i class="fa fa-check"></i><b>10.6</b> Power</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#power-and-sample-size-calculations-for-mu"><i class="fa fa-check"></i><b>10.6.1</b> Power and Sample Size Calculations for <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="10.6.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#power-and-sample-size-calculations"><i class="fa fa-check"></i><b>10.6.2</b> Power and Sample Size Calculations</a></li>
+<li class="chapter" data-level="10.6.3" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#power-and-sample-size-calculations-for-chi2"><i class="fa fa-check"></i><b>10.6.3</b> Power and Sample Size Calculations for <span class="math inline">\(\chi^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#exploring-hypothesis-test-via-simulation"><i class="fa fa-check"></i><b>10.7</b> Exploring Hypothesis Test via simulation</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#the-test-statistic-and-its-sampling-distribution-assuming-h_0-is-true"><i class="fa fa-check"></i><b>10.7.1</b> The Test Statistic and its Sampling Distribution: Assuming <span class="math inline">\(H_0\)</span> is true</a></li>
+<li class="chapter" data-level="10.7.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#simulation-study-repeated-hypothesis-testing-under-h_0-and-h_a"><i class="fa fa-check"></i><b>10.7.2</b> Simulation Study: Repeated Hypothesis Testing Under <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span></a></li>
+<li class="chapter" data-level="10.7.3" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#bootstrap-hypothesis-tests"><i class="fa fa-check"></i><b>10.7.3</b> Bootstrap Hypothesis Tests</a></li>
+<li class="chapter" data-level="10.7.4" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#the-basic-bootstrap-hypothesis-test-procedure"><i class="fa fa-check"></i><b>10.7.4</b> The Basic Bootstrap Hypothesis Test Procedure</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chap-compare-two.html"><a href="chap-compare-two.html"><i class="fa fa-check"></i><b>11</b> Comparing Two Populations</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-two-sample-means"><i class="fa fa-check"></i><b>11.1</b> Inference on a Difference of Two Population Means</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="chap-compare-two.html"><a href="chap-compare-two.html#when-sds-are-known-using-the-normal-distribution"><i class="fa fa-check"></i><b>11.1.1</b> When SDs are Known (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="11.1.2" data-path="chap-compare-two.html"><a href="chap-compare-two.html#when-sds-are-unknown-using-the-t-distribution"><i class="fa fa-check"></i><b>11.1.2</b> When SDs are Unknown (Using the T Distribution)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-2pop-proportion"><i class="fa fa-check"></i><b>11.2</b> Difference of Two Population Proportions</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-2pop-CI-proportion"><i class="fa fa-check"></i><b>11.2.1</b> Confidence Intervals for Two Population Proportions</a></li>
+<li class="chapter" data-level="11.2.2" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-2pop-HT-proportion"><i class="fa fa-check"></i><b>11.2.2</b> Hypothesis Tests for Two Population Proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="chap-compare-two.html"><a href="chap-compare-two.html#inference-on-a-ratio-of-two-population-variances"><i class="fa fa-check"></i><b>11.3</b> Inference on a Ratio of Two Population Variances</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chap-compare-more-than-two.html"><a href="chap-compare-more-than-two.html"><i class="fa fa-check"></i><b>12</b> Comparing More Than Two Populations</a></li>
+<li class="chapter" data-level="13" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html"><i class="fa fa-check"></i><b>13</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-model"><i class="fa fa-check"></i><b>13.1</b> The Simple Linear Regression (SLR) Model</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-regression"><i class="fa fa-check"></i><b>13.1.1</b> What Does the Word Regression Mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-least-squares"><i class="fa fa-check"></i><b>13.2</b> The Least Squares Idea</a></li>
+<li class="chapter" data-level="13.3" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-assumptions"><i class="fa fa-check"></i><b>13.3</b> Checking the Assumptions</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#good-residuals"><i class="fa fa-check"></i><b>13.3.1</b> Good Residuals</a></li>
+<li class="chapter" data-level="13.3.2" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#linearity"><i class="fa fa-check"></i><b>13.3.2</b> Linearity</a></li>
+<li class="chapter" data-level="13.3.3" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#constant-variance"><i class="fa fa-check"></i><b>13.3.3</b> Constant Variance</a></li>
+<li class="chapter" data-level="13.3.4" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#independence-2"><i class="fa fa-check"></i><b>13.3.4</b> Independence</a></li>
+<li class="chapter" data-level="13.3.5" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#normality"><i class="fa fa-check"></i><b>13.3.5</b> Normality</a></li>
+<li class="chapter" data-level="13.3.6" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#multiple-assumptions-being-violated"><i class="fa fa-check"></i><b>13.3.6</b> Multiple Assumptions being Violated</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-covariance-correlation"><i class="fa fa-check"></i><b>13.4</b> Covariance, Correlation, and R-squared</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#r-squared"><i class="fa fa-check"></i><b>13.4.1</b> R-squared</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-ci"><i class="fa fa-check"></i><b>13.5</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="13.6" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-pi"><i class="fa fa-check"></i><b>13.6</b> Prediction Intervals</a></li>
+<li class="chapter" data-level="13.7" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-ht"><i class="fa fa-check"></i><b>13.7</b> Hypothesis Test</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="chap-multiple-linear-regression.html"><a href="chap-multiple-linear-regression.html"><i class="fa fa-check"></i><b>14</b> Multiple Linear Regression</a></li>
+<li class="chapter" data-level="15" data-path="chap-flexible-regression.html"><a href="chap-flexible-regression.html"><i class="fa fa-check"></i><b>15</b> More Flexible Regression Methods</a></li>
+<li class="chapter" data-level="16" data-path="chap-categorical-data.html"><a href="chap-categorical-data.html"><i class="fa fa-check"></i><b>16</b> Categorical Data Analysis</a></li>
+<li class="chapter" data-level="17" data-path="chap-nonparametrics.html"><a href="chap-nonparametrics.html"><i class="fa fa-check"></i><b>17</b> Nonparametric Methods</a></li>
+<li class="chapter" data-level="18" data-path="chap-exercises.html"><a href="chap-exercises.html"><i class="fa fa-check"></i><b>18</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="chap-exercises.html"><a href="chap-exercises.html#foundations"><i class="fa fa-check"></i><b>18.1</b> Foundations</a></li>
+<li class="chapter" data-level="18.2" data-path="chap-exercises.html"><a href="chap-exercises.html#probability"><i class="fa fa-check"></i><b>18.2</b> Probability</a></li>
+<li class="chapter" data-level="18.3" data-path="chap-exercises.html"><a href="chap-exercises.html#random-variables-and-probability-distributions"><i class="fa fa-check"></i><b>18.3</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="18.4" data-path="chap-exercises.html"><a href="chap-exercises.html#expected-values"><i class="fa fa-check"></i><b>18.4</b> Expected Values</a></li>
+<li class="chapter" data-level="18.5" data-path="chap-exercises.html"><a href="chap-exercises.html#joint-and-conditional-probability"><i class="fa fa-check"></i><b>18.5</b> Joint and Conditional Probability</a></li>
+<li class="chapter" data-level="18.6" data-path="chap-exercises.html"><a href="chap-exercises.html#sampling-distributions"><i class="fa fa-check"></i><b>18.6</b> Sampling Distributions</a></li>
+<li class="chapter" data-level="18.7" data-path="chap-exercises.html"><a href="chap-exercises.html#principles-of-statistical-inference"><i class="fa fa-check"></i><b>18.7</b> Principles of Statistical Inference</a></li>
+<li class="chapter" data-level="18.8" data-path="chap-exercises.html"><a href="chap-exercises.html#confidence-intervals"><i class="fa fa-check"></i><b>18.8</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="18.9" data-path="chap-exercises.html"><a href="chap-exercises.html#hypothesis-testing"><i class="fa fa-check"></i><b>18.9</b> Hypothesis Testing</a></li>
+<li class="chapter" data-level="18.10" data-path="chap-exercises.html"><a href="chap-exercises.html#comparing-two-populations"><i class="fa fa-check"></i><b>18.10</b> Comparing Two Populations</a></li>
+<li class="chapter" data-level="18.11" data-path="chap-exercises.html"><a href="chap-exercises.html#comparing-more-than-two-populations"><i class="fa fa-check"></i><b>18.11</b> Comparing More Than Two Populations</a></li>
+<li class="chapter" data-level="18.12" data-path="chap-exercises.html"><a href="chap-exercises.html#linear-regression"><i class="fa fa-check"></i><b>18.12</b> Linear Regression</a></li>
+<li class="chapter" data-level="18.13" data-path="chap-exercises.html"><a href="chap-exercises.html#more-flexible-regression-methods"><i class="fa fa-check"></i><b>18.13</b> More Flexible Regression Methods</a></li>
+<li class="chapter" data-level="18.14" data-path="chap-exercises.html"><a href="chap-exercises.html#categorical-data-analysis"><i class="fa fa-check"></i><b>18.14</b> Categorical Data Analysis</a></li>
+<li class="chapter" data-level="18.15" data-path="chap-exercises.html"><a href="chap-exercises.html#nonparametric-methods"><i class="fa fa-check"></i><b>18.15</b> Nonparametric Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html"><i class="fa fa-check"></i><b>19</b> Appendix: R Tutorial</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#downloading-and-installing-r-and-rstudio"><i class="fa fa-check"></i><b>19.1</b> Downloading and Installing R and RStudio</a></li>
+<li class="chapter" data-level="19.2" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-layout-of-rstudio"><i class="fa fa-check"></i><b>19.2</b> The Layout of RStudio</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-source-pane"><i class="fa fa-check"></i><b>19.2.1</b> The Source Pane</a></li>
+<li class="chapter" data-level="19.2.2" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-console-pane"><i class="fa fa-check"></i><b>19.2.2</b> The Console Pane</a></li>
+<li class="chapter" data-level="19.2.3" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-environments-pane"><i class="fa fa-check"></i><b>19.2.3</b> The Environments Pane</a></li>
+<li class="chapter" data-level="19.2.4" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-output-pane"><i class="fa fa-check"></i><b>19.2.4</b> The Output Pane</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#r-basics"><i class="fa fa-check"></i><b>19.3</b> R Basics</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#creating-a-.r-file"><i class="fa fa-check"></i><b>19.3.1</b> Creating a .R file</a></li>
+<li class="chapter" data-level="19.3.2" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#saving-your-.r-file"><i class="fa fa-check"></i><b>19.3.2</b> Saving your .R file</a></li>
+<li class="chapter" data-level="19.3.3" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#importing-data-into-r-for-analysis"><i class="fa fa-check"></i><b>19.3.3</b> Importing Data into R for Analysis</a></li>
+<li class="chapter" data-level="19.3.4" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#coding-in-rstudio"><i class="fa fa-check"></i><b>19.3.4</b> Coding in RStudio</a></li>
+<li class="chapter" data-level="19.3.5" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#comments"><i class="fa fa-check"></i><b>19.3.5</b> Comments</a></li>
+<li class="chapter" data-level="19.3.6" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#arithmetic-in-r"><i class="fa fa-check"></i><b>19.3.6</b> Arithmetic in R</a></li>
+<li class="chapter" data-level="19.3.7" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#variables-and-variable-assignment"><i class="fa fa-check"></i><b>19.3.7</b> Variables and Variable Assignment</a></li>
+<li class="chapter" data-level="19.3.8" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#data-types-in-r"><i class="fa fa-check"></i><b>19.3.8</b> Data Types in R</a></li>
+<li class="chapter" data-level="19.3.9" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#vectors"><i class="fa fa-check"></i><b>19.3.9</b> Vectors</a></li>
+<li class="chapter" data-level="19.3.10" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#logical-operators-in-r"><i class="fa fa-check"></i><b>19.3.10</b> Logical Operators in R</a></li>
+<li class="chapter" data-level="19.3.11" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#matrices-in-r"><i class="fa fa-check"></i><b>19.3.11</b> Matrices in R</a></li>
+<li class="chapter" data-level="19.3.12" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#factors-in-r"><i class="fa fa-check"></i><b>19.3.12</b> Factors in R</a></li>
+<li class="chapter" data-level="19.3.13" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#data-frames-in-r"><i class="fa fa-check"></i><b>19.3.13</b> Data Frames in R</a></li>
+<li class="chapter" data-level="19.3.14" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#lists-in-r"><i class="fa fa-check"></i><b>19.3.14</b> Lists in R</a></li>
+<li class="chapter" data-level="19.3.15" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#statistics-in-r"><i class="fa fa-check"></i><b>19.3.15</b> Statistics in R</a></li>
+<li class="chapter" data-level="19.3.16" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#visualizations-in-r"><i class="fa fa-check"></i><b>19.3.16</b> Visualizations in R</a></li>
+<li class="chapter" data-level="19.3.17" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#downloading-and-using-packages-in-r"><i class="fa fa-check"></i><b>19.3.17</b> Downloading and Using Packages in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="chap-glossary.html"><a href="chap-glossary.html"><i class="fa fa-check"></i><b>20</b> Glossary</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="chap-glossary.html"><a href="chap-glossary.html#overview"><i class="fa fa-check"></i><b>20.1</b> Overview</a></li>
+<li class="chapter" data-level="20.2" data-path="chap-glossary.html"><a href="chap-glossary.html#foundations-1"><i class="fa fa-check"></i><b>20.2</b> Foundations</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions"><i class="fa fa-check"></i><b>20.2.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.2.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands"><i class="fa fa-check"></i><b>20.2.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="chap-glossary.html"><a href="chap-glossary.html#probability-1"><i class="fa fa-check"></i><b>20.3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-1"><i class="fa fa-check"></i><b>20.3.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.3.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-1"><i class="fa fa-check"></i><b>20.3.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="chap-glossary.html"><a href="chap-glossary.html#random-variables-and-probability-distributions-1"><i class="fa fa-check"></i><b>20.4</b> Random Variables and Probability Distributions</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-2"><i class="fa fa-check"></i><b>20.4.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.4.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-2"><i class="fa fa-check"></i><b>20.4.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="chap-glossary.html"><a href="chap-glossary.html#expected-value"><i class="fa fa-check"></i><b>20.5</b> Expected Value</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-3"><i class="fa fa-check"></i><b>20.5.1</b> Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="chap-glossary.html"><a href="chap-glossary.html#the-normal-distribution"><i class="fa fa-check"></i><b>20.6</b> The Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-4"><i class="fa fa-check"></i><b>20.6.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.6.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-3"><i class="fa fa-check"></i><b>20.6.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.7" data-path="chap-glossary.html"><a href="chap-glossary.html#joint-and-conditional-distributions"><i class="fa fa-check"></i><b>20.7</b> Joint and Conditional Distributions</a>
+<ul>
+<li class="chapter" data-level="20.7.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-5"><i class="fa fa-check"></i><b>20.7.1</b> Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.8" data-path="chap-glossary.html"><a href="chap-glossary.html#sampling-distributions-and-central-limit-theorem"><i class="fa fa-check"></i><b>20.8</b> Sampling Distributions and Central Limit Theorem</a>
+<ul>
+<li class="chapter" data-level="20.8.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-6"><i class="fa fa-check"></i><b>20.8.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.8.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-4"><i class="fa fa-check"></i><b>20.8.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.9" data-path="chap-glossary.html"><a href="chap-glossary.html#confidence-intervals-1"><i class="fa fa-check"></i><b>20.9</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="20.9.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-7"><i class="fa fa-check"></i><b>20.9.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.9.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-5"><i class="fa fa-check"></i><b>20.9.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.10" data-path="chap-glossary.html"><a href="chap-glossary.html#hypothesis-testing-1"><i class="fa fa-check"></i><b>20.10</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="20.10.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-8"><i class="fa fa-check"></i><b>20.10.1</b> Definitions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability and Statistics: Making Principled Decisions in an Uncertain World</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap-confidence-intervals" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Confidence Intervals<a href="chap-confidence-intervals.html#chap-confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<!--Statistical inference refers to the process of using sample data to learn about characteristics of an underlying population. -->
+<div id="introduction" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Introduction<a href="chap-confidence-intervals.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The value of a <strong>statistic</strong> (see Definition <a href="chap-sampling-distributions.html#def:sampling-statistic">8.2</a>) gives some information about the underlying <strong>parameter</strong>. The statistic doesn't, in general, equal the parameter. We would like to provide a secondary piece of information about how 'far' they are from each other. In this sense, a statistic is an approximation and the important question is: how good is that approximation?</p>
+<p>In the previous chapter, we studied the <strong>sampling distribution</strong> of a statistic, which describes how the statistic is a random variable. Tying these ideas together, any statement about how 'far' the statistic is will involve uncertainty. In a certain sense and with a certain probability, we will be able to say the statistic is close to the parameter <em>without ever knowing the value of the parameter</em>. This will be known as a <strong>confidence interval</strong>.</p>
+<p>A confidence interval provides a range of plausible values for a population parameter based on the observed value of a statistic and our understanding of its sampling distribution.</p>
+<!--The key idea is this: if we understand how a statistic behaves under repeated sampling - its variability, shape, and center - then we can use that knowledge to construct an interval that is likely to contain the true parameter. While any one interval either does or does not capture the parameter, the _method_ used to construct the interval is designed to succeed in a specified proportion of cases (e.g., 95% of the time). That is what we mean when we say we are "95% confident" - we are expressing confidence in the _method_, not claiming certainty in any specific instance.
+-->
+<p>In this chapter, we develop confidence intervals for several common parameters: a population mean (<span class="math inline">\(\mu\)</span>), a population proportion (<span class="math inline">\(p\)</span>), a specific scenario known as 'matched pairs', and a variance (<span class="math inline">\(\sigma^2\)</span>), in each case assuming that the data arise from a random sample of size <span class="math inline">\(n\)</span>.
+<!--Our focus here is on one-sample settings; inference involving comparisons between two or more parameters will be introduced in later chapters.--></p>
+<!--## The Idea of a Confidence Interval-->
+<!--### Pivots: A General Approach to Constructing Confidence Intervals {#sec-CI-pivot-method}-->
+<!--## The Key Concepts Behind Confidence Intervals {#sec-CI-concepts}-->
+</div>
+<div id="sec-CI-pivot-method" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Motivation and Pivots<a href="chap-confidence-intervals.html#sec-CI-pivot-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suppose we are interested in estimating the population mean <span class="math inline">\(\mu\)</span> of a Normally distributed variable, and we assume that the population standard deviation <span class="math inline">\(\sigma\)</span> is known. That is, we assume:</p>
+<p><span class="math display">\[
+X_1, X_2, \dots, X_n \overset{\text{iid}}{\sim} N(\mu, \sigma^2)
+\]</span>
+(recall that iid means `independently and identically distributed'; see Definition <a href="chap-sampling-distributions.html#def:sampling-random-sample">8.1</a>). From Proposition <a href="chap-sampling-distributions.html#prp:chap-sampling-normal-mean">8.3</a>, we know that the sample mean, <span class="math inline">\(\bar{X}\)</span>, has a sampling distribution:</p>
+<p><span class="math display">\[
+\bar{X} \sim N \left( \mu, \frac{\sigma^2}{n} \right)
+\]</span></p>
+<p>This means that the standardized version of <span class="math inline">\(\bar{X}\)</span>:</p>
+<p><span class="math display">\[
+\frac{\bar{X} - \mu}{\sigma / \sqrt{n}}  \sim N(0, 1)
+\]</span></p>
+<!--To construct a 95\% confidence interval for $\mu$, w-->
+<p>We begin with a probability statement: can we 'bracket' the values of this standardized statistic? To do so, we will introduce a fundamental quantity <span class="math inline">\(\alpha\)</span> which will always correspond to an error. For now, just think of it as a small probability, e.g. <span class="math inline">\(\alpha = 0.05\)</span>:</p>
+<p><span class="math display">\[
+P\left( -z_{\alpha/2} \leq \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \leq z_{\alpha/2} \right) = 1-\alpha
+\]</span></p>
+<p>where <span class="math inline">\(z_{\alpha/2}\)</span> is defined in Section <a href="chap-normal-distribution.html#sec-normal-percentiles-visual">6.5.1</a>. For example, for <span class="math inline">\(\alpha = 0.05\)</span> then <span class="math inline">\(z_{\alpha/2} = z_{.025} = 1.959964 \approx 1.96\)</span> (Though they might seem obscure, these values will occur regularly in our discussion of confidence intervals).</p>
+<p>Rearrange this inequality so that <span class="math inline">\(\mu\)</span> is in the 'middle':</p>
+<p><span class="math display">\[
+P\left( \bar{X} - z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{X} + z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \right) = 1-\alpha
+\]</span></p>
+<p><strong>Conclusion:</strong> If <span class="math inline">\(\bar{X}\)</span> has a Normal sampling distribution and we as well know the population standard deviation <span class="math inline">\(\sigma\)</span> then we can answer the question: 'how far is <span class="math inline">\(\bar{X}\)</span> from <span class="math inline">\(\mu\)</span>?': it is within an interval centered around <span class="math inline">\(\bar{X}\)</span> with a certain probability. In this case, that interval is called a <strong>(1-)100% confidence interval</strong> and looks like:</p>
+<!--For a general $\alpha$, the resulting endpoints (themselves random variables) constitute a **$(1-\alpha) \times 100$\% confidence interval** for $\mu$:-->
+<p><span class="math display">\[
+\left[ \, \bar{X} \, - \, z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \, , \, \bar{X} \, + \, z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \, \right] = \, \bar{X} \, \pm \, z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \, = \, \bar{X} \, \pm M
+\]</span></p>
+<p>where <span class="math inline">\(M = z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}\)</span> is called the <strong>margin of error</strong>.</p>
+<p>Though this is the essence of confidence intervals, we will need to extend these results in a number of useful directions:</p>
+<ul>
+<li>What if we don't know the population standard deviation <span class="math inline">\(\sigma\)</span>?</li>
+<li>What if we are interested in a scientific question that involves a parameter other than <span class="math inline">\(\mu\)</span>?</li>
+<li>What happens when the sampling distribution isn't normal?</li>
+<li>How do we accurately interpret these confidence intervals?</li>
+</ul>
+<!--This form provides a specific instance of a general strategy for constructing confidence intervals: (1) identify a **pivot** whose distribution is known (in this example, we used $Z$ as our pivot, but in general the pivot to use will depend on the context, as we will see), and (2) invert a probability statement involving that pivot to solve for the unknown parameter.-->
+<p>The random variable <span class="math inline">\(\frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \sim N(0,1)\)</span> played a special role. Though the <em>definition</em> of depends on <span class="math inline">\(\mu\)</span>, the <em>distribution</em> <strong>does not</strong> (<span class="math inline">\(N(0,1)\)</span> doesn't depend on <span class="math inline">\(\mu\)</span>). Other similar random variables will be key ingredients to other confidence intervals. These standardized statistics go by the special name <strong>pivot</strong>.</p>
+<!--, but in general the pivot to use will depend on the context, as we will see), and (2) invert a probability statement involving that pivot to solve for the unknown parameter.-->
+<div class="colbox">
+<div class="definition">
+<p><span id="def:ci-pivot" class="definition"><strong>Definition 9.1  </strong></span>A <strong>pivot</strong> is a quantity that:</p>
+<ol style="list-style-type: decimal">
+<li>Depends on both the unknown population parameter (e.g., <span class="math inline">\(\mu\)</span>, <span class="math inline">\(p\)</span>, <span class="math inline">\(\sigma^2\)</span>) and the statistic (e.g. <span class="math inline">\(\bar{X}\)</span>, <span class="math inline">\(\hat{p}\)</span>, <span class="math inline">\(S\)</span>)</li>
+<li>Has a sampling distribution that does <strong>not</strong> depend on unknown parameters</li>
+</ol>
+<!--Is used to construct a confidence interval by inverting a probability statement involving its distribution.-->
+<p>In other words, a pivot is a function of the data and the parameter whose sampling distribution is fully known, regardless of the parameter's value. They can be used to construct confidence intervals.</p>
+</div>
+</div>
+<p>Once a pivot has been identified, we can use it to derive a confidence interval by following a general procedure:</p>
+<div class="procedure">
+<p><strong>Using a Pivot to Construct a Confidence Interval</strong></p>
+<ol style="list-style-type: decimal">
+<li><strong>Write a probability statement</strong> for the pivot, using its known distribution. For example, for a 95% confidence level, this might take the form:
+<span class="math display">\[
+P(a \leq \text{pivot} \leq b) = (1-\alpha)
+\]</span>
+where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants that need to be determined</li>
+</ol>
+<!--2. **Substitute** the expression for the pivot into the probability statement, using the observed sample statistic and the unknown parameter.-->
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Rearrange</strong> the inequality so that the unknown parameter is in the 'middle' of the probability statement with some margin of error <span class="math inline">\(M\)</span>:</li>
+</ol>
+<p><span class="math display">\[
+   P(\text{statistic} - M \leq \text{parameter} \leq \text{statistic} + M) = (1-\alpha)
+   \]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Interpret</strong> the resulting inequality as a confidence interval, using the form:
+<span class="math display">\[
+\text{CI} = \left[\text{statistic} - M, \, \text{statistic} + M\right]
+\]</span></li>
+</ol>
+<p>This procedure yields an interval that captures the true parameter value with a specified level of confidence (e.g., 95%) across repeated samples.</p>
+</div>
+<p>The key step in this process is identifying an appropriate pivot. This is often done by standardizing a sample statistic in a way that removes any unknown parameters from the distribution. Some common pivots used:</p>
+<ul>
+<li><p>For a <strong>population mean <span class="math inline">\(\mu\)</span></strong> (when <span class="math inline">\(\sigma\)</span> is known):<br />
+<span class="math display">\[
+\frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \; \sim N(0, 1)
+\]</span></p></li>
+<li><p>For a <strong>population mean <span class="math inline">\(\mu\)</span></strong> (when <span class="math inline">\(\sigma\)</span> is unknown):<br />
+<span class="math display">\[
+\frac{\bar{X} - \mu}{S / \sqrt{n}} \; \sim t_{n-1}
+\]</span>
+(See Section <a href="chap-normal-distribution.html#sec-t-distribution">6.7</a> for the definition of the T distribution)</p></li>
+<li><p>For a <strong>population proportion <span class="math inline">\(p\)</span></strong>: <!--(based on a sample proportion $\hat{p}$, assuming "large" $n$):  -->
+<span class="math display">\[
+\frac{\hat{p} - p}{\sqrt{p(1 - p)/n}} \; \sim N(0, 1)
+\]</span></p></li>
+<li><p>For a <strong>population variance <span class="math inline">\(\sigma^2\)</span></strong>:<br />
+<span class="math display">\[
+\frac{(n - 1) S^2}{\sigma^2} \; \sim \chi^2_{n - 1}
+\]</span>
+(See Section <a href="chap-rvs-distributions.html#sec-chi-squared-distribution">4.5.3</a> for the definition of the Chi-Squared distribution)</p></li>
+</ul>
+<p>In the sections that follow, we apply this approach to develop confidence intervals for means, proportions, matched pairs, and variances. We will also consider computational-based alternatives using the bootstrap.</p>
+<!--## Confidence Intervals-->
+<!--In the previous section, we introduced the general idea of a confidence interval and, in Definition \@ref(def:ci-pivot), described how they can be derived using the method of pivots. -->
+<p>In the following sections, we present five common confidence intervals used in practice:</p>
+<ul>
+<li>A confidence interval for a <strong>population mean</strong> <span class="math inline">\(\mu\)</span> when the population standard deviation <span class="math inline">\(\sigma\)</span> is <strong>known</strong></li>
+<li>A confidence interval for a <strong>population mean</strong> <span class="math inline">\(\mu\)</span> when the population standard deviation <span class="math inline">\(\sigma\)</span> is <strong>unknown</strong></li>
+<li>A confidence interval for a <strong>population proportion</strong> <span class="math inline">\(p\)</span></li>
+<li>A confidence interval for the <strong>matched paired difference</strong> <span class="math inline">\(\mu_D\)</span></li>
+<li>A confidence interval for a <strong>population variance</strong> <span class="math inline">\(\sigma^2\)</span> using the Chi-Squared distribution.</li>
+</ul>
+<p>Each of these confidence intervals follows the same general construction principle but requires a different pivot and corresponding sampling distribution. For each case, we will describe the relevant setup, derive the interval using the pivot method, state a formal proposition, and work through a simple example.</p>
+</div>
+<div id="sec-CI-mean" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Confidence Interval for the Population Mean <span class="math inline">\(\mu\)</span><a href="chap-confidence-intervals.html#sec-CI-mean" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the introduction to this chapter, we assumed that the sampling distribution of <span class="math inline">\(\bar{X}\)</span> is exactly normal and that we know the population variance <span class="math inline">\(\sigma^2\)</span>. These restrictions aren't necessary as long as we make some adjustments.</p>
+<p>When forming confidence intervals for <span class="math inline">\(\mu\)</span>, there are two important sub-cases:</p>
+<ol style="list-style-type: decimal">
+<li>The population standard deviation <span class="math inline">\(\sigma\)</span> is known (Section <a href="chap-confidence-intervals.html#sec-CI-mean-known-sigma">9.3.2</a>)</li>
+<li>The population standard deviation <span class="math inline">\(\sigma\)</span> is unknown (Section <a href="chap-confidence-intervals.html#sec-CI-mean-unknown-sigma">9.3.3</a>).</li>
+</ol>
+<p>Additionally, suppose we are planning to make a simple random sample of <span class="math inline">\(n\)</span> observations from a population: <span class="math inline">\(X_1, X_2, \dots, X_n\)</span>. We must assume (and/or check) that at least one of the following two conditions hold:</p>
+<div id="sec-samp-dist-normal" class="section level3 hasAnchor" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> Sampling Distribution conditions<a href="chap-confidence-intervals.html#sec-samp-dist-normal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><span class="math inline">\(X_1, X_2, \dots, X_n \overset{\text{iid}}{\sim} N(\mu, \sigma^2)\)</span> no matter the <span class="math inline">\(n\)</span></li>
+<li><span class="math inline">\(n\)</span> is large enough for the Central Limit Theorem (See Theorem <a href="chap-sampling-distributions.html#thm:clt">8.1</a>). For the purposes of this book, we can consider <span class="math inline">\(n \geq 30\)</span> to be large enough.</li>
+</ul>
+<p>In the following two sections, we will assume that at least one of these two conditions holds.</p>
+</div>
+<div id="sec-CI-mean-known-sigma" class="section level3 hasAnchor" number="9.3.2">
+<h3><span class="header-section-number">9.3.2</span> When <span class="math inline">\(\sigma\)</span> is known (Using the Normal Distribution)<a href="chap-confidence-intervals.html#sec-CI-mean-known-sigma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Starting with the now familiar pivot <span class="math inline">\(\frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \sim N(0,1)\)</span>, let <span class="math inline">\(\alpha\)</span> be a small, positive number. Then we can define a <span class="math inline">\((1-\alpha)\)</span> 100% confidence interval for <span class="math inline">\(\mu\)</span> by manipulating this probability statement:</p>
+<p><span class="math display">\[
+P\left( -z_{\alpha/2} \leq \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \leq z_{\alpha/2} \right) = 1-\alpha
+\]</span></p>
+<p>Rearranging this probability to put <span class="math inline">\(\mu\)</span> in the 'middle' yields <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval. Note that in the expression (and in fact every single time <span class="math inline">\(\alpha\)</span> is used), <span class="math inline">\(\alpha\)</span> encodes the likelihood of making a mistake.</p>
+<!--
+$$
+\left[ \, \bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \, \right]
+$$-->
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:ci-pop-mean-z" class="proposition"><strong>Proposition 9.1  </strong></span>Let <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> meet either one of the conditions in Section <a href="chap-confidence-intervals.html#sec-samp-dist-normal">9.3.1</a>. Then a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval for <span class="math inline">\(\mu\)</span> when <span class="math inline">\(\sigma\)</span> is known is given by:</p>
+<p><span class="math display">\[
+\left[ \, \bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \, \right]
+\]</span></p>
+</div>
+</div>
+<p>In this expression <span class="math inline">\(\bar{X}\)</span>, and hence <span class="math inline">\(\left[ \, \bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \, \right]\)</span>, are random variables. This represents the distribution of possible values we might observe after running our experiment. Hence, it is true that the probability that <span class="math inline">\(\mu\)</span> is in the interval is <span class="math inline">\(1-\alpha\)</span>.</p>
+<p>Crucially, after running the experiment, we represent this notationally as <span class="math inline">\(\left[ \, \bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \, \right]\)</span>. It is no longer sensible to interpret this interval probabilistically. We will return to this important but subtle distinction in Section <a href="chap-confidence-intervals.html#sec-ci-interpret">9.7</a>.</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:ci-pop-mean-z-example" class="example"><strong>Example 9.1  </strong></span>A nutritionist wants to estimate the average sodium content of a brand of soup. She plans to select a random sample of <span class="math inline">\(n = 12\)</span> cans and record the sodium contents (in mg):</p>
+<p>Assuming the sodium contents are Normally distributed (and hence one of the conditions in Section <a href="chap-confidence-intervals.html#sec-CI-mean">9.3</a> is satisfied), and that the population standard deviation is known to be 11 mg, construct a 98% confidence interval for the population mean sodium content <span class="math inline">\(\mu\)</span>.</p>
+<p><em>Solution</em>: Because <span class="math inline">\(\sigma\)</span> is known, we use the confidence interval from Proposition <a href="chap-confidence-intervals.html#prp:ci-pop-mean-z">9.1</a>:</p>
+<p><span class="math display">\[
+\bar{X} \pm z_{.01} \cdot \frac{11}{\sqrt{12}}
+\]</span>
+where we use <span class="math inline">\(\alpha = .02\)</span> and hence <span class="math inline">\(\alpha/2 = .01\)</span>. For this confidence interval, the margin of error is <span class="math inline">\(M = 7.387\)</span>.</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="chap-confidence-intervals.html#cb135-1" tabindex="-1"></a>alpha    <span class="ot">&lt;-</span> .<span class="dv">02</span></span>
+<span id="cb135-2"><a href="chap-confidence-intervals.html#cb135-2" tabindex="-1"></a>n        <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb135-3"><a href="chap-confidence-intervals.html#cb135-3" tabindex="-1"></a>sigma    <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb135-4"><a href="chap-confidence-intervals.html#cb135-4" tabindex="-1"></a>z_alpha2 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb135-5"><a href="chap-confidence-intervals.html#cb135-5" tabindex="-1"></a>margin   <span class="ot">&lt;-</span> z_alpha2<span class="sc">*</span>sigma<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb135-6"><a href="chap-confidence-intervals.html#cb135-6" tabindex="-1"></a>margin</span></code></pre></div>
+<pre><code>## [1] 7.387147</code></pre>
+<p><em>Back to the problem statement</em>: Now, she actually conducts her experiment and collects a simple random sample:</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="chap-confidence-intervals.html#cb137-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">810</span>, <span class="dv">805</span>, <span class="dv">820</span>, <span class="dv">830</span>, <span class="dv">840</span>, <span class="dv">815</span>, <span class="dv">825</span>, <span class="dv">835</span>, <span class="dv">810</span>, <span class="dv">820</span>, <span class="dv">810</span>, <span class="dv">825</span>)</span></code></pre></div>
+<p>Use this sample to produce the requested observed confidence interval.</p>
+<p><em>Back to the solution</em>: Now, we can complete the calculation:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="chap-confidence-intervals.html#cb138-1" tabindex="-1"></a>n    <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb138-2"><a href="chap-confidence-intervals.html#cb138-2" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb138-3"><a href="chap-confidence-intervals.html#cb138-3" tabindex="-1"></a>ci   <span class="ot">&lt;-</span> <span class="fu">c</span>(xbar <span class="sc">-</span> margin, xbar <span class="sc">+</span> margin)</span>
+<span id="cb138-4"><a href="chap-confidence-intervals.html#cb138-4" tabindex="-1"></a><span class="fu">round</span>(ci, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 813.03 827.80</code></pre>
+<p>We are 98% confident that the true mean sodium content is between 813.03 mg and 827.8 mg.</p>
+</div>
+</div>
+<p>The assumption that we know the population standard deviation is very restrictive. It is much more common to need to estimate the population standard deviation using the sample standard deviation <span class="math inline">\(S\)</span>.</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="chap-confidence-intervals.html#cb140-1" tabindex="-1"></a><span class="do">####THIS APPEARED SOMEHOW, DON&quot;T KNOW WHERE IT GOES</span></span>
+<span id="cb140-2"><a href="chap-confidence-intervals.html#cb140-2" tabindex="-1"></a>xbar     <span class="ot">&lt;-</span> <span class="fl">498.6</span></span>
+<span id="cb140-3"><a href="chap-confidence-intervals.html#cb140-3" tabindex="-1"></a>sigma    <span class="ot">&lt;-</span> <span class="fl">1.1</span></span>
+<span id="cb140-4"><a href="chap-confidence-intervals.html#cb140-4" tabindex="-1"></a>n        <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb140-5"><a href="chap-confidence-intervals.html#cb140-5" tabindex="-1"></a>alpha    <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
+<span id="cb140-6"><a href="chap-confidence-intervals.html#cb140-6" tabindex="-1"></a>z_alpha2 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb140-7"><a href="chap-confidence-intervals.html#cb140-7" tabindex="-1"></a></span>
+<span id="cb140-8"><a href="chap-confidence-intervals.html#cb140-8" tabindex="-1"></a><span class="co"># Compute margin of error and CI</span></span>
+<span id="cb140-9"><a href="chap-confidence-intervals.html#cb140-9" tabindex="-1"></a>margin <span class="ot">&lt;-</span> z_alpha2 <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb140-10"><a href="chap-confidence-intervals.html#cb140-10" tabindex="-1"></a>ci     <span class="ot">&lt;-</span> <span class="fu">c</span>(xbar <span class="sc">-</span> margin, xbar <span class="sc">+</span> margin)</span>
+<span id="cb140-11"><a href="chap-confidence-intervals.html#cb140-11" tabindex="-1"></a><span class="fu">round</span>(ci, <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1] 498.2064 498.9936</code></pre>
+</div>
+<div id="sec-CI-mean-unknown-sigma" class="section level3 hasAnchor" number="9.3.3">
+<h3><span class="header-section-number">9.3.3</span> When <span class="math inline">\(\sigma\)</span> is unknown (Using the t Distribution)<a href="chap-confidence-intervals.html#sec-CI-mean-unknown-sigma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are many real-world contexts in which we wish to estimate the population mean <span class="math inline">\(\mu\)</span> but the population standard deviation is unknown. In such cases, we can no longer use the <span class="math inline">\(\frac{\bar{X} - \mu}{\sigma / \sqrt{n}}\)</span> as it is no longer a pivot. Instead, we use the very similar looking (but fundamentally different)
+<span class="math display">\[
+\frac{\bar{X} - \mu}{S / \sqrt{n}} \; \sim t_{n-1}
+\]</span></p>
+<p>instead, where <span class="math inline">\(S\)</span> is the sample standard deviation:</p>
+<p><span class="math display">\[
+S = \sqrt{ \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar{X})^2 }
+\]</span>
+We can use this standardized statistic as a <strong>pivot</strong> (recall Definition <a href="chap-confidence-intervals.html#def:ci-pivot">9.1</a>) whose sampling distribution does not depend on <span class="math inline">\(\mu\)</span> nor <span class="math inline">\(\sigma\)</span>. Again assuming at least one of the conditions in Section <a href="chap-confidence-intervals.html#sec-CI-mean">9.3</a> is satisfied,</p>
+<!--
+$$
+T \sim t_{n-1}
+$$
+
+We use it to write the probability statement:
+-->
+<p><span class="math display">\[
+P\left( -t_{\alpha/2, \, n-1} \leq \frac{\bar{X} - \mu}{S / \sqrt{n}} \leq t_{\alpha/2, \, n-1} \right) = 1 - \alpha
+\]</span>
+where <span class="math inline">\(t_{\alpha/2,n-1}\)</span> is defined in Section <a href="chap-normal-distribution.html#sec-t-distribution">6.7</a>. Rearranging to put <span class="math inline">\(\mu\)</span> in the middle yields the <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval:</p>
+<p><span class="math display">\[
+\left[ \, \bar{X} \pm t_{\alpha/2, \, n-1} \cdot \frac{S}{\sqrt{n}} \, \right]
+\]</span></p>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:ci-pop-mean-t" class="proposition"><strong>Proposition 9.2  </strong></span>Let <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> meet either one of the conditions in Section <a href="chap-confidence-intervals.html#sec-samp-dist-normal">9.3.1</a>. Then a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval for <span class="math inline">\(\mu\)</span> when <span class="math inline">\(\sigma\)</span> is unknown (and hence <span class="math inline">\(S\)</span> is used instead) is given by:</p>
+<p><span class="math display">\[
+\bar{X} \pm t_{\alpha/2, \, n-1} \cdot \frac{S}{\sqrt{n}}
+\]</span></p>
+</div>
+</div>
+<p>Again, after running the experiment, we represent this notationally as <span class="math inline">\(\left[ \, \bar{x} \pm t_{\alpha/2,n-1} \cdot \frac{s}{\sqrt{n}} \, \right]\)</span>, where the lower case letters <span class="math inline">\(\bar{x}\)</span> and <span class="math inline">\(s\)</span> represent fixed, observed numbers, not random variables.</p>
+<p>Let's look at this by revisiting Example <a href="chap-confidence-intervals.html#exm:ci-pop-mean-z-example">9.1</a> but without the assumption that we known <span class="math inline">\(\sigma\)</span>:</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:ci-pop-mean-t-example" class="example"><strong>Example 9.2  </strong></span>A nutritionist wants to estimate the average sodium content of a brand of soup. She plans to select a random sample of <span class="math inline">\(n = 12\)</span> cans and record the sodium contents (in mg):</p>
+<p>Assuming the sodium contents are Normally distributed (and hence one of the conditions in Section <a href="chap-confidence-intervals.html#sec-CI-mean">9.3</a> is satisfied), she wishes to construct a 98% confidence interval for the population mean sodium content <span class="math inline">\(\mu\)</span> without assuming she knowns the population standard deviation.</p>
+<p><em>Solution</em>: The confidence interval from Proposition <a href="chap-confidence-intervals.html#prp:ci-pop-mean-t">9.2</a> looks like:</p>
+<p><span class="math display">\[
+\bar{X} \pm t_{.01,11} \cdot \frac{S}{\sqrt{12}}
+\]</span>
+where we use <span class="math inline">\(\alpha = .02\)</span> and hence <span class="math inline">\(\alpha/2 = .01\)</span>.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="chap-confidence-intervals.html#cb142-1" tabindex="-1"></a>alpha    <span class="ot">&lt;-</span> .<span class="dv">02</span></span>
+<span id="cb142-2"><a href="chap-confidence-intervals.html#cb142-2" tabindex="-1"></a>n        <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb142-3"><a href="chap-confidence-intervals.html#cb142-3" tabindex="-1"></a>t_alpha2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-1</span>)</span>
+<span id="cb142-4"><a href="chap-confidence-intervals.html#cb142-4" tabindex="-1"></a>t_alpha2</span></code></pre></div>
+<pre><code>## [1] 2.718079</code></pre>
+<p><em>Back to the problem statement</em>: Now, she actually conducts her experiment and collects a simple random sample:</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="chap-confidence-intervals.html#cb144-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">810</span>, <span class="dv">805</span>, <span class="dv">820</span>, <span class="dv">830</span>, <span class="dv">840</span>, <span class="dv">815</span>, <span class="dv">825</span>, <span class="dv">835</span>, <span class="dv">810</span>, <span class="dv">820</span>, <span class="dv">810</span>, <span class="dv">825</span>)</span></code></pre></div>
+<p>Use this sample to produce the requested observed confidence interval.</p>
+<p><em>Back to the solution</em>: Now, we can complete the calculation:</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="chap-confidence-intervals.html#cb145-1" tabindex="-1"></a>n      <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb145-2"><a href="chap-confidence-intervals.html#cb145-2" tabindex="-1"></a>xbar   <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb145-3"><a href="chap-confidence-intervals.html#cb145-3" tabindex="-1"></a>s      <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
+<span id="cb145-4"><a href="chap-confidence-intervals.html#cb145-4" tabindex="-1"></a>margin <span class="ot">&lt;-</span> t_alpha2 <span class="sc">*</span> s<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb145-5"><a href="chap-confidence-intervals.html#cb145-5" tabindex="-1"></a>ci   <span class="ot">&lt;-</span> <span class="fu">c</span>(xbar <span class="sc">-</span> margin, xbar <span class="sc">+</span> margin)</span>
+<span id="cb145-6"><a href="chap-confidence-intervals.html#cb145-6" tabindex="-1"></a><span class="fu">round</span>(ci, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 811.81 829.02</code></pre>
+<p>We are 98% confident that the true mean sodium content is between 811.81 mg and 829.02 mg.</p>
+</div>
+</div>
+<p>Note that in the above situation when we have the actual observations (that is, the vector x), we can use the very useful function <code>t.test</code>:</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="chap-confidence-intervals.html#cb147-1" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">conf.level=</span><span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  x
+## t = 259.15, df = 11, p-value &lt; 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
+## 98 percent confidence interval:
+##  811.8119 829.0215
+## sample estimates:
+## mean of x 
+##  820.4167</code></pre>
+<p>For now, ignore the parts of this output other than the 98% Confidence Interval. We will return to that next chapter when we discuss Hypothesis Testing (Chapter <a href="chap-hypothesis-testing.html#chap-hypothesis-testing">10</a>).</p>
+</div>
+</div>
+<div id="sec-CI-matchedPairs" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Confidence Interval for Matched Pairs<a href="chap-confidence-intervals.html#sec-CI-matchedPairs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>An important and powerful type of experiment is one in which two measurements are naturally <strong>matched</strong> or <strong>paired</strong>. Often, this comes about by re-measuring the same <strong>unit</strong> from the sample twice. These two measurements are then subtracted from each other. This difference gives us a lot of information as it allows us to control for various unit-specific properties. This is best described by a series of examples.</p>
+<ul>
+<li><p>A key structural support for a building has a series of corresponding bolts on the north and south side of the column. These corresponding bolts need to be tightened the same amount, on average, as each other. We can draw a sample of these corresponding bolt locations and to a safety check.</p></li>
+<li><p>We want to see which of two colors of fabric, bright yellow and bright red, is more visible for children's swimsuits. We have a child wear one color and get into a large pool. A trained lifeguard is then timed in how long it takes to spot the child. Then, the same child changes into the other color and we time again how long it takes to spot the child.</p></li>
+<li><p>We want to know how effective STAT 211 is in training students in probability and statistics. We draw a sample of students and administer a pre-test. Then, 3 months after the class is over, we administer a post-test to these same students and compare the difference.</p></li>
+</ul>
+<p>In each of these scenarios, we leverage to our advantage the fact that corresponding locations or the same person controls for unit-specific variability. For instance, some students might have taken AP Statistics recently and they do relatively well on the pre-test. Other students have never taken a statistics class before. In either case, we are comparing the <strong>change</strong> in each student's understanding.</p>
+<p>We will label one of the measurements we made of a SRS of <span class="math inline">\(n\)</span> units</p>
+<p><span class="math display">\[
+X_1, X_2, \dots, X_{n}
+\]</span></p>
+<p>and the other measurements as</p>
+<p><span class="math display">\[
+Y_1, Y_2, \dots, Y_{n}
+\]</span>
+Crucially, each <span class="math inline">\(X_i\)</span> and <span class="math inline">\(Y_i\)</span> are matched (e.g. one the pre-test score and the other is the post-test score for the <span class="math inline">\(i^{th}\)</span> student).</p>
+<p>As we are interested in the difference, we immediately subtract them to form</p>
+<p><span class="math display">\[
+D_1 = X_1 - Y_1, D_2 = X_2 - Y_2, \dots, D_n = X_n - Y_n
+\]</span></p>
+<p>We want to make a statement about the population mean of this difference: <span class="math inline">\(\mu_D\)</span>. To do so, we will naturally use the sample mean difference:</p>
+<p><span class="math display">\[
+\bar{D} = \frac{1}{n}\sum_{i=1}^n D_i
+\]</span>
+As an aside, this also equals <span class="math inline">\(\bar{D} = \bar{X} - \bar{Y}\)</span>, giving us an alternative way to compute the sample mean difference. As per usual, <span class="math inline">\(\bar{D} \approx \mu_D\)</span>, but we need to leverage the sampling distribution of <span class="math inline">\(\bar{D}\)</span> to make this approximation more precise.</p>
+<p>Fortunately, we have already done all the heavy lifting at this point. We can refer to Section <a href="chap-confidence-intervals.html#sec-CI-mean-unknown-sigma">9.3.3</a> and apply the exact same methodology:</p>
+<p><span class="math display">\[
+\frac{\bar{D} - \mu_D}{S_D / \sqrt{n}} \; \sim t_{n-1}
+\]</span></p>
+<p>where <span class="math inline">\(S_D\)</span> is the sample standard deviation:</p>
+<p><span class="math display">\[
+S_D = \sqrt{ \frac{1}{n-1} \sum_{i=1}^n (D_i - \bar{D})^2 }
+\]</span>
+** Note: ** As the measurements are on the same unit they tend to be <strong>correlated</strong> (recall Section <a href="chap-joint-conditional.html#sec-cov-and-corr">7.5</a>). This becomes crucial when comparing matched pairs to the 'two population' tests we will cover later in Section <a href="chap-compare-two.html#sec-two-sample-means">11.1</a>.</p>
+<p>Putting this all together:</p>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:ci-matched-pairs" class="proposition"><strong>Proposition 9.3  </strong></span>Let <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> and <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> be measurements that are naturally <strong>paired</strong> with <span class="math inline">\(n \geq 30\)</span>. Then a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval for <span class="math inline">\(\mu_D\)</span> is given by:</p>
+<p><span class="math display">\[
+\bar{D} \pm t_{\alpha/2, \, n-1} \cdot \frac{S_D}{\sqrt{n}}
+\]</span></p>
+</div>
+</div>
+<p>Let's look at an example</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:ci-matched-pairs-summary-stats" class="example"><strong>Example 9.3  </strong></span>Suppose a manufacturer produces bottles of olive oil and wants to know: which of two bottle designs might lead to a higher sales price? To help decide, this company will draw a sample of potential customers and show them each bottle design and ask: how much would you pay for this olive oil?
+Of course, some people naturally would pay more or less, but by asking the same person twice we have controlled for this variation. With a random sample of <span class="math inline">\(n = 30\)</span> customers, we want to construct a 95% confidence interval for the difference in the average price in dollars.</p>
+<p><em>Solution</em>: For a 95% confidence interval, <span class="math inline">\(t_{.025, 29}\)</span> = 2.0452 and therefore:</p>
+<p><span class="math display">\[
+\left[ \, \bar{D} \, - \, 2.0452 \cdot \frac{S_D}{\sqrt{30}} \, , \, \bar{D} \, + \, 2.0452 \cdot \frac{S_D}{\sqrt{30}} \, \right]
+\]</span></p>
+<p><em>Back to the problem statement</em>: Now, we actually conduct our experiment and collect a simple random sample <span class="math inline">\(n = 30\)</span> customers. We find for design 1, a sample average of $4.98 and for design 2 a sample average of $4.23. Hence, <span class="math inline">\(\overline{d}\)</span> = $0.75. As well, after finding the differences <span class="math inline">\(d_i\)</span>, we find that the sample standard deviation of the difference is <span class="math inline">\(s_d\)</span> = $0.9.</p>
+<p><em>Back to the solution</em>: Now, we can complete the calculation. Our margin of error for our 95% CI is: 2.0452*0.9/5.4772256 = 0.5718327</p>
+<p>Thus, a 95% confidence interval is 0.75 <span class="math inline">\(\pm\)</span> 0.5718327; we are 95% confident that the average difference of price, <span class="math inline">\(\mu_D\)</span> is between $0.1781673 and $1.3218327.</p>
+</div>
+</div>
+<p>The above method is usable when we are only given the <strong>summary statistics</strong>, e.g. the sample averages. There is another, sleeker way if we have the actual measurements, again using the very useful function <code>t.test</code>:</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="chap-confidence-intervals.html#cb149-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">884</span>,<span class="dv">806</span>,<span class="dv">885</span>,<span class="dv">873</span>,<span class="dv">813</span>,<span class="dv">835</span>,<span class="dv">818</span>,<span class="dv">884</span>,<span class="dv">896</span>,<span class="dv">873</span>,<span class="dv">828</span>,<span class="dv">845</span>,<span class="dv">898</span>,<span class="dv">810</span>,<span class="dv">884</span>,<span class="dv">818</span>,<span class="dv">834</span>,</span>
+<span id="cb149-2"><a href="chap-confidence-intervals.html#cb149-2" tabindex="-1"></a>      <span class="dv">823</span>,<span class="dv">890</span>,<span class="dv">878</span>,<span class="dv">813</span>,<span class="dv">804</span>,<span class="dv">822</span>,<span class="dv">818</span>,<span class="dv">809</span>,<span class="dv">829</span>,<span class="dv">829</span>,<span class="dv">873</span>,<span class="dv">807</span>,<span class="dv">813</span>)</span>
+<span id="cb149-3"><a href="chap-confidence-intervals.html#cb149-3" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">901</span>,<span class="dv">885</span>,<span class="dv">834</span>,<span class="dv">908</span>,<span class="dv">903</span>,<span class="dv">825</span>,<span class="dv">857</span>,<span class="dv">833</span>,<span class="dv">892</span>,<span class="dv">824</span>,<span class="dv">855</span>,<span class="dv">837</span>,<span class="dv">843</span>,<span class="dv">849</span>,<span class="dv">907</span>,<span class="dv">848</span>,<span class="dv">851</span>,</span>
+<span id="cb149-4"><a href="chap-confidence-intervals.html#cb149-4" tabindex="-1"></a>      <span class="dv">886</span>,<span class="dv">864</span>,<span class="dv">900</span>,<span class="dv">869</span>,<span class="dv">864</span>,<span class="dv">877</span>,<span class="dv">842</span>,<span class="dv">914</span>,<span class="dv">915</span>,<span class="dv">826</span>,<span class="dv">870</span>,<span class="dv">821</span>,<span class="dv">885</span>)</span>
+<span id="cb149-5"><a href="chap-confidence-intervals.html#cb149-5" tabindex="-1"></a><span class="fu">t.test</span>(x, y, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">conf.level=</span><span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  x and y
+## t = -2.894, df = 29, p-value = 0.007151
+## alternative hypothesis: true mean difference is not equal to 0
+## 98 percent confidence interval:
+##  -42.751673  -3.448327
+## sample estimates:
+## mean difference 
+##           -23.1</code></pre>
+</div>
+<div id="sec-CI-proportion" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> Confidence Interval for a Population Proportion (Using the Normal Distribution)<a href="chap-confidence-intervals.html#sec-CI-proportion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are many real-world contexts in which we may wish to estimate a population proportion <span class="math inline">\(p\)</span>. For example, <span class="math inline">\(p\)</span> might represent the proportion of voters who support a candidate, the proportion of patients who recover after treatment, or the proportion of products that are defective. When the sample size is sufficiently large, we can construct a confidence interval for <span class="math inline">\(p\)</span> using the Normal approximation to the Binomial distribution.</p>
+<p>Suppose we take a simple random sample of size <span class="math inline">\(n\)</span> from a population, and observe <span class="math inline">\(x\)</span> "successes" (e.g., individuals who possess the characteristic of interest). The sample proportion is:</p>
+<p><span class="math display">\[
+\hat{p} = \frac{X}{n}
+\]</span></p>
+<p>If <span class="math inline">\(n\)</span> is "large enough" (typically checked using rules of thumb such as <span class="math inline">\(n \hat{p} \geq 10\)</span> and <span class="math inline">\(n(1 - \hat{p}) \geq 10\)</span>), then the sampling distribution of <span class="math inline">\(\hat{p}\)</span> is approximately Normal:</p>
+<p><span class="math display">\[
+\hat{p} \;\dot{\sim}\; N\left(p, \frac{p(1 - p)}{n} \right)
+\]</span></p>
+<p>To construct a confidence interval, we again use the pivot method. The appropriate pivot here is:</p>
+<p><span class="math display">\[
+Z = \frac{\hat{p} - p}{\sqrt{ \frac{p(1 - p)}{n} }} \quad \dot{\sim} N(0, 1)
+\]</span></p>
+<p>However, since <span class="math inline">\(p\)</span> is unknown, we substitute <span class="math inline">\(\hat{p}\)</span> into the denominator:</p>
+<p><span class="math display">\[
+Z \approx \frac{\hat{p} - p}{\sqrt{ \frac{\hat{p}(1 - \hat{p})}{n} }}
+\]</span></p>
+<p>This leads to the following approximate <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval for <span class="math inline">\(p\)</span>:</p>
+<p><span class="math display">\[
+\left[ \, \hat{p} \pm z_{\alpha/2} \cdot \sqrt{ \frac{\hat{p}(1 - \hat{p})}{n} } \, \right]
+\]</span></p>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:ci-pop-proportion-z" class="proposition"><strong>Proposition 9.4  </strong></span>Let <span class="math inline">\(x\)</span> denote the number of "successes" observed in a random sample of size <span class="math inline">\(n\)</span>, and let <span class="math inline">\(\hat{p} = x / n\)</span> be the sample proportion. If <span class="math inline">\(n\)</span> is large enough for the Normal approximation to hold, then a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval for the population proportion <span class="math inline">\(p\)</span> is:</p>
+<p><span class="math display">\[
+\left[ \, \hat{p} \pm z_{\alpha/2} \cdot \sqrt{ \frac{\hat{p}(1 - \hat{p})}{n} } \, \right]
+\]</span></p>
+<p>where <span class="math inline">\(z_{\alpha/2}\)</span> is the critical value from the standard Normal distribution.</p>
+</div>
+</div>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:ci-pop-proportion-example" class="example"><strong>Example 9.4  </strong></span>A marketing team conducts a survey to estimate the proportion of customers who are satisfied with a new product. Out of a random sample of <span class="math inline">\(n = 150\)</span> customers, <span class="math inline">\(x = 117\)</span> report that they are satisfied. Construct a 95% confidence interval for the true proportion <span class="math inline">\(p\)</span> of satisfied customers.</p>
+<p><em>Solution</em>: The sample proportion is:</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="chap-confidence-intervals.html#cb151-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">117</span></span>
+<span id="cb151-2"><a href="chap-confidence-intervals.html#cb151-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">150</span></span>
+<span id="cb151-3"><a href="chap-confidence-intervals.html#cb151-3" tabindex="-1"></a>phat <span class="ot">&lt;-</span> x <span class="sc">/</span> n</span>
+<span id="cb151-4"><a href="chap-confidence-intervals.html#cb151-4" tabindex="-1"></a></span>
+<span id="cb151-5"><a href="chap-confidence-intervals.html#cb151-5" tabindex="-1"></a><span class="co"># Sufficient sample size for Normal approximation?</span></span>
+<span id="cb151-6"><a href="chap-confidence-intervals.html#cb151-6" tabindex="-1"></a>n <span class="sc">*</span> phat</span></code></pre></div>
+<pre><code>## [1] 117</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="chap-confidence-intervals.html#cb153-1" tabindex="-1"></a>n <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> phat)</span></code></pre></div>
+<pre><code>## [1] 33</code></pre>
+<p>Because <span class="math inline">\(n \hat{p} = 117\)</span> and <span class="math inline">\(n(1 - \hat{p}) = 33\)</span> are both greater than 10, the Normal approximation is appropriate.</p>
+<p>We compute the margin of error and confidence interval:</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="chap-confidence-intervals.html#cb155-1" tabindex="-1"></a>z_alpha <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb155-2"><a href="chap-confidence-intervals.html#cb155-2" tabindex="-1"></a>se      <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(phat <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> phat) <span class="sc">/</span> n)</span>
+<span id="cb155-3"><a href="chap-confidence-intervals.html#cb155-3" tabindex="-1"></a>margin  <span class="ot">&lt;-</span> z_alpha <span class="sc">*</span> se</span>
+<span id="cb155-4"><a href="chap-confidence-intervals.html#cb155-4" tabindex="-1"></a>ci      <span class="ot">&lt;-</span> <span class="fu">c</span>(phat <span class="sc">-</span> margin, phat <span class="sc">+</span> margin)</span>
+<span id="cb155-5"><a href="chap-confidence-intervals.html#cb155-5" tabindex="-1"></a><span class="fu">round</span>(ci, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.714 0.846</code></pre>
+<p>We are 95% confident that the true proportion of satisfied customers is between 0.71 and 0.85.</p>
+</div>
+</div>
+<p>Just like using <code>t.test</code> we can use <code>prop.test</code>:</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="chap-confidence-intervals.html#cb157-1" tabindex="-1"></a><span class="fu">prop.test</span>(x, n, <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  1-sample proportions test without continuity correction
+## 
+## data:  x out of n, null probability 0.5
+## X-squared = 47.04, df = 1, p-value = 6.955e-12
+## alternative hypothesis: true p is not equal to 0.5
+## 95 percent confidence interval:
+##  0.7071769 0.8388398
+## sample estimates:
+##    p 
+## 0.78</code></pre>
+<p><strong>Editorial comment:</strong> the <code>correct = FALSE</code> argument has been chosen to match the previous output and for simplicity. The correction, when used, helps the normal approximating via the Central Limit Theorem. Outside the confines of this class, you should drop this argument, which by default is <code>correct = TRUE</code>.</p>
+</div>
+<div id="sec-CI-variance" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> Confidence Interval for a Population Variance (Using the <span class="math inline">\(\chi^2\)</span> Distribution)<a href="chap-confidence-intervals.html#sec-CI-variance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In quality control, finance, biology, and many other areas, we may wish to make inference not just about a population mean or proportion, but also about a population variance <span class="math inline">\(\sigma^2\)</span>. For example, a company might wish to ensure that the variability in product weight or fill volume remains below a certain threshold.</p>
+<p>Suppose we draw a simple random sample of size <span class="math inline">\(n\)</span> from a Normally distributed population:</p>
+<p><span class="math display">\[
+X_1, X_2, \dots, X_n \overset{\text{iid}}{\sim} N(\mu, \sigma^2)
+\]</span></p>
+<p>Let <span class="math inline">\(S^2\)</span> denote the sample variance. While we do not go into the details here, it turns out that the sampling distribution of <span class="math inline">\(S^2\)</span>, when sampling from a Normal population, is directly related to the chi-squared distribution introduced in Section <a href="chap-rvs-distributions.html#sec-chi-squared-distribution">4.5.3</a>:</p>
+<p><span class="math display">\[
+\frac{(n - 1) S^2}{\sigma^2} \sim \chi^2_{n - 1}
+\]</span></p>
+<p>This expression defines a pivot — it involves both the unknown parameter <span class="math inline">\(\sigma^2\)</span> and the sample data, but has a known distribution that does not depend on <span class="math inline">\(\sigma^2\)</span>. Using the pivot method, we write:</p>
+<p><span class="math display">\[
+P\left( \chi^2_{1 - \alpha/2, \; n - 1} \leq \frac{(n - 1) S^2}{\sigma^2} \leq \chi^2_{\alpha/2, \; n - 1} \right) = 1 - \alpha
+\]</span></p>
+<p>Inverting the inequality gives a confidence interval for <span class="math inline">\(\sigma^2\)</span>:</p>
+<p><span class="math display">\[
+\left[ \, \frac{(n - 1) S^2}{\chi^2_{\alpha/2, \; n - 1}}, \; \frac{(n - 1) S^2}{\chi^2_{1 - \alpha/2, \; n - 1}} \, \right]
+\]</span></p>
+<p>We can also obtain a confidence interval for the population standard deviation <span class="math inline">\(\sigma\)</span> by taking square roots of the interval endpoints.</p>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:ci-pop-variance" class="proposition"><strong>Proposition 9.5  </strong></span>Let <span class="math inline">\(X_1, X_2, \dots, X_n \overset{\text{iid}}{\sim} N(\mu, \sigma^2)\)</span> and let <span class="math inline">\(S^2\)</span> denote the sample variance. Then a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval for <span class="math inline">\(\sigma^2\)</span> is:</p>
+<p><span class="math display">\[
+\left[ \, \frac{(n - 1) S^2}{\chi^2_{\alpha/2, \; n - 1}}, \; \frac{(n - 1) S^2}{\chi^2_{1 - \alpha/2, \; n - 1}} \, \right]
+\]</span></p>
+<p>Here, <span class="math inline">\(\chi^2_{\alpha/2, \; n - 1}\)</span> and <span class="math inline">\(\chi^2_{1 - \alpha/2, \; n - 1}\)</span> denote critical values from the <span class="math inline">\(\chi^2\)</span> distribution with <span class="math inline">\(n - 1\)</span> degrees of freedom.</p>
+</div>
+</div>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:ci-pop-variance-example" class="example"><strong>Example 9.5  </strong></span>A chemist measures the concentration (in ppm) of a chemical compound in <span class="math inline">\(n = 8\)</span> randomly selected samples. The results (in ppm) are:</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="chap-confidence-intervals.html#cb159-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.9</span>, <span class="fl">5.4</span>, <span class="fl">5.2</span>, <span class="fl">5.0</span>, <span class="fl">4.8</span>, <span class="fl">5.3</span>, <span class="fl">5.2</span>)</span>
+<span id="cb159-2"><a href="chap-confidence-intervals.html#cb159-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb159-3"><a href="chap-confidence-intervals.html#cb159-3" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">var</span>(x)</span></code></pre></div>
+<p>Assuming the concentrations follow a Normal distribution, construct a 95% confidence interval for the population variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p><em>Solution</em>: We use the chi-squared-based confidence interval formula:</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="chap-confidence-intervals.html#cb160-1" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb160-2"><a href="chap-confidence-intervals.html#cb160-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> n <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb160-3"><a href="chap-confidence-intervals.html#cb160-3" tabindex="-1"></a>chi2_lower <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(<span class="dv">1</span> <span class="sc">-</span> alpha <span class="sc">/</span> <span class="dv">2</span>, df)</span>
+<span id="cb160-4"><a href="chap-confidence-intervals.html#cb160-4" tabindex="-1"></a>chi2_upper <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(alpha <span class="sc">/</span> <span class="dv">2</span>, df)</span>
+<span id="cb160-5"><a href="chap-confidence-intervals.html#cb160-5" tabindex="-1"></a></span>
+<span id="cb160-6"><a href="chap-confidence-intervals.html#cb160-6" tabindex="-1"></a>lower <span class="ot">&lt;-</span> (df <span class="sc">*</span> s2) <span class="sc">/</span> chi2_lower</span>
+<span id="cb160-7"><a href="chap-confidence-intervals.html#cb160-7" tabindex="-1"></a>upper <span class="ot">&lt;-</span> (df <span class="sc">*</span> s2) <span class="sc">/</span> chi2_upper</span>
+<span id="cb160-8"><a href="chap-confidence-intervals.html#cb160-8" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">c</span>(lower, upper), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.02 0.17</code></pre>
+<p>We are 95% confident that the true population variance <span class="math inline">\(\sigma^2\)</span> lies between 0.02 and 0.17 ppm².</p>
+</div>
+</div>
+<!--## Bootstrap Confidence Intervals-->
+</div>
+<div id="sec-ci-interpret" class="section level2 hasAnchor" number="9.7">
+<h2><span class="header-section-number">9.7</span> Interpreting a Confidence Interval<a href="chap-confidence-intervals.html#sec-ci-interpret" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You might have wondered: why do we call them 'confidence intervals' instead of 'probability intervals'? In this section, we will address the importance of this distinction.</p>
+<p>Regardless of the type of confidence interval, it is necessary to interpret it appropriately. Unfortunately, interpreting a confidence interval is more subtle and nuanced than it appears. The crux is the following: <em>before</em> the experiment the statistic is a random variable (representing all the values we could possible observe) and hence we can think of the interval probabilistically. However, <em>after</em> the experiment, we get one, fixed value for the statistic (representing the value we actually did observe) and hence there is no remaining randomness nor probability.</p>
+<p>For an analogy, imagine you are going to drive from College Station to Austin to meet your friends for a concert. They ask you what time you think you are going to get there and you say 'I'll probably be there around 3pm'. You give this approximate answer because they is a lot of uncertainty (traffic, construction, getting lost, can't find wallet, ...). Note the use of the word probably as in there is some probability involved. Now, let's say you arrive at 3:12. It would no longer make sense to say 'I'll probably arrive at 3:12'; instead you would say 'I arrived at 3:12'. There is no remaining randomness and hence no sense in appealing to probability.</p>
+<p>The key idea in how to correctly interpret confidence intervals is that the probability comes from the <em>process</em> of creating the interval, not the <em>specific interval</em> you end up computing. This idea is very similar to how we defined and explored the idea of a sampling distribution (See Definition <a href="chap-sampling-distributions.html#def:sampling-sampling-distribution">8.3</a>):</p>
+<blockquote>
+<p><strong>Interpretation (in plain language):</strong><br />
+If we were to repeat the study many times and compute a 95% confidence interval each time, then 95% of those intervals would contain the true parameter value. In practice, we only conduct the study once and obtain a single interval. We do not know whether that one interval contains the parameter, but we do know that the method we used has a strong track record: it works 95% of the time.</p>
+</blockquote>
+<p>Hence we have a degree of confidence in the interval. How much, exactly? Well: 95%.
+</p>
+<p>Let's look at this more carefully by revisiting an earlier example:</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:ci-interpret" class="example"><strong>Example 9.6  </strong></span>A nutritionist wants to estimate the average sodium content of a brand of soup. She plans to select a random sample of <span class="math inline">\(n = 12\)</span> cans and record the sodium contents (in mg):</p>
+<p>Assuming the sodium contents are Normally distributed (and hence one of the conditions in Section <a href="chap-confidence-intervals.html#sec-CI-mean">9.3</a> is satisfied), and that the population standard deviation is known to be 11 mg, construct a 98% confidence interval for the population mean sodium content <span class="math inline">\(\mu\)</span>.</p>
+<p><em>Solution</em>: Because <span class="math inline">\(\sigma\)</span> is known, we use the confidence interval from Proposition <a href="chap-confidence-intervals.html#prp:ci-pop-mean-z">9.1</a>. As well, <span class="math inline">\(z_{.01} = 2.3263\)</span>. So, the margin is <span class="math inline">\(M = 7.387\)</span>. Hence the procedure for this confidence interval will be:</p>
+<p><span class="math display">\[
+\bar{X} \pm 7.387
+\]</span>
+At this point, we can interpret this interval probabilistically as there is still randomness (given by the sampling distribution of <span class="math inline">\(\bar{X}\)</span>). In fact, we can say 'the probability that the interval <span class="math inline">\([\bar{X} - 7.387,\bar{X} + 7.387]\)</span> contains <span class="math inline">\(\mu\)</span> is .98'. Note the use of the capital letter <span class="math inline">\(\bar{X}\)</span>.</p>
+<p><em>Back to the problem statement</em>: Now, she actually conducts her experiment and collects a simple random sample:</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="chap-confidence-intervals.html#cb162-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">810</span>, <span class="dv">805</span>, <span class="dv">820</span>, <span class="dv">830</span>, <span class="dv">840</span>, <span class="dv">815</span>, <span class="dv">825</span>, <span class="dv">835</span>, <span class="dv">810</span>, <span class="dv">820</span>, <span class="dv">810</span>, <span class="dv">825</span>)</span></code></pre></div>
+<p>We compute a specific realization of the above interval and find <span class="math inline">\(\bar{x} = 820.4167\)</span> (note the use of the lower case <span class="math inline">\(\bar{x}\)</span>), which makes the observed interval <span class="math inline">\(820.4167 \pm 7.387 = [813.0297, 827.8037]\)</span>. Crucially, <em>these are fixed, non random numbers</em>! It no longer makes sense to interpret this interval using probability.</p>
+</div>
+</div>
+<div id="chap-confidence-intervals-simulation" class="section level3 hasAnchor" number="9.7.1">
+<h3><span class="header-section-number">9.7.1</span> A Deeper Look at the Idea of Confidence<a href="chap-confidence-intervals.html#chap-confidence-intervals-simulation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To develop a deeper understanding of what the 'confidence' in a confidence interval means, we now conduct a simulation study. In any simulation study, we know the true value and examine how successful a procedure is. We’ll assume that we know the true population mean and population standard deviation and we will repeatedly sample from that population. For each sample, we will compute a 95% confidence interval and observe how often those intervals contain the known population mean (again, it is known as we are doing a simulation study. It will never be known in practice).</p>
+<p>Specifically, we simulate the following scenario:</p>
+<ul>
+<li>Population: Normal with mean <span class="math inline">\(\mu = 100\)</span> and standard deviation <span class="math inline">\(\sigma = 15\)</span></li>
+<li>Sample size: <span class="math inline">\(n = 30\)</span></li>
+<li>Number of simulations: <span class="math inline">\(1000\)</span></li>
+<li>Confidence level: 95%</li>
+</ul>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="chap-confidence-intervals.html#cb163-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb163-2"><a href="chap-confidence-intervals.html#cb163-2" tabindex="-1"></a></span>
+<span id="cb163-3"><a href="chap-confidence-intervals.html#cb163-3" tabindex="-1"></a><span class="co"># Simulation parameters</span></span>
+<span id="cb163-4"><a href="chap-confidence-intervals.html#cb163-4" tabindex="-1"></a>mu       <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb163-5"><a href="chap-confidence-intervals.html#cb163-5" tabindex="-1"></a>sigma    <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb163-6"><a href="chap-confidence-intervals.html#cb163-6" tabindex="-1"></a>n        <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb163-7"><a href="chap-confidence-intervals.html#cb163-7" tabindex="-1"></a>num_sims <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb163-8"><a href="chap-confidence-intervals.html#cb163-8" tabindex="-1"></a>z_alpha2 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb163-9"><a href="chap-confidence-intervals.html#cb163-9" tabindex="-1"></a></span>
+<span id="cb163-10"><a href="chap-confidence-intervals.html#cb163-10" tabindex="-1"></a><span class="co"># Simulate CI endpoints</span></span>
+<span id="cb163-11"><a href="chap-confidence-intervals.html#cb163-11" tabindex="-1"></a>sample_means <span class="ot">&lt;-</span> <span class="fu">replicate</span>(num_sims, <span class="fu">mean</span>(<span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)))</span>
+<span id="cb163-12"><a href="chap-confidence-intervals.html#cb163-12" tabindex="-1"></a>margin_error <span class="ot">&lt;-</span> z_alpha2 <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb163-13"><a href="chap-confidence-intervals.html#cb163-13" tabindex="-1"></a>ci_lower <span class="ot">&lt;-</span> sample_means <span class="sc">-</span> margin_error</span>
+<span id="cb163-14"><a href="chap-confidence-intervals.html#cb163-14" tabindex="-1"></a>ci_upper <span class="ot">&lt;-</span> sample_means <span class="sc">+</span> margin_error</span>
+<span id="cb163-15"><a href="chap-confidence-intervals.html#cb163-15" tabindex="-1"></a>contains_mu <span class="ot">&lt;-</span> (ci_lower <span class="sc">&lt;=</span> mu) <span class="sc">&amp;</span> (ci_upper <span class="sc">&gt;=</span> mu)</span></code></pre></div>
+<p>In the <code>R</code> code, the <code>ci_lower</code> and <code>ci_upper</code> objects are vectors containing the lower bounds and upper bounds, respectively, of the 1000 simulated 95% confidence intervals, and <code>contains_mu</code> is a vector of boolean (<code>TRUE</code> or <code>FALSE</code>) values indicating whether each confidence interval contains <span class="math inline">\(\mu\)</span>. Below, we display the first 100 intervals as horizontal line segments, using green to indicate intervals that contain the true mean <span class="math inline">\(\mu = 100\)</span> and red for those that do not.</p>
+<div class="figure"><span style="display:block;" id="fig:ci-coverage-sim"></span>
+<img src="_main_files/figure-html/ci-coverage-sim-1.png" alt="Subset of simulated 95% CIs. Each line segment represents a 95% CI from one simulated sample. Green means that the population mean is contained in the interval, while red means that it is not." width="672" />
+<p class="caption">
+Figure 9.1: Subset of simulated 95% CIs. Each line segment represents a 95% CI from one simulated sample. Green means that the population mean is contained in the interval, while red means that it is not.
+</p>
+</div>
+<p>Out of the first 100 simulated samples, four resulted in 95% confidence intervals that did <em>not</em> contain <span class="math inline">\(\mu\)</span>. Recall our interpretation from the start of this chapter, that 95% of all 95% confidence intervals are expected to contain their target parameter value. In the "long run", then, we expect that 95% of the intervals that we would obtain via the above simulation strategy would contain <span class="math inline">\(\mu\)</span> (and, hence, 5% would not contain <span class="math inline">\(\mu\)</span>). We see 96% coverage out of the first 100 simulated samples, just by chance. If we instead examine all 1000 simulated samples, the coverage is 94.3%; the more simulations we run, the closer the coverage would get to 95%.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="chap-confidence-intervals.html#cb164-1" tabindex="-1"></a><span class="fu">table</span>(contains_mu)</span></code></pre></div>
+<pre><code>## contains_mu
+## FALSE  TRUE 
+##    60   940</code></pre>
+</div>
+</div>
+<div id="sec-precision-sample-size" class="section level2 hasAnchor" number="9.8">
+<h2><span class="header-section-number">9.8</span> Finding the Sample Size (<span class="math inline">\(n\)</span>) for a Particular Confidence Interval<a href="chap-confidence-intervals.html#sec-precision-sample-size" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<!--When constructing confidence intervals, we not only care about capturing the population parameter, but also about the **precision** of our estimate. In general, a more *precise* interval is one that is narrower, meaning it provides a tighter range of plausible values for the parameter. All else equal, narrower intervals are preferable.-->
+<p>Referring to the <strong>margin</strong> <span class="math inline">\(M\)</span>, a given confidence interval has width <span class="math inline">\(2M\)</span>. This width is important as a correctly constructed confidence interval can still be useless in practice if it is too wide. This can be phrased in the classic way as accuracy and precision. An accurate statement is one that is correct. A precise statement is one is very narrow in scope.</p>
+<p>It is very possible to create a confidence interval that is accurate but uselessly imprecise. For example, the interval <span class="math inline">\((-\infty, \infty)\)</span> will definitely contain the population mean (and hence is accurate). However it is woefully imprecise. The confidence interval <span class="math inline">\([.999999,1.0000001]\)</span> is very precise, but is very likely inaccurate.</p>
+<p>This is analogous to you being lost in the Sam Houston National Forest. You call for help and ask where you are. The person responds: on planet Earth. This is an accurate, but uselessly imprecise, answer. Or, the person can respond: 394 FM 1375 West, New Waverly, TX 77358. This is a very precise, but inaccurate, response.</p>
+<p>Precision is influenced by several factors:</p>
+<ul>
+<li>The <strong>confidence level</strong>: Higher confidence levels require wider intervals to maintain the same level of coverage.</li>
+<li>The <strong>variability in the data</strong>: More variability, which means a larger <span class="math inline">\(\sigma\)</span>, leads to wider intervals.</li>
+<li>The <strong>sample size</strong>: Larger sample sizes produce more precise (i.e., narrower) intervals.</li>
+</ul>
+<blockquote>
+<p><strong>Key Idea</strong>: Increasing the sample size reduces the standard error, which in turn narrows the confidence interval, improving precision.</p>
+</blockquote>
+<!--## Required Sample Size for a Given Precision-->
+<p>It is often useful to determine how large a sample is needed to achieve a desired level of precision. For instance, suppose we want our 95% confidence interval for a population mean to be no wider than a specified amount.</p>
+<p>Recall that, in this context, a (1-<span class="math inline">\(\alpha\)</span>)100% confidence interval for <span class="math inline">\(\mu\)</span> takes the form:</p>
+<p><span class="math display">\[
+\bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<p>This interval has a total width of:</p>
+<p><span class="math display">\[
+\text{width} = w = 2 \cdot z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<p>Solving for <span class="math inline">\(n\)</span>, we find that to achieve a desired maximum width <span class="math inline">\(w\)</span>:</p>
+<p><span class="math display">\[
+n = \left( \frac{2 \cdot z_{\alpha/2} \cdot \sigma}{w} \right)^2
+\]</span>
+This will in general not be a whole number. Always round this value <strong>up</strong> to the next integer.</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:ci-known-sd-sample-size" class="example"><strong>Example 9.7  </strong></span>Suppose a manufacturer produces bottles of olive oil labeled as containing 500 milliliters (ml). A quality control team takes a random sample of <span class="math inline">\(n = 30\)</span> bottles and measures their contents. The team assumes that the bottle volume has a known population standard deviation <span class="math inline">\(\sigma = 1.1\)</span> ml.</p>
+<p>Construct a 95% confidence interval for the true mean volume <span class="math inline">\(\mu\)</span> of oil per bottle.</p>
+<p><em>Solution</em>: Because the population distribution is Normal and <span class="math inline">\(\sigma\)</span> is known, we can use Section <a href="chap-confidence-intervals.html#sec-CI-mean-known-sigma">9.3.2</a>. First, recall that the value <span class="math inline">\(z_{.025} \approx 1.96\)</span>. Hence, a 95% confidence interval for <span class="math inline">\(\mu\)</span> looks like:</p>
+<p><span class="math display">\[
+\left[ \, \bar{X} \, - \, 1.96 \cdot \frac{1.1}{\sqrt{30}} \, , \, \bar{X} \, + \, 1.96 \cdot \frac{1.1}{\sqrt{30}} \, \right] = \, \bar{X} \, \pm \, 1.96 \cdot \frac{1.1}{\sqrt{30}} \, = \, \bar{X} \, \pm M
+\]</span>
+with <span class="math inline">\(M = 1.96 \cdot \frac{1.1}{\sqrt{30}} = 0.3936299 \approx 0.394\)</span> (note that you don't have to write all three versions each time; we are writing them all for emphasis).</p>
+<p><em>Back to the problem statement</em>: Suppose the manufacturer wants to ensure that future quality control samples yield a 95% confidence interval for the true mean volume <span class="math inline">\(\mu\)</span> of olive oil with a total width no more than 1 ml. What sample size <span class="math inline">\(n\)</span> is required?</p>
+<p><em>Back to the solution</em>: We use the formula for the required sample size to achieve a desired width <span class="math inline">\(w\)</span> of a two-sided confidence interval:</p>
+<p><span class="math display">\[
+n = \left( \frac{2 \cdot z_{\alpha/2} \cdot \sigma}{w} \right)^2
+\]</span></p>
+<p>Here, <span class="math inline">\(\sigma = 1.1\)</span>, <span class="math inline">\(w = 1\)</span>, and for a 95% confidence level, <span class="math inline">\(z_{\alpha/2} = 1.96\)</span>:</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="chap-confidence-intervals.html#cb166-1" tabindex="-1"></a>z_alpha2 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb166-2"><a href="chap-confidence-intervals.html#cb166-2" tabindex="-1"></a>sigma    <span class="ot">&lt;-</span> <span class="fl">1.1</span></span>
+<span id="cb166-3"><a href="chap-confidence-intervals.html#cb166-3" tabindex="-1"></a>width    <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb166-4"><a href="chap-confidence-intervals.html#cb166-4" tabindex="-1"></a></span>
+<span id="cb166-5"><a href="chap-confidence-intervals.html#cb166-5" tabindex="-1"></a>n_required <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">*</span> z_alpha2 <span class="sc">*</span> sigma <span class="sc">/</span> width)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb166-6"><a href="chap-confidence-intervals.html#cb166-6" tabindex="-1"></a><span class="fu">ceiling</span>(n_required)</span></code></pre></div>
+<pre><code>## [1] 19</code></pre>
+<p>So, the required sample size is: <span class="math inline">\(n = 19\)</span> to ensure that the 95% confidence interval for the mean bottle volume is no wider than 1 ml. Note that this wouldn't be sufficient to activate the CLT so this would be a separate real-world consideration.</p>
+</div>
+</div>
+<p>This kind of calculation is frequently used in the planning stages of a study. If a desired level of precision is known in advance, it can be used to determine how much data to collect. Note that the above illustration is specific to the context of a confidence interval for a population mean with a Normal population distribution and known population standard deviation. That said, a similar approach can be used to compute the sample size required for an arbitrary confidence interval for any parameter to be of specified width; the details of the calculation will depend on the specific context (what kind of population parameter are we targeting, what, if anything, do we know about the population distribution and population standard deviation, etc.).</p>
+</div>
+<div id="other-types-of-intervals" class="section level2 hasAnchor" number="9.9">
+<h2><span class="header-section-number">9.9</span> Other Types of Intervals<a href="chap-confidence-intervals.html#other-types-of-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In most of this chapter, we have focused on constructing confidence intervals for population parameters, such as a population mean or proportion. These intervals quantify our uncertainty about a fixed but unknown quantity. However, in some applications, we are interested in a different kind of uncertainty; for example:</p>
+<ul>
+<li>How much will a future observation vary from our sample?</li>
+<li>What interval will most of the population fall within?</li>
+</ul>
+<p>For such questions, we turn to prediction intervals and tolerance intervals. These are not confidence intervals in the traditional sense, but they are constructed in similar ways. Both require additional assumptions (typically Normality), and each answers a different kind of practical question.</p>
+<p>Below, we describe and illustrate each interval type using a shared context: measuring the tensile strength of a material from a Normally distributed population.</p>
+<div id="sec-ci-prediction" class="section level3 hasAnchor" number="9.9.1">
+<h3><span class="header-section-number">9.9.1</span> Prediction Intervals<a href="chap-confidence-intervals.html#sec-ci-prediction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A <strong>prediction interval</strong> gives a range in which we expect a <em>future individual observation</em> to fall, with a specified level of confidence. Unlike a confidence interval, which targets a population parameter, a prediction interval accounts for <em>both sampling variability and individual variability</em>.</p>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:prop-pred-interval" class="proposition"><strong>Proposition 9.6  </strong></span>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be a random sample from a Normal population with unknown mean <span class="math inline">\(\mu\)</span> and unknown standard deviation <span class="math inline">\(\sigma\)</span>. Then, a <strong><span class="math inline">\((1 - \alpha) \times 100\%\)</span> prediction interval</strong> for a single future observation <span class="math inline">\(X_{\text{new}}\)</span> is given by:</p>
+<p><span class="math display">\[
+\bar{X} \pm t_{\alpha/2, n-1} \cdot s \sqrt{1 + \frac{1}{n}}
+\]</span>
+This interval accounts for both the variability in estimating <span class="math inline">\(\mu\)</span> and the variability in a future observation.</p>
+</div>
+</div>
+<p>Notice that the formula for a prediction interval closely resembles that of a confidence interval for the population mean. The only difference is the additional <strong>1</strong> inside the square root:</p>
+<p><span class="math display">\[
+\text{SE}_{\text{prediction}} = s \sqrt{1 + \frac{1}{n}} \quad \text{vs.} \quad \text{SE}_{\text{mean}} = s \sqrt{\frac{1}{n}}
+\]</span></p>
+<p>This extra 1 accounts for the added uncertainty when predicting a single <em>future observation</em> rather than estimating a population parameter. In effect, the prediction interval must account not only for the variability in estimating the mean but also for the variability of the individual outcome itself. As a result, prediction intervals are always <em>wider</em> than corresponding confidence intervals for the mean, reflecting the fact that it is inherently harder to predict an individual value than to estimate an average.</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:ex-prediction-interval" class="example"><strong>Example 9.8  </strong></span>An engineer measures the tensile strength (in MPa) of a sample of <span class="math inline">\(n = 10\)</span> steel rods, obtaining the following:</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="chap-confidence-intervals.html#cb168-1" tabindex="-1"></a>strength <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">405</span>, <span class="dv">410</span>, <span class="dv">395</span>, <span class="dv">398</span>, <span class="dv">407</span>, <span class="dv">400</span>, <span class="dv">399</span>, <span class="dv">412</span>, <span class="dv">404</span>, <span class="dv">396</span>)</span></code></pre></div>
+<p>Assume the tensile strengths follow a Normal distribution. Construct a 95% prediction interval for the tensile strength of a future steel rod produced under similar conditions.</p>
+<p><em>Solution</em>:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="chap-confidence-intervals.html#cb169-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(strength)</span>
+<span id="cb169-2"><a href="chap-confidence-intervals.html#cb169-2" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(strength)</span>
+<span id="cb169-3"><a href="chap-confidence-intervals.html#cb169-3" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(strength)</span>
+<span id="cb169-4"><a href="chap-confidence-intervals.html#cb169-4" tabindex="-1"></a>t_alpha2 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb169-5"><a href="chap-confidence-intervals.html#cb169-5" tabindex="-1"></a></span>
+<span id="cb169-6"><a href="chap-confidence-intervals.html#cb169-6" tabindex="-1"></a>pred_se <span class="ot">&lt;-</span> s <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n)</span>
+<span id="cb169-7"><a href="chap-confidence-intervals.html#cb169-7" tabindex="-1"></a>pred_int <span class="ot">&lt;-</span> <span class="fu">c</span>(xbar <span class="sc">-</span> t_alpha2 <span class="sc">*</span> pred_se, xbar <span class="sc">+</span> t_alpha2 <span class="sc">*</span> pred_se)</span>
+<span id="cb169-8"><a href="chap-confidence-intervals.html#cb169-8" tabindex="-1"></a><span class="fu">round</span>(pred_int, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 388.6 416.6</code></pre>
+<p>We are 95% confident that a <em>new</em> draw from the distribution of steel rods will have tensile strength between 388.6 and 416.6 MPa.</p>
+</div>
+</div>
+</div>
+<div id="tolerance-intervals" class="section level3 hasAnchor" number="9.9.2">
+<h3><span class="header-section-number">9.9.2</span> Tolerance Intervals<a href="chap-confidence-intervals.html#tolerance-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A <strong>tolerance interval</strong> provides a range that is expected to capture a specified proportion of the population, with a specified level of confidence. Tolerance intervals are commonly used in quality control settings when we want to assert that, for instance, "at least 90% of all items fall within this range with 95% confidence."</p>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:prop-tol-interval" class="proposition"><strong>Proposition 9.7  </strong></span>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be a random sample from a Normal population with unknown mean <span class="math inline">\(\mu\)</span> and unknown standard deviation <span class="math inline">\(\sigma\)</span>. A two-sided <strong><span class="math inline">\((1 - \alpha)\)</span> tolerance interval</strong> for the central <span class="math inline">\(P\)</span> proportion of the population takes the form:</p>
+<p><span class="math display">\[
+\bar{x} \pm k \cdot s
+\]</span></p>
+<p>where <span class="math inline">\(k\)</span> is a constant chosen so that the interval contains at least a proportion <span class="math inline">\(P\)</span> of the population with confidence <span class="math inline">\((1 - \alpha)\)</span>.</p>
+<p>The value of <span class="math inline">\(k\)</span> depends on the sample size <span class="math inline">\(n\)</span>, the desired content proportion <span class="math inline">\(P\)</span>, and the confidence level <span class="math inline">\((1 - \alpha)\)</span>. Tables and software are available to compute <span class="math inline">\(k\)</span> for common choices of <span class="math inline">\(n\)</span>, <span class="math inline">\(P\)</span>, and <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+</div>
+<p>There is no closed-form analytical formula for the tolerance factor <span class="math inline">\(k\)</span> because it must account for both sampling variability and the requirement to cover a specified proportion of the population with a given level of confidence. Unlike the <span class="math inline">\(t\)</span>-based intervals used for means or predictions, the distribution of <span class="math inline">\(k\)</span> does not follow a simple form and instead depends on more complex probability calculations. As a result, numerical approximation methods or pre-computed tables are used to obtain appropriate values of <span class="math inline">\(k\)</span> for given combinations of <span class="math inline">\(n\)</span>, <span class="math inline">\(P\)</span>, and confidence level. In <code>R</code>, the <code>normtol.int</code> function in the <code>tolerance</code> package can be used to compute tolerance intervals of various types.</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:ex-tolerance-interval" class="example"><strong>Example 9.9  </strong></span>Using the same sample of tensile strengths as in Example <a href="chap-confidence-intervals.html#exm:ex-prediction-interval">9.8</a>, construct a 95% tolerance interval that covers at least 90% of the population of steel rods.</p>
+<p><em>Solution</em>:</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="chap-confidence-intervals.html#cb171-1" tabindex="-1"></a><span class="fu">require</span>(tolerance)</span></code></pre></div>
+<pre><code>## Loading required package: tolerance</code></pre>
+<pre><code>## tolerance package, version 3.0.0, Released 2024-04-18
+## This package is based upon work supported by the Chan Zuckerberg Initiative: Essential Open Source Software for Science (Grant No. 2020-255193).</code></pre>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="chap-confidence-intervals.html#cb174-1" tabindex="-1"></a>tol.int <span class="ot">&lt;-</span> <span class="fu">normtol.int</span>(strength, <span class="at">alpha =</span> <span class="fl">0.05</span>, <span class="at">P =</span> <span class="fl">0.90</span>, <span class="at">side =</span> <span class="dv">2</span>, <span class="at">method =</span> <span class="st">&quot;HE&quot;</span>)</span>
+<span id="cb174-2"><a href="chap-confidence-intervals.html#cb174-2" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">c</span>(tol.int<span class="sc">$</span><span class="st">&#39;2-sided.lower&#39;</span>, tol.int<span class="sc">$</span><span class="st">&#39;2-sided.upper&#39;</span>), <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 385.8 419.4</code></pre>
+<p>We are 95% confident that at least 90% of all steel rods have tensile strength between 385.8 MPa and 419.4 MPa.</p>
+</div>
+</div>
+</div>
+<div id="bootstrap-confidence-intervals" class="section level3 hasAnchor" number="9.9.3">
+<h3><span class="header-section-number">9.9.3</span> Bootstrap Confidence Intervals<a href="chap-confidence-intervals.html#bootstrap-confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In many real-world situations, the assumptions required to construct a confidence interval using traditional distributional methods (e.g., Normality or known variance) may not hold. Additionally, for complex statistics or estimators, it may be difficult or impossible to derive an appropriate pivot. In such cases, we can instead use <strong>resampling methods</strong>, such as the <strong>bootstrap</strong>, to approximate the sampling distribution of a statistic and construct a confidence interval.</p>
+<p>The bootstrap is a powerful computational tool that estimates the variability of a statistic by repeatedly resampling (with replacement) from the observed data and recalculating the statistic for each resample. This empirical distribution of bootstrap statistics serves as a stand-in for the unknown sampling distribution.</p>
+<p>In this section, we introduce the most basic and widely used approach to bootstrap confidence intervals—the <strong>percentile method</strong>—and discuss its benefits and drawbacks.</p>
+<div id="the-basic-bootstrap-percentile-method" class="section level4 hasAnchor" number="9.9.3.1">
+<h4><span class="header-section-number">9.9.3.1</span> The Basic Bootstrap Percentile Method<a href="chap-confidence-intervals.html#the-basic-bootstrap-percentile-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <strong>bootstrap percentile method</strong> constructs a confidence interval by directly taking percentiles from the empirical distribution of a statistic computed from bootstrap resamples. It is simple to implement and does not require distributional assumptions or derivation of a pivot.</p>
+<div class="procedure">
+<p><strong>Steps for Constructing a Bootstrap Percentile Confidence Interval</strong></p>
+<ol style="list-style-type: decimal">
+<li><strong>Obtain a random sample</strong> of size <span class="math inline">\(n\)</span> from the population. Compute the statistic of interest (e.g., mean, median, proportion) from the original sample.</li>
+<li><strong>Resample with replacement</strong> from the original data to create many bootstrap samples (e.g., 1,000 or 10,000 resamples).</li>
+<li><strong>Compute the statistic</strong> of interest for each bootstrap sample.</li>
+<li><strong>Construct the interval</strong> by taking the appropriate percentiles (e.g., the 2.5th and 97.5th percentiles for a 95% CI) from the distribution of bootstrap statistics.</li>
+</ol>
+</div>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:bootstrap-skewed" class="example"><strong>Example 9.10  </strong></span>A botanist measures the lengths (in cm) of 15 leaves from a particular species and obtains the following sample:</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="chap-confidence-intervals.html#cb176-1" tabindex="-1"></a>leaf <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">2.5</span>, <span class="fl">2.7</span>, <span class="fl">2.8</span>, <span class="fl">3.0</span>, <span class="fl">3.1</span>, <span class="fl">3.2</span>, <span class="fl">3.5</span>, <span class="fl">3.6</span>, <span class="fl">4.0</span>, <span class="fl">4.5</span>, <span class="fl">5.2</span>, <span class="fl">5.8</span>, <span class="fl">6.4</span>, <span class="fl">8.0</span>)</span></code></pre></div>
+<p>These data appear to come from a <strong>right-skewed</strong> distribution. If we were confident that our sample came from a Normal population, then we could apply our <span class="math inline">\(t\)</span>-based method for constructing a confidence interval for the population mean.</p>
+<p>To visually assess the Normality assumption, we can construct a Q-Q plot, as described in Section <a href="chap-normal-distribution.html#sec-QQ-plots">6.6</a>:</p>
+<div class="figure"><span style="display:block;" id="fig:leaf-qqplot"></span>
+<img src="_main_files/figure-html/leaf-qqplot-1.png" alt="Q-Q plot for leaf length data. The departure from linearity suggests that the data may not follow a Normal distribution." width="672" />
+<p class="caption">
+Figure 9.2: Q-Q plot for leaf length data. The departure from linearity suggests that the data may not follow a Normal distribution.
+</p>
+</div>
+<p>The plot shows a clear deviation from linearity, indicating that the Normal assumption may not be reasonable here. In such cases, a bootstrap confidence interval offers a useful alternative. Construct a 95% bootstrap percentile confidence interval for the population mean leaf length, using 10,000 resamples.</p>
+<p><em>Solution</em>:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="chap-confidence-intervals.html#cb177-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb177-2"><a href="chap-confidence-intervals.html#cb177-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(leaf)</span>
+<span id="cb177-3"><a href="chap-confidence-intervals.html#cb177-3" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb177-4"><a href="chap-confidence-intervals.html#cb177-4" tabindex="-1"></a>boot_means <span class="ot">&lt;-</span> <span class="fu">replicate</span>(B, <span class="fu">mean</span>(<span class="fu">sample</span>(leaf, n, <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb177-5"><a href="chap-confidence-intervals.html#cb177-5" tabindex="-1"></a>mean_ci <span class="ot">&lt;-</span> <span class="fu">quantile</span>(boot_means, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb177-6"><a href="chap-confidence-intervals.html#cb177-6" tabindex="-1"></a><span class="fu">round</span>(mean_ci, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##  2.5% 97.5% 
+##  3.27  4.89</code></pre>
+<p>We are 95% confident that the population mean leaf length lies between 3.27 and 4.89.</p>
+</div>
+</div>
+<p>Note that, if we were interested in the <strong>median</strong> instead of the mean, we could simply replace <code>mean()</code> with <code>median()</code> in our bootstrap code:</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="chap-confidence-intervals.html#cb179-1" tabindex="-1"></a>boot_medians <span class="ot">&lt;-</span> <span class="fu">replicate</span>(B, <span class="fu">median</span>(<span class="fu">sample</span>(leaf, n, <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb179-2"><a href="chap-confidence-intervals.html#cb179-2" tabindex="-1"></a>median_ci <span class="ot">&lt;-</span> <span class="fu">quantile</span>(boot_medians, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb179-3"><a href="chap-confidence-intervals.html#cb179-3" tabindex="-1"></a><span class="fu">round</span>(median_ci, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##  2.5% 97.5% 
+##   2.8   5.2</code></pre>
+<p>This flexibility is a key strength of the bootstrap: it allows us to estimate confidence intervals for a wide variety of parameter types, even those for which standard formulas are not available.</p>
+<p>There is also a popular <code>R</code> package <code>boot</code> that can perform the above bootstrap analysis (and many others) in a more standardized way. Below, we show how <code>boot</code> can be used to construct a bootstrap percentile confidence interval for mean leaf length:</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="chap-confidence-intervals.html#cb181-1" tabindex="-1"></a><span class="fu">library</span>(boot)</span>
+<span id="cb181-2"><a href="chap-confidence-intervals.html#cb181-2" tabindex="-1"></a></span>
+<span id="cb181-3"><a href="chap-confidence-intervals.html#cb181-3" tabindex="-1"></a><span class="co"># Define the statistic function: compute mean from given indices</span></span>
+<span id="cb181-4"><a href="chap-confidence-intervals.html#cb181-4" tabindex="-1"></a>mean_stat <span class="ot">&lt;-</span> <span class="cf">function</span>(data, indices) {</span>
+<span id="cb181-5"><a href="chap-confidence-intervals.html#cb181-5" tabindex="-1"></a>  <span class="fu">mean</span>(data[indices])</span>
+<span id="cb181-6"><a href="chap-confidence-intervals.html#cb181-6" tabindex="-1"></a>}</span>
+<span id="cb181-7"><a href="chap-confidence-intervals.html#cb181-7" tabindex="-1"></a></span>
+<span id="cb181-8"><a href="chap-confidence-intervals.html#cb181-8" tabindex="-1"></a><span class="co"># Run bootstrap</span></span>
+<span id="cb181-9"><a href="chap-confidence-intervals.html#cb181-9" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb181-10"><a href="chap-confidence-intervals.html#cb181-10" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">boot</span>(<span class="at">data =</span> leaf, <span class="at">statistic =</span> mean_stat, <span class="at">R =</span> <span class="dv">10000</span>)</span>
+<span id="cb181-11"><a href="chap-confidence-intervals.html#cb181-11" tabindex="-1"></a></span>
+<span id="cb181-12"><a href="chap-confidence-intervals.html#cb181-12" tabindex="-1"></a><span class="co"># View percentile CI</span></span>
+<span id="cb181-13"><a href="chap-confidence-intervals.html#cb181-13" tabindex="-1"></a><span class="fu">boot.ci</span>(boot_results, <span class="at">type =</span> <span class="st">&quot;perc&quot;</span>)</span></code></pre></div>
+<pre><code>## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+## Based on 10000 bootstrap replicates
+## 
+## CALL : 
+## boot.ci(boot.out = boot_results, type = &quot;perc&quot;)
+## 
+## Intervals : 
+## Level     Percentile     
+## 95%   ( 3.28,  4.88 )  
+## Calculations and Intervals on Original Scale</code></pre>
+<p>This returns the 95% <strong>bootstrap percentile confidence interval</strong> for the mean. The argument <code>type = "perc"</code> tells <code>boot.ci()</code> to use the percentile method, which is equivalent to what we computed manually.</p>
+<p>To compute a confidence interval for the <strong>median</strong> instead of the mean, we simply redefine the statistic function:</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="chap-confidence-intervals.html#cb183-1" tabindex="-1"></a>median_stat <span class="ot">&lt;-</span> <span class="cf">function</span>(data, indices) {</span>
+<span id="cb183-2"><a href="chap-confidence-intervals.html#cb183-2" tabindex="-1"></a>  <span class="fu">median</span>(data[indices])</span>
+<span id="cb183-3"><a href="chap-confidence-intervals.html#cb183-3" tabindex="-1"></a>}</span>
+<span id="cb183-4"><a href="chap-confidence-intervals.html#cb183-4" tabindex="-1"></a></span>
+<span id="cb183-5"><a href="chap-confidence-intervals.html#cb183-5" tabindex="-1"></a>boot_results_median <span class="ot">&lt;-</span> <span class="fu">boot</span>(<span class="at">data =</span> leaf, <span class="at">statistic =</span> median_stat, <span class="at">R =</span> <span class="dv">10000</span>)</span>
+<span id="cb183-6"><a href="chap-confidence-intervals.html#cb183-6" tabindex="-1"></a></span>
+<span id="cb183-7"><a href="chap-confidence-intervals.html#cb183-7" tabindex="-1"></a><span class="fu">boot.ci</span>(boot_results_median, <span class="at">type =</span> <span class="st">&quot;perc&quot;</span>)</span></code></pre></div>
+<pre><code>## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+## Based on 10000 bootstrap replicates
+## 
+## CALL : 
+## boot.ci(boot.out = boot_results_median, type = &quot;perc&quot;)
+## 
+## Intervals : 
+## Level     Percentile     
+## 95%   ( 2.8,  5.2 )  
+## Calculations and Intervals on Original Scale</code></pre>
+<p>This approach makes it easy to estimate bootstrap CIs for a wide range of statistics without writing your own resampling code.</p>
+</div>
+<div id="advantages-and-limitations" class="section level4 hasAnchor" number="9.9.3.2">
+<h4><span class="header-section-number">9.9.3.2</span> Advantages and Limitations<a href="chap-confidence-intervals.html#advantages-and-limitations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The bootstrap is an appealing method due to its generality and ease of use, but it is important to understand its strengths and weaknesses.</p>
+<div class="proscons">
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Does not require assumptions about the population distribution.</li>
+<li>Useful when no pivot is available or when the statistic’s distribution is unknown or complex.</li>
+<li>Easy to implement using modern computing tools.</li>
+</ul>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li>Assumes that the sample is representative of the population; bootstrap results can be misleading for small or biased samples.</li>
+<li>Can perform poorly for statistics with skewed or highly discrete distributions, or for extreme quantiles.</li>
+<li>Some bootstrap intervals (e.g., percentile) may have less accurate coverage properties than traditional intervals in small samples.</li>
+</ul>
+<p>There are more advanced bootstrap methods—such as the <strong>bias-corrected and accelerated (BCa)</strong> interval—that address some of these limitations, but the percentile method remains a popular starting point.</p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-sampling-distributions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap-hypothesis-testing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "info": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

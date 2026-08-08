@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 19 Appendix: R Tutorial | Probability and Statistics: Making Principled Decisions in an Uncertain World</title>
+  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 19 Appendix: R Tutorial | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 19 Appendix: R Tutorial | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
+  
+  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  
+
+<meta name="author" content="Alan Dabney, Scott Crawford, Darren Homrighausen" />
+
+
+<meta name="date" content="2026-07-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chap-exercises.html"/>
+<link rel="next" href="chap-glossary.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.12.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about"><i class="fa fa-check"></i><b>1.1</b> About</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#r"><i class="fa fa-check"></i><b>1.2</b> R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#supplemental-resources"><i class="fa fa-check"></i><b>1.3</b> Supplemental Resources</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.4</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap-foundations.html"><a href="chap-foundations.html"><i class="fa fa-check"></i><b>2</b> Foundations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chap-foundations.html"><a href="chap-foundations.html#what-is-statistics"><i class="fa fa-check"></i><b>2.1</b> What is Statistics?</a></li>
+<li class="chapter" data-level="2.2" data-path="chap-foundations.html"><a href="chap-foundations.html#populations-and-parameters-samples-and-statistics"><i class="fa fa-check"></i><b>2.2</b> Populations and Parameters, Samples and Statistics</a></li>
+<li class="chapter" data-level="2.3" data-path="chap-foundations.html"><a href="chap-foundations.html#obtaining-data"><i class="fa fa-check"></i><b>2.3</b> Obtaining Data</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="chap-foundations.html"><a href="chap-foundations.html#chap-foundations-sampling"><i class="fa fa-check"></i><b>2.3.1</b> Sampling</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chap-foundations.html"><a href="chap-foundations.html#chap-foundations-observational-experiment"><i class="fa fa-check"></i><b>2.3.2</b> Observational Studies and Experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="chap-foundations.html"><a href="chap-foundations.html#sec-foundations-nature-of-data"><i class="fa fa-check"></i><b>2.4</b> The Nature of Data</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="chap-foundations.html"><a href="chap-foundations.html#randomness-and-uncertainty"><i class="fa fa-check"></i><b>2.4.1</b> Randomness and Uncertainty</a></li>
+<li class="chapter" data-level="2.4.2" data-path="chap-foundations.html"><a href="chap-foundations.html#random-variables"><i class="fa fa-check"></i><b>2.4.2</b> Random Variables</a></li>
+<li class="chapter" data-level="2.4.3" data-path="chap-foundations.html"><a href="chap-foundations.html#notation"><i class="fa fa-check"></i><b>2.4.3</b> Notation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="chap-foundations.html"><a href="chap-foundations.html#numerical-summaries"><i class="fa fa-check"></i><b>2.5</b> Summary Statistics</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="chap-foundations.html"><a href="chap-foundations.html#mean"><i class="fa fa-check"></i><b>2.5.1</b> Mean</a></li>
+<li class="chapter" data-level="2.5.2" data-path="chap-foundations.html"><a href="chap-foundations.html#sec-percentiles-median"><i class="fa fa-check"></i><b>2.5.2</b> Percentiles and Median</a></li>
+<li class="chapter" data-level="2.5.3" data-path="chap-foundations.html"><a href="chap-foundations.html#variance-and-standard-deviation"><i class="fa fa-check"></i><b>2.5.3</b> Variance and Standard Deviation</a></li>
+<li class="chapter" data-level="2.5.4" data-path="chap-foundations.html"><a href="chap-foundations.html#extreme-values-and-robust-statistics"><i class="fa fa-check"></i><b>2.5.4</b> Extreme Values and Robust Statistics</a></li>
+<li class="chapter" data-level="2.5.5" data-path="chap-foundations.html"><a href="chap-foundations.html#frequency-and-relative-frequency"><i class="fa fa-check"></i><b>2.5.5</b> Frequency and Relative Frequency</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="chap-foundations.html"><a href="chap-foundations.html#graphical-summaries"><i class="fa fa-check"></i><b>2.6</b> Graphical Summaries</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="chap-foundations.html"><a href="chap-foundations.html#boxplot"><i class="fa fa-check"></i><b>2.6.1</b> Boxplot</a></li>
+<li class="chapter" data-level="2.6.2" data-path="chap-foundations.html"><a href="chap-foundations.html#histogram"><i class="fa fa-check"></i><b>2.6.2</b> Histogram</a></li>
+<li class="chapter" data-level="2.6.3" data-path="chap-foundations.html"><a href="chap-foundations.html#the-shape-of-a-distribution"><i class="fa fa-check"></i><b>2.6.3</b> The Shape of a Distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-probability.html"><a href="chap-probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chap-probability.html"><a href="chap-probability.html#motivation-and-intuition"><i class="fa fa-check"></i><b>3.1</b> Motivation and Intuition</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="chap-probability.html"><a href="chap-probability.html#previewing-statistical-inference"><i class="fa fa-check"></i><b>3.1.1</b> Previewing Statistical Inference</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chap-probability.html"><a href="chap-probability.html#probability-a-long-run-average"><i class="fa fa-check"></i><b>3.1.2</b> Probability: A "Long-Run Average"</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chap-probability.html"><a href="chap-probability.html#sample-spaces-and-events"><i class="fa fa-check"></i><b>3.2</b> Sample Spaces and Events</a></li>
+<li class="chapter" data-level="3.3" data-path="chap-probability.html"><a href="chap-probability.html#axioms-and-properties"><i class="fa fa-check"></i><b>3.3</b> Axioms and Properties</a></li>
+<li class="chapter" data-level="3.4" data-path="chap-probability.html"><a href="chap-probability.html#sec-probability-counting"><i class="fa fa-check"></i><b>3.4</b> Counting</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="chap-probability.html"><a href="chap-probability.html#product-rule"><i class="fa fa-check"></i><b>3.4.1</b> Product Rule</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chap-probability.html"><a href="chap-probability.html#permutations-and-combinations"><i class="fa fa-check"></i><b>3.4.2</b> Permutations and Combinations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chap-probability.html"><a href="chap-probability.html#conditional-probability"><i class="fa fa-check"></i><b>3.5</b> Conditional Probability</a></li>
+<li class="chapter" data-level="3.6" data-path="chap-probability.html"><a href="chap-probability.html#independence"><i class="fa fa-check"></i><b>3.6</b> Independence</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html"><i class="fa fa-check"></i><b>4</b> Random Variables and Probability Distributions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#random-variables-1"><i class="fa fa-check"></i><b>4.1</b> Random Variables</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#probability-functions"><i class="fa fa-check"></i><b>4.2</b> Probability Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#probability-mass-function-discrete-rvs"><i class="fa fa-check"></i><b>4.2.1</b> Probability Mass Function (Discrete RVs)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#chap-rvs-sec-pdf"><i class="fa fa-check"></i><b>4.2.2</b> Probability Density Function (Continuous RVs)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#chap-rvs-sec-cdf"><i class="fa fa-check"></i><b>4.3</b> Cumulative Distribution Function</a></li>
+<li class="chapter" data-level="4.4" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#discrete-distributions"><i class="fa fa-check"></i><b>4.4</b> Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>4.4.1</b> Binomial Distribution</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#distributions-related-to-the-bernoulli"><i class="fa fa-check"></i><b>4.4.2</b> Distributions Related to the Bernoulli</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#continuous-distributions"><i class="fa fa-check"></i><b>4.5</b> Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#sec-exponential"><i class="fa fa-check"></i><b>4.5.1</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="4.5.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>4.5.2</b> Gamma Distribution</a></li>
+<li class="chapter" data-level="4.5.3" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#sec-chi-squared-distribution"><i class="fa fa-check"></i><b>4.5.3</b> Chi-Squared Distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-expected-value.html"><a href="chap-expected-value.html"><i class="fa fa-check"></i><b>5</b> Expected Value</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chap-expected-value.html"><a href="chap-expected-value.html#expected-value-for-discrete-variables"><i class="fa fa-check"></i><b>5.1</b> Expected Value for Discrete Variables</a></li>
+<li class="chapter" data-level="5.2" data-path="chap-expected-value.html"><a href="chap-expected-value.html#expected-value-for-continuous-variables"><i class="fa fa-check"></i><b>5.2</b> Expected Value for Continuous Variables</a></li>
+<li class="chapter" data-level="5.3" data-path="chap-expected-value.html"><a href="chap-expected-value.html#expected-value-for-linear-functions"><i class="fa fa-check"></i><b>5.3</b> Expected Value for Linear Functions</a></li>
+<li class="chapter" data-level="5.4" data-path="chap-expected-value.html"><a href="chap-expected-value.html#variance-and-standard-deviation-1"><i class="fa fa-check"></i><b>5.4</b> Variance and Standard Deviation</a></li>
+<li class="chapter" data-level="5.5" data-path="chap-expected-value.html"><a href="chap-expected-value.html#means-and-variances-of-common-distributions"><i class="fa fa-check"></i><b>5.5</b> Means and Variances of Common Distributions</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="chap-expected-value.html"><a href="chap-expected-value.html#binomial"><i class="fa fa-check"></i><b>5.5.1</b> Binomial</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-expected-value.html"><a href="chap-expected-value.html#hypergeometric"><i class="fa fa-check"></i><b>5.5.2</b> Hypergeometric</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-expected-value.html"><a href="chap-expected-value.html#negative-binomial"><i class="fa fa-check"></i><b>5.5.3</b> Negative Binomial</a></li>
+<li class="chapter" data-level="5.5.4" data-path="chap-expected-value.html"><a href="chap-expected-value.html#poisson"><i class="fa fa-check"></i><b>5.5.4</b> Poisson</a></li>
+<li class="chapter" data-level="5.5.5" data-path="chap-expected-value.html"><a href="chap-expected-value.html#exponential"><i class="fa fa-check"></i><b>5.5.5</b> Exponential</a></li>
+<li class="chapter" data-level="5.5.6" data-path="chap-expected-value.html"><a href="chap-expected-value.html#gamma"><i class="fa fa-check"></i><b>5.5.6</b> Gamma</a></li>
+<li class="chapter" data-level="5.5.7" data-path="chap-expected-value.html"><a href="chap-expected-value.html#chi-squared"><i class="fa fa-check"></i><b>5.5.7</b> Chi-Squared</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="chap-expected-value.html"><a href="chap-expected-value.html#moment-generating-functions"><i class="fa fa-check"></i><b>5.6</b> Moment Generating Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html"><i class="fa fa-check"></i><b>6</b> The Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#the-normal-and-standard-normal-distributions"><i class="fa fa-check"></i><b>6.1</b> The Normal and Standard Normal Distributions</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-non-standard-normal"><i class="fa fa-check"></i><b>6.1.1</b> The Normal Distribution</a></li>
+<li class="chapter" data-level="6.1.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-standard-normal"><i class="fa fa-check"></i><b>6.1.2</b> The Standard Normal Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#standardization"><i class="fa fa-check"></i><b>6.2</b> Standardization</a></li>
+<li class="chapter" data-level="6.3" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#z-scores"><i class="fa fa-check"></i><b>6.3</b> <span class="math inline">\(z\)</span>-scores</a></li>
+<li class="chapter" data-level="6.4" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#probabilities"><i class="fa fa-check"></i><b>6.4</b> Probabilities</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#computing-standard-normal-probabilities"><i class="fa fa-check"></i><b>6.4.1</b> Computing Standard Normal Probabilities</a></li>
+<li class="chapter" data-level="6.4.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#computing-normal-probabilities"><i class="fa fa-check"></i><b>6.4.2</b> Computing Normal Probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#quantiles"><i class="fa fa-check"></i><b>6.5</b> Quantiles</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-normal-percentiles-visual"><i class="fa fa-check"></i><b>6.5.1</b> Computing Standard Normal Quantiles</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-normal-percentiles"><i class="fa fa-check"></i><b>6.5.2</b> Computing Normal Quantiles</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking Normality</a></li>
+<li class="chapter" data-level="6.7" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-t-distribution"><i class="fa fa-check"></i><b>6.7</b> t Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html"><i class="fa fa-check"></i><b>7</b> Joint and Conditional Distributions</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#jointly-distributed-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly Distributed Random Variables</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#discrete-random-variables"><i class="fa fa-check"></i><b>7.1.1</b> Discrete Random Variables</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#continuous-random-variables"><i class="fa fa-check"></i><b>7.1.2</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="7.1.3" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#more-than-two-random-variables"><i class="fa fa-check"></i><b>7.1.3</b> More Than Two Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#independence-1"><i class="fa fa-check"></i><b>7.2</b> Independence</a></li>
+<li class="chapter" data-level="7.3" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#conditional-probability-functions"><i class="fa fa-check"></i><b>7.3</b> Conditional Probability Functions</a></li>
+<li class="chapter" data-level="7.4" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#sec-conditional-expectation"><i class="fa fa-check"></i><b>7.4</b> Conditional Expected Values</a></li>
+<li class="chapter" data-level="7.5" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#sec-cov-and-corr"><i class="fa fa-check"></i><b>7.5</b> Covariance and Correlation</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#covariance"><i class="fa fa-check"></i><b>7.5.1</b> Covariance</a></li>
+<li class="chapter" data-level="7.5.2" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#correlation"><i class="fa fa-check"></i><b>7.5.2</b> Correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html"><i class="fa fa-check"></i><b>8</b> Sampling Distributions and Central Limit Theorem</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#what-is-a-sampling-distribution-and-why-should-you-care"><i class="fa fa-check"></i><b>8.1</b> What Is a Sampling Distribution, and Why Should You Care?</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#preliminary-definitions"><i class="fa fa-check"></i><b>8.1.1</b> Preliminary Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#illustration-via-simulation"><i class="fa fa-check"></i><b>8.2</b> Illustration Via Simulation</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#chap-sampling-distributions-sim-normal"><i class="fa fa-check"></i><b>8.2.1</b> Simulation Setup: Normal Population</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#sec-distn-sample-mean"><i class="fa fa-check"></i><b>8.3</b> The Distribution of the Sample Mean</a></li>
+<li class="chapter" data-level="8.4" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>8.4</b> The Central Limit Theorem</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#simulation-setup-non-normal-population"><i class="fa fa-check"></i><b>8.4.1</b> Simulation Setup: Non-Normal Population</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html"><i class="fa fa-check"></i><b>9</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-pivot-method"><i class="fa fa-check"></i><b>9.2</b> Motivation and Pivots</a></li>
+<li class="chapter" data-level="9.3" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-mean"><i class="fa fa-check"></i><b>9.3</b> Confidence Interval for the Population Mean <span class="math inline">\(\mu\)</span></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-samp-dist-normal"><i class="fa fa-check"></i><b>9.3.1</b> Sampling Distribution conditions</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-mean-known-sigma"><i class="fa fa-check"></i><b>9.3.2</b> When <span class="math inline">\(\sigma\)</span> is known (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="9.3.3" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-mean-unknown-sigma"><i class="fa fa-check"></i><b>9.3.3</b> When <span class="math inline">\(\sigma\)</span> is unknown (Using the t Distribution)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-matchedPairs"><i class="fa fa-check"></i><b>9.4</b> Confidence Interval for Matched Pairs</a></li>
+<li class="chapter" data-level="9.5" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-proportion"><i class="fa fa-check"></i><b>9.5</b> Confidence Interval for a Population Proportion (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="9.6" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-variance"><i class="fa fa-check"></i><b>9.6</b> Confidence Interval for a Population Variance (Using the <span class="math inline">\(\chi^2\)</span> Distribution)</a></li>
+<li class="chapter" data-level="9.7" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-ci-interpret"><i class="fa fa-check"></i><b>9.7</b> Interpreting a Confidence Interval</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#chap-confidence-intervals-simulation"><i class="fa fa-check"></i><b>9.7.1</b> A Deeper Look at the Idea of Confidence</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-precision-sample-size"><i class="fa fa-check"></i><b>9.8</b> Finding the Sample Size (<span class="math inline">\(n\)</span>) for a Particular Confidence Interval</a></li>
+<li class="chapter" data-level="9.9" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#other-types-of-intervals"><i class="fa fa-check"></i><b>9.9</b> Other Types of Intervals</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-ci-prediction"><i class="fa fa-check"></i><b>9.9.1</b> Prediction Intervals</a></li>
+<li class="chapter" data-level="9.9.2" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#tolerance-intervals"><i class="fa fa-check"></i><b>9.9.2</b> Tolerance Intervals</a></li>
+<li class="chapter" data-level="9.9.3" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#bootstrap-confidence-intervals"><i class="fa fa-check"></i><b>9.9.3</b> Bootstrap Confidence Intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html"><i class="fa fa-check"></i><b>10</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#logic-and-language-of-hypothesis-testing"><i class="fa fa-check"></i><b>10.1</b> Logic and Language of Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#chap-ht-definitions"><i class="fa fa-check"></i><b>10.1.1</b> Type I Error, Type II error, and Power</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-test-mean"><i class="fa fa-check"></i><b>10.2</b> Hypothesis Test for a Population Mean</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-mean-known-sigma"><i class="fa fa-check"></i><b>10.2.1</b> When <span class="math inline">\(\sigma\)</span> is known (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="10.2.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-mean-unknown-sigma"><i class="fa fa-check"></i><b>10.2.2</b> When <span class="math inline">\(\sigma\)</span> is unknown (Using the t Distribution)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#hypothesis-test-for-matched-pairs"><i class="fa fa-check"></i><b>10.3</b> Hypothesis Test for Matched Pairs</a></li>
+<li class="chapter" data-level="10.4" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-proportion"><i class="fa fa-check"></i><b>10.4</b> Hypothesis Test for a Population Proportion</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#hypothesis-test-for-a-population-variance"><i class="fa fa-check"></i><b>10.4.1</b> Hypothesis Test for a Population Variance</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-one-vs-two"><i class="fa fa-check"></i><b>10.5</b> Two-sided and One-sided Tests</a></li>
+<li class="chapter" data-level="10.6" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-power"><i class="fa fa-check"></i><b>10.6</b> Power</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#power-and-sample-size-calculations-for-mu"><i class="fa fa-check"></i><b>10.6.1</b> Power and Sample Size Calculations for <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="10.6.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#power-and-sample-size-calculations"><i class="fa fa-check"></i><b>10.6.2</b> Power and Sample Size Calculations</a></li>
+<li class="chapter" data-level="10.6.3" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#power-and-sample-size-calculations-for-chi2"><i class="fa fa-check"></i><b>10.6.3</b> Power and Sample Size Calculations for <span class="math inline">\(\chi^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#exploring-hypothesis-test-via-simulation"><i class="fa fa-check"></i><b>10.7</b> Exploring Hypothesis Test via simulation</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#the-test-statistic-and-its-sampling-distribution-assuming-h_0-is-true"><i class="fa fa-check"></i><b>10.7.1</b> The Test Statistic and its Sampling Distribution: Assuming <span class="math inline">\(H_0\)</span> is true</a></li>
+<li class="chapter" data-level="10.7.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#simulation-study-repeated-hypothesis-testing-under-h_0-and-h_a"><i class="fa fa-check"></i><b>10.7.2</b> Simulation Study: Repeated Hypothesis Testing Under <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span></a></li>
+<li class="chapter" data-level="10.7.3" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#bootstrap-hypothesis-tests"><i class="fa fa-check"></i><b>10.7.3</b> Bootstrap Hypothesis Tests</a></li>
+<li class="chapter" data-level="10.7.4" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#the-basic-bootstrap-hypothesis-test-procedure"><i class="fa fa-check"></i><b>10.7.4</b> The Basic Bootstrap Hypothesis Test Procedure</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chap-compare-two.html"><a href="chap-compare-two.html"><i class="fa fa-check"></i><b>11</b> Comparing Two Populations</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-two-sample-means"><i class="fa fa-check"></i><b>11.1</b> Inference on a Difference of Two Population Means</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="chap-compare-two.html"><a href="chap-compare-two.html#when-sds-are-known-using-the-normal-distribution"><i class="fa fa-check"></i><b>11.1.1</b> When SDs are Known (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="11.1.2" data-path="chap-compare-two.html"><a href="chap-compare-two.html#when-sds-are-unknown-using-the-t-distribution"><i class="fa fa-check"></i><b>11.1.2</b> When SDs are Unknown (Using the T Distribution)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-2pop-proportion"><i class="fa fa-check"></i><b>11.2</b> Difference of Two Population Proportions</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-2pop-CI-proportion"><i class="fa fa-check"></i><b>11.2.1</b> Confidence Intervals for Two Population Proportions</a></li>
+<li class="chapter" data-level="11.2.2" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-2pop-HT-proportion"><i class="fa fa-check"></i><b>11.2.2</b> Hypothesis Tests for Two Population Proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="chap-compare-two.html"><a href="chap-compare-two.html#inference-on-a-ratio-of-two-population-variances"><i class="fa fa-check"></i><b>11.3</b> Inference on a Ratio of Two Population Variances</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chap-compare-more-than-two.html"><a href="chap-compare-more-than-two.html"><i class="fa fa-check"></i><b>12</b> Comparing More Than Two Populations</a></li>
+<li class="chapter" data-level="13" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html"><i class="fa fa-check"></i><b>13</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-model"><i class="fa fa-check"></i><b>13.1</b> The Simple Linear Regression (SLR) Model</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-regression"><i class="fa fa-check"></i><b>13.1.1</b> What Does the Word Regression Mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-least-squares"><i class="fa fa-check"></i><b>13.2</b> The Least Squares Idea</a></li>
+<li class="chapter" data-level="13.3" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-assumptions"><i class="fa fa-check"></i><b>13.3</b> Checking the Assumptions</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#good-residuals"><i class="fa fa-check"></i><b>13.3.1</b> Good Residuals</a></li>
+<li class="chapter" data-level="13.3.2" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#linearity"><i class="fa fa-check"></i><b>13.3.2</b> Linearity</a></li>
+<li class="chapter" data-level="13.3.3" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#constant-variance"><i class="fa fa-check"></i><b>13.3.3</b> Constant Variance</a></li>
+<li class="chapter" data-level="13.3.4" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#independence-2"><i class="fa fa-check"></i><b>13.3.4</b> Independence</a></li>
+<li class="chapter" data-level="13.3.5" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#normality"><i class="fa fa-check"></i><b>13.3.5</b> Normality</a></li>
+<li class="chapter" data-level="13.3.6" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#multiple-assumptions-being-violated"><i class="fa fa-check"></i><b>13.3.6</b> Multiple Assumptions being Violated</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-covariance-correlation"><i class="fa fa-check"></i><b>13.4</b> Covariance, Correlation, and R-squared</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#r-squared"><i class="fa fa-check"></i><b>13.4.1</b> R-squared</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-ci"><i class="fa fa-check"></i><b>13.5</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="13.6" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-pi"><i class="fa fa-check"></i><b>13.6</b> Prediction Intervals</a></li>
+<li class="chapter" data-level="13.7" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-ht"><i class="fa fa-check"></i><b>13.7</b> Hypothesis Test</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="chap-multiple-linear-regression.html"><a href="chap-multiple-linear-regression.html"><i class="fa fa-check"></i><b>14</b> Multiple Linear Regression</a></li>
+<li class="chapter" data-level="15" data-path="chap-flexible-regression.html"><a href="chap-flexible-regression.html"><i class="fa fa-check"></i><b>15</b> More Flexible Regression Methods</a></li>
+<li class="chapter" data-level="16" data-path="chap-categorical-data.html"><a href="chap-categorical-data.html"><i class="fa fa-check"></i><b>16</b> Categorical Data Analysis</a></li>
+<li class="chapter" data-level="17" data-path="chap-nonparametrics.html"><a href="chap-nonparametrics.html"><i class="fa fa-check"></i><b>17</b> Nonparametric Methods</a></li>
+<li class="chapter" data-level="18" data-path="chap-exercises.html"><a href="chap-exercises.html"><i class="fa fa-check"></i><b>18</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="chap-exercises.html"><a href="chap-exercises.html#foundations"><i class="fa fa-check"></i><b>18.1</b> Foundations</a></li>
+<li class="chapter" data-level="18.2" data-path="chap-exercises.html"><a href="chap-exercises.html#probability"><i class="fa fa-check"></i><b>18.2</b> Probability</a></li>
+<li class="chapter" data-level="18.3" data-path="chap-exercises.html"><a href="chap-exercises.html#random-variables-and-probability-distributions"><i class="fa fa-check"></i><b>18.3</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="18.4" data-path="chap-exercises.html"><a href="chap-exercises.html#expected-values"><i class="fa fa-check"></i><b>18.4</b> Expected Values</a></li>
+<li class="chapter" data-level="18.5" data-path="chap-exercises.html"><a href="chap-exercises.html#joint-and-conditional-probability"><i class="fa fa-check"></i><b>18.5</b> Joint and Conditional Probability</a></li>
+<li class="chapter" data-level="18.6" data-path="chap-exercises.html"><a href="chap-exercises.html#sampling-distributions"><i class="fa fa-check"></i><b>18.6</b> Sampling Distributions</a></li>
+<li class="chapter" data-level="18.7" data-path="chap-exercises.html"><a href="chap-exercises.html#principles-of-statistical-inference"><i class="fa fa-check"></i><b>18.7</b> Principles of Statistical Inference</a></li>
+<li class="chapter" data-level="18.8" data-path="chap-exercises.html"><a href="chap-exercises.html#confidence-intervals"><i class="fa fa-check"></i><b>18.8</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="18.9" data-path="chap-exercises.html"><a href="chap-exercises.html#hypothesis-testing"><i class="fa fa-check"></i><b>18.9</b> Hypothesis Testing</a></li>
+<li class="chapter" data-level="18.10" data-path="chap-exercises.html"><a href="chap-exercises.html#comparing-two-populations"><i class="fa fa-check"></i><b>18.10</b> Comparing Two Populations</a></li>
+<li class="chapter" data-level="18.11" data-path="chap-exercises.html"><a href="chap-exercises.html#comparing-more-than-two-populations"><i class="fa fa-check"></i><b>18.11</b> Comparing More Than Two Populations</a></li>
+<li class="chapter" data-level="18.12" data-path="chap-exercises.html"><a href="chap-exercises.html#linear-regression"><i class="fa fa-check"></i><b>18.12</b> Linear Regression</a></li>
+<li class="chapter" data-level="18.13" data-path="chap-exercises.html"><a href="chap-exercises.html#more-flexible-regression-methods"><i class="fa fa-check"></i><b>18.13</b> More Flexible Regression Methods</a></li>
+<li class="chapter" data-level="18.14" data-path="chap-exercises.html"><a href="chap-exercises.html#categorical-data-analysis"><i class="fa fa-check"></i><b>18.14</b> Categorical Data Analysis</a></li>
+<li class="chapter" data-level="18.15" data-path="chap-exercises.html"><a href="chap-exercises.html#nonparametric-methods"><i class="fa fa-check"></i><b>18.15</b> Nonparametric Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html"><i class="fa fa-check"></i><b>19</b> Appendix: R Tutorial</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#downloading-and-installing-r-and-rstudio"><i class="fa fa-check"></i><b>19.1</b> Downloading and Installing R and RStudio</a></li>
+<li class="chapter" data-level="19.2" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-layout-of-rstudio"><i class="fa fa-check"></i><b>19.2</b> The Layout of RStudio</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-source-pane"><i class="fa fa-check"></i><b>19.2.1</b> The Source Pane</a></li>
+<li class="chapter" data-level="19.2.2" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-console-pane"><i class="fa fa-check"></i><b>19.2.2</b> The Console Pane</a></li>
+<li class="chapter" data-level="19.2.3" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-environments-pane"><i class="fa fa-check"></i><b>19.2.3</b> The Environments Pane</a></li>
+<li class="chapter" data-level="19.2.4" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-output-pane"><i class="fa fa-check"></i><b>19.2.4</b> The Output Pane</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#r-basics"><i class="fa fa-check"></i><b>19.3</b> R Basics</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#creating-a-.r-file"><i class="fa fa-check"></i><b>19.3.1</b> Creating a .R file</a></li>
+<li class="chapter" data-level="19.3.2" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#saving-your-.r-file"><i class="fa fa-check"></i><b>19.3.2</b> Saving your .R file</a></li>
+<li class="chapter" data-level="19.3.3" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#importing-data-into-r-for-analysis"><i class="fa fa-check"></i><b>19.3.3</b> Importing Data into R for Analysis</a></li>
+<li class="chapter" data-level="19.3.4" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#coding-in-rstudio"><i class="fa fa-check"></i><b>19.3.4</b> Coding in RStudio</a></li>
+<li class="chapter" data-level="19.3.5" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#comments"><i class="fa fa-check"></i><b>19.3.5</b> Comments</a></li>
+<li class="chapter" data-level="19.3.6" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#arithmetic-in-r"><i class="fa fa-check"></i><b>19.3.6</b> Arithmetic in R</a></li>
+<li class="chapter" data-level="19.3.7" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#variables-and-variable-assignment"><i class="fa fa-check"></i><b>19.3.7</b> Variables and Variable Assignment</a></li>
+<li class="chapter" data-level="19.3.8" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#data-types-in-r"><i class="fa fa-check"></i><b>19.3.8</b> Data Types in R</a></li>
+<li class="chapter" data-level="19.3.9" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#vectors"><i class="fa fa-check"></i><b>19.3.9</b> Vectors</a></li>
+<li class="chapter" data-level="19.3.10" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#logical-operators-in-r"><i class="fa fa-check"></i><b>19.3.10</b> Logical Operators in R</a></li>
+<li class="chapter" data-level="19.3.11" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#matrices-in-r"><i class="fa fa-check"></i><b>19.3.11</b> Matrices in R</a></li>
+<li class="chapter" data-level="19.3.12" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#factors-in-r"><i class="fa fa-check"></i><b>19.3.12</b> Factors in R</a></li>
+<li class="chapter" data-level="19.3.13" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#data-frames-in-r"><i class="fa fa-check"></i><b>19.3.13</b> Data Frames in R</a></li>
+<li class="chapter" data-level="19.3.14" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#lists-in-r"><i class="fa fa-check"></i><b>19.3.14</b> Lists in R</a></li>
+<li class="chapter" data-level="19.3.15" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#statistics-in-r"><i class="fa fa-check"></i><b>19.3.15</b> Statistics in R</a></li>
+<li class="chapter" data-level="19.3.16" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#visualizations-in-r"><i class="fa fa-check"></i><b>19.3.16</b> Visualizations in R</a></li>
+<li class="chapter" data-level="19.3.17" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#downloading-and-using-packages-in-r"><i class="fa fa-check"></i><b>19.3.17</b> Downloading and Using Packages in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="chap-glossary.html"><a href="chap-glossary.html"><i class="fa fa-check"></i><b>20</b> Glossary</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="chap-glossary.html"><a href="chap-glossary.html#overview"><i class="fa fa-check"></i><b>20.1</b> Overview</a></li>
+<li class="chapter" data-level="20.2" data-path="chap-glossary.html"><a href="chap-glossary.html#foundations-1"><i class="fa fa-check"></i><b>20.2</b> Foundations</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions"><i class="fa fa-check"></i><b>20.2.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.2.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands"><i class="fa fa-check"></i><b>20.2.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="chap-glossary.html"><a href="chap-glossary.html#probability-1"><i class="fa fa-check"></i><b>20.3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-1"><i class="fa fa-check"></i><b>20.3.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.3.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-1"><i class="fa fa-check"></i><b>20.3.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="chap-glossary.html"><a href="chap-glossary.html#random-variables-and-probability-distributions-1"><i class="fa fa-check"></i><b>20.4</b> Random Variables and Probability Distributions</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-2"><i class="fa fa-check"></i><b>20.4.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.4.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-2"><i class="fa fa-check"></i><b>20.4.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="chap-glossary.html"><a href="chap-glossary.html#expected-value"><i class="fa fa-check"></i><b>20.5</b> Expected Value</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-3"><i class="fa fa-check"></i><b>20.5.1</b> Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="chap-glossary.html"><a href="chap-glossary.html#the-normal-distribution"><i class="fa fa-check"></i><b>20.6</b> The Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-4"><i class="fa fa-check"></i><b>20.6.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.6.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-3"><i class="fa fa-check"></i><b>20.6.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.7" data-path="chap-glossary.html"><a href="chap-glossary.html#joint-and-conditional-distributions"><i class="fa fa-check"></i><b>20.7</b> Joint and Conditional Distributions</a>
+<ul>
+<li class="chapter" data-level="20.7.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-5"><i class="fa fa-check"></i><b>20.7.1</b> Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.8" data-path="chap-glossary.html"><a href="chap-glossary.html#sampling-distributions-and-central-limit-theorem"><i class="fa fa-check"></i><b>20.8</b> Sampling Distributions and Central Limit Theorem</a>
+<ul>
+<li class="chapter" data-level="20.8.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-6"><i class="fa fa-check"></i><b>20.8.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.8.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-4"><i class="fa fa-check"></i><b>20.8.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.9" data-path="chap-glossary.html"><a href="chap-glossary.html#confidence-intervals-1"><i class="fa fa-check"></i><b>20.9</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="20.9.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-7"><i class="fa fa-check"></i><b>20.9.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.9.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-5"><i class="fa fa-check"></i><b>20.9.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.10" data-path="chap-glossary.html"><a href="chap-glossary.html#hypothesis-testing-1"><i class="fa fa-check"></i><b>20.10</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="20.10.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-8"><i class="fa fa-check"></i><b>20.10.1</b> Definitions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability and Statistics: Making Principled Decisions in an Uncertain World</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap-r-tutorial" class="section level1 hasAnchor" number="19">
+<h1><span class="header-section-number">Chapter 19</span> Appendix: R Tutorial<a href="chap-r-tutorial.html#chap-r-tutorial" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This serves as a gentle introduction to R, a statistical programming language. R is used throughout this textbook and is one of the most popular programming languages throughout the world, with applications in research, data science, biostatistics, and business, just to name a few.</p>
+<div id="downloading-and-installing-r-and-rstudio" class="section level2 hasAnchor" number="19.1">
+<h2><span class="header-section-number">19.1</span> Downloading and Installing R and RStudio<a href="chap-r-tutorial.html#downloading-and-installing-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before diving into R, you must first install R and RStudio onto your device. R is the programming language, and RStudio is the IDE (Integrated Development Environment) that makes makes it easy to code in R, see your results, and ask for help.</p>
+<p>To install R, follow these steps:</p>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></li>
+<li>Under the "Download and Install R" heading, there are links to download R for various operating systems. Click the link that matches your operating system (Windows, Linux, or Mac)</li>
+</ol>
+<p><img src="tutorial_images/Image1.PNG" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>After clicking the link, a new window will appear. On the first line, click the "install R for the first time" link.</li>
+</ol>
+<p><img src="tutorial_images/Image2.PNG" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li>A new window will appear, click on the "Download R" link (the first link at the top of the page). This link will be specific to the current version of R for your computer's operating system.</li>
+</ol>
+<p><img src="tutorial_images/Image3.PNG" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Open the downloaded file.</li>
+<li>Select your preferred language, then follow the Instillation Wizard prompts.</li>
+<li>Click Finish, R is now installed on your computer.</li>
+</ol>
+<p>To install R Studio, follow these steps:</p>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="https://posit.co/">https://posit.co/</a></li>
+<li>Click on "Download R Studio" in the top right-hand corner</li>
+</ol>
+<p><img src="tutorial_images/Image4.PNG" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>A new window will appear. Scroll down until you find the RStudio Desktop heading. Then click "Download RStudio"</li>
+</ol>
+<p><img src="tutorial_images/Image5.PNG" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li>A new window will appear with the option to download R or RStudio. Click on the option to download RStudio.</li>
+</ol>
+<p><img src="tutorial_images/Image6.PNG" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li>A file will download. Click on the file, and the RStudio Installation Wizard will appear.</li>
+<li>Complete the Installation Wizard's prompts.</li>
+<li>RStudio is now installed on your computer.When you open RStudio, a window similar to the one below should appear.</li>
+</ol>
+<p><img src="tutorial_images/Image7.png" /></p>
+</div>
+<div id="the-layout-of-rstudio" class="section level2 hasAnchor" number="19.2">
+<h2><span class="header-section-number">19.2</span> The Layout of RStudio<a href="chap-r-tutorial.html#the-layout-of-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following image is an example of what RStudio might look like when performing statistical analysis. RStudio has 4 panes, and knowledge of these panes will allow you to take advantage of all that RStudio has to offer.</p>
+<p><img src="tutorial_images/Image8.PNG" /></p>
+<div id="the-source-pane" class="section level3 hasAnchor" number="19.2.1">
+<h3><span class="header-section-number">19.2.1</span> The Source Pane<a href="chap-r-tutorial.html#the-source-pane" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The source pane allows users to edit and view a variety of different code files, including .R, .rmd, .qmd, .py, .css, or .txt. Once you create, edit, and test one of these files, you can then save the file for future work.</p>
+<p><img src="tutorial_images/Image9.PNG" /></p>
+</div>
+<div id="the-console-pane" class="section level3 hasAnchor" number="19.2.2">
+<h3><span class="header-section-number">19.2.2</span> The Console Pane<a href="chap-r-tutorial.html#the-console-pane" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The console pane allows users to interactively execute code. By default, the code is read and executed in the R programming language. Coding in the console is best for quick analysis or calculations, but any detailed analysis should be coded in the source panel as it allows the code to be saved.</p>
+<p><img src="tutorial_images/Image10.PNG" /></p>
+</div>
+<div id="the-environments-pane" class="section level3 hasAnchor" number="19.2.3">
+<h3><span class="header-section-number">19.2.3</span> The Environments Pane<a href="chap-r-tutorial.html#the-environments-pane" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The environments pane contains a number of different tabs.</p>
+<p>The "Environment" tab displays currently saved R objects.</p>
+<p>The "History" tab displays R commands that were executed in the current coding session, along with a search bar for you to find previous commands.</p>
+<p>The "Connections" tab shows connections to local or remote databases.</p>
+<p>The "Tutorial" tab contains helpful tutorials on how to use R and its many functions.</p>
+<p><img src="tutorial_images/Image11.PNG" /></p>
+</div>
+<div id="the-output-pane" class="section level3 hasAnchor" number="19.2.4">
+<h3><span class="header-section-number">19.2.4</span> The Output Pane<a href="chap-r-tutorial.html#the-output-pane" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The output pane displays the various outputs of your R programs. Its tabs include Files, Plots, Packages, Help, and Presentation.</p>
+<p>The "Files" tab allows you to explore files within the current working directory of your R program.</p>
+<p>The "Plots" tab displays the images created by R code in the current session.</p>
+<p>The "Packages" tab displays the R packages that are installed on your computer, and allows you to search for new packages.</p>
+<p>The "Help" tab allows you to search through R documentation.</p>
+<p>The "Viewer" tab displays web content and and interactive visualizations.</p>
+<p>The "Presentation" tab displays HTML slides.</p>
+<p><img src="tutorial_images/Image12.PNG" /></p>
+</div>
+</div>
+<div id="r-basics" class="section level2 hasAnchor" number="19.3">
+<h2><span class="header-section-number">19.3</span> R Basics<a href="chap-r-tutorial.html#r-basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now that we have R and RStudio downloaded, and are familiar with the RStudio layout, we can begin learning the basics of R.</p>
+<div id="creating-a-.r-file" class="section level3 hasAnchor" number="19.3.1">
+<h3><span class="header-section-number">19.3.1</span> Creating a .R file<a href="chap-r-tutorial.html#creating-a-.r-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To begin coding in R, we must first create an R file. In RStudio, complete the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>Click on the "File" tab at the top-left corner</li>
+<li>Hover over "New File"</li>
+<li>Click on R Script</li>
+</ol>
+<p>A new, untitled R script will now appear in your source pane.</p>
+</div>
+<div id="saving-your-.r-file" class="section level3 hasAnchor" number="19.3.2">
+<h3><span class="header-section-number">19.3.2</span> Saving your .R file<a href="chap-r-tutorial.html#saving-your-.r-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To save your .R file, complete the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>Hover over the "Save current" icon at the top of the source pane, or press CTRL+S</li>
+</ol>
+<p><img src="tutorial_images/Image13.PNG" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Navigate to the directory where you want to save your document. This directory will become your <strong>current working directory</strong>. R will set this as the default location for any files you read into R or any .R files that you save.</li>
+</ol>
+<ul>
+<li>You can always check your current working directory by typing <strong>getwd()</strong> in the console pane and pressing Enter.</li>
+</ul>
+<p><img src="tutorial_images/Image14.PNG" /></p>
+<ul>
+<li><p>You can change your working directory at any time by completing these steps:</p>
+<ol style="list-style-type: decimal">
+<li>Click on the "Session" tab at the top of RStudio</li>
+<li>Hover over "Set Working Directory"</li>
+<li>Click "Choose Directory"</li>
+<li>Then navigate to and choose your new current working directory.</li>
+</ol>
+<p><img src="tutorial_images/Image15.PNG" /></p></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Name your document, and press save.</li>
+</ol>
+</div>
+<div id="importing-data-into-r-for-analysis" class="section level3 hasAnchor" number="19.3.3">
+<h3><span class="header-section-number">19.3.3</span> Importing Data into R for Analysis<a href="chap-r-tutorial.html#importing-data-into-r-for-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R allows for external datasets to be imported, or read, into the R environment for analysis.</p>
+<div id="importing-a-.csv-file" class="section level4 hasAnchor" number="19.3.3.1">
+<h4><span class="header-section-number">19.3.3.1</span> Importing a .csv file<a href="chap-r-tutorial.html#importing-a-.csv-file" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <strong>read.csv</strong> function is used to import .csv files into R. The function has three main arguments:</p>
+<ol style="list-style-type: decimal">
+<li><strong>file</strong>, which is used to specify the file path and file name. The file should be located in your working directory.</li>
+<li><strong>header</strong>, which is used to indicate whether the first row of the dataset consists of variable names or data. By default, header is set to <strong>TRUE</strong>.</li>
+<li><strong>sep</strong>, which is used to specify the characters that separate data values in the dataset. <strong>,</strong> is the default separator value.</li>
+</ol>
+<pre><code>## [1] &quot;/Users/adabney/Documents/GitHub/TAMU-Intro-Stats-Calc-Text/textbook&quot;</code></pre>
+</div>
+<div id="importing-a-.txt-file" class="section level4 hasAnchor" number="19.3.3.2">
+<h4><span class="header-section-number">19.3.3.2</span> Importing a .txt file<a href="chap-r-tutorial.html#importing-a-.txt-file" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <strong>read.table()</strong> function is used to import files in table format. The function's arguments are identical to the <strong>read.csv</strong> function shown above, but with different default arguments:</p>
+<ol style="list-style-type: decimal">
+<li><strong>file</strong>, which is used to specify the file path and file name. The file should be located in your working directory.</li>
+<li><strong>header</strong>, which is used to indicate whether the first row of the dataset consists of variable names or data. By default, header is set to <strong>FALSE</strong>.</li>
+<li><strong>sep</strong>, which is used to specify the characters that separate data values in the dataset. <strong>"" ""</strong>, or a single white space, is the default separator value.</li>
+</ol>
+<pre><code>## [1] &quot;/Users/adabney/Documents/GitHub/TAMU-Intro-Stats-Calc-Text/textbook&quot;</code></pre>
+</div>
+</div>
+<div id="coding-in-rstudio" class="section level3 hasAnchor" number="19.3.4">
+<h3><span class="header-section-number">19.3.4</span> Coding in RStudio<a href="chap-r-tutorial.html#coding-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can type your code into the source pane. Whenever you want to save your code, press the save button or perform Ctrl+S. The source pane will execute your code when you press the "Run" button at the top of the pane. The code is interpreted and executed using R, with the output displayed in the console.</p>
+<p><img src="tutorial_images/Image16.PNG" /></p>
+</div>
+<div id="comments" class="section level3 hasAnchor" number="19.3.5">
+<h3><span class="header-section-number">19.3.5</span> Comments<a href="chap-r-tutorial.html#comments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the picture above, the line of code "5 + 5" was executed in R. Above that line is a comment, started using the pound, or hashtag, symbol (#). Comments are important in R programming, and are used to describe when the lines in your program do. Any text after a # symbol will not be executed in the code. R will skip over the comment and run the next available line of code.</p>
+</div>
+<div id="arithmetic-in-r" class="section level3 hasAnchor" number="19.3.6">
+<h3><span class="header-section-number">19.3.6</span> Arithmetic in R<a href="chap-r-tutorial.html#arithmetic-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Some of the most simple operations that R can perform include basic arithmetic.</p>
+<p>These are some of the most prevalent arithmetic operators:</p>
+<ol style="list-style-type: decimal">
+<li>Addition: +</li>
+</ol>
+<pre><code>## [1] 10</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Subtraction: -</li>
+</ol>
+<pre><code>## [1] 1</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Multiplication: *</li>
+</ol>
+<pre><code>## [1] 10</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Division: /</li>
+</ol>
+<pre><code>## [1] 3.333333</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Modulus: %%</li>
+</ol>
+<pre><code>## [1] 1</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Exponentiation</li>
+</ol>
+<pre><code>## [1] 25</code></pre>
+</div>
+<div id="variables-and-variable-assignment" class="section level3 hasAnchor" number="19.3.7">
+<h3><span class="header-section-number">19.3.7</span> Variables and Variable Assignment<a href="chap-r-tutorial.html#variables-and-variable-assignment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A variable is a name given to a memory location on your computer that can be used to store data.</p>
+<p>To assign a value to a variable, use the &lt;- sign.</p>
+<p>Variables are created when you assign values to them.</p>
+<p>To print a variable's value, type the name of the variable.</p>
+<pre><code>## [1] 5</code></pre>
+<p>Arithmetic operators can be applied to variables. The operators act on the values stored in the variables.</p>
+<pre><code>## [1] 5</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre><code>## [1] 15</code></pre>
+</div>
+<div id="data-types-in-r" class="section level3 hasAnchor" number="19.3.8">
+<h3><span class="header-section-number">19.3.8</span> Data Types in R<a href="chap-r-tutorial.html#data-types-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the above example, addition was performed between two numeric variables. What if addition was performed between one numeric variable and a variable of a different type?</p>
+<pre><code>## [1] 5</code></pre>
+<pre><code>## [1] &quot;ten&quot;</code></pre>
+<pre><code>## Error in `x + y`:
+## ! non-numeric argument to binary operator</code></pre>
+<p>The addition between x and y results in an error because addition can only be performed between two numeric variables. In this case, x is a numeric variable and y is a string variable.</p>
+<p>Here is a list of the basic data types frequently used in R:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Numerics</strong>: Decimal values like 3.14, 10, and 55.7</li>
+<li><strong>Integers</strong>: Whole number values, like 5, 10, 1000 Integer values can also be numeric values. That is, 10 can be a numeric or integer type. To ensure that a value is stored as an integer, place an L after the number.</li>
+<li><strong>Complex</strong>: Complex numbers, like 10+3i, where i is imaginary</li>
+<li><strong>Characters</strong>: Text or string values, like "statistics"</li>
+<li><strong>Logical</strong>: Otherwise known as boolean values. Either TRUE or FALSE</li>
+</ol>
+<p>To check a variable's data type, use the class() function.</p>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+</div>
+<div id="vectors" class="section level3 hasAnchor" number="19.3.9">
+<h3><span class="header-section-number">19.3.9</span> Vectors<a href="chap-r-tutorial.html#vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R makes use of various data structures to store data. The most basic of these structures is the <strong>vector</strong>.</p>
+<p>Vectors are one dimensional arrays (tables) that can hold items that are of the same type. In other words, vectors are simply a list of numeric, character, or logical data.</p>
+<div id="creating-vectors" class="section level4 hasAnchor" number="19.3.9.1">
+<h4><span class="header-section-number">19.3.9.1</span> Creating Vectors<a href="chap-r-tutorial.html#creating-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The combine function, <strong>c()</strong>, is used to create vectors. Place the values of the vector, separated by commas, within the function's parentheses.</p>
+<pre><code>## [1]    55.2     3.0 10000.0</code></pre>
+<pre><code>## [1] &quot;bananas&quot; &quot;grapes&quot;  &quot;apples&quot;  &quot;oranges&quot;</code></pre>
+<pre><code>## [1] FALSE  TRUE  TRUE FALSE</code></pre>
+<p>Use the <strong>:</strong> operator to create a vector of a sequence of values.</p>
+<pre><code>##  [1] 10 11 12 13 14 15 16 17 18 19 20</code></pre>
+<p>Use the <strong>seq()</strong> function to create vector of a sequence of values with a custom interval.</p>
+<pre><code>## [1]  10  25  40  55  70  85 100</code></pre>
+</div>
+<div id="naming-elements-of-a-vector" class="section level4 hasAnchor" number="19.3.9.2">
+<h4><span class="header-section-number">19.3.9.2</span> Naming Elements of A Vector<a href="chap-r-tutorial.html#naming-elements-of-a-vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Use the <strong>names()</strong> function to give names to the elements of a vector. The name of each element will be printed above its value.</p>
+<pre><code>##   Brian  Sophia Zachary    Anne 
+##     &quot;A&quot;     &quot;A&quot;     &quot;C&quot;     &quot;D&quot;</code></pre>
+</div>
+<div id="vector-length" class="section level4 hasAnchor" number="19.3.9.3">
+<h4><span class="header-section-number">19.3.9.3</span> Vector Length<a href="chap-r-tutorial.html#vector-length" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Use the <strong>length()</strong> function to display the number of elements in a vector.</p>
+<pre><code>## [1] 5</code></pre>
+</div>
+<div id="sort-a-vector" class="section level4 hasAnchor" number="19.3.9.4">
+<h4><span class="header-section-number">19.3.9.4</span> Sort a Vector<a href="chap-r-tutorial.html#sort-a-vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Use the <strong>sort()</strong> function to sort a vector alphabetically or numerically.</p>
+<pre><code>## [1] &quot;baseball&quot;   &quot;basketball&quot; &quot;football&quot;   &quot;hockey&quot;</code></pre>
+<pre><code>## [1]  1  2  3  4  5 10</code></pre>
+<pre><code>## [1] 10  5  4  3  2  1</code></pre>
+</div>
+<div id="repeat-a-vector" class="section level4 hasAnchor" number="19.3.9.5">
+<h4><span class="header-section-number">19.3.9.5</span> Repeat a Vector<a href="chap-r-tutorial.html#repeat-a-vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Use the <strong>rep()</strong> function to repeat each element of a vector, or repeat an entire vector, a specified number of times.</p>
+<pre><code>## [1] &quot;bananas&quot; &quot;bananas&quot; &quot;bananas&quot; &quot;grapes&quot;  &quot;grapes&quot;  &quot;grapes&quot;  &quot;oranges&quot;
+## [8] &quot;oranges&quot; &quot;oranges&quot;</code></pre>
+<pre><code>## [1] &quot;bananas&quot; &quot;grapes&quot;  &quot;oranges&quot; &quot;bananas&quot; &quot;grapes&quot;  &quot;oranges&quot; &quot;bananas&quot;
+## [8] &quot;grapes&quot;  &quot;oranges&quot;</code></pre>
+</div>
+<div id="vector-arithmetic" class="section level4 hasAnchor" number="19.3.9.6">
+<h4><span class="header-section-number">19.3.9.6</span> Vector Arithmetic<a href="chap-r-tutorial.html#vector-arithmetic" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>When performing arithmetic between two vectors, the arithmetic is done in an element-wise fashion. That is, the first element of the first vector is added/subtracted/divided/multiplied to/by the first element of the second vector, then the second element of the first vector is added/subtracted/divided/multiplied to/by the second element of the second vector, etc.</p>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<pre><code>## [1] 4 5 6 7</code></pre>
+<pre><code>## [1]  5  7  9 11</code></pre>
+<pre><code>## [1] -3 -3 -3 -3</code></pre>
+<p>If you want to add all of the elements in a single vector together, use the <strong>sum()</strong> function</p>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<pre><code>## [1] 10</code></pre>
+</div>
+<div id="subsetting-a-vector" class="section level4 hasAnchor" number="19.3.9.7">
+<h4><span class="header-section-number">19.3.9.7</span> Subsetting a Vector<a href="chap-r-tutorial.html#subsetting-a-vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Subsetting is the process of selecting certain elements of a data structure. Double brackets (<strong>[]</strong>) are used to select certain elements of a vector. To select a certain element, type the index of the element between the double brackets.</p>
+<p><strong>R starts it's index at 1, not 0. If you want to select the first element of a vector, you must place a 1 within the square brackets</strong></p>
+<pre><code>## [1] &quot;bananas&quot;</code></pre>
+<pre><code>## [1] &quot;oranges&quot;</code></pre>
+<pre><code>## [1] &quot;oranges&quot;</code></pre>
+<p>You can select multiple elements of a vector by putting a vector of the positions you want to subset between the square brackets.</p>
+<pre><code>## [1] &quot;Texas&quot;    &quot;Virginia&quot;</code></pre>
+<pre><code>## [1] &quot;Virginia&quot; &quot;Florida&quot;</code></pre>
+<pre><code>## [1] &quot;Oklahoma&quot; &quot;Virginia&quot; &quot;Maryland&quot; &quot;Florida&quot;</code></pre>
+</div>
+</div>
+<div id="logical-operators-in-r" class="section level3 hasAnchor" number="19.3.10">
+<h3><span class="header-section-number">19.3.10</span> Logical Operators in R<a href="chap-r-tutorial.html#logical-operators-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The logical (comparison) operators in R are:</p>
+<ol style="list-style-type: decimal">
+<li><strong>&lt;</strong>: Less than</li>
+<li><strong>&gt;</strong>: Greater than</li>
+<li><strong>&lt;=</strong>: Less than or equal to</li>
+<li><strong>&gt;=</strong>: Greater than or equal to</li>
+<li><strong>==</strong>: Equal to</li>
+<li><strong>!=</strong>: Not equal to</li>
+</ol>
+<p>Logical operators return boolean (TRUE or FALSE) values.</p>
+<p>You can combine logical operators using <strong>&amp;</strong> (and), <strong>|</strong> (or), and <strong>!</strong> (not).</p>
+<pre><code>## [1] TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<p>Some other helpful logical operators are:
+* <strong>any()</strong> (TRUE if any element meets the condition)
+* <strong>all()</strong> (TRUE if all elements meet the condition)
+* <strong>%in%</strong> (TRUE if an element is in the vector being searched)</p>
+<pre><code>## [1] TRUE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<div id="nas-and-is.na" class="section level4 hasAnchor" number="19.3.10.1">
+<h4><span class="header-section-number">19.3.10.1</span> NAs and is.na()<a href="chap-r-tutorial.html#nas-and-is.na" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>is.na() is another logical operator that deserves special attention. NA stands for <strong>not available</strong> and means that a data value is missing. You can use is.na() to check whether a data value is missing.</p>
+<p><strong>NOTE: NA and NaN are different values. NaN stands for "not a number," and is treated differently than NA within R"</strong></p>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="subsetting-by-logical-values" class="section level4 hasAnchor" number="19.3.10.2">
+<h4><span class="header-section-number">19.3.10.2</span> Subsetting by Logical Values<a href="chap-r-tutorial.html#subsetting-by-logical-values" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Logical values are also useful for subsetting vectors. This is particularly helpful if you only want to return the elements of a vector that meet a certain condition.</p>
+<pre><code>## [1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE</code></pre>
+<pre><code>## [1]   1.0 100.0 100.1 123.0  34.0</code></pre>
+</div>
+</div>
+<div id="matrices-in-r" class="section level3 hasAnchor" number="19.3.11">
+<h3><span class="header-section-number">19.3.11</span> Matrices in R<a href="chap-r-tutorial.html#matrices-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A matrix is an collection of elements of the same data type (numeric, character, or logical) with a fixed number of rows and columns (i.e., 2-dimensional). Matrices are indexed by paired integers (i,j).</p>
+<p>Matrices are created using the <strong>matrix()</strong> function.
+The matrix function has many arguments, but here are the three that you will use the most:</p>
+<ol style="list-style-type: decimal">
+<li><strong>data</strong> is a vector of data that R will arrange using rows and columns.</li>
+<li><strong>nrow</strong>, is the number of rows in the matrix.</li>
+<li><strong>byrow</strong> is a logical argument indicating whether R should fill the matrix by rows or columns. The argument is set to FALSE by default (i.e., the matrix is filled by columns).</li>
+</ol>
+<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
+<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
+<div id="summing-rows-and-columns-in-a-matrix" class="section level4 hasAnchor" number="19.3.11.1">
+<h4><span class="header-section-number">19.3.11.1</span> Summing rows and columns in a matrix<a href="chap-r-tutorial.html#summing-rows-and-columns-in-a-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>R has two functions <strong>rowSums()</strong> and <strong>colSums()</strong>, that allow you to sum the rows or columns of the matrix, respectively.</p>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    5    8   11   14   17
+## [2,]    6    9   12   15   18
+## [3,]    7   10   13   16   19</code></pre>
+<pre><code>## [1] 55 60 65</code></pre>
+<pre><code>## [1] 18 27 36 45 54</code></pre>
+</div>
+<div id="joiningcombining-matrices" class="section level4 hasAnchor" number="19.3.11.2">
+<h4><span class="header-section-number">19.3.11.2</span> Joining/Combining Matrices<a href="chap-r-tutorial.html#joiningcombining-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You can join/combine matrices by rows using the <strong>rbind()</strong> function, or by columns using the <strong>cbind()</strong> function. If combining by rows, the matrices must have the same number of rows, and if combining by columns, the matrices must have the same number of columns.</p>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    5    8   11   14   17
+## [2,]    6    9   12   15   18
+## [3,]    7   10   13   16   19</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]   25   28   31   34   37
+## [2,]   26   29   32   35   38
+## [3,]   27   30   33   36   39</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    5    8   11   14   17
+## [2,]    6    9   12   15   18
+## [3,]    7   10   13   16   19
+## [4,]   25   28   31   34   37
+## [5,]   26   29   32   35   38
+## [6,]   27   30   33   36   39</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]    5    8   11   14   17   25   28   31   34    37
+## [2,]    6    9   12   15   18   26   29   32   35    38
+## [3,]    7   10   13   16   19   27   30   33   36    39</code></pre>
+</div>
+<div id="subsetting-a-matrix" class="section level4 hasAnchor" number="19.3.11.3">
+<h4><span class="header-section-number">19.3.11.3</span> Subsetting a matrix<a href="chap-r-tutorial.html#subsetting-a-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Just like with vectors, you can subset a matrix with double brackets (<strong>[]</strong>).</p>
+<p>However, because matrices are two-dimensional, you must include both the row and column number associated with the element you want to extract.</p>
+<p>When subsetting, the row number comes first, followed by a comma, then the column number: <strong>[i,j]</strong></p>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,] &quot;a&quot;  &quot;c&quot;  &quot;e&quot;  &quot;g&quot; 
+## [2,] &quot;b&quot;  &quot;d&quot;  &quot;f&quot;  &quot;h&quot;</code></pre>
+<pre><code>## [1] &quot;f&quot;</code></pre>
+<pre><code>## [1] &quot;c&quot; &quot;e&quot;</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;c&quot; &quot;e&quot; &quot;g&quot;</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot;</code></pre>
+</div>
+<div id="matrix-arithmetic" class="section level4 hasAnchor" number="19.3.11.4">
+<h4><span class="header-section-number">19.3.11.4</span> Matrix Arithmetic<a href="chap-r-tutorial.html#matrix-arithmetic" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Similar to vector arithmetic, matrix arithmetic is performed in an element-wise fashion.</p>
+<pre><code>##      [,1] [,2]
+## [1,]    1    6
+## [2,]    2    7
+## [3,]    3    8
+## [4,]    4    9
+## [5,]    5   10</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]   11   16
+## [2,]   12   17
+## [3,]   13   18
+## [4,]   14   19
+## [5,]   15   20</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]   12   22
+## [2,]   14   24
+## [3,]   16   26
+## [4,]   18   28
+## [5,]   20   30</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    3   18
+## [2,]    6   21
+## [3,]    9   24
+## [4,]   12   27
+## [5,]   15   30</code></pre>
+<pre><code>##            [,1]      [,2]
+## [1,] 0.09090909 0.3750000
+## [2,] 0.16666667 0.4117647
+## [3,] 0.23076923 0.4444444
+## [4,] 0.28571429 0.4736842
+## [5,] 0.33333333 0.5000000</code></pre>
+</div>
+</div>
+<div id="factors-in-r" class="section level3 hasAnchor" number="19.3.12">
+<h3><span class="header-section-number">19.3.12</span> Factors in R<a href="chap-r-tutorial.html#factors-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In R, a factor is a vector of values, each associated with a label. These unique labeled values are the <strong>levels</strong> of the factor. Factors are used to store categorical variables for data analysis.</p>
+<p>You can create a factor with a character vector, and R will interpret the characters as the labels for the levels of the factor.</p>
+<p>The <strong>factor()</strong> function is used to create factors.</p>
+<pre><code>## [1] Monday    Tuesday   Wednesday Thursday  Friday   
+## Levels: Friday Monday Thursday Tuesday Wednesday</code></pre>
+<div id="nominal-categorical-variables" class="section level4 hasAnchor" number="19.3.12.1">
+<h4><span class="header-section-number">19.3.12.1</span> Nominal Categorical Variables<a href="chap-r-tutorial.html#nominal-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Nominal categorical variables are variables with categories that cannot be ordered. That is, there is no way to say that one category is greater than or less than the other. The <strong>factor()</strong> function creates nominal categorical variables by default</p>
+</div>
+<div id="ordinal-categorical-variables" class="section level4 hasAnchor" number="19.3.12.2">
+<h4><span class="header-section-number">19.3.12.2</span> Ordinal Categorical Variables<a href="chap-r-tutorial.html#ordinal-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Ordinal categorical variables are variables with categories that can be ordered. To create an ordinal categorical variable, set the <strong>order</strong> argument in the <strong>factor()</strong> function to TRUE</p>
+<pre><code>## [1] very slow slow      fast      very fast fast      slow      very slow
+## Levels: very slow &lt; slow &lt; fast &lt; very fast</code></pre>
+</div>
+<div id="levels" class="section level4 hasAnchor" number="19.3.12.3">
+<h4><span class="header-section-number">19.3.12.3</span> Levels<a href="chap-r-tutorial.html#levels" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>When importing a data set, you may find that the levels used in the data set are already defined. R allows you to change the names of these levels using the <strong>levels()</strong> function.</p>
+<pre><code>## [1] r s h t
+## Levels: h r s t</code></pre>
+<pre><code>## [1] rain    snow    hail    tornado
+## Levels: hail rain snow tornado</code></pre>
+<p><strong>CAUTION: R automatically sorts levels into alphabetical order. Thus, when redefining levels, ensure they are in alphabetical order to properly match the new levels with the pre-existing ones.</strong></p>
+</div>
+</div>
+<div id="data-frames-in-r" class="section level3 hasAnchor" number="19.3.13">
+<h3><span class="header-section-number">19.3.13</span> Data Frames in R<a href="chap-r-tutorial.html#data-frames-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A data frame is a 2-dimensional data structure, commonly used to store datasets. The data frame stores the variables of a data frame as columns and the observations as rows.</p>
+<p>Unlike vectors and matrices, data frames can store values of different data types. However, each column must have the same data type. In other words, different columns can have different data types, but the values within a single column must have the same data type.</p>
+<p>An example of a data frame is the <strong>iris</strong> dataset housed in R.</p>
+<div id="creating-a-data-frame" class="section level4 hasAnchor" number="19.3.13.1">
+<h4><span class="header-section-number">19.3.13.1</span> Creating a Data Frame<a href="chap-r-tutorial.html#creating-a-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+The <strong>data.frame()</strong> function will create a data frame with specified vectors as columns.
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">strings</th>
+<th align="right">numerical</th>
+<th align="left">logical</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">blue</td>
+<td align="right">1</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">orange</td>
+<td align="right">2</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">yellow</td>
+<td align="right">3</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td align="left">green</td>
+<td align="right">4</td>
+<td align="left">FALSE</td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+</div>
+<div id="viewing-a-data-frame" class="section level4 hasAnchor" number="19.3.13.2">
+<h4><span class="header-section-number">19.3.13.2</span> Viewing a Data Frame<a href="chap-r-tutorial.html#viewing-a-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To view your data frame, you will want to utilize two functions:</p>
+<ol style="list-style-type: decimal">
+<li><strong>head(data, n)</strong> shows the first n rows of a specified data frame.</li>
+<li><strong>tail(data, n)</strong> shows the last n rows of a specified data frame</li>
+</ol>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">146</td>
+<td align="right">6.7</td>
+<td align="right">3.0</td>
+<td align="right">5.2</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="even">
+<td align="left">147</td>
+<td align="right">6.3</td>
+<td align="right">2.5</td>
+<td align="right">5.0</td>
+<td align="right">1.9</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="odd">
+<td align="left">148</td>
+<td align="right">6.5</td>
+<td align="right">3.0</td>
+<td align="right">5.2</td>
+<td align="right">2.0</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="even">
+<td align="left">149</td>
+<td align="right">6.2</td>
+<td align="right">3.4</td>
+<td align="right">5.4</td>
+<td align="right">2.3</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="odd">
+<td align="left">150</td>
+<td align="right">5.9</td>
+<td align="right">3.0</td>
+<td align="right">5.1</td>
+<td align="right">1.8</td>
+<td align="left">virginica</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="viewing-the-structure-of-a-data-frame" class="section level4 hasAnchor" number="19.3.13.3">
+<h4><span class="header-section-number">19.3.13.3</span> Viewing the Structure of a Data Frame<a href="chap-r-tutorial.html#viewing-the-structure-of-a-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <strong>str()</strong> function outputs the structure of your dataset. The structure of your data set includes:</p>
+<ol style="list-style-type: decimal">
+<li>The total number of observations</li>
+<li>The total number of variables</li>
+<li>A list of variable names</li>
+<li>The first few observations</li>
+<li>The data type of each variable</li>
+</ol>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+</div>
+<div id="subsetting-a-data-frame" class="section level4 hasAnchor" number="19.3.13.4">
+<h4><span class="header-section-number">19.3.13.4</span> Subsetting a Data Frame<a href="chap-r-tutorial.html#subsetting-a-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Similar to matrices, you can subset a data frame with double brackets (<strong>[]</strong>).</p>
+<p>You must include both the row and column number associated with the element you want to extract.</p>
+<p>When subsetting, the row number comes first, followed by a comma, then the column number: <strong>[i,j]</strong></p>
+<p>You can also subset using the column/variable name: <strong>[i, "name"]</strong> or <strong>dataframe$columnname</strong> to subset an entire column.</p>
+<pre><code>## [1] 1.4</code></pre>
+<pre><code>## [1] 5</code></pre>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">10</td>
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td align="left">setosa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre><code>##   [1] 3.5 3.0 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 3.7 3.4 3.0 3.0 4.0 4.4 3.9 3.5
+##  [19] 3.8 3.8 3.4 3.7 3.6 3.3 3.4 3.0 3.4 3.5 3.4 3.2 3.1 3.4 4.1 4.2 3.1 3.2
+##  [37] 3.5 3.6 3.0 3.4 3.5 2.3 3.2 3.5 3.8 3.0 3.8 3.2 3.7 3.3 3.2 3.2 3.1 2.3
+##  [55] 2.8 2.8 3.3 2.4 2.9 2.7 2.0 3.0 2.2 2.9 2.9 3.1 3.0 2.7 2.2 2.5 3.2 2.8
+##  [73] 2.5 2.8 2.9 3.0 2.8 3.0 2.9 2.6 2.4 2.4 2.7 2.7 3.0 3.4 3.1 2.3 3.0 2.5
+##  [91] 2.6 3.0 2.6 2.3 2.7 3.0 2.9 2.9 2.5 2.8 3.3 2.7 3.0 2.9 3.0 3.0 2.5 2.9
+## [109] 2.5 3.6 3.2 2.7 3.0 2.5 2.8 3.2 3.0 3.8 2.6 2.2 3.2 2.8 2.8 2.7 3.3 3.2
+## [127] 2.8 3.0 2.8 3.0 2.8 3.8 2.8 2.8 2.6 3.0 3.4 3.1 3.0 3.1 3.1 3.1 2.7 3.2
+## [145] 3.3 3.0 2.5 3.0 3.4 3.0</code></pre>
+<pre><code>##   [1] 0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 0.2 0.2 0.1 0.1 0.2 0.4 0.4 0.3
+##  [19] 0.3 0.3 0.2 0.4 0.2 0.5 0.2 0.2 0.4 0.2 0.2 0.2 0.2 0.4 0.1 0.2 0.2 0.2
+##  [37] 0.2 0.1 0.2 0.2 0.3 0.3 0.2 0.6 0.4 0.3 0.2 0.2 0.2 0.2 1.4 1.5 1.5 1.3
+##  [55] 1.5 1.3 1.6 1.0 1.3 1.4 1.0 1.5 1.0 1.4 1.3 1.4 1.5 1.0 1.5 1.1 1.8 1.3
+##  [73] 1.5 1.2 1.3 1.4 1.4 1.7 1.5 1.0 1.1 1.0 1.2 1.6 1.5 1.6 1.5 1.3 1.3 1.3
+##  [91] 1.2 1.4 1.2 1.0 1.3 1.2 1.3 1.3 1.1 1.3 2.5 1.9 2.1 1.8 2.2 2.1 1.7 1.8
+## [109] 1.8 2.5 2.0 1.9 2.1 2.0 2.4 2.3 1.8 2.2 2.3 1.5 2.3 2.0 2.0 1.8 2.1 1.8
+## [127] 1.8 1.8 2.1 1.6 1.9 2.0 2.2 1.5 1.4 2.3 2.4 1.8 1.8 2.1 2.4 2.3 1.9 2.3
+## [145] 2.5 2.3 1.9 2.0 2.3 1.8</code></pre>
+</div>
+</div>
+<div id="lists-in-r" class="section level3 hasAnchor" number="19.3.14">
+<h3><span class="header-section-number">19.3.14</span> Lists in R<a href="chap-r-tutorial.html#lists-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Unlike the previous data structures we have introduced, a list can contain both different data types and different data structures. In other words, the elements of a list can include vectors, matrices, data frames, and even other lists!</p>
+<p>Lists are the largest and most flexible data structure in R.</p>
+<p>Lists are ordered (i.e., they have an index) and can be manipulated.</p>
+<div id="creating-a-list" class="section level4 hasAnchor" number="19.3.14.1">
+<h4><span class="header-section-number">19.3.14.1</span> Creating a List<a href="chap-r-tutorial.html#creating-a-list" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <strong>list()</strong> function is used to create a list. The arguments of the list function are the components of the list. These components can be any data structure, including other lists.</p>
+<pre><code>## [[1]]
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+## 
+## [[2]]
+##      [,1] [,2]
+## [1,]    1    6
+## [2,]    2    7
+## [3,]    3    8
+## [4,]    4    9
+## [5,]    5   10
+## 
+## [[3]]
+##   Sepal.Length Sepal.Width
+## 1          5.1         3.5
+## 2          4.9         3.0
+## 3          4.7         3.2
+## 4          4.6         3.1
+## 5          5.0         3.6</code></pre>
+<p>You can also create a named list, where each element in your list has a name.</p>
+<pre><code>## $vector
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+## 
+## $matrix
+##      [,1] [,2]
+## [1,]    1    6
+## [2,]    2    7
+## [3,]    3    8
+## [4,]    4    9
+## [5,]    5   10
+## 
+## $dataframe
+##   Sepal.Length Sepal.Width
+## 1          5.1         3.5
+## 2          4.9         3.0
+## 3          4.7         3.2
+## 4          4.6         3.1
+## 5          5.0         3.6</code></pre>
+</div>
+<div id="subsetting-lists" class="section level4 hasAnchor" number="19.3.14.2">
+<h4><span class="header-section-number">19.3.14.2</span> Subsetting Lists<a href="chap-r-tutorial.html#subsetting-lists" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Unlike vectors, matrices, and data frames, lists have layers of components and elements. The first layer is the list of data structures. Then, within each data structure is a separate index of elements.</p>
+<p>Since lists are have multiple layers of elements, we can subset them in three ways:</p>
+<ol style="list-style-type: decimal">
+<li>Double brackets <strong>[[]]</strong></li>
+<li>Single brackets <strong>[]</strong></li>
+<li>Dollar sign <strong>$</strong></li>
+</ol>
+<p>How you subset your list depends on what element you want to extract. The following example illustrates this point:</p>
+<pre><code>## [[1]]
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+## 
+## [[2]]
+##      [,1] [,2]
+## [1,]    1    6
+## [2,]    2    7
+## [3,]    3    8
+## [4,]    4    9
+## [5,]    5   10
+## 
+## [[3]]
+##   Sepal.Length Sepal.Width
+## 1          5.1         3.5
+## 2          4.9         3.0
+## 3          4.7         3.2
+## 4          4.6         3.1
+## 5          5.0         3.6</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
+<pre><code>## [1] 2 7</code></pre>
+<pre><code>## [1] 3.5 3.0 3.2 3.1 3.6</code></pre>
+</div>
+</div>
+<div id="statistics-in-r" class="section level3 hasAnchor" number="19.3.15">
+<h3><span class="header-section-number">19.3.15</span> Statistics in R<a href="chap-r-tutorial.html#statistics-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R is a statistical programming language, which means that it was created for use in statistical analysis. As such, R has a variety of statistical functions excellent for dataset analysis. Here are a few basic functions that are widespread across R:</p>
+<ul>
+<li><strong>mean()</strong>
+<ul>
+<li><p>The mean function is used to calculate the arithmetic mean of R objects.</p>
+<pre><code>## [1] 4.5</code></pre></li>
+</ul></li>
+<li><strong>median()</strong>
+<ul>
+<li><p>Computes the median of an R object</p>
+<pre><code>## [1] 3.5</code></pre></li>
+</ul></li>
+<li><strong>min()</strong>
+<ul>
+<li><p>Returns the minimum of the input values</p>
+<pre><code>## [1] 1</code></pre></li>
+</ul></li>
+<li><strong>max()</strong>
+<ul>
+<li><p>Returns the maximum of the input values</p>
+<pre><code>## [1] 10</code></pre></li>
+</ul></li>
+<li><strong>sd()</strong>
+<ul>
+<li><p>Returns the standard deviation of an object of values</p>
+<pre><code>## [1] 4.041452</code></pre></li>
+</ul></li>
+<li><strong>var()</strong>
+<ul>
+<li><p>Computes the variance of an object of values</p>
+<pre><code>## [1] 16.33333</code></pre></li>
+</ul></li>
+<li><strong>IQR()</strong>
+<ul>
+<li><p>Computes the interquartile range of the inputted values</p>
+<pre><code>## [1] 8.25</code></pre></li>
+</ul></li>
+<li><strong>quantile()</strong>
+<ul>
+<li><p>The quantile function outputs the quantiles corresponding to specified probabilities.</p>
+<pre><code>##  25% 
+## 4.25</code></pre>
+<pre><code>##  75% 
+## 12.5</code></pre></li>
+</ul></li>
+<li><strong>summary()</strong>
+<ul>
+<li><p>The summary function returns the minumum, first quantile, median, mean, third quantile, and maximum for each variable in a dataset.</p>
+<pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## </code></pre></li>
+</ul></li>
+<li><strong>cor()</strong>
+<ul>
+<li><p>Returns the correlation between two variables.</p>
+<pre><code>## [1] -0.1175698</code></pre></li>
+</ul></li>
+<li><strong>table()</strong>
+<ul>
+<li><p>Returns the counts of categorical variables in a dataset.</p>
+<pre><code>## 
+##  3  4  5 
+## 15 12  5</code></pre></li>
+</ul></li>
+<li><strong>?</strong>
+<ul>
+<li>Type a question mark in front of function to access the R documentation for that function.</li>
+</ul></li>
+</ul>
+</div>
+<div id="visualizations-in-r" class="section level3 hasAnchor" number="19.3.16">
+<h3><span class="header-section-number">19.3.16</span> Visualizations in R<a href="chap-r-tutorial.html#visualizations-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R comes with a variety of functions that allow users to create detailed and descriptive data visualizations. This sections will show you how to get started with data visualizations in R.</p>
+<div id="scatterplots" class="section level4 hasAnchor" number="19.3.16.1">
+<h4><span class="header-section-number">19.3.16.1</span> Scatterplots<a href="chap-r-tutorial.html#scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <strong>plot()</strong> function is used to create scatterplots.
+<img src="_main_files/figure-html/unnamed-chunk-970-1.png" alt="" width="672" /></p>
+<p>Since we are only plotting one variable, R plotted the Sepal Width values against an index. The index is the order of the Sepal Width observations in the iris dataset. The axis titles were automatically generated by R.</p>
+<p>The <strong>plot()</strong> function can also be used to plot two variables against each other.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-971-1.png" alt="" width="672" /><img src="_main_files/figure-html/unnamed-chunk-971-2.png" alt="" width="672" /></p>
+<ul>
+<li>There are four arguments in <strong>all R plotting functions</strong> that can be used to customize a plot.</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>The <strong>main</strong> argument is used to change the title</li>
+<li>The <strong>xlab</strong> argument is used to change the x-axis title</li>
+<li>The <strong>ylab</strong> argument is used to change the y-axis title</li>
+<li>The <strong>col</strong> argument is used to change the color of the symbols in your plot.
+<img src="_main_files/figure-html/unnamed-chunk-972-1.png" alt="" width="672" /></li>
+</ol>
+</div>
+<div id="histograms" class="section level4 hasAnchor" number="19.3.16.2">
+<h4><span class="header-section-number">19.3.16.2</span> Histograms<a href="chap-r-tutorial.html#histograms" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <strong>hist()</strong> function creates a histogram out of a numeric vector.
+<img src="_main_files/figure-html/unnamed-chunk-973-1.png" alt="" width="672" /></p>
+<p>The <strong>hist()</strong> function automatically creates the breakpoints within the histogram. You can customize the breakpoints by inputting a vector of breaks into the <strong>break</strong> argument.
+<img src="_main_files/figure-html/unnamed-chunk-974-1.png" alt="" width="672" /></p>
+</div>
+<div id="boxplots" class="section level4 hasAnchor" number="19.3.16.3">
+<h4><span class="header-section-number">19.3.16.3</span> Boxplots<a href="chap-r-tutorial.html#boxplots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <strong>boxplot()</strong> function creates a boxplot out of a numeric vector.
+<img src="_main_files/figure-html/unnamed-chunk-975-1.png" alt="" width="672" /></p>
+<p>The thick horizontal line in the middle of the boxplot is the median of the Sepal Width. The upper line is the upper quartile, and the lower line is the lower quartile. The extended vertical lines are the "whiskers" of the boxplot. Data that are unusual(possible outliers) and lie outside of the whiskers are represented by dots.</p>
+<p>You can also create boxplots for a numerical variable for each level of a categorical variable.
+<img src="_main_files/figure-html/unnamed-chunk-976-1.png" alt="" width="672" /></p>
+</div>
+</div>
+<div id="downloading-and-using-packages-in-r" class="section level3 hasAnchor" number="19.3.17">
+<h3><span class="header-section-number">19.3.17</span> Downloading and Using Packages in R<a href="chap-r-tutorial.html#downloading-and-using-packages-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To install a package for use in R, use the <strong>install.packages()</strong> function.</p>
+<p>*The function's argument is the name of the package you want to download.</p>
+<p>Once the package is installed on your device, you do not have to run the <strong>install.packages</strong> function again for this package.</p>
+<p>To use the R package that you have installed, you must use the <strong>library()</strong> function to bring the library into your environment.</p>
+<p>*If you know what packages you need before writing your code, import the packages at the beginning of your R script.</p>
+
+</div>
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-exercises.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap-glossary.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "info": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

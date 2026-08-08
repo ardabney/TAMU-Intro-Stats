@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 13 Simple Linear Regression | Probability and Statistics: Making Principled Decisions in an Uncertain World</title>
+  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 13 Simple Linear Regression | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 13 Simple Linear Regression | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
+  
+  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  
+
+<meta name="author" content="Alan Dabney, Scott Crawford, Darren Homrighausen" />
+
+
+<meta name="date" content="2026-07-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chap-compare-more-than-two.html"/>
+<link rel="next" href="chap-multiple-linear-regression.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.12.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about"><i class="fa fa-check"></i><b>1.1</b> About</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#r"><i class="fa fa-check"></i><b>1.2</b> R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#supplemental-resources"><i class="fa fa-check"></i><b>1.3</b> Supplemental Resources</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.4</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap-foundations.html"><a href="chap-foundations.html"><i class="fa fa-check"></i><b>2</b> Foundations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chap-foundations.html"><a href="chap-foundations.html#what-is-statistics"><i class="fa fa-check"></i><b>2.1</b> What is Statistics?</a></li>
+<li class="chapter" data-level="2.2" data-path="chap-foundations.html"><a href="chap-foundations.html#populations-and-parameters-samples-and-statistics"><i class="fa fa-check"></i><b>2.2</b> Populations and Parameters, Samples and Statistics</a></li>
+<li class="chapter" data-level="2.3" data-path="chap-foundations.html"><a href="chap-foundations.html#obtaining-data"><i class="fa fa-check"></i><b>2.3</b> Obtaining Data</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="chap-foundations.html"><a href="chap-foundations.html#chap-foundations-sampling"><i class="fa fa-check"></i><b>2.3.1</b> Sampling</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chap-foundations.html"><a href="chap-foundations.html#chap-foundations-observational-experiment"><i class="fa fa-check"></i><b>2.3.2</b> Observational Studies and Experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="chap-foundations.html"><a href="chap-foundations.html#sec-foundations-nature-of-data"><i class="fa fa-check"></i><b>2.4</b> The Nature of Data</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="chap-foundations.html"><a href="chap-foundations.html#randomness-and-uncertainty"><i class="fa fa-check"></i><b>2.4.1</b> Randomness and Uncertainty</a></li>
+<li class="chapter" data-level="2.4.2" data-path="chap-foundations.html"><a href="chap-foundations.html#random-variables"><i class="fa fa-check"></i><b>2.4.2</b> Random Variables</a></li>
+<li class="chapter" data-level="2.4.3" data-path="chap-foundations.html"><a href="chap-foundations.html#notation"><i class="fa fa-check"></i><b>2.4.3</b> Notation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="chap-foundations.html"><a href="chap-foundations.html#numerical-summaries"><i class="fa fa-check"></i><b>2.5</b> Summary Statistics</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="chap-foundations.html"><a href="chap-foundations.html#mean"><i class="fa fa-check"></i><b>2.5.1</b> Mean</a></li>
+<li class="chapter" data-level="2.5.2" data-path="chap-foundations.html"><a href="chap-foundations.html#sec-percentiles-median"><i class="fa fa-check"></i><b>2.5.2</b> Percentiles and Median</a></li>
+<li class="chapter" data-level="2.5.3" data-path="chap-foundations.html"><a href="chap-foundations.html#variance-and-standard-deviation"><i class="fa fa-check"></i><b>2.5.3</b> Variance and Standard Deviation</a></li>
+<li class="chapter" data-level="2.5.4" data-path="chap-foundations.html"><a href="chap-foundations.html#extreme-values-and-robust-statistics"><i class="fa fa-check"></i><b>2.5.4</b> Extreme Values and Robust Statistics</a></li>
+<li class="chapter" data-level="2.5.5" data-path="chap-foundations.html"><a href="chap-foundations.html#frequency-and-relative-frequency"><i class="fa fa-check"></i><b>2.5.5</b> Frequency and Relative Frequency</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="chap-foundations.html"><a href="chap-foundations.html#graphical-summaries"><i class="fa fa-check"></i><b>2.6</b> Graphical Summaries</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="chap-foundations.html"><a href="chap-foundations.html#boxplot"><i class="fa fa-check"></i><b>2.6.1</b> Boxplot</a></li>
+<li class="chapter" data-level="2.6.2" data-path="chap-foundations.html"><a href="chap-foundations.html#histogram"><i class="fa fa-check"></i><b>2.6.2</b> Histogram</a></li>
+<li class="chapter" data-level="2.6.3" data-path="chap-foundations.html"><a href="chap-foundations.html#the-shape-of-a-distribution"><i class="fa fa-check"></i><b>2.6.3</b> The Shape of a Distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-probability.html"><a href="chap-probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chap-probability.html"><a href="chap-probability.html#motivation-and-intuition"><i class="fa fa-check"></i><b>3.1</b> Motivation and Intuition</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="chap-probability.html"><a href="chap-probability.html#previewing-statistical-inference"><i class="fa fa-check"></i><b>3.1.1</b> Previewing Statistical Inference</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chap-probability.html"><a href="chap-probability.html#probability-a-long-run-average"><i class="fa fa-check"></i><b>3.1.2</b> Probability: A "Long-Run Average"</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chap-probability.html"><a href="chap-probability.html#sample-spaces-and-events"><i class="fa fa-check"></i><b>3.2</b> Sample Spaces and Events</a></li>
+<li class="chapter" data-level="3.3" data-path="chap-probability.html"><a href="chap-probability.html#axioms-and-properties"><i class="fa fa-check"></i><b>3.3</b> Axioms and Properties</a></li>
+<li class="chapter" data-level="3.4" data-path="chap-probability.html"><a href="chap-probability.html#sec-probability-counting"><i class="fa fa-check"></i><b>3.4</b> Counting</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="chap-probability.html"><a href="chap-probability.html#product-rule"><i class="fa fa-check"></i><b>3.4.1</b> Product Rule</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chap-probability.html"><a href="chap-probability.html#permutations-and-combinations"><i class="fa fa-check"></i><b>3.4.2</b> Permutations and Combinations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chap-probability.html"><a href="chap-probability.html#conditional-probability"><i class="fa fa-check"></i><b>3.5</b> Conditional Probability</a></li>
+<li class="chapter" data-level="3.6" data-path="chap-probability.html"><a href="chap-probability.html#independence"><i class="fa fa-check"></i><b>3.6</b> Independence</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html"><i class="fa fa-check"></i><b>4</b> Random Variables and Probability Distributions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#random-variables-1"><i class="fa fa-check"></i><b>4.1</b> Random Variables</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#probability-functions"><i class="fa fa-check"></i><b>4.2</b> Probability Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#probability-mass-function-discrete-rvs"><i class="fa fa-check"></i><b>4.2.1</b> Probability Mass Function (Discrete RVs)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#chap-rvs-sec-pdf"><i class="fa fa-check"></i><b>4.2.2</b> Probability Density Function (Continuous RVs)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#chap-rvs-sec-cdf"><i class="fa fa-check"></i><b>4.3</b> Cumulative Distribution Function</a></li>
+<li class="chapter" data-level="4.4" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#discrete-distributions"><i class="fa fa-check"></i><b>4.4</b> Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>4.4.1</b> Binomial Distribution</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#distributions-related-to-the-bernoulli"><i class="fa fa-check"></i><b>4.4.2</b> Distributions Related to the Bernoulli</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#continuous-distributions"><i class="fa fa-check"></i><b>4.5</b> Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#sec-exponential"><i class="fa fa-check"></i><b>4.5.1</b> Exponential Distribution</a></li>
+<li class="chapter" data-level="4.5.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>4.5.2</b> Gamma Distribution</a></li>
+<li class="chapter" data-level="4.5.3" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#sec-chi-squared-distribution"><i class="fa fa-check"></i><b>4.5.3</b> Chi-Squared Distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-expected-value.html"><a href="chap-expected-value.html"><i class="fa fa-check"></i><b>5</b> Expected Value</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chap-expected-value.html"><a href="chap-expected-value.html#expected-value-for-discrete-variables"><i class="fa fa-check"></i><b>5.1</b> Expected Value for Discrete Variables</a></li>
+<li class="chapter" data-level="5.2" data-path="chap-expected-value.html"><a href="chap-expected-value.html#expected-value-for-continuous-variables"><i class="fa fa-check"></i><b>5.2</b> Expected Value for Continuous Variables</a></li>
+<li class="chapter" data-level="5.3" data-path="chap-expected-value.html"><a href="chap-expected-value.html#expected-value-for-linear-functions"><i class="fa fa-check"></i><b>5.3</b> Expected Value for Linear Functions</a></li>
+<li class="chapter" data-level="5.4" data-path="chap-expected-value.html"><a href="chap-expected-value.html#variance-and-standard-deviation-1"><i class="fa fa-check"></i><b>5.4</b> Variance and Standard Deviation</a></li>
+<li class="chapter" data-level="5.5" data-path="chap-expected-value.html"><a href="chap-expected-value.html#means-and-variances-of-common-distributions"><i class="fa fa-check"></i><b>5.5</b> Means and Variances of Common Distributions</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="chap-expected-value.html"><a href="chap-expected-value.html#binomial"><i class="fa fa-check"></i><b>5.5.1</b> Binomial</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-expected-value.html"><a href="chap-expected-value.html#hypergeometric"><i class="fa fa-check"></i><b>5.5.2</b> Hypergeometric</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-expected-value.html"><a href="chap-expected-value.html#negative-binomial"><i class="fa fa-check"></i><b>5.5.3</b> Negative Binomial</a></li>
+<li class="chapter" data-level="5.5.4" data-path="chap-expected-value.html"><a href="chap-expected-value.html#poisson"><i class="fa fa-check"></i><b>5.5.4</b> Poisson</a></li>
+<li class="chapter" data-level="5.5.5" data-path="chap-expected-value.html"><a href="chap-expected-value.html#exponential"><i class="fa fa-check"></i><b>5.5.5</b> Exponential</a></li>
+<li class="chapter" data-level="5.5.6" data-path="chap-expected-value.html"><a href="chap-expected-value.html#gamma"><i class="fa fa-check"></i><b>5.5.6</b> Gamma</a></li>
+<li class="chapter" data-level="5.5.7" data-path="chap-expected-value.html"><a href="chap-expected-value.html#chi-squared"><i class="fa fa-check"></i><b>5.5.7</b> Chi-Squared</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="chap-expected-value.html"><a href="chap-expected-value.html#moment-generating-functions"><i class="fa fa-check"></i><b>5.6</b> Moment Generating Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html"><i class="fa fa-check"></i><b>6</b> The Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#the-normal-and-standard-normal-distributions"><i class="fa fa-check"></i><b>6.1</b> The Normal and Standard Normal Distributions</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-non-standard-normal"><i class="fa fa-check"></i><b>6.1.1</b> The Normal Distribution</a></li>
+<li class="chapter" data-level="6.1.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-standard-normal"><i class="fa fa-check"></i><b>6.1.2</b> The Standard Normal Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#standardization"><i class="fa fa-check"></i><b>6.2</b> Standardization</a></li>
+<li class="chapter" data-level="6.3" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#z-scores"><i class="fa fa-check"></i><b>6.3</b> <span class="math inline">\(z\)</span>-scores</a></li>
+<li class="chapter" data-level="6.4" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#probabilities"><i class="fa fa-check"></i><b>6.4</b> Probabilities</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#computing-standard-normal-probabilities"><i class="fa fa-check"></i><b>6.4.1</b> Computing Standard Normal Probabilities</a></li>
+<li class="chapter" data-level="6.4.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#computing-normal-probabilities"><i class="fa fa-check"></i><b>6.4.2</b> Computing Normal Probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#quantiles"><i class="fa fa-check"></i><b>6.5</b> Quantiles</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-normal-percentiles-visual"><i class="fa fa-check"></i><b>6.5.1</b> Computing Standard Normal Quantiles</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-normal-percentiles"><i class="fa fa-check"></i><b>6.5.2</b> Computing Normal Quantiles</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking Normality</a></li>
+<li class="chapter" data-level="6.7" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-t-distribution"><i class="fa fa-check"></i><b>6.7</b> t Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html"><i class="fa fa-check"></i><b>7</b> Joint and Conditional Distributions</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#jointly-distributed-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly Distributed Random Variables</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#discrete-random-variables"><i class="fa fa-check"></i><b>7.1.1</b> Discrete Random Variables</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#continuous-random-variables"><i class="fa fa-check"></i><b>7.1.2</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="7.1.3" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#more-than-two-random-variables"><i class="fa fa-check"></i><b>7.1.3</b> More Than Two Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#independence-1"><i class="fa fa-check"></i><b>7.2</b> Independence</a></li>
+<li class="chapter" data-level="7.3" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#conditional-probability-functions"><i class="fa fa-check"></i><b>7.3</b> Conditional Probability Functions</a></li>
+<li class="chapter" data-level="7.4" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#sec-conditional-expectation"><i class="fa fa-check"></i><b>7.4</b> Conditional Expected Values</a></li>
+<li class="chapter" data-level="7.5" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#sec-cov-and-corr"><i class="fa fa-check"></i><b>7.5</b> Covariance and Correlation</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#covariance"><i class="fa fa-check"></i><b>7.5.1</b> Covariance</a></li>
+<li class="chapter" data-level="7.5.2" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#correlation"><i class="fa fa-check"></i><b>7.5.2</b> Correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html"><i class="fa fa-check"></i><b>8</b> Sampling Distributions and Central Limit Theorem</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#what-is-a-sampling-distribution-and-why-should-you-care"><i class="fa fa-check"></i><b>8.1</b> What Is a Sampling Distribution, and Why Should You Care?</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#preliminary-definitions"><i class="fa fa-check"></i><b>8.1.1</b> Preliminary Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#illustration-via-simulation"><i class="fa fa-check"></i><b>8.2</b> Illustration Via Simulation</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#chap-sampling-distributions-sim-normal"><i class="fa fa-check"></i><b>8.2.1</b> Simulation Setup: Normal Population</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#sec-distn-sample-mean"><i class="fa fa-check"></i><b>8.3</b> The Distribution of the Sample Mean</a></li>
+<li class="chapter" data-level="8.4" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>8.4</b> The Central Limit Theorem</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#simulation-setup-non-normal-population"><i class="fa fa-check"></i><b>8.4.1</b> Simulation Setup: Non-Normal Population</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html"><i class="fa fa-check"></i><b>9</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-pivot-method"><i class="fa fa-check"></i><b>9.2</b> Motivation and Pivots</a></li>
+<li class="chapter" data-level="9.3" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-mean"><i class="fa fa-check"></i><b>9.3</b> Confidence Interval for the Population Mean <span class="math inline">\(\mu\)</span></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-samp-dist-normal"><i class="fa fa-check"></i><b>9.3.1</b> Sampling Distribution conditions</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-mean-known-sigma"><i class="fa fa-check"></i><b>9.3.2</b> When <span class="math inline">\(\sigma\)</span> is known (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="9.3.3" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-mean-unknown-sigma"><i class="fa fa-check"></i><b>9.3.3</b> When <span class="math inline">\(\sigma\)</span> is unknown (Using the t Distribution)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-matchedPairs"><i class="fa fa-check"></i><b>9.4</b> Confidence Interval for Matched Pairs</a></li>
+<li class="chapter" data-level="9.5" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-proportion"><i class="fa fa-check"></i><b>9.5</b> Confidence Interval for a Population Proportion (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="9.6" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-variance"><i class="fa fa-check"></i><b>9.6</b> Confidence Interval for a Population Variance (Using the <span class="math inline">\(\chi^2\)</span> Distribution)</a></li>
+<li class="chapter" data-level="9.7" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-ci-interpret"><i class="fa fa-check"></i><b>9.7</b> Interpreting a Confidence Interval</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#chap-confidence-intervals-simulation"><i class="fa fa-check"></i><b>9.7.1</b> A Deeper Look at the Idea of Confidence</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-precision-sample-size"><i class="fa fa-check"></i><b>9.8</b> Finding the Sample Size (<span class="math inline">\(n\)</span>) for a Particular Confidence Interval</a></li>
+<li class="chapter" data-level="9.9" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#other-types-of-intervals"><i class="fa fa-check"></i><b>9.9</b> Other Types of Intervals</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-ci-prediction"><i class="fa fa-check"></i><b>9.9.1</b> Prediction Intervals</a></li>
+<li class="chapter" data-level="9.9.2" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#tolerance-intervals"><i class="fa fa-check"></i><b>9.9.2</b> Tolerance Intervals</a></li>
+<li class="chapter" data-level="9.9.3" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#bootstrap-confidence-intervals"><i class="fa fa-check"></i><b>9.9.3</b> Bootstrap Confidence Intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html"><i class="fa fa-check"></i><b>10</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#logic-and-language-of-hypothesis-testing"><i class="fa fa-check"></i><b>10.1</b> Logic and Language of Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#chap-ht-definitions"><i class="fa fa-check"></i><b>10.1.1</b> Type I Error, Type II error, and Power</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-test-mean"><i class="fa fa-check"></i><b>10.2</b> Hypothesis Test for a Population Mean</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-mean-known-sigma"><i class="fa fa-check"></i><b>10.2.1</b> When <span class="math inline">\(\sigma\)</span> is known (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="10.2.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-mean-unknown-sigma"><i class="fa fa-check"></i><b>10.2.2</b> When <span class="math inline">\(\sigma\)</span> is unknown (Using the t Distribution)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#hypothesis-test-for-matched-pairs"><i class="fa fa-check"></i><b>10.3</b> Hypothesis Test for Matched Pairs</a></li>
+<li class="chapter" data-level="10.4" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-proportion"><i class="fa fa-check"></i><b>10.4</b> Hypothesis Test for a Population Proportion</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#hypothesis-test-for-a-population-variance"><i class="fa fa-check"></i><b>10.4.1</b> Hypothesis Test for a Population Variance</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-one-vs-two"><i class="fa fa-check"></i><b>10.5</b> Two-sided and One-sided Tests</a></li>
+<li class="chapter" data-level="10.6" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-power"><i class="fa fa-check"></i><b>10.6</b> Power</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#power-and-sample-size-calculations-for-mu"><i class="fa fa-check"></i><b>10.6.1</b> Power and Sample Size Calculations for <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="10.6.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#power-and-sample-size-calculations"><i class="fa fa-check"></i><b>10.6.2</b> Power and Sample Size Calculations</a></li>
+<li class="chapter" data-level="10.6.3" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#power-and-sample-size-calculations-for-chi2"><i class="fa fa-check"></i><b>10.6.3</b> Power and Sample Size Calculations for <span class="math inline">\(\chi^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#exploring-hypothesis-test-via-simulation"><i class="fa fa-check"></i><b>10.7</b> Exploring Hypothesis Test via simulation</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#the-test-statistic-and-its-sampling-distribution-assuming-h_0-is-true"><i class="fa fa-check"></i><b>10.7.1</b> The Test Statistic and its Sampling Distribution: Assuming <span class="math inline">\(H_0\)</span> is true</a></li>
+<li class="chapter" data-level="10.7.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#simulation-study-repeated-hypothesis-testing-under-h_0-and-h_a"><i class="fa fa-check"></i><b>10.7.2</b> Simulation Study: Repeated Hypothesis Testing Under <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span></a></li>
+<li class="chapter" data-level="10.7.3" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#bootstrap-hypothesis-tests"><i class="fa fa-check"></i><b>10.7.3</b> Bootstrap Hypothesis Tests</a></li>
+<li class="chapter" data-level="10.7.4" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#the-basic-bootstrap-hypothesis-test-procedure"><i class="fa fa-check"></i><b>10.7.4</b> The Basic Bootstrap Hypothesis Test Procedure</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chap-compare-two.html"><a href="chap-compare-two.html"><i class="fa fa-check"></i><b>11</b> Comparing Two Populations</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-two-sample-means"><i class="fa fa-check"></i><b>11.1</b> Inference on a Difference of Two Population Means</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="chap-compare-two.html"><a href="chap-compare-two.html#when-sds-are-known-using-the-normal-distribution"><i class="fa fa-check"></i><b>11.1.1</b> When SDs are Known (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="11.1.2" data-path="chap-compare-two.html"><a href="chap-compare-two.html#when-sds-are-unknown-using-the-t-distribution"><i class="fa fa-check"></i><b>11.1.2</b> When SDs are Unknown (Using the T Distribution)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-2pop-proportion"><i class="fa fa-check"></i><b>11.2</b> Difference of Two Population Proportions</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-2pop-CI-proportion"><i class="fa fa-check"></i><b>11.2.1</b> Confidence Intervals for Two Population Proportions</a></li>
+<li class="chapter" data-level="11.2.2" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-2pop-HT-proportion"><i class="fa fa-check"></i><b>11.2.2</b> Hypothesis Tests for Two Population Proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="chap-compare-two.html"><a href="chap-compare-two.html#inference-on-a-ratio-of-two-population-variances"><i class="fa fa-check"></i><b>11.3</b> Inference on a Ratio of Two Population Variances</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chap-compare-more-than-two.html"><a href="chap-compare-more-than-two.html"><i class="fa fa-check"></i><b>12</b> Comparing More Than Two Populations</a></li>
+<li class="chapter" data-level="13" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html"><i class="fa fa-check"></i><b>13</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-model"><i class="fa fa-check"></i><b>13.1</b> The Simple Linear Regression (SLR) Model</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-regression"><i class="fa fa-check"></i><b>13.1.1</b> What Does the Word Regression Mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-least-squares"><i class="fa fa-check"></i><b>13.2</b> The Least Squares Idea</a></li>
+<li class="chapter" data-level="13.3" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-assumptions"><i class="fa fa-check"></i><b>13.3</b> Checking the Assumptions</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#good-residuals"><i class="fa fa-check"></i><b>13.3.1</b> Good Residuals</a></li>
+<li class="chapter" data-level="13.3.2" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#linearity"><i class="fa fa-check"></i><b>13.3.2</b> Linearity</a></li>
+<li class="chapter" data-level="13.3.3" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#constant-variance"><i class="fa fa-check"></i><b>13.3.3</b> Constant Variance</a></li>
+<li class="chapter" data-level="13.3.4" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#independence-2"><i class="fa fa-check"></i><b>13.3.4</b> Independence</a></li>
+<li class="chapter" data-level="13.3.5" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#normality"><i class="fa fa-check"></i><b>13.3.5</b> Normality</a></li>
+<li class="chapter" data-level="13.3.6" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#multiple-assumptions-being-violated"><i class="fa fa-check"></i><b>13.3.6</b> Multiple Assumptions being Violated</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-covariance-correlation"><i class="fa fa-check"></i><b>13.4</b> Covariance, Correlation, and R-squared</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#r-squared"><i class="fa fa-check"></i><b>13.4.1</b> R-squared</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-ci"><i class="fa fa-check"></i><b>13.5</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="13.6" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-pi"><i class="fa fa-check"></i><b>13.6</b> Prediction Intervals</a></li>
+<li class="chapter" data-level="13.7" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-ht"><i class="fa fa-check"></i><b>13.7</b> Hypothesis Test</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="chap-multiple-linear-regression.html"><a href="chap-multiple-linear-regression.html"><i class="fa fa-check"></i><b>14</b> Multiple Linear Regression</a></li>
+<li class="chapter" data-level="15" data-path="chap-flexible-regression.html"><a href="chap-flexible-regression.html"><i class="fa fa-check"></i><b>15</b> More Flexible Regression Methods</a></li>
+<li class="chapter" data-level="16" data-path="chap-categorical-data.html"><a href="chap-categorical-data.html"><i class="fa fa-check"></i><b>16</b> Categorical Data Analysis</a></li>
+<li class="chapter" data-level="17" data-path="chap-nonparametrics.html"><a href="chap-nonparametrics.html"><i class="fa fa-check"></i><b>17</b> Nonparametric Methods</a></li>
+<li class="chapter" data-level="18" data-path="chap-exercises.html"><a href="chap-exercises.html"><i class="fa fa-check"></i><b>18</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="chap-exercises.html"><a href="chap-exercises.html#foundations"><i class="fa fa-check"></i><b>18.1</b> Foundations</a></li>
+<li class="chapter" data-level="18.2" data-path="chap-exercises.html"><a href="chap-exercises.html#probability"><i class="fa fa-check"></i><b>18.2</b> Probability</a></li>
+<li class="chapter" data-level="18.3" data-path="chap-exercises.html"><a href="chap-exercises.html#random-variables-and-probability-distributions"><i class="fa fa-check"></i><b>18.3</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="18.4" data-path="chap-exercises.html"><a href="chap-exercises.html#expected-values"><i class="fa fa-check"></i><b>18.4</b> Expected Values</a></li>
+<li class="chapter" data-level="18.5" data-path="chap-exercises.html"><a href="chap-exercises.html#joint-and-conditional-probability"><i class="fa fa-check"></i><b>18.5</b> Joint and Conditional Probability</a></li>
+<li class="chapter" data-level="18.6" data-path="chap-exercises.html"><a href="chap-exercises.html#sampling-distributions"><i class="fa fa-check"></i><b>18.6</b> Sampling Distributions</a></li>
+<li class="chapter" data-level="18.7" data-path="chap-exercises.html"><a href="chap-exercises.html#principles-of-statistical-inference"><i class="fa fa-check"></i><b>18.7</b> Principles of Statistical Inference</a></li>
+<li class="chapter" data-level="18.8" data-path="chap-exercises.html"><a href="chap-exercises.html#confidence-intervals"><i class="fa fa-check"></i><b>18.8</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="18.9" data-path="chap-exercises.html"><a href="chap-exercises.html#hypothesis-testing"><i class="fa fa-check"></i><b>18.9</b> Hypothesis Testing</a></li>
+<li class="chapter" data-level="18.10" data-path="chap-exercises.html"><a href="chap-exercises.html#comparing-two-populations"><i class="fa fa-check"></i><b>18.10</b> Comparing Two Populations</a></li>
+<li class="chapter" data-level="18.11" data-path="chap-exercises.html"><a href="chap-exercises.html#comparing-more-than-two-populations"><i class="fa fa-check"></i><b>18.11</b> Comparing More Than Two Populations</a></li>
+<li class="chapter" data-level="18.12" data-path="chap-exercises.html"><a href="chap-exercises.html#linear-regression"><i class="fa fa-check"></i><b>18.12</b> Linear Regression</a></li>
+<li class="chapter" data-level="18.13" data-path="chap-exercises.html"><a href="chap-exercises.html#more-flexible-regression-methods"><i class="fa fa-check"></i><b>18.13</b> More Flexible Regression Methods</a></li>
+<li class="chapter" data-level="18.14" data-path="chap-exercises.html"><a href="chap-exercises.html#categorical-data-analysis"><i class="fa fa-check"></i><b>18.14</b> Categorical Data Analysis</a></li>
+<li class="chapter" data-level="18.15" data-path="chap-exercises.html"><a href="chap-exercises.html#nonparametric-methods"><i class="fa fa-check"></i><b>18.15</b> Nonparametric Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html"><i class="fa fa-check"></i><b>19</b> Appendix: R Tutorial</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#downloading-and-installing-r-and-rstudio"><i class="fa fa-check"></i><b>19.1</b> Downloading and Installing R and RStudio</a></li>
+<li class="chapter" data-level="19.2" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-layout-of-rstudio"><i class="fa fa-check"></i><b>19.2</b> The Layout of RStudio</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-source-pane"><i class="fa fa-check"></i><b>19.2.1</b> The Source Pane</a></li>
+<li class="chapter" data-level="19.2.2" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-console-pane"><i class="fa fa-check"></i><b>19.2.2</b> The Console Pane</a></li>
+<li class="chapter" data-level="19.2.3" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-environments-pane"><i class="fa fa-check"></i><b>19.2.3</b> The Environments Pane</a></li>
+<li class="chapter" data-level="19.2.4" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-output-pane"><i class="fa fa-check"></i><b>19.2.4</b> The Output Pane</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#r-basics"><i class="fa fa-check"></i><b>19.3</b> R Basics</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#creating-a-.r-file"><i class="fa fa-check"></i><b>19.3.1</b> Creating a .R file</a></li>
+<li class="chapter" data-level="19.3.2" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#saving-your-.r-file"><i class="fa fa-check"></i><b>19.3.2</b> Saving your .R file</a></li>
+<li class="chapter" data-level="19.3.3" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#importing-data-into-r-for-analysis"><i class="fa fa-check"></i><b>19.3.3</b> Importing Data into R for Analysis</a></li>
+<li class="chapter" data-level="19.3.4" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#coding-in-rstudio"><i class="fa fa-check"></i><b>19.3.4</b> Coding in RStudio</a></li>
+<li class="chapter" data-level="19.3.5" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#comments"><i class="fa fa-check"></i><b>19.3.5</b> Comments</a></li>
+<li class="chapter" data-level="19.3.6" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#arithmetic-in-r"><i class="fa fa-check"></i><b>19.3.6</b> Arithmetic in R</a></li>
+<li class="chapter" data-level="19.3.7" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#variables-and-variable-assignment"><i class="fa fa-check"></i><b>19.3.7</b> Variables and Variable Assignment</a></li>
+<li class="chapter" data-level="19.3.8" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#data-types-in-r"><i class="fa fa-check"></i><b>19.3.8</b> Data Types in R</a></li>
+<li class="chapter" data-level="19.3.9" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#vectors"><i class="fa fa-check"></i><b>19.3.9</b> Vectors</a></li>
+<li class="chapter" data-level="19.3.10" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#logical-operators-in-r"><i class="fa fa-check"></i><b>19.3.10</b> Logical Operators in R</a></li>
+<li class="chapter" data-level="19.3.11" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#matrices-in-r"><i class="fa fa-check"></i><b>19.3.11</b> Matrices in R</a></li>
+<li class="chapter" data-level="19.3.12" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#factors-in-r"><i class="fa fa-check"></i><b>19.3.12</b> Factors in R</a></li>
+<li class="chapter" data-level="19.3.13" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#data-frames-in-r"><i class="fa fa-check"></i><b>19.3.13</b> Data Frames in R</a></li>
+<li class="chapter" data-level="19.3.14" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#lists-in-r"><i class="fa fa-check"></i><b>19.3.14</b> Lists in R</a></li>
+<li class="chapter" data-level="19.3.15" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#statistics-in-r"><i class="fa fa-check"></i><b>19.3.15</b> Statistics in R</a></li>
+<li class="chapter" data-level="19.3.16" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#visualizations-in-r"><i class="fa fa-check"></i><b>19.3.16</b> Visualizations in R</a></li>
+<li class="chapter" data-level="19.3.17" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#downloading-and-using-packages-in-r"><i class="fa fa-check"></i><b>19.3.17</b> Downloading and Using Packages in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="chap-glossary.html"><a href="chap-glossary.html"><i class="fa fa-check"></i><b>20</b> Glossary</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="chap-glossary.html"><a href="chap-glossary.html#overview"><i class="fa fa-check"></i><b>20.1</b> Overview</a></li>
+<li class="chapter" data-level="20.2" data-path="chap-glossary.html"><a href="chap-glossary.html#foundations-1"><i class="fa fa-check"></i><b>20.2</b> Foundations</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions"><i class="fa fa-check"></i><b>20.2.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.2.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands"><i class="fa fa-check"></i><b>20.2.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="chap-glossary.html"><a href="chap-glossary.html#probability-1"><i class="fa fa-check"></i><b>20.3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-1"><i class="fa fa-check"></i><b>20.3.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.3.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-1"><i class="fa fa-check"></i><b>20.3.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="chap-glossary.html"><a href="chap-glossary.html#random-variables-and-probability-distributions-1"><i class="fa fa-check"></i><b>20.4</b> Random Variables and Probability Distributions</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-2"><i class="fa fa-check"></i><b>20.4.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.4.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-2"><i class="fa fa-check"></i><b>20.4.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="chap-glossary.html"><a href="chap-glossary.html#expected-value"><i class="fa fa-check"></i><b>20.5</b> Expected Value</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-3"><i class="fa fa-check"></i><b>20.5.1</b> Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="chap-glossary.html"><a href="chap-glossary.html#the-normal-distribution"><i class="fa fa-check"></i><b>20.6</b> The Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-4"><i class="fa fa-check"></i><b>20.6.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.6.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-3"><i class="fa fa-check"></i><b>20.6.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.7" data-path="chap-glossary.html"><a href="chap-glossary.html#joint-and-conditional-distributions"><i class="fa fa-check"></i><b>20.7</b> Joint and Conditional Distributions</a>
+<ul>
+<li class="chapter" data-level="20.7.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-5"><i class="fa fa-check"></i><b>20.7.1</b> Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.8" data-path="chap-glossary.html"><a href="chap-glossary.html#sampling-distributions-and-central-limit-theorem"><i class="fa fa-check"></i><b>20.8</b> Sampling Distributions and Central Limit Theorem</a>
+<ul>
+<li class="chapter" data-level="20.8.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-6"><i class="fa fa-check"></i><b>20.8.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.8.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-4"><i class="fa fa-check"></i><b>20.8.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.9" data-path="chap-glossary.html"><a href="chap-glossary.html#confidence-intervals-1"><i class="fa fa-check"></i><b>20.9</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="20.9.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-7"><i class="fa fa-check"></i><b>20.9.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.9.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-5"><i class="fa fa-check"></i><b>20.9.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.10" data-path="chap-glossary.html"><a href="chap-glossary.html#hypothesis-testing-1"><i class="fa fa-check"></i><b>20.10</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="20.10.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-8"><i class="fa fa-check"></i><b>20.10.1</b> Definitions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability and Statistics: Making Principled Decisions in an Uncertain World</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap-simple-linear-regression" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Simple Linear Regression<a href="chap-simple-linear-regression.html#chap-simple-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This chapter will take the population parameter <span class="math inline">\(\mu_{Y|X}(x)\)</span>, which was introduced in Chapter <a href="chap-joint-conditional.html#sec-conditional-expectation">7.4</a>, and operationalizes it by making a simplifying assumption of linearity and then approximating this linear function using sample-based statistics.</p>
+<div id="sec-slr-model" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> The Simple Linear Regression (SLR) Model<a href="chap-simple-linear-regression.html#sec-slr-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For this Chapter we will assume that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are both quantitative and that it is scientifically sensible to ascribe to <span class="math inline">\(X\)</span> the role of <strong>input</strong> and to <span class="math inline">\(Y\)</span> the role of <strong>output</strong>. For example, the height of an adult child (Y) and the height of a parent (X). It makes sense scientifically that the height of an adult child would be the result of the height of the parent and hence would be considered an output.</p>
+<p>With these special roles in mind, a population parameter that relates <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is the conditional expected value of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X = x\)</span>: <span class="math inline">\(\mu_{Y|X}(x)\)</span>. Note that this is explicitly a function of the values, <span class="math inline">\(x\)</span>, of the random variable, <span class="math inline">\(X\)</span>. This could conceivably be a complicated function. However, we can often make progress by positing a simple function instead. The simpliest possible (non-trivial) function is the humble line:</p>
+<p><span class="math display">\[
+\mu_{Y|X}(x) = \beta_0 + \beta_1 x
+\]</span></p>
+<p>This simplification leads to the majority of the name: Simple Linear Regression (for the regression part, we will return to this below in Chapter <a href="chap-simple-linear-regression.html#sec-slr-regression">13.1.1</a>). This is of course a very strong assumption which needs to be checked (Chapter <a href="chap-simple-linear-regression.html#sec-slr-assumptions">13.3</a>).</p>
+<p>Note that <span class="math inline">\(\beta_0\)</span> (which is the <strong>intercept</strong>) and <span class="math inline">\(\beta_1\)</span> (which is the <strong>slope</strong>) are both still population parameters that need be approximated using sample-based statistics, which we will discover in Chapter <a href="chap-simple-linear-regression.html#sec-slr-least-squares">13.2</a> below. First, we will discuss some of the history behind SLR and in particular the origin of the phrase 'regression'.</p>
+<div id="sec-slr-regression" class="section level3 hasAnchor" number="13.1.1">
+<h3><span class="header-section-number">13.1.1</span> What Does the Word Regression Mean?<a href="chap-simple-linear-regression.html#sec-slr-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The origins of the term 'regression' go back to 1800's with the research and discoveries of the prolific scientist Sir Francis Galton. While some of his research has been discredited (namely eugenics), he discovered and subsequently coined major terms in heredity, evolution (along with he cousin Charles Darwin), and statistics such as 'nature vs. nurture', 'correlation', and 'standard deviation'. As well, he is known for observing the central limit theorem (which he found very surprising), the bivariate normal distribution, and the first published weather forecast.</p>
+<p>Topically, he also described and explored a phenomenon he referred to as 'regression to the mean'. He found that unusually smart or tall parents tended to have unusually smart or tall children, but not quite as smart or tall as the parents (he called this a `...regression toward mediocrity in hereditary stature'; the pessimistic phrasing is due to his hope that he would discover that humanity was on an upward trajectory towards superior intelligence and he was disappointed to find evidence to the contrary):</p>
+<div class="figure" style="text-align: left"><span style="display:block;" id="fig:unnamed-chunk-133"></span>
+<img src="figures/galtonRegression.png" alt="Galton's correlation diagram relating Parent's height to Children's height" width="60%" />
+<p class="caption">
+Figure 13.1: Galton's correlation diagram relating Parent's height to Children's height.
+</p>
+</div>
+<p>His observations of this phenomenon included carefully cultivating many generations of peas and measuring the average size of each pea. It is this phrase that lends itself to the 'regression' part of SLR; that there is an overall mean to which observations naturally revert.</p>
+</div>
+</div>
+<div id="sec-slr-least-squares" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> The Least Squares Idea<a href="chap-simple-linear-regression.html#sec-slr-least-squares" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To operationalize SLR we need to find sample based statistics that approximate the population parameters <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>. Unlike our previous encounters with this idea, there isn't a natural sample-based analogue (for example, <span class="math inline">\(\overline{X} \approx \mu_X\)</span>). This is where another historical luminary, Carl Friedrich Gauss, made a major contribution. His discovery, in which he was using many error-prone measurements of the orbit of the asteroid Ceres, was that various errors can be averaged away by minimizing the square of these deviations. This minimizer became known as the <strong>least squares solution</strong>:</p>
+<p><span class="math display">\[
+\min_{b_0,b_1} \sum_{i=1}^n (y_i - (b_0 + b_1 x_i))^2
+\]</span></p>
+<p>There is a unique solution to this optimization problem (which you can derive yourself if you are sufficiently motivated via differential calculus) of the form:</p>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:slr-betaHats" class="proposition"><strong>Proposition 13.1  </strong></span>The solutions to the least squares idea is:</p>
+<p><span class="math display">\[
+\hat\beta_0 = \overline{y} - \hat\beta_1\overline{x}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\hat\beta_1 =  \frac{\sum_{i=1}^n(x_i - \overline{x})(y_i - \overline{y})}{\sum_{i=1}^n(x_i - \overline{x})^2}
+\]</span></p>
+<p>We plug these values in to form the sample-based approximation to the parameter <span class="math inline">\(\mu_{Y|X}(x)\)</span>:</p>
+<p><span class="math display">\[
+\hat{\mu}_{Y|X}(x) = \hat\beta_0 +  \hat\beta_1x
+\]</span>
+Though computing these by hand is conceptual possible, a far better idea would be to use software via the <code>R</code> functions <code>lm</code> and <code>predict</code></p>
+</div>
+</div>
+<p>Let's get some idea about how to compute <span class="math inline">\(\hat\beta_0\)</span>, <span class="math inline">\(\hat\beta_1\)</span>, and <span class="math inline">\(\hat{\mu}_{Y|X}(x)\)</span> in practice:</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:slr-betaHat-example" class="example"><strong>Example 13.1  </strong></span>A famous example of simple linear regression in history was the discovery of Hubble's Law: that a galaxies are moving away from Earth at a speed proportional to their distance to Earth. This proportionality constant is often called the Hubble Constant.</p>
+<p>To discover this value, a sample of galaxies are found and their distance (X) and their speed (Y) are recorded:</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="chap-simple-linear-regression.html#cb286-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">40.58</span>, <span class="fl">95.32</span>, <span class="fl">74.54</span>, <span class="fl">61.87</span>, <span class="fl">19.82</span>, <span class="fl">19.82</span>, <span class="fl">10.52</span>, <span class="fl">87.29</span>, <span class="fl">62.11</span>, <span class="fl">72.27</span>, </span>
+<span id="cb286-2"><a href="chap-simple-linear-regression.html#cb286-2" tabindex="-1"></a>          <span class="fl">6.96</span>, <span class="fl">97.14</span>, <span class="fl">84.08</span>, <span class="fl">25.17</span>, <span class="fl">22.27</span>, <span class="fl">22.42</span>, <span class="fl">33.90</span>, <span class="fl">54.85</span>, <span class="fl">46.03</span>, <span class="fl">32.67</span>, </span>
+<span id="cb286-3"><a href="chap-simple-linear-regression.html#cb286-3" tabindex="-1"></a>          <span class="fl">63.13</span>, <span class="fl">18.25</span>, <span class="fl">32.75</span>, <span class="fl">39.80</span>, <span class="fl">48.33</span>, <span class="fl">79.59</span>, <span class="fl">23.97</span>, <span class="fl">53.85</span>, <span class="fl">61.28</span>, <span class="fl">9.41</span>, </span>
+<span id="cb286-4"><a href="chap-simple-linear-regression.html#cb286-4" tabindex="-1"></a>          <span class="fl">62.72</span>, <span class="fl">21.20</span>, <span class="fl">11.18</span>, <span class="fl">95.14</span>, <span class="fl">96.74</span>)</span>
+<span id="cb286-5"><a href="chap-simple-linear-regression.html#cb286-5" tabindex="-1"></a></span>
+<span id="cb286-6"><a href="chap-simple-linear-regression.html#cb286-6" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2600.59</span>, <span class="fl">7051.23</span>, <span class="fl">5334.17</span>, <span class="fl">4076.86</span>, <span class="fl">978.90</span>, <span class="fl">1322.66</span>, <span class="fl">522.80</span>, <span class="fl">6107.86</span>, </span>
+<span id="cb286-7"><a href="chap-simple-linear-regression.html#cb286-7" tabindex="-1"></a>         <span class="fl">4255.63</span>, <span class="fl">5214.42</span>, <span class="sc">-</span><span class="fl">19.16</span>, <span class="fl">7236.70</span>, <span class="fl">6997.07</span>, <span class="fl">2239.51</span>, <span class="fl">1646.59</span>, <span class="fl">1922.34</span>, </span>
+<span id="cb286-8"><a href="chap-simple-linear-regression.html#cb286-8" tabindex="-1"></a>         <span class="fl">1969.58</span>, <span class="fl">3206.31</span>, <span class="fl">3531.91</span>, <span class="fl">2071.42</span>, <span class="fl">3880.15</span>, <span class="fl">925.40</span>, <span class="fl">1840.54</span>, <span class="fl">2840.08</span>, </span>
+<span id="cb286-9"><a href="chap-simple-linear-regression.html#cb286-9" tabindex="-1"></a>         <span class="fl">3615.71</span>, <span class="fl">5926.52</span>, <span class="fl">2035.56</span>, <span class="fl">4071.66</span>, <span class="fl">4206.69</span>, <span class="fl">409.50</span>, <span class="fl">3786.91</span>, <span class="fl">1923.84</span>, </span>
+<span id="cb286-10"><a href="chap-simple-linear-regression.html#cb286-10" tabindex="-1"></a>         <span class="fl">711.50</span>, <span class="fl">6495.94</span>, <span class="fl">7243.34</span>)</span></code></pre></div>
+<p>These observations look like this:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-135"></span>
+<img src="_main_files/figure-html/unnamed-chunk-135-1.png" alt="hubble plot." width="70%" />
+<p class="caption">
+Figure 13.2: Plot of distance (X) and speed (Y) that galaxies are from Earth
+</p>
+</div>
+<p>The population parameter, <span class="math inline">\(\beta_1\)</span>, describing the slope of this line is the Hubble constant. We can approximate this value with <span class="math inline">\(\hat\beta_1\)</span>:</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="chap-simple-linear-regression.html#cb287-1" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Coefficients:
+## (Intercept)            x  
+##     -215.94        74.54</code></pre>
+<p>This value, 74.5351388, is then used as an input to cosmological models such as Einstein's equations of state, the geometry of the universe, and the origins of space and time as currently described by the Big Bang model.</p>
+<p>Suppose we are additionally interested in the expected speed of the Sombrero galaxy, which is 10 Mpc away. This is <span class="math inline">\(\hat{\mu}_{Y|X}(10) = -215.9375182 + 74.5351388*10 = 529.41387\)</span>. This means that we expect that a galaxy 10 Mpc away will be moving away from Earth at 529.41387 km/s.</p>
+<p>We can compute this via the <code>R</code> function <code>predict</code> as well:</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="chap-simple-linear-regression.html#cb289-1" tabindex="-1"></a>lmEstimate <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb289-2"><a href="chap-simple-linear-regression.html#cb289-2" tabindex="-1"></a>xValue     <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">10</span>)</span>
+<span id="cb289-3"><a href="chap-simple-linear-regression.html#cb289-3" tabindex="-1"></a><span class="fu">predict</span>(lmEstimate, xValue)</span></code></pre></div>
+<pre><code>##        1 
+## 529.4139</code></pre>
+</div>
+</div>
+<p>Of course, <span class="math inline">\(\hat\beta_1\)</span> is just an approximation; we need to accompany with a measurement of its uncertainty relative to <span class="math inline">\(\beta_1\)</span>. We will do that via Confidence Intervals (Chapter <a href="chap-simple-linear-regression.html#sec-slr-ci">13.5</a>) and Hypothesis Testing (Chapter <a href="chap-simple-linear-regression.html#sec-slr-ht">13.7</a>) below. For these results to be valid, the SLR model must meet a variety of assumptions that must be checked.</p>
+</div>
+<div id="sec-slr-assumptions" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Checking the Assumptions<a href="chap-simple-linear-regression.html#sec-slr-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The relevant assumptions for linear regression are</p>
+<ul>
+<li><p><strong>Linearity:</strong> This is the key assumption: that <span class="math inline">\(\mu_{Y|X}(x) = \beta_0 + \beta_1 x\)</span>; that is, it is a line.</p></li>
+<li><p><strong>Independence:</strong> The observations <span class="math inline">\((X_i,Y_i)\)</span> are independent. In words, this means the SLR model <span class="math inline">\(\mu_{Y|X}(x)\)</span> accounts for all of the <em>information</em> about our observations.</p></li>
+<li><p><strong>Constant variance:</strong> The <em>variance</em> of <span class="math inline">\(Y\)</span> doesn't depend on <span class="math inline">\(X\)</span>. Notationally, this is
+like writing <span class="math inline">\(Var[Y|X] = \sigma^2(x) = \sigma^2\)</span>; that is, it doesn't depend on the values <span class="math inline">\(X\)</span> takes on.</p></li>
+<li><p><strong>Normality:</strong> This is an assumption about the conditional distribution of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>.</p></li>
+</ul>
+<p>For the <strong>Normality</strong> assumption, we typically rely on the central limit theorem and check if <span class="math inline">\(n \geq 30\)</span>. If not, then we need to check this assumption just like the others.</p>
+<p>Each of these assumptions can be checked by looking at the <strong>residuals</strong>:</p>
+<p><span class="math display">\[
+r_i = y_i - \mu_{Y|X}(x_i) = y_i - (\hat\beta_0 + \hat\beta_1 x_i)
+\]</span></p>
+<p>as a function of the <strong>fitted values</strong> <span class="math inline">\(= \widehat{\mu}_{Y|X}(x_i)\)</span>. If the SLR assumptions are met, these <strong>residual plots</strong>, which puts the residuals on the vertical axis and the fitted values on the horizontal axis, should like `random noise'. Let's look at some examples.</p>
+<div id="good-residuals" class="section level3 hasAnchor" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Good Residuals<a href="chap-simple-linear-regression.html#good-residuals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If there is no indications of assumption violations, the plot should look just like there is no discernible pattern. Note that we should be looking for 'major' patterns; really obvious indications that the assumptions have been violated. Here are a couple of examples of 'good' residuals:</p>
+<div class="figure"><span style="display:block;" id="fig:noViolation"></span>
+<img src="_main_files/figure-html/noViolation-1.png" alt="A residual plot indicating no assumption violation." width="70%" />
+<p class="caption">
+Figure 13.3: Example of Good Residuals: No indication of assumptions violations
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:noViolation2"></span>
+<img src="_main_files/figure-html/noViolation2-1.png" alt="A residual plot indicating no assumption violation." width="70%" />
+<p class="caption">
+Figure 13.4: Another example of Good Residuals: No indication of assumptions violations
+</p>
+</div>
+</div>
+<div id="linearity" class="section level3 hasAnchor" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> Linearity<a href="chap-simple-linear-regression.html#linearity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The most prominent of the assumptions is about the SLR model itself; that it is indeed sufficient to approximate <span class="math inline">\(\mu_{Y|X}(x)\)</span> with a line of the form <span class="math inline">\(\beta_0 + \beta_1 x\)</span>. This is a strong assumption and needs to be checked. Here are some examples of residual plots where linearity is clearly violated:</p>
+<div class="figure"><span style="display:block;" id="fig:linearity"></span>
+<img src="_main_files/figure-html/linearity-1.png" alt="A residual plot indicating violating the linearity assumption." width="70%" />
+<p class="caption">
+Figure 13.5: Violating the linearity assumption: there appears to be a positive quadratic pattern
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:linearity2"></span>
+<img src="_main_files/figure-html/linearity2-1.png" alt="A residual plot indicating violating the linearity assumption." width="70%" />
+<p class="caption">
+Figure 13.6: Violating the linearity assumption: there appears to be a negative quadratic pattern
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:linearity3"></span>
+<img src="_main_files/figure-html/linearity3-1.png" alt="A residual plot indicating violating the linearity assumption." width="70%" />
+<p class="caption">
+Figure 13.7: Violating the linearity assumption: there appears to be a cubic pattern
+</p>
+</div>
+</div>
+<div id="constant-variance" class="section level3 hasAnchor" number="13.3.3">
+<h3><span class="header-section-number">13.3.3</span> Constant Variance<a href="chap-simple-linear-regression.html#constant-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This assumption feeds into confidence intervals and hypothesis tests for SLR. The standard error term needs this assumption for it to be the correct value. The hallmark pattern indicating this assumption has been violated is a 'funnel' shape, either increasing from left to right or from right to left:</p>
+<div class="figure"><span style="display:block;" id="fig:constantVar"></span>
+<img src="_main_files/figure-html/constantVar-1.png" alt="Constant variance assumption being violated" width="70%" />
+<p class="caption">
+Figure 13.8: Indication of 'constant variance' assumption violation; the residuals are getting more variable from left to right
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:constantVar2"></span>
+<img src="_main_files/figure-html/constantVar2-1.png" alt="Constant variance assumption being violated" width="70%" />
+<p class="caption">
+Figure 13.9: Indication of 'constant variance' assumption violation; the residuals are getting more variable from right to left
+</p>
+</div>
+</div>
+<div id="independence-2" class="section level3 hasAnchor" number="13.3.4">
+<h3><span class="header-section-number">13.3.4</span> Independence<a href="chap-simple-linear-regression.html#independence-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Like the constant variance assumption above, in order for the formulae for the standard errors to be correct, and even for the central limit theorem to work, we need that the <span class="math inline">\((X_i, Y_i)\)</span> are independent. As always, this is an informational statement. To assess this assumption we need to be on the lookout for <em>groups</em> or <em>bunches</em> or residuals that are all either unusually close together or above/below the zero line on the residual plot.</p>
+<div class="figure"><span style="display:block;" id="fig:independence1"></span>
+<img src="_main_files/figure-html/independence1-1.png" alt="Independence assumption being violated" width="70%" />
+<p class="caption">
+Figure 13.10: Indication of 'independence' assumption violation; there are bunches of residuals that are unnaturally close together
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:independence2"></span>
+<img src="_main_files/figure-html/independence2-1.png" alt="Independence assumption being violated" width="70%" />
+<p class="caption">
+Figure 13.11: Indication of 'independence' assumption violation; there are bunches of residuals that are unnaturally close together
+</p>
+</div>
+</div>
+<div id="normality" class="section level3 hasAnchor" number="13.3.5">
+<h3><span class="header-section-number">13.3.5</span> Normality<a href="chap-simple-linear-regression.html#normality" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To get the (approximate) <span class="math inline">\(t_{n-2}\)</span> distribution for <span class="math inline">\(\widehat{\beta_1}\)</span> and <span class="math inline">\(\hat{\mu}_{Y|X}(x)\)</span> we need to either:</p>
+<ul>
+<li>check that the residuals look sensibly normal by looking at the ...
+<ul>
+<li>residual plot, mainly checking to see if there appears to be excessive skew or asymmetry</li>
+<li>QQplot of the residuals to check to see if they have quantiles close to the normal quantiles</li>
+</ul></li>
+<li>verify that the sample size is large enough for the CLT (as usual, <span class="math inline">\(n \geq 30\)</span>)</li>
+</ul>
+<p>Let's look at a residual plot demonstrating a lack of normality (as well, the sample size is <span class="math inline">\(n = 20 &lt; 30\)</span>):</p>
+<div class="figure"><span style="display:block;" id="fig:normalResidPlot"></span>
+<img src="_main_files/figure-html/normalResidPlot-1.png" alt="Normality assumption being violated" width="70%" />
+<p class="caption">
+Figure 13.12: Indication of 'normality' assumption violation; there is excessive skew
+</p>
+</div>
+<p>A QQplot for these same residuals would also reveal a lack of normality as well:</p>
+<div class="figure"><span style="display:block;" id="fig:normalQQplot"></span>
+<img src="_main_files/figure-html/normalQQplot-1.png" alt="Normality assumption being violated" width="70%" />
+<p class="caption">
+Figure 13.13: Indication of 'normality' assumption violation; QQPlot isn't close to a diagonal line, especially in the tails
+</p>
+</div>
+</div>
+<div id="multiple-assumptions-being-violated" class="section level3 hasAnchor" number="13.3.6">
+<h3><span class="header-section-number">13.3.6</span> Multiple Assumptions being Violated<a href="chap-simple-linear-regression.html#multiple-assumptions-being-violated" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It is common to see a combinations of assumptions violated. For instance, here is an example of both constant variance and normality (however, the large sample size would mean the normality assumption is satisfied via the central limit theorem):</p>
+<p><img src="_main_files/figure-html/normalityAndConstantVar-1.png" alt="" width="672" /></p>
+</div>
+</div>
+<div id="sec-slr-covariance-correlation" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Covariance, Correlation, and R-squared<a href="chap-simple-linear-regression.html#sec-slr-covariance-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before we discuss confidence and prediction intervals as well as hypothesis testing there is a key concept for SLR that we need to introduce: R-squared (<span class="math inline">\(R^2\)</span>).</p>
+<p>Referring to the results in Section <a href="chap-joint-conditional.html#sec-cov-and-corr">7.5</a>, we can compare SLR to the other measures of association we have covered: covariance and correlation. Here, let's state the sample based statistics for the covariance:</p>
+<p><span class="math display">\[
+s_{X,Y} = \frac{1}{n-1} \sum_{i=1}^n(x_i - \overline{x})(y_i - \overline{y})= \frac{ \sum_{i=1}^n(x_i - \overline{x})(y_i - \overline{y})}{n-1}
+\]</span></p>
+<p>and the sample correlation:</p>
+<p><span class="math display">\[
+r_{X,Y} = \frac{s_{X,Y}}{s_X s_Y}
+\]</span></p>
+<p>Note that we have chosen <span class="math inline">\(s_{X,Y}\)</span> and <span class="math inline">\(r_{X,Y}\)</span> to go with <span class="math inline">\(\sigma_{X,Y}\)</span> (population covariance) and <span class="math inline">\(\rho_{X,Y}\)</span> (population correlation), respectively. Combining these formulae with the definition of <span class="math inline">\(\hat\beta_1\)</span>, we find that:</p>
+<p><span class="math display">\[
+\hat\beta_1 =  \frac{\sum_{i=1}^n(x_i - \overline{x})(y_i - \overline{y})}{\sum_{i=1}^n(x_i - \overline{x})^2}
+= \frac{s_{X,Y}}{s_X^2} = r_{X,Y}*\left(\frac{s_Y}{s_X}\right)
+\]</span></p>
+<p>In words, <span class="math inline">\(\hat\beta_1\)</span> differs from the sample correlation by a factor that is the ratio of the sample standard deviations of <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>, respectively. This has several important implications about the relationship between <span class="math inline">\(s_{X,Y}\)</span>, <span class="math inline">\(r_{X,Y}\)</span>, and <span class="math inline">\(\hat\beta_1\)</span>:</p>
+<ul>
+<li><p>All three statistics must equal 0 if any of them equal 0.</p></li>
+<li><p>All three statistics have the same sign (e.g. if one is positive they all must be positive)</p></li>
+<li><p>Both <span class="math inline">\(s_{X,Y}\)</span> and <span class="math inline">\(r_{X,Y}\)</span> are symmetric (in <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>) while <span class="math inline">\(\hat\beta_1\)</span> is not</p></li>
+</ul>
+<p>Hence, these statistics will agree on if there is a positive, negative, or if there is no relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. If there is a natural input/output relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> then use SLR, if there isn't then you should use correlation.</p>
+<div id="r-squared" class="section level3 hasAnchor" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> R-squared<a href="chap-simple-linear-regression.html#r-squared" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Further strengthening the relationship between the sample correlation and <span class="math inline">\(\hat\beta_1\)</span> is the fundamental concept known as R-squared. Recall that correlation must be between <span class="math inline">\([-1,1]\)</span> and the close to <span class="math inline">\(\pm 1\)</span> it is, the stronger the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. In the SLR context we can make an even better interpretation of correlation by forming <span class="math inline">\(R^2 = r_{X,Y}^2\)</span>. If we take <span class="math inline">\(R^2\)</span> and turn it into a percent, <span class="math inline">\(100*R^2\)</span>%, then we call it R-squared and interpret it as 'the % of the variation in <span class="math inline">\(Y\)</span> that is explained by a linear function of <span class="math inline">\(X\)</span>'.</p>
+<p>Let's return to the Hubble Constant example:</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="chap-simple-linear-regression.html#cb291-1" tabindex="-1"></a><span class="fu">cov</span>(x,y)</span></code></pre></div>
+<pre><code>## [1] 60975.92</code></pre>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="chap-simple-linear-regression.html#cb293-1" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code></pre></div>
+<pre><code>## [1] 0.9854171</code></pre>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="chap-simple-linear-regression.html#cb295-1" tabindex="-1"></a><span class="fu">lm</span>(y<span class="sc">~</span>x)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Coefficients:
+## (Intercept)            x  
+##     -215.94        74.54</code></pre>
+<p>Note that all of the statistics we mentioned are positive; we observe a positive relationship between distance and speed (Note that this was a shocking and fundamentally disruptive result in astronomy at the time. Hubble was nominated for a Nobel prize for this insight but died before he could be awarded).</p>
+<p>We can convert between these in the aforementioned ways, for example:</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="chap-simple-linear-regression.html#cb297-1" tabindex="-1"></a><span class="fu">cor</span>(x,y)<span class="sc">*</span>(<span class="fu">sd</span>(y)<span class="sc">/</span><span class="fu">sd</span>(x))</span></code></pre></div>
+<pre><code>## [1] 74.53514</code></pre>
+<p>To find R-squared, we can either square <span class="math inline">\(r_{X,Y}\)</span>:</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="chap-simple-linear-regression.html#cb299-1" tabindex="-1"></a><span class="fu">cor</span>(x,y)<span class="sc">**</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 0.9710469</code></pre>
+<p>or we can refer to the <strong>Regression Table</strong>:</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="chap-simple-linear-regression.html#cb301-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -672.00 -250.69   -5.74  220.83  946.09 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -215.94     125.10  -1.726   0.0937 .  
+## x              74.53       2.24  33.268   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 373.7 on 33 degrees of freedom
+## Multiple R-squared:  0.971,  Adjusted R-squared:  0.9702 
+## F-statistic:  1107 on 1 and 33 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>and look at the line that starts <code>## Multiple R-squared:</code>. In this case, we see that 97.1% of the variation in speed of a galaxy is explained by a linear function of its distance from Earth. The remaining 2.9% is presumably due to measurement error, galaxy specific idiosyncrasies, or, perhaps the next Nobel Prize!</p>
+<p>Note that we will be referring to the <strong>Regression Table</strong> extensively in the next few sections.</p>
+</div>
+</div>
+<div id="sec-slr-ci" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Confidence Intervals<a href="chap-simple-linear-regression.html#sec-slr-ci" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We need to accompany our approximations <span class="math inline">\(\hat\beta_1\)</span> and <span class="math inline">\(\hat{\mu}_{Y|X}(x)\)</span> with confidence intervals for the usual reason: <span class="math inline">\(\hat\beta_1\)</span> and <span class="math inline">\(\hat{\mu}_{Y|X}(x)\)</span> are random variables.</p>
+<p>To do so, we need two ingredients:</p>
+<ul>
+<li>the standard errors</li>
+<li>the distribution of the standardized statistic</li>
+</ul>
+<p>We will describe these results here:</p>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:slr-ci" class="proposition"><strong>Proposition 13.2  </strong></span>The standard error formulae for <span class="math inline">\(\hat\beta_1\)</span> and <span class="math inline">\(\hat{\mu}_{Y|X}(x)\)</span> are a bit cumbersome, so we will typically use software to compute them. Nonetheless, here they are:</p>
+<p><span class="math display">\[
+S_{\hat\beta_1} = \sqrt{\frac{\hat{\sigma_e}^2}{\sum_{i=1}^n (X_i - \overline{X})^2}}
+\]</span>
+and</p>
+<p><span class="math display">\[
+S_{\hat{\mu}_{Y|X}(x)} = \sqrt{\hat\sigma_r^2\left(\frac{1}{n} + \frac{(x-\overline{X})^2}{\sum_{i=1}^n (X_i - \overline{X})^2}\right)}
+\]</span>
+In these expressions, <span class="math inline">\(\hat{\sigma}_e^2\)</span> is the often called the <strong>mean squared error</strong> and it estimates the variance formed by the 'constant variance' assumption outlined above:</p>
+<p><span class="math display">\[
+\hat{\sigma}_r^2 = \frac{1}{n-2}\sum_{i=1}^n (Y_i - \hat\mu_{Y|X}(X_i))^2
+\]</span>
+In this expression, we see that <span class="math inline">\(Y_i - \hat\mu_{Y|X}(X_i)\)</span> is the residuals, so this is the sample variance of the residuals (hence, the notation <span class="math inline">\(\hat\sigma_r^2\)</span>).</p>
+<p>For the quantile for both confidence intervals is the same: <span class="math inline">\(t_{n-2}\)</span>:</p>
+<p><span class="math display">\[
+\frac{ \hat{\beta}_1 - \beta_1}{S_{\hat{\beta}_1}} \sim t_{n-2}
+\]</span>
+and</p>
+<p><span class="math display">\[
+\frac{ \hat{\mu}_{Y|X}(x) - \mu_{Y|X}(x)}{S_{\hat{\mu}_{Y|X}(x)}} \sim t_{n-2}
+\]</span>
+The resulting <span class="math inline">\((1-\alpha)100\)</span>% confidence intervals have the usual forms:
+<span class="math display">\[
+\hat{\beta}_1 \pm t_{\alpha/2, n-2} S_{\hat{\beta}_1}
+\]</span>
+and
+<span class="math display">\[
+\hat{\mu}_{Y|X}(x)  \pm t_{\alpha/2, n-2} S_{\hat{\mu}_{Y|X}(x)}
+\]</span>
+Though computing these by hand is conceptual possible, a far better idea would be to use software via the <code>R</code> functions <code>confint</code> and <code>predict</code></p>
+</div>
+</div>
+<p>The standard error of <span class="math inline">\(\hat{\mu}_{Y|X}(x)\)</span>, <span class="math inline">\(S_{\hat{\mu}_{Y|X}(x)}\)</span>, deserves further comment. This is, as expected, a function of <span class="math inline">\(x\)</span>. Furthermore, the standard error gets larger as <span class="math inline">\(x\)</span> is farther from <span class="math inline">\(\overline{X}\)</span> due to the term <span class="math inline">\((x-\overline{X})^2\)</span>. Hence, confidence intervals near <span class="math inline">\(\overline{X}\)</span> will be more precise (in the sense of being narrower).</p>
+<p>Let's return to Example <a href="chap-simple-linear-regression.html#exm:slr-betaHat-example">13.1</a>:</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:slr-ci-example" class="example"><strong>Example 13.2  </strong></span>An important aspect of this scientific question is to get a range of plausible values for population parameter, <span class="math inline">\(\beta_1\)</span>, which describes the Hubble constant. In classical cosmological models, this constant is <span class="math inline">\(72 \pm 8\)</span>. Let's use confidence intervals to find our own range of values. Let's form a 99% CI:</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="chap-simple-linear-regression.html#cb303-1" tabindex="-1"></a><span class="fu">confint</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x), <span class="at">level =</span> <span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
+<pre><code>##                  0.5 %    99.5 %
+## (Intercept) -557.87255 125.99752
+## x             68.41143  80.65885</code></pre>
+<p>This output provides confidence intervals for both <span class="math inline">\(\beta_0\)</span> (first row) and <span class="math inline">\(\beta_1\)</span> (second row). A confidence interval for <span class="math inline">\(\beta_0\)</span> is rarely useful and should be ignored.</p>
+<p>We have evidence that <span class="math inline">\(\beta_1\)</span> is between [68.4114256, 80.6588521]. Comparing this to the previously mentioned range, and doing some rounding, we find <span class="math inline">\(75 \pm 6\)</span></p>
+<p>Note that the <strong>Regression Table</strong> provides all the necessary information for forming this confidence interval:</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="chap-simple-linear-regression.html#cb305-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -672.00 -250.69   -5.74  220.83  946.09 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -215.94     125.10  -1.726   0.0937 .  
+## x              74.53       2.24  33.268   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 373.7 on 33 degrees of freedom
+## Multiple R-squared:  0.971,  Adjusted R-squared:  0.9702 
+## F-statistic:  1107 on 1 and 33 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>In particular, the <code>Estimate</code> and <code>Std. Error</code> parts for <code>x</code>. This allows us to compute the confidence interval by hand if necessary: <span class="math inline">\(74.5351388 \pm 2.7332766*2.2404294\)</span>, where <span class="math inline">\(t_{0.005, 35 - 2}\)</span> = 2.7332766.</p>
+<p>Suppose we are additionally interested in an interval for the <strong>average</strong> speed of a galaxy that is 10 Mpc away. This is a confidence interval for <span class="math inline">\(\mu_{Y|X}(10)\)</span>. We found that <span class="math inline">\(\hat{\mu}_{Y|X}(10) = 529.41387\)</span> km/s. To form a 99% CI, we can use the <code>R</code> function <code>predict</code> while using the additional <code>interval</code> argument</p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="chap-simple-linear-regression.html#cb307-1" tabindex="-1"></a>lmEstimate <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb307-2"><a href="chap-simple-linear-regression.html#cb307-2" tabindex="-1"></a>xValue     <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">10</span>)</span>
+<span id="cb307-3"><a href="chap-simple-linear-regression.html#cb307-3" tabindex="-1"></a><span class="fu">predict</span>(lmEstimate, xValue, <span class="at">interval =</span> <span class="st">&#39;confidence&#39;</span>, <span class="at">level =</span> <span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
+<pre><code>##        fit      lwr      upr
+## 1 529.4139 238.6901 820.1377</code></pre>
+<p>Here is a plot with a confidence interval for <span class="math inline">\(\mu_{Y|X}(x)\)</span> on a grid of <span class="math inline">\(x\)</span> values:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-147"></span>
+<img src="_main_files/figure-html/unnamed-chunk-147-1.png" alt="hubble plot with confidence interval." width="70%" />
+<p class="caption">
+Figure 13.14: Plot of distance (X) and speed (Y) that galaxies are from Earth along with a confidence intervals
+</p>
+</div>
+<p>Notice how these confidence intervals get narrower near the middle; this characteristic bowtie shape is due to the term <span class="math inline">\((x - \overline{X})^2\)</span> in the standard error of <span class="math inline">\(\hat{\mu}_{Y|X}(x)\)</span>.</p>
+</div>
+</div>
+<p>In the above example, the confidence interval was for <span class="math inline">\(\mu_{Y|X}(10)\)</span>. This is not for a particular galaxy; rather for an average galaxy that is 10 Mpc away from Earth. Referring to Example <a href="chap-simple-linear-regression.html#exm:slr-betaHat-example">13.1</a>, we are actually interested in the Sombrero galaxy specifically, not just an average galaxy. To form an interval for a specific galaxy, <span class="math inline">\(Y\)</span>, instead of an average galaxy, <span class="math inline">\(\mu_{Y|X}(x)\)</span>, we need a <strong>prediction interval</strong>.</p>
+</div>
+<div id="sec-slr-pi" class="section level2 hasAnchor" number="13.6">
+<h2><span class="header-section-number">13.6</span> Prediction Intervals<a href="chap-simple-linear-regression.html#sec-slr-pi" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Following some of the ideas presented in Chapter <a href="chap-confidence-intervals.html#sec-ci-prediction">9.9.1</a>, we can form a prediction interval for a <strong>prediction</strong>, which we will notate <span class="math inline">\(\hat{Y}\)</span>. Prediction intervals will be wider than confidence intervals. This is due to incorporating not only the sampling distribution of <span class="math inline">\(\hat{\mu}_{Y|X}(x)\)</span> but also the individual variation in the random variable <span class="math inline">\(Y\)</span>.</p>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:slr-pi" class="proposition"><strong>Proposition 13.3  </strong></span>The prediction interval has a standard error similar to the standard error of <span class="math inline">\(\hat{mu}_{Y|X}(x)\)</span>, but with an additional term:</p>
+<p><span class="math display">\[
+S_{\hat{Y}|X = x} = \sqrt{\hat\sigma_r^2\left(1 + \frac{1}{n} + \frac{(x-\overline{X})^2}{\sum_{i=1}^n (X_i - \overline{X})^2}\right)}
+\]</span>
+This additional term, which which is represented by a '1' in the above expression, accounts for the extra randomness included in trying to predict an individual value instead of the average value which is inherently more variable.</p>
+<p>The resulting <span class="math inline">\((1-\alpha)100\)</span>% prediction interval for <span class="math inline">\(Y\)</span> is:
+<span class="math display">\[
+\hat{\beta}_1 \pm t_{\alpha/2, n-2} S_{\hat{\beta}_1}
+\]</span></p>
+<p>We can use the already discussed <code>R</code> function <code>predict</code> by modifying the <code>interval</code> argument to be <code>interval = 'prediction'</code>.</p>
+</div>
+</div>
+<p>Let's return to Example <a href="chap-simple-linear-regression.html#exm:slr-betaHat-example">13.1</a> and finding a prediction interval for the speed of the Sombrero Galaxy in particular.</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:slr-prediction-example" class="example"><strong>Example 13.3  </strong></span>Returning to the original question of interest, let's get a <strong>prediction interval</strong> for a specific galaxy, Sombrero, at 10 Mpc. A 99% prediction interval would be:</p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="chap-simple-linear-regression.html#cb309-1" tabindex="-1"></a>lmEstimate <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb309-2"><a href="chap-simple-linear-regression.html#cb309-2" tabindex="-1"></a>xValue     <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">10</span>)</span>
+<span id="cb309-3"><a href="chap-simple-linear-regression.html#cb309-3" tabindex="-1"></a><span class="fu">predict</span>(lmEstimate, xValue, <span class="at">interval =</span> <span class="st">&#39;prediction&#39;</span>, <span class="at">level =</span> <span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
+<pre><code>##        fit       lwr      upr
+## 1 529.4139 -532.4582 1591.286</code></pre>
+<p>Suppose we are additionally interested in an interval for the <strong>average</strong> speed of a galaxy that is 10 Mpc away. This is a confidence interval for <span class="math inline">\(\mu_{Y|X}(10)\)</span>. We found that <span class="math inline">\(\hat{\mu}_{Y|X}(10) = 529.41387\)</span> km/s. To form a 99% CI, we can use the <code>R</code> function <code>predict</code> while using the additional <code>interval</code> argument</p>
+</div>
+</div>
+<p>Here is a plot with both confidence intervals for <span class="math inline">\(\mu_{Y|X}(x)\)</span> and prediction intervals for <span class="math inline">\(Y|X = x\)</span> on a grid of <span class="math inline">\(x\)</span> values:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-149"></span>
+<img src="_main_files/figure-html/unnamed-chunk-149-1.png" alt="hubble plot with confidence interval." width="70%" />
+<p class="caption">
+Figure 13.15: Plot of distance (X) and speed (Y) that galaxies are from Earth along with a confidence and prediction intervals
+</p>
+</div>
+<p>Again, these prediction intervals get narrower near the middle and are much wider than confidence intervals. This makes intuitive sense: if I needed to make a statement about average of a group of people vs. an individual person my statement could be much more precise about the average.</p>
+</div>
+<div id="sec-slr-ht" class="section level2 hasAnchor" number="13.7">
+<h2><span class="header-section-number">13.7</span> Hypothesis Test<a href="chap-simple-linear-regression.html#sec-slr-ht" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will be outlining a hypothesis test for the slope parameter <span class="math inline">\(\beta_1\)</span>. Referring to the previous chapter about the relationship between SLR and correlation (Chapter <a href="chap-simple-linear-regression.html#sec-slr-covariance-correlation">13.4</a>), a very common question is: do we have evidence that <span class="math inline">\(\beta_1 \neq 0\)</span>? If <span class="math inline">\(\beta_1\)</span> equals zero, then:</p>
+<p><span class="math display">\[
+\mu_{Y|X}(x) = \beta_0 + \beta_1 x = \beta_0
+\]</span>
+and hence we are saying that the conditional expectation of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span> doesn't depend on <span class="math inline">\(X\)</span> at all! This doesn't imply that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, of course, but it makes a strong statement: the mean of <span class="math inline">\(Y\)</span> doesn't depend linearly on <span class="math inline">\(X\)</span>.</p>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:slr-ht" class="proposition"><strong>Proposition 13.4  </strong></span>Suppose the above mentioned assumptions have been met. The core hypothesis test for SLR is:</p>
+<p><span class="math display">\[
+H_0 : \beta_1 = b_1
+\quad\text{vs.}\quad
+H_A : \beta_1 \neq b_1
+\]</span></p>
+<p>where the vast majority of the time, as well as the software defaults, sets <span class="math inline">\(b_0 = 0\)</span>. We form the test statistic:</p>
+<p><span class="math display">\[
+T = \frac{\hat\beta_1 - b_1}{S_{\hat\beta_1}} \sim t_{n-2}
+\]</span>
+(Assuming the null hypothesis is true: that <span class="math inline">\(\beta_1\)</span> indeed equals the constant <span class="math inline">\(b_1\)</span>). For the standard error, <span class="math inline">\(S_{\hat\beta_1}\)</span>, see Proposition <a href="chap-simple-linear-regression.html#prp:slr-ci">13.2</a> for details.</p>
+<p>Hence, for any significance level <span class="math inline">\(\alpha\)</span>, we would reject if we get an observed test statistic that exceeds (in absolute value) the critical value <span class="math inline">\(t_{\alpha/2,n-2}\)</span>:</p>
+<p><span class="math display">\[
+|T_{obs}| &gt; t_{\alpha/2,n-2}
+\]</span>
+Equivalently, this is more often evaluated by rejecting if the p-value <span class="math inline">\(&lt; \alpha\)</span>.</p>
+<p>This is almost always evaluated using the <strong>Regression Table</strong> produced via the <code>R</code> command <code>summary(lm(y~x))</code></p>
+</div>
+</div>
+<p>Let's return one more time to our running example started in Example <a href="chap-simple-linear-regression.html#exm:slr-betaHat-example">13.1</a>.</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:slr-betaHat-example" class="example"><strong>Example 13.1  </strong></span>Although it is considered a central idea in modern cosmology, in 1929 the idea that the universe was expanding was deeply controversal. To help test this idea, we can use hypothesis testing for the slope coefficient <span class="math inline">\(\beta_1\)</span>. If we have evidence that it is non-zero, then the expanding universe claim becomes more credible.</p>
+<p>We will again use <span class="math inline">\(\alpha = 0.01\)</span> to evaluate this claim. Let's return to the <strong>Regression Table</strong></p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="chap-simple-linear-regression.html#cb311-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -672.00 -250.69   -5.74  220.83  946.09 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -215.94     125.10  -1.726   0.0937 .  
+## x              74.53       2.24  33.268   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 373.7 on 33 degrees of freedom
+## Multiple R-squared:  0.971,  Adjusted R-squared:  0.9702 
+## F-statistic:  1107 on 1 and 33 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Our observed test statistic is enormous: <span class="math inline">\(T_{obs} = 33.268\)</span>. The associated p-value is infinitesimal. Hence, we have strong evidence that <span class="math inline">\(\beta_1\)</span> does not equal zero and that the universe isn't static; rather it is changing.</p>
+<p>(In fact, based on a series of observations in 1998 of more distant supernovae, we found that not only is the universe expanding but at an <em>increasing</em> rate! This time, unlike in Hubble's case earlier in the century, this discovery won a well deserved Nobel prize in 2011).</p>
+</div>
+</div>
+
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-compare-more-than-two.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap-multiple-linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "info": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
