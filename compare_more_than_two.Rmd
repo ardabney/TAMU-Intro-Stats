@@ -1,0 +1,7 @@
+# Comparing More Than Two Populations {#chap-compare-more-than-two}
+
+This section is still under construction 
+
+```{r, echo=FALSE, fig.cap = "Under construction sign", fig.alt="Picture of a traffic sign warning of a section of road being under construction.", out.width='50%', fig.align='left'}
+knitr::include_graphics("./figures/underConstruction.png")
+```

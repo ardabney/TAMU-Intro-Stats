@@ -1,0 +1,1145 @@
+# Glossary {#chap-glossary}
+
+## Overview
+
+This glossary serves as a repository of definitions and big ideas for this book as well as relevant `R` code for computing them when appropriate.
+
+## Foundations
+
+
+### Definitions
+
+- [Data](#def-foundations-data): A list or other archive of all the measurements made on a sample.
+
+- [Population](#def-foundations-population): The collection of all the units that pertain to a scientific question of interest.
+
+- [Units](#def-foundations-units): The specific object (e.g. a person) from the population that we are interesting in.  Sometimes called a 'Individual' or 'Observation' 
+
+- [Parameter](#def-foundations-parameter): A quantitative summary of the population that is relevant for the scientific question of interest (e.g. population mean).
+
+- [Sample](#def-foundations-sample): A subset of the units in the population.
+
+- [Statistic](#def-foundations-statistic): The analogous quantitative summary as the parameter but computed on the sample instead.
+
+- [Simple Random Sampling (SRS)](#def-foundations-simple-random-sampling-srs): Each unit in a population has equal probability of being selected and this probability is uniform over the population as well.
+
+- [Stratified Sampling](#def-foundations-stratified-sampling): A modified sampling method where groups of units are selected and then units within that group are selected vis a SRS
+
+- [Sampling With Replacement](#def-foundations-sampling-with-replacement): Units are sampled, measured, and then returned to the population before the next units is sampled.
+
+- [Sampling Without Replacement](#def-foundations-sampling-without-replacement): Units are sampled, measured, and then are not candidates for being sampled again
+
+- [Convenience Sample](#def-foundations-convenience-sample): A type of sampling bias whereby we sample units from the population in a way that is faster, easier, cheaper, etc. and this ease a confounded with the question of interest.
+
+- [Voluntary (self) Selection](#def-foundations-voluntary-self-selection): Another type of sampling bias whereby units 'elect' to be sampled and this self selection is confounded with the question of interest.
+
+- [Observational Studies](#def-foundations-observational-studies): Experiments where we rely on already measure data instead of setting up and conducting a principled experiment.
+
+- [Correlation](#def-foundations-correlation): A measure of the direction and strength of the linear relationship between two variables, typically denoted as $X$ and $Y$. Correlation ranges between $-1$ and $1$. A positive correlation indicates that increases in one variable are associated with increases in the other variable. Likewise, negative correlation indicates that increases in one variable are associated with decreases in the other. A correlation close to $\pm 1$ indicates a strong linear association, while values near $0$ suggest weak or no linear association. It is important to understand that a strong correlation does not mean that one variable can cause changes in the other. Remember: correlation does not equal causation. 
+
+- [Variable](#def-foundations-variable): A synonym for measurement, this is what we actually measure/record on a unit.
+
+- [Qualitative Variable](#def-foundations-qualitative-variable): A variable that takes on labels for values. These can either be nominal (purely names) or ordinal (the labels are sensibly orderable). Examples include eye color, soda flavor, or ZIP code. Even if coded into numbers, the arithmetic operations applied to categories do not make sense.
+
+- [Shape](#def-foundations-shape): A distribution describes the set of possible values a measurement can take and the likelihood (probability) of each value occurring. Descriptions of shape include 
+    - Location: where values tend to center (e.g., mean, median).
+    - Spread: how much variability there is (e.g., variance, IQR).
+    - Shape: the overall form (e.g., symmetric, skewed, bell-shaped, uniform).
+
+- [Quantitative Variable](#def-foundations-quantitative-variable): A variable that takes on numeric values and Arithmetic-type operations (addition, subtraction, etc.) must be meaningful. Examples include height, count, and time. Quantitative variables may be either discrete (takes on countable values) or continuous (takes on any value in an interval).
+
+- [Percentile](#def-foundations-percentile): The $p^{th}$ sample percentile is the value where $p\%$ of the sample observations fall below, and $(100 - p)\%$ of the sample fall above. The $25^{th}$, $50^{th}$, and $75^{th}$ percentiles of data are referred to as the first quartile ($Q_1$), median ($Q_2$), and third quartile ($Q_3$) respectively. 
+
+- [The Interquartile Range (IQR)](#def-foundations-the-interquartile-range-iqr) is defined as $Q_3 - Q_1$ and describes the spread of the middle 50% of the data.
+
+- [Frequency](#def-foundations-frequency): For qualitative variables, the frequency of a particular category (or sometimes called a level) is number of times that category is observed in a data. 
+
+- [Relative frequency](#def-foundations-relative-frequency): If we divide the frequency of each level by the total sample size, we obtain relative frequency. 
+
+- [Boxplot](#def-foundations-boxplot): A graphical summary that gives insight to the distribution of a quantitative variable by using the quartiles, data range, and potential outliers. The box extends from $Q_1$ to $Q_3$ and contains the middle 50% of the data (IQR). A line is used inside the box to mark the median. As an effect, we also visualize shape of the data by observing the location of the median within the box. The whiskers extend beyond the box to the smallest and largest values that are not considered outliers. Points beyond the whiskers may be flagged as potential outliers. We often use side-by-side boxplots to compare the distributions of different groups.
+
+- [Histogram](#def-foundations-histogram): A graphical summary of a distribution that organizes data into intervals, or bins, and displays the frequency of observations within each bin. Compared to boxplots, histograms provide a more detailed view of the shape, center, and spread of a distribution and are especially useful for visualizing continuous data. By default, histograms display frequency on the vertical axis, but they can also be shown in terms of density.
+
+- Input Variable: Sometimes referred to as an independent variable or an explanatory variable, it is the measurement that is thought of as contributing to another measurement (the output variable). Thes are plotted on the horizontal axis.
+
+- Output Variable: Sometimes referred to as a dependent variable or a response variable, , it is the measurement that is thought of as being affected by another measurement (the input variable). These are plotted on the vertical axis.
+
+- Confounded Variables: Also known as lurking variables, they are actually driving or contributing to what we are observing but aren't directly measured.
+
+- Sampling bias: Whereby the units are selected in a way that confounds the our results
+
+### R Commands
+
+-   require()
+-   data()
+-   str()
+-   head()
+-   nrow()
+-   sum()
+-   mean()
+-   quantile()
+-   meadian()
+-   summary()
+-   c()
+-   var()
+-   sd()
+-   table()
+-   boxplot()
+-   range()
+-   hist()
+
+---
+
+## Probability
+
+### Definitions
+
+- [Probability](#def-probability-probability): A number between 0 and 1 that represents how likely an event is to occur. It is reporting the 'size' of an event in a consistent way.
+
+- [Outcomes](#def-probability-outcomes): The most atomic of idea related to probability, this is just the realization of any process
+
+- [Random Experiment](#def-probability-random-experiment): A process that generates outcomes
+
+- [Sample Space](#def-probability-sample-space): The sample space $\mathcal{S}$ for an experiment is the set of all possible outcomes. <!--Several examples are given below.
+
+    -   If our experiment is rolling a six-sided die, then the sample space is $\mathcal{S} = \{1, 2, 3, 4, 5, 6\
+    
+    -   If our experiment is rolling 2 six-sided die and summing their value, then our sample space is $\mathcal{S} = \{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\
+    
+    -   If our experiment is timing (in minutes) how long it takes for a sweater to air-dry outside in June, then our sample space is $\mathcal{S} = (0, \infty)$.
+    
+    -   If our experiment is the net profit of a company over a week-long period, then our sample space is $\mathcal{S} = (-\infty, \infty)$-->
+
+- [Event](#def-probability-event): An event is a set of outcomes that answers some scientific question of interest. We say an event occurs if it contains an outcome that has occurred. 
+
+- [Subset](#def-probability-subset): An event is a subset if it occurring always implies another, larger event also occurs.
+
+- [Union](#def-probability-union): Describes an 'or' event: either one event happens or another event, or both.
+
+- [Intersection](#def-probability-intersection): Describes an 'and' event: both events must occur.
+
+- [Complement](#def-probability-complement): Is the set of all outcomes that are not in an event.
+
+- [Combination ($\binom{n}{k}$)](#def-probability-combination): Sometimes called the binomial coefficient (due to its role in the Binomial pmf), it is the number of ways $k$ things can be arranged in $n$ slots when those $k$ things are indistinguishable.  Think: number of ways to get $k$ heads in $n$ coin flips. $\binom{n}{k}  = \frac{n!}{k!(n-k)!}$
+
+- [Disjoint events](#def-probability-disjoint-events): Sometimes called mutually exclusive events, if one event occurs then the other definitely doesn't occur.  The archetypal example is an event and its complement.
+
+- [Factorial](#def-probability-factorial): The process of multiplying descending integers until the number 1.  This counts the number of arrangements of $n$ unique things. $n! = n*(n-1)*(n-2)*\cdots*2*1$.
+
+- [Conditional Probability](#def-probability-conditional-probability): The probability of one event given, or with information that, another event has occurred. For two events $A$ and $B$ with $P(B) > 0$, the conditional probability of $A$ given $B$ is defined as $P(A | B) = \frac{P(A\cap B)}{P(B)}$.
+
+- [Partition](#def-probability-partition): $A_1, A_2, \ldots, A_V$ is said to be a partition of a sample space $\mathcal{S}$ if the $A_1, A_2, \ldots, A_V$ are disjoint and $A_1 \cup A_2 \cup \cdots \cup A_V = \mathcal{S}$. Intuitively, this means that $A_1, A_2, \ldots A_V$ have no overlap and combine together to make up the entire sample space $S$. 
+
+- [Law of Total Probability (LOTP)](#def-probability-law-of-total-probability-lotp): A way of computing the probability of an event by decomposing it into smaller events via intersections. Let $A_1, A_2, \ldots, A_V$ be a partition of a sample space $\mathcal{S}$. For any event $B$, $P(B) = P(A_1)P(B |  A_1) + P(A_2)P(B |  A_2) + \ldots + P(A_V)P(B |  A_V)$. This is a general formula, but a common use is when we have the partition $A$ and $A^c$. In this case, $P(B) = P(A)P(B |  A) + P(A^c)P(B |  A^c)$
+
+-   [Bayes' Theorem](#def-probability-bayes-theorem): Let $A_1, A_2, \ldots, A_V$ be a partition of a sample space $\mathcal{S}$. For any event $B$ where $P(B) > 0$ and any event $A_w$ from the partition $A_1, A_2, \ldots, A_V$, we have $P(A_w |  B) = \frac{P(A_w)P(B |  A_w)}{\sum_{v = 1}^V P(A_v)P(B |  A_v)}$. This is a general formula, but a common special case is when we have the partition $A$ and $A^c$ in which the formula reads $P(A |  B) = \frac{P(A)P(B |  A)}{P(A)P(B |  A) + P(A^c)P(B |  A^c)}$
+
+- [Independent](#def-probability-independent): This describes a complete lack of information. The events $A$ and $B$ are said to be independent whenever $P(A\cap B) = P(A)P(B)$. Equivalently, the events $A$ and $B$ are independent whenever $P(A |  B) = P(A)$ 
+
+- [Dependent](#def-probability-dependent):  If there is even a tiny bit of information, then the events are not independent.  We call this dependent. The events $A$ and $B$ are said to be dependent if $P(A\cap B) \neq P(A)P(B)$.
+
+- [Mutually Independent](#def-probability-mutually-independent): The events $E_1, E_2, \ldots E_V$ are mutually independent if for every subset $E_{w_1}, E_{w_2}, \ldots E_{w_v}$, $v\leq V$ $P(E_{w_1} \cap E_{w_2} \cap \cdots \cap E_{w_v}) = P(E_{w_1}) P(E_{w_2}) \cdots P(E_{w_v})$. Intuitively, this means that we can pick any selection of the the events $E_1, E_2, \ldots, E_V$ and maintain independence. <!--For example, if $E_1, E_2, \ldots, E_{10 ($V = 10$) are mutually independent events then we must be able to randomly choose $E_1, E_4, E_8$ but still have $P(E_1 \cap E_4 \cap E_8) = P(E_1)P(E_4)P(E_8)$-->
+
+- Permutation and $P_{k,n}$: The number of ways $k$ things can be arranged in $n$ slots when those $k$ things are unique.  Think: number of ways to put $k$ different books onto a bookshelf with room for $n$ books. $P_{k,n} = \frac{n!}{(n-k)!}$
+
+### R Commands
+
+-   set.seed(): allows for reproducible random number generation
+-   sample(): generates a sample from objects
+-   cumsum()
+
+    Syntax: `cumsum(x)`
+
+    This function returns the cumulative sum of a supplied vector `x`. The output is a new vector where each element is the sum of all previous elements up to that position. 
+
+```{r, include=FALSE}
+x <- c(1, 3, 5, 7, 9)
+
+
+cumsum(x)
+```
+
+-   factorial()
+
+    Syntax: `factorial(x)`
+
+    This function returns the factorial(s) of a supplied vector `x`.  The factorial function also works for non-integer input to mimic the gamma function. 
+
+```{r, include=FALSE}
+factorial(5) # Returns 5! = 5 * 4 * 3 * 2 * 1 = 120
+```
+
+```{r, include=FALSE}
+x <- c(0, 1, 3, 5) 
+
+factorial(x) # Returns factorial of each entry of x
+```
+
+
+
+```{r, include=FALSE}
+factorial(-0.5) # This returns the square root of pi
+```
+
+-   choose()
+
+    Syntax: `choose(n, k)`
+
+    This function returns $\binom{n}{k} = \frac{n!}{k! (n - k)!$
+
+```{r, include=FALSE}
+choose(10, 5) # Returns 10 choose 5
+```
+
+---
+
+## Random Variables and Probability Distributions
+
+### Definitions
+
+- [Random Variable](#def-random-variables-and-probability-distributions-random-variable): A rule that associates a number with each outcome of the sample space of a random experiment. Random Variables are denoted by capital letters $X, Y, Z$, and particular values are denoted with lowercase letters $x,y,z$. <!--For example, consider the random experiment of rolling 2 dice and summing their values. The sample space $\mathcal{S} = \{2, 3, 4, \ldots, 12\. We define $X$ to be the result of our experiment, and whenever we carry out our experiment we get an observation of $x = 2$ (or $x = 3$ or $x = 4$ etc.)-->
+
+- [Probability Mass Function (Discrete RVs)](#def-random-variables-and-probability-distributions-probability-mass-function-discrete-rvs): The probability mass function (pmf) of a discrete random variable $X$ is the function that returns the probabilities $f(x) = P(X = x)$ for each possible value $x$. <!--If we flip a fair coin, and denote a tails and heads as 0 and 1, then $f(0) = P(X = 0) = 0.5$ and $f(1) = P(X = 1) = 0.5$. If we want to fully define $f(x)$, we can take $f(x) = 0$ for $x \neq 0$ or $1$.--> 
+
+- [Probability Density Function (Continuous RVs)](#def-random-variables-and-probability-distributions-probability-density-function-continuous-rvs): The probability density function (pdf) of a *continuous* random variable $X$ is the function $f(x)$ that satisfies $P(a \leq X \leq b) = \int_a^b f(x)\, dx$ for any two numbers $a$ and $b$ ($a\leq b$). This function $f(x)$ does not give $P(X = x)$. In fact, $P(X = x) = 0$ for any continuous random variable $X$ and value $x$.
+
+- $\mathcal{S}_X$: This symbol is used to denote the possible values of the random variable $X$. 
+
+- [Cumulative Distribution Function](#def-random-variables-and-probability-distributions-cumulative-distribution-function): The cumulative distribution function of a random variable $X$ is given by $F(x) = P(X\leq x)$. 
+    - If $X$ is discrete, $F(X) = \sum_{t\leq x}f(t)$. 
+    - If $X$ is continuous $F(x) = \int_{-\infty}^xf(t)\, dt$. 
+    
+    Make sure you have set the pmf/pdf $f(x)$ to be $0$ for values of $x$ outside the set of possible values. 
+
+- [The Gamma Function](#def-random-variables-and-probability-distributions-the-gamma-function): The gamma function, $\Gamma (\alpha)$, is a function of $\alpha$ defined by $\Gamma (\alpha) = \int_0^\infty x^{\alpha - 1}e^{-x}\, dx$. It is not expected of you to be able to manually solve the integral. The R function `gamma()` will be used if need be, but be sure not to mistakenly use the other R function `Gamma()`.
+
+- Discrete Random Variable: A random variable is said to be discrete if the the number of possible values it can take is finite or countably infinite.  
+
+- Continuous Random Variable: A random variable is said to be continuous if the possible values it can take lie in an interval or the entire real number line $(-\infty, \infty)$. For examples, consider weight, time, or measurement error.
+
+#### Discrete Distributions
+
+- [Binomial(n,p)](#def-random-variables-and-probability-distributions-binomial-n-p): Let $X$ The result of running $n$ many Bernoulli trials of success probability $p$ and adding up the number of successes. We write $X\sim\operatorname{Bin}(n,p)$ and $f(x) = {n \choose x}p^x(1-p)^{n-x}, \qquad x = 0, 1, \ldots, n$
+
+- [Bernoulli(p)](#def-random-variables-and-probability-distributions-bernoulli-p): The result of a Bernoulli trial (or random experiment) where a "success" occurs with probability $p$ and "failure" occurs with probability $1-p$. A Bernoulli random variable $X$ takes the value $1$ for "success" and $0$ for "failure". We write $X\sim \operatorname{Bern}(p)$ and $f(x) = p^x(1-p)^{1-x}, \qquad x = 0, 1$
+
+- [Hypergeometric(n, M, N)](#def-random-variables-and-probability-distributions-hypergeometric-n-m-n): Let $X$ be the number of success when taking $n$ draws without replacement from a population of size $N$ where there are $M$ many success items and $(N - M)$ many failure items. We write $X\sim\operatorname{Hypergeometric}(n,M,N)$ and $f(x) = \frac{\binom{M}{x}\binom{N-M}{n-x}}{\binom{N}{n}},\qquad \max(0, n - N + M) \leq x \leq \min(n,M)$
+
+- [Negative Binomial(r,p)](#def-random-variables-and-probability-distributions-negative-binomial-r-p): Let $X$ be the number of total number of independent Bernoulli Trials (of probability $p$) until we've achieved $r$ successes. We write $X \sim \operatorname{NegBin}(r,p)$ and $f(x) = \binom{x - 1}{r - 1}p^r(1-p)^{x-r}, \qquad x = r, r + 1, r + 2, \ldots$
+
+- [Geometric(p)](#def-random-variables-and-probability-distributions-geometric-p): Let $X$ be the total number of failures when repeating independent Bernoulli trials (of probability $p$) until we get the first success. We write $X\sim\operatorname{Geom(p)}$ and $f(x) = (1-p)^xp, \qquad x = 0, 1, 2, 3, \ldots$.
+
+- [Poisson($\lambda$)](#def-random-variables-and-probability-distributions-poisson): Let $X$ be the number of events that occur in a fixed interval of time (or space). Taking $\lambda$ to be the average rate of success, then we write $X\sim\operatorname{Poisson}(\lambda)$ and $f(x) = \frac{e^{-\lambda}\lambda^x}{x!}, \qquad x = 0, 1, 2, 3, \ldots$
+
+#### Continuous Distributions
+
+- [Uniform(a,b)](#def-random-variables-and-probability-distributions-uniform-a-b): $X$ can take any value between $a$ and $b$, all of which are equally likely. We write $X\sim\operatorname{Unif}(a,b)$ and $f(x) = \frac{1}{b-a}, \qquad a\leq x\leq b$
+
+- [Exponential($\lambda$)](#def-random-variables-and-probability-distributions-exponential): $X$ is the wait time to an event where $\lambda$ is the rate of occurrence of events. We write $X\sim\operatorname{Exp}(\lambda)$ and $f(x) = \lambda e^{-\lambda x}, \qquad x > 0$
+
+- [Gamma($\alpha, \lambda$)](#def-random-variables-and-probability-distributions-gamma): A flexible distribution for any positive random variable. We write $X\sim\operatorname{Gamma}(\alpha, \lambda)$ and $f(x) = \frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha - 1}e^{-\lambda x}, \qquad x > 0$ where $\Gamma(\alpha) = \int_0^\infty x^{\alpha-1}e^{-x}dx$ is the gamma function
+
+- Normal($\mu, \sigma^2$): A foundational distribution with many practical applications and nice theoretical properties. With mean $\mu$ and variance $\sigma^2$, we write $X\sim N(\mu, \sigma^2)$ and $f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x - \mu)^2}{2\sigma^2}}, \qquad -\infty < x < \infty$
+
+- Chi-Square($\nu$) or $\chi^2_\nu$: Useful for hypothesis testing and variance estimation, it is equivalent to the sum of the squares of $\nu$ many independent standard normal random variables ($Z_1^2 + \cdots + Z_\nu^2$, for $Z_i\sim N(0,1)$). We write $X \sim \chi^2_\nu$ and $f(x) = \frac{1}{2^{\nu/2}\Gamma(\nu/2)}x^{(\nu/2)-1}e^{-x/2}, \qquad x > 0$ where $\nu > 0$ is the degrees of freedom and $\Gamma(\cdot)$ is the gamma function 
+
+- $t_{\nu}$: This distribution is useful for inference and hypothesis testing. This distribution is defined first by taking $Z\sim N(0, 1)$ and $V\sim \chi^2_\nu$ where $Z$ and $V$ are independent. Then $T = \frac{Z}{\sqrt{V/\nu}}$ has a $t$-distribution of $\nu$ degrees of freedom. We write $T \sim t_\nu$. We use this distribution when estimating the mean of a normally distributed population when the sample size is small and population variance is unknown. The $t$-distribution looks like a normal distribution but has heavier tails. This means that we account for additional uncertainty due to small sample sizes. However, as the sample size increases (i.e. the degrees of freedom), the $t$-distribution approaches the normal distribution. The pdf is given by $f(t) = \frac{\Gamma(\frac{\nu + 1}{2})}{\sqrt{\pi\nu}\,\Gamma(\frac{\nu}{2})}\left (1+ \frac{t^2}{\nu}\right)^{-\frac{\nu + 1}{2}}$. This pdf is particularly cumbersome and not necessary to know. I leave it here for the sake of completion. 
+
+### R Commands
+
+Each of the distributions listed in this section (continuous and discrete) come with four standard functions that all follow a standard naming pattern. For example, the *normal distribution* has the functions `rnorm()`, `dnorm()`, `qnorm()`, and `pnorm()`, whereas the *geometric distribution* has the `rgeom()`, `dgeom()`, `qgeom()`, and `pgeom()` functions. 
+
+
+Rather than exhausting all possible combinations of distributions and related functions, I will explain the 4 main functions. Keep in mind that each of the distributions have parameters that need specification. For example, the $\operatorname{Gamma}(\alpha, \lambda)$ distribution have shape and rate parameters $\alpha$ and $\lambda$ that must be specified correctly when using the `rgamma()`, `dgamma()`, `qgamma()`, and `pgamma()` functions. 
+
+
+
+- `r` = Random Number Generation
+
+    Syntax: `rbinom(n, size, prob)`, `runif(n, min, max)`, etc...
+
+    This function allows you to generate independent random samples from the specified distribution. These are available for all the distribtions we have introduced. <!--(Except for $\operatorname{Berp}(p)$, which is equivalent to a $\operatorname{Binomial}(1, p)$)--> Each distribution have their own parameters that need to be specified.
+    
+    <!--
+
+    `rbinom(n, size, prob)`: Draw `n` independent samples from a '$\operatorname{Binomial}(\text{size}, \text{prob})$' distribution.  
+    
+    `rgeom(n, prob)`: Draw `n` independent samples from a '$\operatorname{Geometric(\text{prob})' distribution.
+    
+    
+    `rnbinom(n, size, prob)`: Draw `n` independent samples from a '$\operatorname{Negative Binomial}(\text{size}, \text{prob})$' distribution. 
+    
+    -->
+    
+
+
+
+
+```{r, fig.align='center', out.width="70%", include=FALSE}
+set.seed(123)
+
+x_normal <- rnorm(500, mean = 0, sd = 1) # Draw 500 samples from the standard normal distribution
+
+head(x_normal) # Look at the first 6 draws
+
+hist(x_normal, main = "Standard Normal Random Variable")
+```
+
+```{r, fig.align='center', out.width="70%", include=FALSE}
+
+set.seed(456)
+
+x_gamma = rgamma(n = 1000, shape = 5, rate = 0.1) # Draw 1000 samples from the Gamma(5, 0.1) distribution
+
+head(x_gamma) # Look at the first 6 draws
+
+hist(x_gamma, main = "Gamma(5, 0.1) Random Variable")
+```
+
+- `d` - Probability Density (Or Probability Mass) Function
+
+    Syntax: `dgamma(x, shape, rate)`, `dpois(x, lambda)`, etc...
+
+    This function computes the value(s) of the probability density function (PDF) or the probability mass function (PMF) at the given vector input `x`. These are available for all the distribtions we have introduced. Each distribution have their own parameters that need to be specified. 
+
+
+```{r, fig.align='center', out.width="70%", include=FALSE}
+x_axis = seq(0, 5, length = 500)
+
+y_axis = dexp(x_axis, rate = 1) # Denisty of a Exponential(1) Distribution
+
+plot(x_axis, y_axis, type = "l", ylab = "Probability Density", xlab = "",
+     main = "Exponential(1)")
+```
+
+```{r, fig.align='center', out.width="70%", include=FALSE}
+x_axis = 0:15
+
+y_axis = dpois(x_axis, lambda = 4)
+
+plot(x_axis, y_axis, type = "p", pch = 19, ylab = "Probability Mass", xlab = "", 
+     main = "Poisson(4) Distribution")
+```
+
+
+
+- `p` = Cumulative Distribution Function (CDF)
+
+    Syntax: `pnorm(q, mu, sd)`, `pgeom(q, prob)`, etc...
+    
+    Given a vector of quantiles $q$, this function computes the cumulative distribution evaluated at $q$. That is, it returns $P(X \leq q)$
+
+```{r, include=FALSE, include=FALSE}
+pnorm(1.96, mean = 0, sd = 1) # P(Z <= 1.96) for Z ~ N(0, 1)
+
+pgeom(20, prob = 0.1) - pgeom(10, prob = 0.1) # P(10 <= X <= 20) for X ~ Geometric(0.1)
+```
+
+<!--We can also plot the CDF as well if we wish, but they mostly follow an "S" shape and are not too informative (visually).-->
+
+```{r, fig.align='center', out.width="70%", include=FALSE}
+x_axis = seq(-4, 4, length = 100)
+
+cdf_vals = pnorm(x_axis, mean = 0, sd = 1)
+
+plot(x_axis, cdf_vals, type = "l", ylim = c(0,1), xlab = "", ylab = "Cumulative Density",
+     main = "CDF of a Standard Normal")
+```
+
+
+
+- `q` = Quantile Function (Inverse CDF)
+
+
+    Syntax: `qnorm(p, mu, sd)`, `q(p, size, prob)`, etc...
+    
+    
+    Given a vector of probabilities $p$, this function returns the value(s) $x$ such that $P(X \leq x) = p$. It is the inverse of the cumulative distribution function. 
+
+```{r, include=FALSE}
+p = pnorm(1.96, mean = 0, sd = 1) # calculate p = P(Z <= 1.96) for Z ~ N(0,1)
+
+qnorm(p, mean = 0, sd = 1) # This will return 1.96
+
+
+qnbinom(.90, size = 10, prob = .25) # 90-th percetile of a NegBinom(10, 0.25) distribution
+```
+
+---
+
+## Expected Value
+
+### Definitions
+
+    
+- [Expected Value](#def-expected-value-expected-value): This is always the 'sum' of the 'values' times the 'weights'; where 'sum' broadly speaking means either summation or integration. For a discrete random variable $X$ with pmf $f(x)$ and set of possible values $\mathcal{S}_X$: $E[X] = \mu_X = \sum_{x \in \mathcal{S}_X} x \cdot f(x)$ For a continuous random variable $X$ whose pdf $f(x)$ is defined over $(-\infty, \infty)$ (with $f(x) = 0$ wherever necessary): $E[X] = \mu_X = \int_{-\infty}^{\infty} x \cdot f(x)\, dx$ <!--Here are some examples:
+
+    -   If you flip a coin where heads pays \$2 and tails pays \$0, then $E[X] = 2 \cdot 0.5 + 0 \cdot 0.5 = 1$
+    
+    -   If $X \sim \operatorname{Exp}(5)$, then $E[X] = \int_{-\infty}^{\infty} x \cdot f(x)\, dx = \int_{-\infty}^0 x \cdot 0\, dx + \int_0^\infty x \cdot 5e^{-5x}\, dx = 0 + \frac{1}{5} = \frac{1}{5-->
+
+- [Variance](#def-expected-value-variance): Taking $h(X) = (X - \mu_X)^2$ in the *general expected value*, $\operatorname{Var}[X] = \sigma^2_X = E[(X - \mu_x)^2] = \sum_{x \in \mathcal{S}_X} (x - \mu_X)^2 \cdot f_X(x)\qquad \text{(Discrete)}$ $\operatorname{Var}[X] = \sigma^2_X = E[(X - \mu_x)^2] = \int_{-\infty}^\infty (x - \mu_X)^2 \cdot f_X(x)\qquad \text{(Continuous)}$ 
+
+    However, for both discrete and continuous random variables, it is often easier to calculate $\operatorname{Var}[X] = E[X^2] - E[X]^2$ <!--Here are some examples. 
+
+    -   If you flip a coin where heads pays \$2 and tails pays \$0, then $\operatorname{Var}(X) = E[X^2] - E[X]^2$. We've already calculated $E[X] = 1$. So $E[X]^2 = 1$. Moreover, $E[X^2] = 2^2 \cdot 0.5 + 0^2 \cdot 0.5 = 2$. Therefore $\operatorname{Var}(X) = E[X^2] - E[X]^2 = 2 - 1 = 1$
+    
+    -   If $X\sim \operatorname{Exp}(5)$, then $\operatorname{Var}(X) = E[X^2] - E[X]^2$. We've already calculated $E[X] = \frac{1}{5. So $E[X]^2 = \frac{1}{25. Moreover, $E[X^2] = \int_0^\infty x^2 \cdot 5e^{-5x}\, dx$. Integration by parts gives $E[X^2] = \frac{2}{25. Therefore $\operatorname{Var}(X) = E[X^2] - E[X]^2 = \frac{2}{25} - \frac{1}{25} = \frac{1}{25-->
+
+- [Standard Deviation](#def-expected-value-standard-deviation): We take the standard deviation to be the (positive) square root of the variance. That is $\sigma_X = +\sqrt{\sigma^2_X}$
+
+- [The $k^{th}$ moment](#def-expected-value-the-moment): The $k^{th}$ moment of a random variable $X$ is $E[X^k]$.  It can be found directly or via the MFG: $\frac{d^k}{dt^k}M_X(t)\bigg\vert_{t = 0}$ <!--Here we use the moment generating function $M_X(t)$, take $k$-many derivatives with respect to $t$ and then plug in $t = 0$. Using this, we can easily calculate the variance of a random variable as $\operatorname{Var}(X) = M_X^{\prime\prime}(0) - \left( M_X^{\prime}(0) \right)^2$. Here are some examples of its use:
+
+
+    -   If you flip a coin where heads pays \$2 and tails pays \$0, then $M_X(t) = \frac{e^{2t} + 1}{2. Therefore $M_X^\prime (t) = e^{2t, hence $E[X^1] = M_X^\prime (0) = e^{2\cdot 0} = 1$. But also $M_X^{\prime\prime}(t) = 2e^{2t, hence $E[X^2] = M_X^{\prime\prime}(0) = 2e^{2\cdot 0} = 2$. Therefore $\operatorname{Var}(X) = 2 - 1^2 = 1$ We can confirm that these calculations match the calculations in the *Variance* example above.
+    
+    -   If $X\sim \operatorname{Exp}(5)$, then $M_X(t) = \frac{5}{5 - t for $t < 5$. Taking derivatives with respect to $t$ gives $M_X^\prime (t) = \frac{5}{(5 - t)^2 and $M_X^{\prime\prime} (t) = \frac{10}{(5 - t)^3. Plugging in $t = 0$ gives $E[X] = \frac{5}{25} = \frac{1}{5 and $E[X^2] = \frac{10}{125} = \frac{2}{25. Thefore $\operatorname{Var}(X) = \frac{2}{25} - \left(\frac{1}{5}\right)^2$. We can confirm that these calculations match our calculations in the *Variance* example above.-->
+
+- [Moment Generating Function (MGF)](#def-expected-value-moment-generating-function-mgf): Taking $h(X) = e^{tX}$ in the *general expected value*, the moment generating function of a random variable $X$ is given by $M_X(t) = E[e^{tX}]$ 
+
+<!--
+    -   If you flip a coin where heads pays \$2 and tails pays \$0, then $M_X(t) = E[e^{tX}] = e^{t\cdot 2} \cdot 0.5 + e^{t\cdot 0}\cdot 0.5 = 0.5 \cdot \left ( e^{2t} + 1) \right ) = \frac{e^{2t} + 1}{2
+    
+    -   If $X\sim \operatorname{Exp}(5)$, then $M_X(t) = E[e^{tX}] = \int_0^\infty e^{tx} \cdot 5 e^{-5x}\,dx = 5\int_0^\infty e^{-(5-t)x}\,dx = \frac{5}{5-t for $t < 5$. -->
+
+- General Expected Value: For a discrete random variable $X$ with pmf $f(x)$ and set of possible values $\mathcal{S}_X$ $E[h(X)] = \sum_{x \in \mathcal{S}_X} h(x) \cdot f(x)$ For a continuous random variable $X$ whose pdf $f(x)$ is defined over $(-\infty, \infty)$ (with $f(x) = 0$ wherever necessary) $E[h(X)] = \int_{-\infty}^{\infty} h(x) \cdot f(x)\, dx$ <!--Here are some examples:
+
+    -   If you flip a coin where heads pays \$2 and tails pays \$0, then $E[\sin(X)] = \sin(2) \cdot 0.5 + \sin(0) \cdot 0.5 = 0.9092974 \cdot 0.5 + 0 \cdot 0.5 = 0.4546487$
+    
+    -   If $X \sim \operatorname{Exp}(5)$, then $E[\sin(X)] = \int_{-\infty}^{\infty} \sin(x) \cdot f(x)\, dx = \int_{-\infty}^0 \sin(x) \cdot 0\, dx + \int_0^\infty \sin(x) \cdot 5e^{-5x}\, dx = 0 + \frac{5}{26} = \frac{5}{26-->
+
+-  Linear Rule of Expected Value: Taking $h(X) = aX + b$ for constants $a$ and $b$, we have $E[aX + b] = aE[X] + b$ <!--Here are some examples:
+
+    -   If you flip a coin where heads pays \$2 and tails pays \$0, then $E[4X + 9] = 4 E[X] + 9 = 4\cdot 1 + 9 = 13$
+    
+    -   If $X\sim \operatorname{Exp}(5)$ then $E[4\sin(X) + 9] = 4 E[\sin(X)] + 9 = 4\cdot \frac{5}{26} + 9 = 9.769231$-->
+
+- Linear Rule of Variance: For a linear function $h(X) = aX + b$ for constants $a$ and $b$, we have $\operatorname{Var}(aX + b) = a^2\operatorname{Var}(X)$ <!--Here are some examples. 
+
+    -   If you flip a coin where heads pays \$2 and tails pays \$0, then $\operatorname{Var}(4X + 9) = 4^2\cdot \operatorname{Var}(X) = 16 \cdot 1 = 16$
+    
+    -   If $X\sim \operatorname{Exp}(5)$, then $\operatorname{Var}(4X + 9) = 4^2\cdot \operatorname{Var}(X) = 16 \cdot \frac{1}{25} = \frac{16}{25-->
+
+#### Discrete Distributions
+
+- [Binomial($n, p$)](#def-expected-value-binomial):  
+
+    - PMF:  $f(x) = \binom{n}{x} p^x (1 - p)^{n - x}$
+    - Support: $X \in \{0, 1, \dots, n\}$
+    - Mean: $E[X] = np$  
+    - Variance: $\text{Var}(X) = np(1 - p)$  
+    - MGF: $M_X(t) = (1 - p + p e^t)^n$
+
+- [Bernoulli($p$)](#def-expected-value-bernoulli): 
+
+    - PMF: $f(x) = p^x (1 - p)^{1 - x}$
+    - Support: $X \in \{0, 1\}$
+    - Mean:   $E[X] = p$
+    - Variance:  $\text{Var}(X) = p(1 - p)$
+    - MGF:  $M_X(t) = (1 - p) + p e^t$
+
+- [Hypergeometric($n, N, M$)](#def-expected-value-hypergeometric):  
+    - PMF: $f_X(x) = \frac{\binom{M}{x} \binom{N - M}{n - x}}{\binom{N}{n}}$ 
+    - Support: $X \in \{\max(0, n - (N - M)), \dots, \min(n, M)\}$
+    - Mean: $E[X] = n \cdot \frac{M}{N}$
+    - Variance: $\text{Var}(X) = n \frac{M}{N} \frac{N - n}{N - 1} \left(1 - \frac{M}{N}\right)$
+    - MGF: No closed form expression
+
+- [Negative Binomial($r, p$)](#def-expected-value-negative-binomial):  
+    - PMF: $f(x) = \binom{x - 1}{r - 1} p^r (1 - p)^{x - r}$
+    - Support: $X \in \{r, r+1, r+2, \dots\}$
+    - Mean: $E[X] = \frac{r}{p}$
+    - Variance: $\text{Var}(X) = \frac{r(1 - p)}{p^2}$
+    - MGF: $M_X(t) = \left( \frac{p e^t}{1 - (1 - p)e^t} \right)^r,\quad t < -\ln(1 - p)$
+
+- [Poisson($\lambda$)](#def-expected-value-poisson):  
+  - Support: $X \in \{0, 1, 2, \dots\}$
+  - PMF: $f(x) = \frac{\lambda^x e^{-\lambda}}{x!}$
+  - Mean: $E[X] = \lambda$
+  - Variance: $\text{Var}(X) = \lambda$
+  - MGF: $M_X(t) = \exp(\lambda(e^t - 1))$
+
+- Geometric($p$)$:  
+    - PMF: $f(x) = (1 - p)^{x} p$
+    - Support: $X \in \{0, 1, 2, 3, \dots\}$
+    - Mean: $E[X] = \frac{1-p}{p}$
+    - Variance: $\text{Var}(X) = \frac{1 - p}{p^2}$
+    - MGF: $M_X(t) = \frac{p e^t}{1 - (1 - p)e^t}, \quad t < -\ln(1 - p)$
+
+#### Continuous Distributions
+
+
+- [Uniform($a, b$)](#def-expected-value-uniform):  
+  - PDF: $f(x) = \frac{1}{b - a}$
+  - Support: $X \in [a, b]$
+  - Mean: $E[X] = \frac{a + b}{2}$
+  - Variance: $\text{Var}(X) = \frac{(b - a)^2}{12}$
+  - MGF: $M_X(t) = \frac{e^{tb} - e^{ta}}{t(b - a)},\quad t \ne 0$ and $M_x(0) = 1$
+
+- [Exponential($\lambda$)](#def-expected-value-exponential):  
+  - PDF: $f(x) = \lambda e^{-\lambda x}$
+  - Support: $X \in [0, \infty)$
+  - Mean: $E[X] = \frac{1}{\lambda}$
+  - Variance: $\text{Var}(X) = \frac{1}{\lambda^2}$
+  - MGF: $M_X(t) = \frac{\lambda}{\lambda - t},\quad t < \lambda$
+
+- [Gamma($\alpha, \lambda$)](#def-expected-value-gamma):  
+  - PDF: $f(x) = \frac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha - 1} e^{-\lambda x}$
+  - Support: $X \in [0, \infty)$
+  - Mean: $E[X] = \frac{\alpha}{\lambda}$
+  - Variance: $\text{Var}(X) = \frac{\alpha}{\lambda^2}$ 
+  - MGF: $M_X(t) = \left( \frac{\lambda}{\lambda - t} \right)^\alpha,\quad t < \lambda$
+
+- Normal($\mu, \sigma^2$):  
+  - PDF: $f(x) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)$
+  - Support: $X \in (-\infty, \infty)$
+  - Mean: $E[X] = \mu$
+  - Variance: $\text{Var}(X) = \sigma^2$
+  - MGF: $M_X(t) = \exp\left(\mu t + \frac{1}{2} \sigma^2 t^2\right)$
+
+- $\chi^2_\nu$:  
+  - PDF: $f(x) = \frac{1}{2^{\nu/2} \Gamma(\nu/2)} x^{\nu/2 - 1} e^{-x/2}$  
+  - Support: $X \in [0, \infty)$
+  - Mean: $E[X] = \nu$
+  - Variance: $\text{Var}(X) = 2\nu$
+  - MGF: $M_X(t) = (1 - 2t)^{-\nu/2},\quad t < \frac{1}{2}$
+
+- $t_\nu$:
+  - PDF: $f(t) = \frac{\Gamma\left ( \frac{\nu + 1}{2}\right)}{\sqrt{\pi\nu}\,\Gamma \left( \frac{\nu}{2}\right)} \left( 1 + \frac{t^2}{\nu}  \right)^{-\frac{\nu + 1}{2}}$
+  - Support: $T \in (-\infty, \infty)$
+  - Mean: $E[T] = 0$ if $\nu > 1$ (Otherwise undefined)
+  - Variance: $\text{Var}(T) = \frac{\nu}{\nu - 2}$ if $\nu > 2$ (Otherwise undefined)
+  - MGF: No closed form expression
+
+---
+
+## The Normal Distribution
+
+### Definitions
+
+- [Normal Distribution](#def-the-normal-distribution-normal-distribution): A continuous random variable $X$ has a Normal distribution with mean $\mu$ and a variance $\sigma^2 > 0$, written $X\sim N(\mu, \sigma^2)$, has a pdf: $f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{\left( - \frac{(x - \mu)^2}{2\sigma^2} \right)}, \qquad -\infty < x < \infty$
+
+- [Probabilities of N(\mu, \sigma^2)](#def-the-normal-distribution-probabilities-of-n-mu-sigma-2): For $X \sim N(\mu, \sigma^2)$, the probability of $X$ being less than some particular value $x$ is given by $P(X \leq x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(t - \mu)^2}{2\sigma^2}}\, dt$ This integral cannot be solved by hand. We will instead use the R function `pnorm()` to calculate $P(X\leq x)$ <!-- Use the associated z-score with the `pnorm()` function to calculate $P(X\leq x)$ for any $X\sim N(\mu, \sigma^2)$ random variable. This works as expected since all we're doing is standardizing with $Z = \frac{X - \mu}{\sigma (so that $Z\sim N(0,1)$) and setting $z = \frac{x - \mu}{\sigma. This gives $P(X \leq x) = P(\frac{X - \mu}{\sigma} \leq \frac{x - \mu}{\sigma}) = P(Z \leq z) =$ `pnorm(z)`. Here are some examples:
+
+    -   The weight of a wool sweater (in grams) made by 'Company A' follows a $N(1360, 2.07^2)$ distribution. You bought a sweater from this company that weighs 1355.915 grams. The probability of recieving a wool sweater that weighs 1355.915 grams or less is $P(X\leq 1355.915)$ for $X \sim N(1360, 2.07^2)$. Stanadarizing $X$ inside this probability calculation yields $P(X\leq 1355.915) = P(\frac{X - 1360}{2.07} \leq \frac{1355.915 - 1360}{2.07}) = P(Z \leq -1.97343) =$ `pnorm(-1.97343) = 0.0242233`, since $Z = \frac{X - 1360}{2.07} \sim N(0,1)$ whenever $X \sim N(1360, 2.07^2)$ 
+    
+    - Following the previous example, the probability of recieving a wool sweater that weighs more than 1355.915 grams is $P(X > 1355.915) = 1 - P(X\leq 1355.915) = 1 - 0.0242233 = 0.9757767$
+    
+    - Following the previous example, the probability of recieving a wool sweater that weighs between 1355 grams and 1362 grams is $P(1355 \leq X \leq 1362) = P(\frac{1355 - 1360}{2.07} \leq \frac{X - 1360}{2.07} \leq \frac{1362 - 1360}{2.07}) = P(-2.415459 \leq Z \leq 0.9661836)$. This last probability can be split into $P(Z \leq 0.9661836) - P(Z\leq -2.415459) =$ `pnorm(0.9661836) - pnorm(-2.415459) = 0.8251661`-->
+
+- [Standard Normal Distribution](#def-the-normal-distribution-standard-normal-distribution): A special case of the normal distribution where the mean is 0 and variance is 1. Noted as $Z \sim N(0,1)$. Its pdf is: $f(z) = \frac{1}{\sqrt{2\pi}} e^{-\frac{z^2}{2}}$
+
+- [Standardization](#def-the-normal-distribution-standardization): For any normal random variable $X \sim N(\mu, \sigma^2)$, the *new* random variable $Z = \frac{X - \mu}{\sigma}$ follows a standard normal distribution $N(0,1)$. Likewise, if $Z\sim N(0,1)$, then the *new* random variable $X = \sigma Z +  \mu$ gives $X \sim N(\mu, \sigma^2)$. <!--Here are some examples:
+
+    -   If $X\sim N(-3, 6.55^2)$, then setting $Z = \frac{X + 3}{6.55 gives $Z\sim N(0,1)$.
+    -   Similarly, if $Z\sim N(0,1)$, then setting $X = 15.2\cdot Z + 44$ gives $X \sim N(44, 15.2^2)$ -->
+
+- [Z-score](#def-the-normal-distribution-z-score): A number representing how many standard deviations a value is away from the mean of its distribution. That is, if $X\sim N(\mu, \sigma^2)$ and we observe a value $X = x$, then the Z-score of this observation $x$ is: $z = \frac{x - \mu}{\sigma}$ <!--Here is an example:
+
+    -   The weight of a wool sweater (in grams) made by 'Company A' follows a $N(1360, 2.07^2)$ distribution. You bought a sweater from this company that weighs 1355.915 grams. The associated z-score of your purchased sweater is $z = \frac{1355.915 - 1360}{2.07} = -1.97343$-->
+
+- [Empirical Rule (68-95-99.7 Rule)](#def-the-normal-distribution-empirical-rule-68-95-99-7-rule)}:$ This is a rule of thumb that approximates the percentage of normally distributed data to fall within certain intervals of the mean. Specifically, for $X\sim N(\mu, \sigma^2)$: 
+
+    -   $P(\mu - \sigma \leq X \leq \mu + \sigma) \approx 0.68$
+    
+    -   $P(\mu - 2\sigma \leq X \leq \mu + 2\sigma) \approx 0.95$
+    
+    -   $P(\mu - 3\sigma \leq X \leq \mu + 3\sigma) \approx 0.997$
+
+<!--    
+    Here are some concrete examples of using this rule:
+
+    -   The height of women (inches) in the United States follows a $N(63.5, 2.5^2)$ distribution. This means that
+        -   68\% of US women are between 61 and 66 inches in height (5'1" - 5'6")
+        -   95\% of US women are between 58.5 and 68.5 inches in height (4'10.5" - 5'8.5")
+        -   99.7\% of US women are between 56 and 71 inches in height (4'8" - 5'11")
+        
+    -   The height of men (inches) in the United States follows a $N(69, 3^2)$ distribution. This means that
+        -   68\% of US men are between 66 and 72 inches in height (5'6" - 6'0")
+        -   95\% of US men are between 63 and 75 inches in height (5'3" - 6'3")
+        -   99.7\% of US men are between 60 and 78 inches in height (5'0" - 5'6")
+-->
+
+- [Q-Q Plot (Quantile-Quantile Plot)](#def-the-normal-distribution-q-q-plot-quantile-quantile-plot): A graphical tool for checking if data follows a normal distribution. It plots the quantiles of your data against the quantiles of the standard normal distribution. If the points lie close to a straight line, the data are approximately normal. Deviations indicate some non-normality (e.g., skewness, heavy tails). This plot can be made in R with the function `qqnorm()`, and a guiding line can be added with the function `qqline()`. <!--Examples are given in the *R Commands* section.-->
+
+### R Commands
+
+- `pnorm()` 
+
+    Syntax: `pnorm(q, mean, sd)`
+    
+    For a normally distributed random variable $X \sim N(\mu, \sigma^2)$, the function `pnorm(q, mean = mu, sd = sigma)` will calculate $P(X\leq q)$. This is the CDF. <!--Some examples are given below:-->
+
+```{r, include=FALSE}
+set.seed(123)
+
+# Define mu and sigma
+mu = 75
+sigma_sqr = 10^2
+
+# Draw 5000 samples from the N(mu, sigma^2) distribution
+n = 5000
+X_samples = rnorm(n, mean = mu, sd = sqrt(sigma_sqr)) # Remember that R takes standard deviation (not variance!)
+
+# Let's look at our samples (adding more breaks adds additional histogram bars)
+hist(X_samples, main = "N(75, 10^2) Sample", xlab = "", breaks = 25) 
+```
+
+<!--The majority of the samples are below 95. We can calculate exactly how many of our samples are below 95 like this:-->
+
+```{r, include=FALSE}
+sum(X_samples < 95)
+mean(X_samples < 95)
+```
+
+<!--
+We see that from this particular sample, 4889 out of 5000 samples (or 97.78%) are less than 95. We can verify this result by calculating the probability that any given draw from a $N(75, 10^2)$ distribution is less than 95, i.e. $P(X \leq 95)$ for $X\sim N(75, 10^2)$. We should expect $P(X\leq 95)\approx .9778$ We can calculate this probability with the `pnorm()` function. This function has 3 arguments, q (quantile), mean (the specified $\mu$), and sd (the standard deviation $\sigma$).-->
+
+```{r, include=FALSE}
+pnorm(q = 95, mean = mu, sd = sqrt(sigma_sqr))
+```
+
+<!--Alternatively, we can calculate the associated z-score of 95 and then use the reference standard normal distribution. -->
+
+```{r, include = FALSE}
+z_score = (95 - mu)/sqrt(sigma_sqr)
+
+pnorm(q = z_score) # The default values of mean and sd are 0 and 1 respectively. 
+```
+
+
+- `qnorm()`
+
+    Syntax: `qnorm(p, mean, sd)`
+
+     For a normally distributed random variable $X \sim N(\mu, \sigma^2)$, the function `qnorm(p, mean = mu, sd = sigma)` will take the input $p$ and return the value $q$ such that $P(X\leq q) = p$. This is the inverse of the CDF. 
+     
+<!--     
+Suppose instead that we wanted to know what value $x_{p will be such that 80% of our data will be below $x_{p. That is, what value $x_{p is such that $P(X\leq x) = .8$. This value can be calculated with the `qnorm()` function. This function takes 3 arguments, p (probability), mean (the specified $\mu$), and sd (the standard deviation $\sigma$). -->
+
+```{r, include=FALSE}
+qnorm(p = 0.8, mean = mu, sd = sqrt(sigma_sqr))
+```
+<!--Alternatively, we can calculate the percentile of a standard normal ($z_{p), and adjust accordingly with $x_{0.8} = \mu + \sigma\cdot z_p$-->
+
+```{r, include=FALSE}
+mu + sqrt(sigma_sqr) * qnorm(p = 0.8) # The default values of mean and sd are 0 and 1 respectively. 
+```
+
+<!-- Either way we calculate it, we get $x_p$ = 83.41621, meaning that $P(X \leq 83.41621) = 0.8$ for $X\sim N(75, 10^2)$. We can verify this with our sample data like so: -->
+
+```{r, include=FALSE}
+sum(X_samples < 83.41621)
+mean(X_samples < 83.41621)
+```
+
+<!-- We find that 4012 out of 5000 samples (or 80.24%) of our data is indeed less than 83.41621. -->
+
+- `qqnorm()`
+
+    Syntax: `qqnorm(y, main = "title")` 
+    
+    This function returns a Q-Q Plot (Quantile-Quantile Plot). This is a graphical tool for checking if the supplied data vector `y` follows a normal distribution. If the data points lie close to a straight line, then the data are approximately normal. An optional title can be given to this plot with the argument `main`
+    
+    <!--A common misconception is that the data points needs to follow the line $y = x$, which is not true. Any line $y = ax + b$ is satisfactory, only in such cases, the mean $\mu$ and variance $\sigma^2$ cannot be visually inferred. -->
+
+
+- `qqline()`
+
+    Syntax: `qqline(y, col = "color", lwd = 2)`
+    
+    After calling the `qqnorm()` function, the `qqline()` function will add a visual guiding line that will help determine if the data follow a straight line. If the points lie close to a straight line, the data are approximately normal. Deviations indicate some non-normality (e.g., skewness, heavy tails). We can change the color and width of the line with the optional arguments `col` and `lwd`. 
+
+
+<!-- Suppose you are GIVEN data, and you wish to verify that the data is normally distributed (or possibly refute). For the purpose of this demonstration, I will not show you how I generated the `given_data`.
+
+As described in the definitions above, the `qqnorm()` and `qqline()` functions are graphical tool for checking if data follow a normal distribution. It plots the quantiles of your data against the quantiles of the standard normal distribution. If the points lie close to a straight line, the data are approximately normal. Deviations indicate departures from normality (e.g., skewness, heavy tails). -->
+
+```{r, echo = FALSE, include=FALSE}
+set.seed(123)
+given_data = rexp(5000, 3)
+given_data = sign(rnorm(5000)) * given_data
+```
+
+```{r, fig.align='center', out.width="70%", include=FALSE}
+hist(given_data, main = "Histogram of Given Data", xlab = "")
+```
+<!--
+From only the histogram, it seems that our data is symmetrically distributed around 0 with most of it being within 3 standard deviations of the mean. This provides an argument for our data `given_data` being standard-normally distributed $N(0,1)$. But we can do a more thorough visual analysis with the qqnorm() function. -->
+
+```{r, fig.align='center', out.width="70%", include=FALSE}
+qqnorm(given_data, main = "Q-Q Plot: Given Data")
+```
+
+<!--
+From this alone, we can kinda see the points following a straight line. After all, Q-Q plots are hardly ever perfect. However, our eyes can be deceiving, so let's add a `qqline()` to help guide our eyes. -->
+
+```{r, fig.align='center', out.width="70%", include=FALSE}
+qqnorm(given_data, main = "Q-Q Plot: Given Data")
+qqline(given_data, col = "blue", lwd = 2)
+```
+
+<!--
+It is obvious nor that our data is not normally distributed at all. If it were, our data would follow the line much closer to the plot below. In reality, our `given_data` is actually $\text{Laplace}(0, 1/3)$ distributed, which is like an $\text{Exp}(3)$ distribution but values can be positive or negative, but we would never know that in real applications. 
+
+-->
+
+```{r, fig.align='center', out.width="70%", include=FALSE}
+set.seed(123)
+
+normal_data = rnorm(5000, mean = -10, sd = 2) # N(-10, 2^2) data
+
+qqnorm(normal_data, main = "Q-Q Plot: Normal Data")
+qqline(normal_data, col = "blue", lwd = 2)
+```
+
+
+
+---
+
+## Joint and Conditional Distributions
+
+### Definitions
+
+- [Covariance](#def-joint-and-conditional-distributions-covariance): The covariance of $X$ and $Y$ is defined via: $\operatorname{Cov}[X,Y] = E[(X - E[X])(Y - E[Y])]$. This is a sub case of the *expected value of a general function* where we take $h(X, Y) = \left( X - E[X] \right) \left( Y - E[Y] \right)$. Remember that $E[X]$ and $E[Y]$ are constants. For discrete and continuous random variables, we take the double sum or double integral.
+
+
+    - Discrete: $\sum_x \sum_y (x - E[X])(y - E[Y]) f_{X,Y}(x,y)$
+
+    - Continuous: $\iint (x - E[X])(y - E[Y]) f_{X,Y}(x, y) dx \, dy$
+
+    However, it's often easier to calculate $\operatorname{Cov}(X,Y) = E[XY] - E[X]\, E[Y]$
+
+- [Correlation](#def-joint-and-conditional-distributions-correlation): The correlation between $X$ and $Y$ is given by: $\operatorname{Cor}[X,Y] = \frac{\operatorname{Cov}[X,Y]}{\sigma_X \sigma_Y}$
+
+    where $\sigma_X = \sqrt{\operatorname{Var}(X)}, \text{ and } \sigma_Y = \sqrt{\operatorname{Var}(Y)}$ are calculated as usual.
+
+- [Joint PMF](#def-joint-and-conditional-distributions-joint-pmf): For discrete random variables $X$ and $Y$, the joint PMF is $f_{X,Y}(x,y) = P(X = x \text{ and } Y = y)$. It satisfies: $\sum_x \sum_y f_{X,Y}(x,y) = 1$ and $f_{X,Y}(x,y) \geq 0$. We often define the joint pmf point-wise using a table (but not always).
+
+<!--
+$
+\begin{array}{|c|c|c|c|c|}
+\hline
+\text{X} & \text{Y = 0} & \text{Y = 50} & \text{Y = 100} & \text{Row Sum $f_X(x)$} \\
+\hline
+5 & 0.14 & 0.18 & 0.14 & 0.46 \\
+\hline
+10 & 0.12 & 0.12 & 0.12 & 0.36 \\
+\hline
+15 & 0.06 & 0.02 & 0.10 & 0.18 \\
+\hline
+\text{Col Sum $f_Y(y)$} & \text{0.32} & \text{0.32} &\text{0.36} & \text{1.00} \\
+\hline
+\end{array}
+$
+
+    With this table, we could calculate (for instance) $P(X > 5 \text{ and } Y = 0) = p(10,0) + p(15,0) = 0.12 + 0.06 = 0.18$.
+-->
+
+- [Marginal PMF](#def-joint-and-conditional-distributions-marginal-pmf): The marginal PMF of $X$ is obtained by summing out $Y$: $ f_X(x) = \sum_y f_{X,Y}(x,y) $
+
+    Similarly for $Y$: $ f_Y(y) = \sum_x f_{X,Y}(x,y) $
+
+
+<!--
+    From the example in the table above, the marginal pmf of $X$ needs to be defined at three points, $f_X(5)$, $f_X(10)$, and $f_X(15)$. We can calculate these three quantities individually. We fix the value $x$ and sum over all values $y$
+
+    -   $f_X(5) = p(5, 0) + p(5, 50) + p(5, 100) = .14 + .18 + .14 = .46$
+    -   $f_X(10) = p(10, 0) + p(10, 50) + p(10, 100) = .12 + .12 + .12 = .36$
+    -   $f_X(15) = p(15, 0) + p(15, 50) + p(15, 100) = .06 + .02 + .10 = .18$
+
+-->
+
+- [Joint PDF](#def-joint-and-conditional-distributions-joint-pdf): For continuous random variables $X$ and $Y$, the joint PDF $f_{X,Y}(x, y)$ is the function that satisfies: $P((X, Y) \in A) = \iint_A f_{X,Y}(x, y)\, dx \, dy$
+
+<!--
+    For example: If $f(x,y) = 4xy$ on $[0,1] \times [0,1]$, then: $P(0 \leq X \leq \frac{1}{2}, 0 \leq Y \leq \frac{1}{2}) = \frac{1}{16} =\int_0^{\frac{1}{2}}\int_0^{\frac{1}{2}}4xy\, dy\, dx = \frac{1}{16
+    
+-->
+
+- [Marginal PDF](#def-joint-and-conditional-distributions-marginal-pdf): The marginal PDF of $X$ is: $f_X(x) = \int_{-\infty}^{\infty} f_{X,Y}(x, y) dy$
+
+    Similarly for $Y$:  $f_Y(y) = \int_{-\infty}^{\infty} f_{X,Y}(x, y) dx $
+
+<!--
+    Example: $f_X(x) = \int_0^1 4xy\, dy = 2x$.
+
+-->
+
+- [Conditional probability function](#def-joint-and-conditional-distributions-conditional-probability-function): $f_{Y|X}(y | x) = \frac{f_{X,Y}(x,y)}{f_X(x)} \quad \text{if } f_X(x) > 0$
+
+<!--
+    From the table above, the conditional probability $p(Y = 50 | X = 10) = \frac{p(X = 10, Y = 50)}{f_X(10)} = \frac{0.12}{0.36} = \frac{1}{3. 
+    
+    From the table above, the conditional probability $P(Y = 50 | X > 5) = \frac{p(X > 5, Y = 50)}{f_X(X > 5)} = \frac{p(X = 10, Y = 50) + p(X = 15, Y = 50)}{f_X(10) + f_X(15)} = \frac{.12 + .02}{.36 + .18 
+
+-->
+
+- [Conditional Expected Value](#def-joint-and-conditional-distributions-conditional-expected-value): The conditional expectated value works the same as the regular expectation, except we swap the pmf/pdf with the conditional pmf/pdf (fixed at a particular point $x$)
+
+    - Discrete: $E[Y | X = x] = \sum_y y \cdot f_{Y|X}(y | x)$
+
+    - Continuous: $E[Y | X = x] = \int_{-\infty}^{\infty} y \cdot f_{Y|X}(y | x) dy$
+<!--    
+    From the table above, the conditional expected value $E[Y  |  X = 5]$ is calculated by finding $p(y  |  X = 5)$ for each value $y = 0, 50, 100$. Then we calculate $E[Y  |  X = 5] = 0 \cdot p(Y = 0 |  X = 5) + 50 \cdot p(y = 50  |  X = 5) + 100 \cdot p(Y = 100  |  X = 5)$ 
+-->
+
+- [Expected Value of a General Function](#def-joint-and-conditional-distributions-expected-value-of-a-general-function): Like in the previous chapter with expectation, we can take the expected value of a general function $h(X, Y)$ over jointly distributed random variables. 
+
+    - Discrete: $E[h(X,Y)] = \sum_x \sum_y h(x, y) \cdot f_{X,Y}(x,y)$
+
+    - Continuous: $E[h(X,Y)] = \iint h(x, y) \cdot f_{X,Y}(x, y) dx \, dy$
+    
+    It's worth noting that the functions $h(X, Y) = X$, $h(X, Y) = Y$, and $h(X,Y) = XY$ are valid for this rule. 
+
+- Independent Random Variables: $X$ and $Y$ are independent whenever: $f_{X,Y}(x,y) = f_X(x) f_Y(y)$ for all $x, y$.
+
+<!--
+    In the table above, we have that $p(X = 15, Y = 100) = .10$, but $f_X(15) = .18$ and $f_Y(100) = .36$. Therefore $f_X(15)\cdot f_Y(100) = .0648 \neq p(X = 15, Y = 100)$, we conclude that $X$ and $Y$ are not independent. Notice that there's nothing special about choosing $X = 15$ and $Y = 100$. As long as we can show that $p(X = x, Y = y) \neq f_X(x)f_Y(y)$ for some pair of values $x$ and $y$, then we've shown that $X$ and $Y$ are not independent. 
+-->    
+
+- Mutually Independent Random Variables: Random variables $X_1, X_2, \dots, X_n$ are mutually independent if every subset is independent. Intuitively, this means that we are able to pick any collection of the $X$'s out of $X_1,\ldots X_n$ and maintain independence. <!--For instance, say we arbitrarily pick $X_1, X_4, X_9$ out of $X_1, X_2, \ldots X_{10, we have $f(x_1, x_4, x_9) = f_{X_1}(x_1)f_{X_4}(x_4)f_{X_9}(x_9)$  where the left hand side is obtained by integrating out $x_2, x_3, x_5, x_6, x_7, x_8$ and $x_10$ from the joint density $f(x_1, x_2, \ldots, x_{10})$ and the right hand side is a multiplication of the three marginal pdf's for $X_1$, $X_4$, and $X_9$.  -->
+
+- Important facts about Covariance and Correlation:
+
+    - If $X$ and $Y$ are independent, then $\operatorname{Cov}[X,Y] = 0$ and $\operatorname{Cor}[X,Y] = 0$
+
+    - If $X$ and $Y$ have $\operatorname{Cov}[X,Y] = 0$ or $\operatorname{Cor}[X,Y] = 0$ that does not mean they're independent. 
+
+    - Linear transformations of $X$ and $Y$ have the covariance formula: $\operatorname{Cov}[aX + b, cY + d] = ac \cdot \operatorname{Cov}[X,Y]$
+    
+    - Linear transformations of $X$ and $Y$ have the correlation formula: $\operatorname{Cor}[aX + b, cY + d] = \operatorname{Cor}[X,Y]$
+    
+    - Correlation is always between $-1$ and $1$: $|\operatorname{Cor}[X,Y]| \leq 1$
+
+---
+
+## Sampling Distributions and Central Limit Theorem
+
+### Definitions
+
+- [Central Limit Theorem (CLT)](#def-sampling-distributions-and-central-limit-theorem-central-limit-theorem-clt): Let $X_1, X_2, \dots, X_n$ be i.i.d. random variables with mean $\mu$ and finite variance $\sigma^2$. As $n \to \infty$, the distribution of the sample mean $\bar{X approaches a normal distribution: $\bar{X} \overset{\cdot}{\sim} N\left( \mu, \frac{\sigma^2}{n} \right)$ This holds for (nearly) any choice of distribution generating $X_1, \ldots, X_n$. The CLT justifies using normal-based inference for large samples.
+
+<!--
+    This holds for any distribution. For our light bulb example from the sampling distribution definition above, we had $X_1,\ldots, X_{n} \sim \operatorname{Exp}(\frac{1}{3})$. We can calculate that $E[X_i] = 3$ and $\operatorname{Var}(X_i) = 9$. So according to this Central Limit Theorem, as $n$ gets larger and larger, the distribution of the random variable $\bar{X} = \frac{X_1 + \ldots + X_n}{n gets closer and closer to the $N(3, \frac{9}{n})$ distribution. 
+
+-->
+
+- [Sampling Distribution](#def-sampling-distributions-and-central-limit-theorem-sampling-distribution): The sampling distribution is the distribution of a statistic when viewed as a random variable. In other words, it describes how the statistic would vary across many repeated samples of the same size from the same population. 
+
+<!--
+    For example, we bought the same 10 light bulbs from the store to see how long they last (in months) if left on constantly. We don't know this, but the life-time of each light bulb follows an $\operatorname{Exp}(\frac{1}{3})$ distribution, i.e. $X_1, \ldots X_{10 are i.i.d $\operatorname{Exp}(\frac{1}{3})$. In our experiment, we took the average life times of our 10 bulbs as our statistic $\bar{X} = \frac{X_1 + \cdots + X_{10}}{10. The first thing to acknowledge is that since each $X_i$ are random variables, then $\bar{X is itself a random variable with it's own distribution. Skipping the math (it's not important for the example), we can calculate $\bar{X} \sim \operatorname{Gamma}(10, 10 \cdot \frac{1}{3})$, which is a completely different distribution than the original $\operatorname{Exp}(\frac{1}{3})$ distribution
+
+-->
+
+- [Statistic](#def-sampling-distributions-and-central-limit-theorem-statistic): A statistic is any function of a sample of data. That is, any quantity computed using only the sample values $X_1, X_2, \dots, X_n$ is a statistic. Some examples of a statistics include the sample mean, the sample median, or the sample standard deviation.
+
+- [Random Sample](#def-sampling-distributions-and-central-limit-theorem-random-sample): A collection of random variables $X_1, X_2, \dots, X_n$ is called a random sample of size $n$ from a population if each $X_i$ has the same probability distribution and each $X_i$ are independent random variables. If this is so, we say that $X_i$ are independent and identically distributed (i.i.d) random variables. 
+
+<!--
+    For example, let's say your favorite movie is called "Movie XYZ". We want to know what proportion of your town likes this movie too. If we ask 'n' randomly selected people if they like "Movie XYZ" (1 = Yes and 0 = No), then the recorded answers $X_1, X_2, \ldots X_n$ are i.i.d $\operatorname{Bernoilli}(p)$ random variables with parameter $p$ being the underlying (and unknown) population paramter representing the probability that a given person in your town also likes "Movie XYZ". 
+
+-->
+
+- Sample Mean $\bar{X}$: The sample mean is simply the average of the sample $X_1,\ldots, X_n$ $\bar{X} = \frac{1}{n}\sum_{i = 1}^n X_i = \frac{X_1 + \cdots + X_n}{n}$
+
+- [Standard Error](#def-sampling-distributions-and-central-limit-theorem-standard-error): The standard error of a statistic is the standard deviation of its sampling distribution and is written $\text{SE}$.
+
+<!--
+    From our light bulb example from the sampling distribution defintion above, the standard error of our statistic $\hat{\theta} = \bar{X can be calculated by finding the variance of a $\operatorname{Gamma}(10, 10 \cdot \frac{1}{3})$ random variable. There are a few ways we can do this, but the easiest way would be to use the *moment generating function*. We would calculate that $\operatorname{Var}(\bar{X}) = \frac{10}{(10/3)^2} = \frac{9}{10. Therefore, $\text{SE}(\bar{X}) = \sqrt{9/10
+
+-->
+
+- Sample Standard Deviation $S$: This is the sample standard deviation. It has formula $S_X = \sqrt{\frac{1}{n - 1}\sum_{i = 1}^n (X_i - \bar{X})^2}$
+
+- Expectation and Variance of Linear Combination: For a linear combination of independent random variables: $Y = a_1 X_1 + a_2 X_2 + \dots + a_n X_n$ We have: $E[Y] = a_1 E[X_1] + a_2 E[X_2] + \dots + a_n E[X_n]$ $\text{Var}(Y) = a_1^2 \text{Var}(X_1) + a_2^2 \text{Var}(X_2) + \dots + a_n^2 \text{Var}(X_n)$
+
+<!--
+    For example, if $X_1 \sim N(\mu, \sigma^2)$, $X_2 \sim \operatorname{Poisson}(\lambda)$ and $X_3 \sim \operatorname{Binomial}(m, p)$, where $X_1$, $X_2$ and $X_3$ are independent. Then $Y = \frac{5}{2} X_1 + \frac{3}{4} X_2 + 4 X_3$ has $E[Y] = \frac{5}{2}E[X_1] + \frac{3}{4} E[X_2] + 4 E[X_3] = \frac{5}{2}\cdot \mu + \frac{3}{4} \cdot \lambda + 4 \cdot mp$ and $\operatorname{Var}(Y) = \frac{25}{4}  \operatorname{Var}(X_1) +  \frac{9}{16} \operatorname{Var}(X_2) + 4\operatorname{Var}(X_3) = \frac{25}{4}\cdot \sigma^2 +  \frac{9}{16}\cdot\lambda + 4\cdot mp(1-p)$
+
+-->
+
+- Expectation and Variance of Sample Mean: Let $X_1, \ldots, X_n$ be a random sample from some distribution. Write $E[X_i] = \mu$ and $\operatorname{Var}(X_i) = \sigma^2$. Take $\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i$, we have: $E[\bar{X}] = \mu$ and  $\operatorname{Var}(\bar{X}) = \frac{\sigma^2}{n}$
+
+    This follows immediately from the expectation and variance of a linear combination after taking all $a_1 = a_2 = \cdots = a_n = \frac{1}{n}$. This property holds for any choice of distribution. 
+    
+    <!--
+    For our light bulb example from sampling distribution defintion above, we had $X_1,\ldots, X_{10} \sim \operatorname{Exp}(\frac{1}{3})$. We can calculate that $E[X_i] = 3$ and $\operatorname{Var}(X_i) = 9$. By this rule, we should have that $E[\bar{X}] = 3$ and $\operatorname{Var}(\bar{X}) = \frac{9}{10. We know for a *fact* that as a random variable by itself $\bar{X} \sim \operatorname{Gamma}(10, 10 \cdot \frac{1}{3})$. Using the *moment generating function* of a Gamma random variable, we can verify that such a random variable would have mean $\mu = \frac{10}{10/3} = 3$ and variance $\sigma^2 = \frac{10}{(10/3)^2} = 9/10$. 
+    -->
+
+- Distribution of Sample Mean from Normal Distribution: If $X_1, \ldots X_n \sim N(\mu, \sigma^2)$ (i.i.d) then: $\bar{X} \sim N\left(\mu, \frac{\sigma^2}{n} \right)$
+
+    That is, if $X_1, \ldots, X_n$ are normally distributed, then $\bar{X}$ is also normally distributed (with a smaller variance). This is a special property of the normal distribution. It works for any sample size $n$, even the smallest sample sizes like $n = 1$, $n = 2$, or $n = 3$. 
+
+- The sample proportion ($\hat{p}$):It has formula $\hat{p} = \frac{\text{# Successes}}{n}$ It is used whenever our data is binary, meaning that there are two possible outcomes, a "success" or a "failure". A "success" has different meanings depending on the study, it is not necessarily a "good" or "bad" outcome.
+
+### R Commands
+
+- `matrix()`
+
+    Syntax: `matrix(data, nrow, ncol, byrow)`
+ 
+    This function will turn `data` (numeric) into a matrix of `nrow` many rows and `ncol` many columns. If only one of the `nrow` or `ncol` arguments are given, R will try to figure out the dimension of the matrix you want on its own. You can further specify the order in which you matrix is filled out with the Boolean argument `byrow`. By having your data as a matrix, you can perform matrix operations. <!-- Here is an example. -->
+ 
+ 
+```{r, include=FALSE}
+matrix(data = 1:12, nrow = 3) # This returns a matrix containing the numbers 1 through 12 
+```
+
+<!--
+ 
+Notice that since I only specified `nrow = 3`, R assumed that I wanted 4 columns to hold the numbers 1 through 12. In contrast, if I specify `ncol = 3`, I will get a matrix of 4 rows and 3 columns.
+
+-->
+
+```{r, include=FALSE}
+matrix(data = 1:12, ncol = 3)
+```
+
+<!--
+
+I can also specify that I want my matrix to be filled out by row using `byrow = TRUE`
+
+-->
+
+```{r, include=FALSE}
+matrix(data = 1:12, ncol = 3, byrow = TRUE)
+```
+
+
+- `mean()`
+
+    Syntax: `mean(x)`
+ 
+    This function returns the mean of the supplied input vector `x`. That is, if $x = (x_1, x_2, \ldots, x_n)$ then $\text{mean}(x) = \frac{x_1 + x_2 + \cdots + x_n}{n
+    
+    
+ 
+```{r, include=FALSE}
+x = c(1, 2, 3, 4, 5)
+
+mean(x) # returns (1 + 2 + 3 + 4 + 5)/5
+```
+ 
+
+- `sd()`
+    
+    Syntax: `sd(x)`
+ 
+    This function returns the standard deviation of the values supplied by vector $x$. That is, if $x = (x_1, x_2, \ldots, x_n)$ then $\text{sd}(x) = \sqrt{\frac{1}{n-1}\sum_{i = 1}^n (x_i - \bar{x})^2
+ 
+```{r, include=FALSE}
+x = c(1, 2, 3, 4, 5)
+
+print(x - mean(x)) # Subtract the mean
+
+print( (x - mean(x))^2 ) # square each value
+
+print( sum((x - mean(x))^2) ) # sum them up
+
+print( sum((x - mean(x))^2)/(length(x) - 1) ) # divide by n - 1
+
+print( sqrt(sum((x - mean(x))^2)/(length(x) - 1)) ) # take the square root
+
+print( sd(x) ) # Does all of this in one step
+```
+ 
+
+- `apply()`
+
+    Syntax: `apply(X, MARGIN, FUN)`
+ 
+    This function "applies" a function `FUN` to the matrix `X` along the margin `MARGIN`. We use `MARGIN = 1` to "apply" to the rows and `MARGIN = 2` to "apply" to the columns. 
+ 
+    For example, one could calculate the standard deviation of each column of a matrix `MAT` by "applying" the function `sd` to `MAT` along 2nd margin. This would look like: `apply(X = MAT, MARGIN = 2, FUN = sd)`
+
+```{r, include=FALSE}
+MAT <- matrix(1:12, nrow = 3)
+
+MAT
+```
+
+<!--
+
+If I want to "apply" the function "sum()" to the matrix `MAT` along the rows (i.e. sum out the rows) we can use the `apply()` function like this:
+
+-->
+
+```{r, include=FALSE}
+apply(X = MAT, MARGIN = 1, FUN = sum)
+```
+
+<!--
+Or if we want to "apply" the function "sum()" to the matrix `MAT` along the columns (i.e. sum out the columns) we can use the `apply()` function like this:
+
+-->
+
+
+```{r, include=FALSE}
+apply(X = MAT, MARGIN = 2, FUN = sum)
+```
+
+<!--
+
+We can use more advanced functions, or even our own custom functions. But for now, we stick to `mean()` and `sd()`
+
+-->
+
+```{r, include=FALSE}
+apply(X = MAT, MARGIN = 2, FUN = mean) # column-wise means
+```
+
+```{r, include=FALSE}
+apply(X = MAT, MARGIN = 1, FUN = sd) # row-wise standard deviation
+```
+
+
+---
+
+## Confidence Intervals
+
+### Definitions
+
+
+- [Confidence Interval](#def-confidence-intervals-confidence-interval): A range of plausible values for a population parameter. Confidence Intervals are calculated using an observed value of a *sample statistic*, a *pivot*, and a quantile of that pivot's *sampling distribution*.
+
+- [Pivot](#def-confidence-intervals-pivot): A special type of *statistic* that combine both the data and the parameter of interest in such a way that allow for the sampling distribution to be completely known. We use pivots to construct confidence intervals. 
+
+- [Precision](#def-confidence-intervals-precision): The width of our confidence interval represents the precision in our estimate of the population parameter. A narrower interval means that we have a more precise interval. A related question we may ask is to find a necessary sample size $n$ so that the width of the confidence interval is no more than $w$ wide in the "population mean and $\sigma^2$ known" case. $n = \left ( \frac{2\cdot z_{\alpha/2}\cdot \sigma}{w}\right)^2$
+
+- [Bootstrap Intervals (Percentile Method)](#def-confidence-intervals-bootstrap-intervals-percentile-method): This is a procedure that approximates the sampling distributions and confidence intervals of complex/non-standard statistics. It is a powerful and relatively easy to implement procedure that works in a wide variety of contexts. However, it has several known limitations which can be partially addressed by more advanced bootstrap methods. 
+<!--
+    1. Obtain data of size $n$ from the population. Compute the statistic of interest.
+    2. Generate a "new" data set of size $n$ by resampling your original data with replacement. Recompute the statistic of interest.
+    3. Repeat step 2 many times (1,000-10,000 times), making sure to recompute the statistic of interest each time.
+    4. Using the `quantile()` function, take the $(\frac{\alpha}{2})$-th and $(1 - \frac{\alpha}{2})$-th quantiles of the statistics generated in step 3
+-->
+
+- Interpretation of a Confidence Interval: If we were to repeat the study many times and compute a $100(1-\alpha)\%$ confidence interval each time, then $100(1-\alpha)\%$ percent of those constructed confidence intervals would contain the true parameter value. Crucially: each individual constructed interval either contains the parameter or it doesn't, no probability about it!
+
+- Quantiles of a Normal Distribution: The quantile $z_{\alpha/2}$ is the number such that $P(Z \leq z_{\alpha/2}) = 1 - \frac{\alpha}{2}$ for $Z \sim N(0,1)$. Or equivalently, $P(Z > z_{\alpha/2}) = \frac{\alpha}{2}$. Consequently, $P(- z_{\alpha/2} \leq Z \leq z_{\alpha/2}) = 1 - \alpha$ for $Z\sim N(0,1)$. We must use a reference table or the `qnorm()` function in R to calculate such numbers. 
+
+- Quantiles of a $t_\nu$ Distribution: The quantile $t_{\alpha/2, n-1}$ is the number such that $P(T \leq t_{\alpha/2, n-1}) = 1 - \frac{\alpha}{2}$ for $T \sim t_{n-1}$ (a t-distribution of $n-1$ degrees of freedom). Or equivalent, $P(T > t_{\alpha/2, n-1}) = \frac{\alpha}{2}$. Consequently, $P(-t_{\alpha/2, n-1} \leq T \leq t_{\alpha/2, n-1}) = 1- \alpha$ for $T\sim t_{n-1}$. We must use a reference table or the `qt()` function in R to calculate such numbers. 
+
+- Quantiles of a $\chi^2_\nu$ Distribution: To construct certain confidence intervals, we will need to know how to find certain quantiles  values from the $\chi^2_\nu$ distribution (a chi-square distribution of some $\nu$ degrees of freedom). The quantile $\chi^2_{\alpha/2, n-1}$ is the number such that $P(Q \leq \chi^2_{\alpha/2, n-1}) = 1 - \frac{\alpha}{2}$ for $Q \sim \chi^2_{n-1}$ (a chi-square distribution of $n - 1$ degrees of freedom). Or equivalently, $P(Q > \chi^2_{\alpha/2, n - 1}) = \frac{\alpha}{2}$. We must use a reference table or the `qchisq()` function in R to calculate such numbers.
+
+- Common Pivots and their Corresponding Confidence Interval: Whenever we have a *pivot*, it's known sampling distribution, and critical values $a$ and $b$ such that $P(a \leq \text{pivot} \leq b) = 1 - \alpha$, we construct a $100(1-\alpha)\%$ confidence interval by *inverting* the interval "$(a \leq \text{pivot} \leq b)$" to solve for the parameter of interest. 
+
+    - $X_1, \ldots , X_n \overset{i.i.d}{\sim} N(\mu, \sigma^2)$. Parameter of interest is $\mu$ (population mean) and $\sigma$ is known. 
+    $$Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,1)$$ 
+    
+    
+    - $X_1, \ldots , X_n \overset{i.i.d}{\sim} N(\mu, \sigma^2)$. Parameter of interest is $\mu$ (population mean) and $\sigma$ is unknown: 
+    $$T = \frac{\bar{X} - \mu}{S/\sqrt{n}} \sim t_{n-1}$$
+    
+    - $X_1, \ldots X_n \overset{i.i.d}{\sim} \operatorname{Bern}(p)$. Parameter of interest is population proprotion $p$, and $n\hat{p} \geq 10$ and $n(1- \hat{p})\geq 10$. 
+    
+    $$Z = \frac{\hat{p} - p}{\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}} \overset{\cdot}{\sim} N(0,1)$$
+    
+    - $X_1, \ldots, X_n \overset{i.i.d}{\sim} N(\mu, \sigma^2)$. Parameter of interest is population variance $\sigma^2$.
+    
+    $$Q = \frac{(n-1) S^2}{\sigma^2} \sim \chi^2_{n - 1}$$
+
+### R Commands
+
+- `replicate()`
+
+    Syntax: `replicate(n, expr)`
+    
+    This function will repeatedly re-evaluate the expression `expr` for a total of `n` many times. Random number generation is typically involved in the expression `expr`. For example, the code `replicate(n = 5000, expr = mean(runif(50)))` will repeatedly take the average of 50 Uniform(0, 1) random numbers (`expr = mean(runif(50))`) for a total of 5000 times (`n = 5000`)
+
+
+- `table()`
+
+    Syntax: `table(x)`
+    
+    This function will create a contingency table from the supplied input `x`. This table shows how many times each unique value in `x` appears. 
+
+
+- `var()`
+
+    Syntax: `var(x)`
+    
+    This function returns the variance of the values supplied by the vector $x$. That is, if $x = (x_1, x_2, \ldots, x_n)$, then $\text{var(x)} = \frac{1}{n - 1}\sum_{i = 1}^n (x_i - \bar{x})^2$
+
+
+
+- `qnorm()`
+
+    Syntax: `qnorm(p, mean, sd)`
+
+     For a normally distributed random variable $X \sim N(\mu, \sigma^2)$, the function `qnorm(p, mean = mu, sd = sigma)` will take the input $p$ and return the value $q$ such that $P(X\leq q) = p$. This is the inverse of the CDF. 
+
+
+
+- `qchisq()`
+
+    Syntax: `qchisq(p, df)`
+    
+    For $Q \sim \chi^2_{\text{n}}$ (a chi-square distribution of n degrees of freedom), the function `qchisq(p, df = n)` will take the input $p$ and return the value $q$ such that $P(Q \leq q) = p$. This is the inverse of the CDF.
+
+
+- `qt()`
+
+    Syntax: `qt(p, df)`
+    
+    For $T \sim t_{\text{n}}$ (a $t$ distribution of n degrees of freedom), the function `qt(p, df = n)` will take the input $p$ and return the value $q$ such that $P(T\leq t) = p$. This is the inverse of the CDF. 
+
+
+- `quantile()`
+
+    Syntax: `quantile(x, probs)`
+    
+    This function will return the sample quantiles of the supplied vector 'x'. You can specify which quantiles you want returned through the supplied vector 'probs'. 
+
+- `boot()`
+
+    Syntax: `boot(data, statistic, R)`
+    
+    This function is a part of the `boot` library. Using the supplied input `data`, this function will generate `R` many bootstrap replicates of whatever statistic is supplied by the user in the `statistic` argument. This `statistic` argument is often a user-defined function. 
+
+- `boot.ci()`
+
+    Syntax: `boot.ci(boot.out, conf = 0.95, type = "perc")`
+    
+    This function is a part of the `boot` library. This function returns a 95\% confidence interval using the percentile method. It requires the `boot.out` argument to be the return output of the `boot()` function. You can change the level of confidence with the `conf` argument. 
+
+
+
+--- 
+
+## Hypothesis Testing
+
+### Definitions
+
+- [Alternative Hypothesis](#def-alternative-hypothesis) $(H_A)$: The alternative hypothesis is the research claim or 'question of interest'. If the data provide strong enough evidence, we may reject $H_0$ in favor of $H_A$. The alternative hypothesis will have one of 3 signs in its statement: $\neq,\, >,\, <$. The alternative hypothesis will have the opposite sign of the null hypothesis.
+
+- [Test Statistic](#def-hypothesis-testing-test-statistic): Test Statistic is a numerical summary calculated using the sample data. It is used to evaluate if our data is consistent with the null hypothesis. A test statistic often have a null distribution, which is the sampling distribution of the test statistic given that the null hypothesis is true. For the typical hypothesis tests, the null distribution can either be the Standard Normal $N(0,1)$, a t-distribution, or a $\chi^2$-distribution (with some $\nu$-degrees of freedom).
+
+- [p-value](#def-hypothesis-testing-p-value): The p-value represents the probability of obtaining a test statistic as extreme or more under the null hypothesis. Remember: *If the p-value is low, reject the null*. Otherwise, we do not reject the null hypothesis.
+
+- [Type I Error (type 1 error)](#def-hypothesis-testing-type-i-error-type-1-error): occurs whenever we reject the null hypothesis even though it is is true. 
+
+- [Type II error (type 2 error)](#def-hypothesis-testing-type-ii-error-type-2-error): occurs whenever we fail to reject the null hypothesis even though it is false. Remember: we always assume the null hypothesis is true and either reject it or fail to reject it, based on supplied evidence. 
+
+- [Power](#def-hypothesis-testing-power): Power is the probability of correctly rejecting the null hypothesis when the alternative hypothesis is true. Mathematically, $\text{Power} = 1 - P(\text{Type II error})$. Power depends on several factors, some of which can be out of our control in a study. In general, we want our hypothesis test to have high power.
+
+- [Significance Level ($\alpha$)](#def-hypothesis-testing-significance-level): The significance level is a value set before conducting a hypothesis test. Mathematically, the significance level is the probability of a Type I error. 
+
+- [Rejection Region](#def-hypothesis-testing-rejection-region): The rejection region is a set of values for the test statistic that would result in a rejection of the null hypothesis. We can think of these as the "extreme-outcomes" that should be unlikely under the assumption that the null hypothesis is true. 
+
+- Null Hypothesis $\left( H_0\right)$: The null hypothesis is a skeptical or status-quo statement about the population parameter. When we are performing a hypothesis test, we assume that the null hypothesis is true and test (with a test statistic) whether the observed data provide enough evidence to reject it. The null hypothesis will have one of 3 signs in its statement: $=,\,  \leq,\, \geq$. It will always have an "equal" somewhere in the sign.
+
+- Logical Steps in a Hypothesis Test:
+
+    1. Formulate the null hypothesis $H_0$ and the alternative hypothesis $H_A$ and significance level $\alpha$. Assume the null hypothesis is true unless we're presented with evidence that strongly suggests otherwise. 
+    
+    2. Before gathering any data, choose a test statistic $T$ and figure out its null distribution.
+    
+    3. Run the experiment and compute the observed value of the test statistic $T_{obs}$.
+    
+    4. Compute the p-value, which is the probability of observing a test statistic $T$ as extreme or more extreme than the observed test statistic $T_{obs}$. It's important to remember that $T$ follows the null distribution and that the direction of "more extreme" is given by the alternative hypothesis:
+        - If $H_A: \mu > \mu_0$ then the p-value is $P(T > T_{obs})$
+        - If $H_A: \mu < \mu_0$ then the p-value is $P(T < T_{obs})$
+        - If $H_A: \mu \neq \mu_0$ then the p-value is $2 \times P(T > |T_{obs}|)$
+    5. Compare the computed p-value to the pre-determined significance level $\alpha$. If the p-value is smaller, we reject the null. 

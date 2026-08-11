@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 Comparing Two Populations | Probability and Statistics: Making Principled Decisions in an Uncertain World</title>
+  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 Comparing Two Populations | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 Comparing Two Populations | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
+  
+  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  
+
+<meta name="author" content="Alan Dabney, Scott Crawford, Darren Homrighausen" />
+
+
+<meta name="date" content="2026-08-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chap-hypothesis-testing.html"/>
+<link rel="next" href="chap-compare-more-than-two.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.12.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about"><i class="fa fa-check"></i><b>1.1</b> About</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#r"><i class="fa fa-check"></i><b>1.2</b> R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#supplemental-resources"><i class="fa fa-check"></i><b>1.3</b> Supplemental Resources</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.4</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap-foundations.html"><a href="chap-foundations.html"><i class="fa fa-check"></i><b>2</b> Foundations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chap-foundations.html"><a href="chap-foundations.html#what-is-statistics"><i class="fa fa-check"></i><b>2.1</b> What is Statistics?</a></li>
+<li class="chapter" data-level="2.2" data-path="chap-foundations.html"><a href="chap-foundations.html#populations-and-parameters-samples-and-statistics"><i class="fa fa-check"></i><b>2.2</b> Populations and Parameters, Samples and Statistics</a></li>
+<li class="chapter" data-level="2.3" data-path="chap-foundations.html"><a href="chap-foundations.html#obtaining-data"><i class="fa fa-check"></i><b>2.3</b> Obtaining Data</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="chap-foundations.html"><a href="chap-foundations.html#chap-foundations-sampling"><i class="fa fa-check"></i><b>2.3.1</b> Sampling</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chap-foundations.html"><a href="chap-foundations.html#chap-foundations-observational-experiment"><i class="fa fa-check"></i><b>2.3.2</b> <span id="def-foundations-observational-studies">Observational Studies</span> and Experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="chap-foundations.html"><a href="chap-foundations.html#sec-foundations-nature-of-data"><i class="fa fa-check"></i><b>2.4</b> The Nature of Data</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="chap-foundations.html"><a href="chap-foundations.html#randomness-and-uncertainty"><i class="fa fa-check"></i><b>2.4.1</b> Randomness and Uncertainty</a></li>
+<li class="chapter" data-level="2.4.2" data-path="chap-foundations.html"><a href="chap-foundations.html#random-variables"><i class="fa fa-check"></i><b>2.4.2</b> Random Variables</a></li>
+<li class="chapter" data-level="2.4.3" data-path="chap-foundations.html"><a href="chap-foundations.html#notation"><i class="fa fa-check"></i><b>2.4.3</b> Notation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="chap-foundations.html"><a href="chap-foundations.html#numerical-summaries"><i class="fa fa-check"></i><b>2.5</b> Summary Statistics</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="chap-foundations.html"><a href="chap-foundations.html#mean"><i class="fa fa-check"></i><b>2.5.1</b> Mean</a></li>
+<li class="chapter" data-level="2.5.2" data-path="chap-foundations.html"><a href="chap-foundations.html#sec-percentiles-median"><i class="fa fa-check"></i><b>2.5.2</b> Percentiles and Median</a></li>
+<li class="chapter" data-level="2.5.3" data-path="chap-foundations.html"><a href="chap-foundations.html#variance-and-standard-deviation"><i class="fa fa-check"></i><b>2.5.3</b> Variance and Standard Deviation</a></li>
+<li class="chapter" data-level="2.5.4" data-path="chap-foundations.html"><a href="chap-foundations.html#extreme-values-and-robust-statistics"><i class="fa fa-check"></i><b>2.5.4</b> Extreme Values and Robust Statistics</a></li>
+<li class="chapter" data-level="2.5.5" data-path="chap-foundations.html"><a href="chap-foundations.html#frequency-and-relative-frequency"><i class="fa fa-check"></i><b>2.5.5</b> <span id="def-foundations-frequency">Frequency</span> and <span id="def-foundations-relative-frequency">Relative Frequency</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="chap-foundations.html"><a href="chap-foundations.html#graphical-summaries"><i class="fa fa-check"></i><b>2.6</b> Graphical Summaries</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="chap-foundations.html"><a href="chap-foundations.html#boxplot"><i class="fa fa-check"></i><b>2.6.1</b> <span id="def-foundations-boxplot">Boxplot</span></a></li>
+<li class="chapter" data-level="2.6.2" data-path="chap-foundations.html"><a href="chap-foundations.html#histogram"><i class="fa fa-check"></i><b>2.6.2</b> <span id="def-foundations-histogram">Histogram</span></a></li>
+<li class="chapter" data-level="2.6.3" data-path="chap-foundations.html"><a href="chap-foundations.html#the-shape-of-a-distribution"><i class="fa fa-check"></i><b>2.6.3</b> The Shape of a Distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-probability.html"><a href="chap-probability.html"><i class="fa fa-check"></i><b>3</b> <span id="def-probability-probability">Probability</span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chap-probability.html"><a href="chap-probability.html#motivation-and-intuition"><i class="fa fa-check"></i><b>3.1</b> Motivation and Intuition</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="chap-probability.html"><a href="chap-probability.html#previewing-statistical-inference"><i class="fa fa-check"></i><b>3.1.1</b> Previewing Statistical Inference</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chap-probability.html"><a href="chap-probability.html#probability-a-long-run-average"><i class="fa fa-check"></i><b>3.1.2</b> Probability: A "Long-Run Average"</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chap-probability.html"><a href="chap-probability.html#sample-spaces-and-events"><i class="fa fa-check"></i><b>3.2</b> Sample Spaces and Events</a></li>
+<li class="chapter" data-level="3.3" data-path="chap-probability.html"><a href="chap-probability.html#axioms-and-properties"><i class="fa fa-check"></i><b>3.3</b> Axioms and Properties</a></li>
+<li class="chapter" data-level="3.4" data-path="chap-probability.html"><a href="chap-probability.html#sec-probability-counting"><i class="fa fa-check"></i><b>3.4</b> Counting</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="chap-probability.html"><a href="chap-probability.html#product-rule"><i class="fa fa-check"></i><b>3.4.1</b> Product Rule</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chap-probability.html"><a href="chap-probability.html#permutations-and-combinations"><i class="fa fa-check"></i><b>3.4.2</b> Permutations and Combinations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chap-probability.html"><a href="chap-probability.html#conditional-probability"><i class="fa fa-check"></i><b>3.5</b> <span id="def-probability-conditional-probability">Conditional Probability</span></a></li>
+<li class="chapter" data-level="3.6" data-path="chap-probability.html"><a href="chap-probability.html#independence"><i class="fa fa-check"></i><b>3.6</b> Independence</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html"><i class="fa fa-check"></i><b>4</b> Random Variables and Probability Distributions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#random-variables-1"><i class="fa fa-check"></i><b>4.1</b> Random Variables</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#probability-functions"><i class="fa fa-check"></i><b>4.2</b> Probability Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#probability-mass-function-discrete-rvs"><i class="fa fa-check"></i><b>4.2.1</b> Probability Mass Function (Discrete RVs)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#chap-rvs-sec-pdf"><i class="fa fa-check"></i><b>4.2.2</b> Probability Density Function (Continuous RVs)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#chap-rvs-sec-cdf"><i class="fa fa-check"></i><b>4.3</b> <span id="def-random-variables-and-probability-distributions-cumulative-distribution-function">Cumulative Distribution Function</span></a></li>
+<li class="chapter" data-level="4.4" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#discrete-distributions"><i class="fa fa-check"></i><b>4.4</b> Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#binomial-distribution"><i class="fa fa-check"></i><b>4.4.1</b> <span id="def-random-variables-and-probability-distributions-binomial-n-p">Binomial</span> Distribution</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#distributions-related-to-the-bernoulli"><i class="fa fa-check"></i><b>4.4.2</b> Distributions Related to the Bernoulli</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#continuous-distributions"><i class="fa fa-check"></i><b>4.5</b> Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#sec-exponential"><i class="fa fa-check"></i><b>4.5.1</b> <span id="def-random-variables-and-probability-distributions-exponential">Exponential</span> Distribution</a></li>
+<li class="chapter" data-level="4.5.2" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#gamma-distribution"><i class="fa fa-check"></i><b>4.5.2</b> <span id="def-random-variables-and-probability-distributions-gamma">Gamma</span> Distribution</a></li>
+<li class="chapter" data-level="4.5.3" data-path="chap-rvs-distributions.html"><a href="chap-rvs-distributions.html#sec-chi-squared-distribution"><i class="fa fa-check"></i><b>4.5.3</b> Chi-Squared Distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-expected-value.html"><a href="chap-expected-value.html"><i class="fa fa-check"></i><b>5</b> <span id="def-expected-value-expected-value">Expected Value</span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chap-expected-value.html"><a href="chap-expected-value.html#expected-value-for-discrete-variables"><i class="fa fa-check"></i><b>5.1</b> Expected Value for Discrete Variables</a></li>
+<li class="chapter" data-level="5.2" data-path="chap-expected-value.html"><a href="chap-expected-value.html#expected-value-for-continuous-variables"><i class="fa fa-check"></i><b>5.2</b> Expected Value for Continuous Variables</a></li>
+<li class="chapter" data-level="5.3" data-path="chap-expected-value.html"><a href="chap-expected-value.html#expected-value-for-linear-functions"><i class="fa fa-check"></i><b>5.3</b> Expected Value for Linear Functions</a></li>
+<li class="chapter" data-level="5.4" data-path="chap-expected-value.html"><a href="chap-expected-value.html#variance-and-standard-deviation-1"><i class="fa fa-check"></i><b>5.4</b> <span id="def-expected-value-variance">Variance</span> and <span id="def-expected-value-standard-deviation">Standard Deviation</span></a></li>
+<li class="chapter" data-level="5.5" data-path="chap-expected-value.html"><a href="chap-expected-value.html#means-and-variances-of-common-distributions"><i class="fa fa-check"></i><b>5.5</b> Means and Variances of Common Distributions</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="chap-expected-value.html"><a href="chap-expected-value.html#binomial"><i class="fa fa-check"></i><b>5.5.1</b> <span id="def-expected-value-binomial">Binomial</span></a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-expected-value.html"><a href="chap-expected-value.html#hypergeometric"><i class="fa fa-check"></i><b>5.5.2</b> <span id="def-expected-value-hypergeometric">Hypergeometric</span></a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-expected-value.html"><a href="chap-expected-value.html#negative-binomial"><i class="fa fa-check"></i><b>5.5.3</b> <span id="def-expected-value-negative-binomial">Negative Binomial</span></a></li>
+<li class="chapter" data-level="5.5.4" data-path="chap-expected-value.html"><a href="chap-expected-value.html#poisson"><i class="fa fa-check"></i><b>5.5.4</b> <span id="def-expected-value-poisson">Poisson</span></a></li>
+<li class="chapter" data-level="5.5.5" data-path="chap-expected-value.html"><a href="chap-expected-value.html#exponential"><i class="fa fa-check"></i><b>5.5.5</b> <span id="def-expected-value-exponential">Exponential</span></a></li>
+<li class="chapter" data-level="5.5.6" data-path="chap-expected-value.html"><a href="chap-expected-value.html#gamma"><i class="fa fa-check"></i><b>5.5.6</b> <span id="def-expected-value-gamma">Gamma</span></a></li>
+<li class="chapter" data-level="5.5.7" data-path="chap-expected-value.html"><a href="chap-expected-value.html#chi-squared"><i class="fa fa-check"></i><b>5.5.7</b> Chi-Squared</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="chap-expected-value.html"><a href="chap-expected-value.html#moment-generating-functions"><i class="fa fa-check"></i><b>5.6</b> <span id="def-expected-value-the-moment">Moment</span> Generating Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html"><i class="fa fa-check"></i><b>6</b> The <span id="def-the-normal-distribution-normal-distribution">Normal Distribution</span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#the-normal-and-standard-normal-distributions"><i class="fa fa-check"></i><b>6.1</b> The Normal and Standard Normal Distributions</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-non-standard-normal"><i class="fa fa-check"></i><b>6.1.1</b> The Normal Distribution</a></li>
+<li class="chapter" data-level="6.1.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-standard-normal"><i class="fa fa-check"></i><b>6.1.2</b> The <span id="def-the-normal-distribution-standard-normal-distribution">Standard Normal Distribution</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#standardization"><i class="fa fa-check"></i><b>6.2</b> <span id="def-the-normal-distribution-standardization">Standardization</span></a></li>
+<li class="chapter" data-level="6.3" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#z-scores"><i class="fa fa-check"></i><b>6.3</b> <span class="math inline">\(z\)</span>-scores</a></li>
+<li class="chapter" data-level="6.4" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#probabilities"><i class="fa fa-check"></i><b>6.4</b> Probabilities</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#computing-standard-normal-probabilities"><i class="fa fa-check"></i><b>6.4.1</b> Computing Standard Normal Probabilities</a></li>
+<li class="chapter" data-level="6.4.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#computing-normal-probabilities"><i class="fa fa-check"></i><b>6.4.2</b> Computing Normal Probabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#quantiles"><i class="fa fa-check"></i><b>6.5</b> Quantiles</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-normal-percentiles-visual"><i class="fa fa-check"></i><b>6.5.1</b> Computing Standard Normal Quantiles</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-normal-percentiles"><i class="fa fa-check"></i><b>6.5.2</b> Computing Normal Quantiles</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking Normality</a></li>
+<li class="chapter" data-level="6.7" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-t-distribution"><i class="fa fa-check"></i><b>6.7</b> t Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html"><i class="fa fa-check"></i><b>7</b> Joint and Conditional Distributions</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#jointly-distributed-random-variables"><i class="fa fa-check"></i><b>7.1</b> Jointly Distributed Random Variables</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#discrete-random-variables"><i class="fa fa-check"></i><b>7.1.1</b> Discrete Random Variables</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#continuous-random-variables"><i class="fa fa-check"></i><b>7.1.2</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="7.1.3" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#more-than-two-random-variables"><i class="fa fa-check"></i><b>7.1.3</b> More Than Two Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#independence-1"><i class="fa fa-check"></i><b>7.2</b> Independence</a></li>
+<li class="chapter" data-level="7.3" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#conditional-probability-functions"><i class="fa fa-check"></i><b>7.3</b> <span id="def-joint-and-conditional-distributions-conditional-probability-function">Conditional Probability Functions</span></a></li>
+<li class="chapter" data-level="7.4" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#sec-conditional-expectation"><i class="fa fa-check"></i><b>7.4</b> Conditional Expected Values</a></li>
+<li class="chapter" data-level="7.5" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#sec-cov-and-corr"><i class="fa fa-check"></i><b>7.5</b> Covariance and Correlation</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#covariance"><i class="fa fa-check"></i><b>7.5.1</b> Covariance</a></li>
+<li class="chapter" data-level="7.5.2" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html#correlation"><i class="fa fa-check"></i><b>7.5.2</b> Correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html"><i class="fa fa-check"></i><b>8</b> Sampling Distributions and <span id="def-sampling-distributions-and-central-limit-theorem-central-limit-theorem-clt">Central Limit Theorem</span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#what-is-a-sampling-distribution-and-why-should-you-care"><i class="fa fa-check"></i><b>8.1</b> What Is a <span id="def-sampling-distributions-and-central-limit-theorem-sampling-distribution">Sampling Distribution</span>, and Why Should You Care?</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#preliminary-definitions"><i class="fa fa-check"></i><b>8.1.1</b> Preliminary Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#illustration-via-simulation"><i class="fa fa-check"></i><b>8.2</b> Illustration Via Simulation</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#chap-sampling-distributions-sim-normal"><i class="fa fa-check"></i><b>8.2.1</b> Simulation Setup: Normal Population</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#sec-distn-sample-mean"><i class="fa fa-check"></i><b>8.3</b> The Distribution of the Sample Mean</a></li>
+<li class="chapter" data-level="8.4" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>8.4</b> The Central Limit Theorem</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="chap-sampling-distributions.html"><a href="chap-sampling-distributions.html#simulation-setup-non-normal-population"><i class="fa fa-check"></i><b>8.4.1</b> Simulation Setup: Non-Normal Population</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html"><i class="fa fa-check"></i><b>9</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#motivation-and-pivots-sec-ci-pivot-method"><i class="fa fa-check"></i><b>9.2</b> Motivation and Pivots {#sec-CI-<span id="def-confidence-intervals-pivot">pivot</span>-method}</a></li>
+<li class="chapter" data-level="9.3" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-mean"><i class="fa fa-check"></i><b>9.3</b> Confidence Interval for the Population Mean <span class="math inline">\(\mu\)</span></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-samp-dist-normal"><i class="fa fa-check"></i><b>9.3.1</b> Sampling Distribution conditions</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-mean-known-sigma"><i class="fa fa-check"></i><b>9.3.2</b> When <span class="math inline">\(\sigma\)</span> is known (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="9.3.3" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-mean-unknown-sigma"><i class="fa fa-check"></i><b>9.3.3</b> When <span class="math inline">\(\sigma\)</span> is unknown (Using the t Distribution)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-matchedPairs"><i class="fa fa-check"></i><b>9.4</b> Confidence Interval for Matched Pairs</a></li>
+<li class="chapter" data-level="9.5" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-proportion"><i class="fa fa-check"></i><b>9.5</b> Confidence Interval for a Population Proportion (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="9.6" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-CI-variance"><i class="fa fa-check"></i><b>9.6</b> Confidence Interval for a Population Variance (Using the <span class="math inline">\(\chi^2\)</span> Distribution)</a></li>
+<li class="chapter" data-level="9.7" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-ci-interpret"><i class="fa fa-check"></i><b>9.7</b> Interpreting a Confidence Interval</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#chap-confidence-intervals-simulation"><i class="fa fa-check"></i><b>9.7.1</b> A Deeper Look at the Idea of Confidence</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#finding-the-sample-size-n-for-a-particular-confidence-interval-sec-precision-sample-size"><i class="fa fa-check"></i><b>9.8</b> Finding the Sample Size (<span class="math inline">\(n\)</span>) for a Particular Confidence Interval {#sec-<span id="def-confidence-intervals-precision">precision</span>-sample-size}</a></li>
+<li class="chapter" data-level="9.9" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#other-types-of-intervals"><i class="fa fa-check"></i><b>9.9</b> Other Types of Intervals</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#sec-ci-prediction"><i class="fa fa-check"></i><b>9.9.1</b> Prediction Intervals</a></li>
+<li class="chapter" data-level="9.9.2" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#tolerance-intervals"><i class="fa fa-check"></i><b>9.9.2</b> Tolerance Intervals</a></li>
+<li class="chapter" data-level="9.9.3" data-path="chap-confidence-intervals.html"><a href="chap-confidence-intervals.html#bootstrap-confidence-intervals"><i class="fa fa-check"></i><b>9.9.3</b> Bootstrap Confidence Intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html"><i class="fa fa-check"></i><b>10</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#logic-and-language-of-hypothesis-testing"><i class="fa fa-check"></i><b>10.1</b> Logic and Language of Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#chap-ht-definitions"><i class="fa fa-check"></i><b>10.1.1</b> <span id="def-hypothesis-testing-type-i-error-type-1-error">Type I Error</span>, <span id="def-hypothesis-testing-type-ii-error-type-2-error">Type II error</span>, and <span id="def-hypothesis-testing-power">Power</span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-test-mean"><i class="fa fa-check"></i><b>10.2</b> Hypothesis Test for a Population Mean</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-mean-known-sigma"><i class="fa fa-check"></i><b>10.2.1</b> When <span class="math inline">\(\sigma\)</span> is known (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="10.2.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-mean-unknown-sigma"><i class="fa fa-check"></i><b>10.2.2</b> When <span class="math inline">\(\sigma\)</span> is unknown (Using the t Distribution)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#hypothesis-test-for-matched-pairs"><i class="fa fa-check"></i><b>10.3</b> Hypothesis Test for Matched Pairs</a></li>
+<li class="chapter" data-level="10.4" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-proportion"><i class="fa fa-check"></i><b>10.4</b> Hypothesis Test for a Population Proportion</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#hypothesis-test-for-a-population-variance"><i class="fa fa-check"></i><b>10.4.1</b> Hypothesis Test for a Population Variance</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-one-vs-two"><i class="fa fa-check"></i><b>10.5</b> Two-sided and One-sided Tests</a></li>
+<li class="chapter" data-level="10.6" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#sec-HT-power"><i class="fa fa-check"></i><b>10.6</b> Power</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#power-and-sample-size-calculations-for-mu"><i class="fa fa-check"></i><b>10.6.1</b> Power and Sample Size Calculations for <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="10.6.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#power-and-sample-size-calculations"><i class="fa fa-check"></i><b>10.6.2</b> Power and Sample Size Calculations</a></li>
+<li class="chapter" data-level="10.6.3" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#power-and-sample-size-calculations-for-chi2"><i class="fa fa-check"></i><b>10.6.3</b> Power and Sample Size Calculations for <span class="math inline">\(\chi^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#exploring-hypothesis-test-via-simulation"><i class="fa fa-check"></i><b>10.7</b> Exploring Hypothesis Test via simulation</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#the-test-statistic-and-its-sampling-distribution-assuming-h_0-is-true"><i class="fa fa-check"></i><b>10.7.1</b> The Test Statistic and its Sampling Distribution: Assuming <span class="math inline">\(H_0\)</span> is true</a></li>
+<li class="chapter" data-level="10.7.2" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#simulation-study-repeated-hypothesis-testing-under-h_0-and-h_a"><i class="fa fa-check"></i><b>10.7.2</b> Simulation Study: Repeated Hypothesis Testing Under <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span></a></li>
+<li class="chapter" data-level="10.7.3" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#bootstrap-hypothesis-tests"><i class="fa fa-check"></i><b>10.7.3</b> Bootstrap Hypothesis Tests</a></li>
+<li class="chapter" data-level="10.7.4" data-path="chap-hypothesis-testing.html"><a href="chap-hypothesis-testing.html#the-basic-bootstrap-hypothesis-test-procedure"><i class="fa fa-check"></i><b>10.7.4</b> The Basic Bootstrap Hypothesis Test Procedure</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chap-compare-two.html"><a href="chap-compare-two.html"><i class="fa fa-check"></i><b>11</b> Comparing Two Populations</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-two-sample-means"><i class="fa fa-check"></i><b>11.1</b> Inference on a Difference of Two Population Means</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="chap-compare-two.html"><a href="chap-compare-two.html#when-sds-are-known-using-the-normal-distribution"><i class="fa fa-check"></i><b>11.1.1</b> When SDs are Known (Using the Normal Distribution)</a></li>
+<li class="chapter" data-level="11.1.2" data-path="chap-compare-two.html"><a href="chap-compare-two.html#when-sds-are-unknown-using-the-t-distribution"><i class="fa fa-check"></i><b>11.1.2</b> When SDs are Unknown (Using the T Distribution)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-2pop-proportion"><i class="fa fa-check"></i><b>11.2</b> Difference of Two Population Proportions</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-2pop-CI-proportion"><i class="fa fa-check"></i><b>11.2.1</b> Confidence Intervals for Two Population Proportions</a></li>
+<li class="chapter" data-level="11.2.2" data-path="chap-compare-two.html"><a href="chap-compare-two.html#sec-2pop-HT-proportion"><i class="fa fa-check"></i><b>11.2.2</b> Hypothesis Tests for Two Population Proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="chap-compare-two.html"><a href="chap-compare-two.html#inference-on-a-ratio-of-two-population-variances"><i class="fa fa-check"></i><b>11.3</b> Inference on a Ratio of Two Population Variances</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chap-compare-more-than-two.html"><a href="chap-compare-more-than-two.html"><i class="fa fa-check"></i><b>12</b> Comparing More Than Two Populations</a></li>
+<li class="chapter" data-level="13" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html"><i class="fa fa-check"></i><b>13</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-model"><i class="fa fa-check"></i><b>13.1</b> The Simple Linear Regression (SLR) Model</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-regression"><i class="fa fa-check"></i><b>13.1.1</b> What Does the Word Regression Mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-least-squares"><i class="fa fa-check"></i><b>13.2</b> The Least Squares Idea</a></li>
+<li class="chapter" data-level="13.3" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-assumptions"><i class="fa fa-check"></i><b>13.3</b> Checking the Assumptions</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#good-residuals"><i class="fa fa-check"></i><b>13.3.1</b> Good Residuals</a></li>
+<li class="chapter" data-level="13.3.2" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#linearity"><i class="fa fa-check"></i><b>13.3.2</b> Linearity</a></li>
+<li class="chapter" data-level="13.3.3" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#constant-variance"><i class="fa fa-check"></i><b>13.3.3</b> Constant Variance</a></li>
+<li class="chapter" data-level="13.3.4" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#independence-2"><i class="fa fa-check"></i><b>13.3.4</b> Independence</a></li>
+<li class="chapter" data-level="13.3.5" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#normality"><i class="fa fa-check"></i><b>13.3.5</b> Normality</a></li>
+<li class="chapter" data-level="13.3.6" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#multiple-assumptions-being-violated"><i class="fa fa-check"></i><b>13.3.6</b> Multiple Assumptions being Violated</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-covariance-correlation"><i class="fa fa-check"></i><b>13.4</b> Covariance, Correlation, and R-squared</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#r-squared"><i class="fa fa-check"></i><b>13.4.1</b> R-squared</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-ci"><i class="fa fa-check"></i><b>13.5</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="13.6" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-pi"><i class="fa fa-check"></i><b>13.6</b> Prediction Intervals</a></li>
+<li class="chapter" data-level="13.7" data-path="chap-simple-linear-regression.html"><a href="chap-simple-linear-regression.html#sec-slr-ht"><i class="fa fa-check"></i><b>13.7</b> Hypothesis Test</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="chap-multiple-linear-regression.html"><a href="chap-multiple-linear-regression.html"><i class="fa fa-check"></i><b>14</b> Multiple Linear Regression</a></li>
+<li class="chapter" data-level="15" data-path="chap-flexible-regression.html"><a href="chap-flexible-regression.html"><i class="fa fa-check"></i><b>15</b> More Flexible Regression Methods</a></li>
+<li class="chapter" data-level="16" data-path="chap-categorical-data.html"><a href="chap-categorical-data.html"><i class="fa fa-check"></i><b>16</b> Categorical Data Analysis</a></li>
+<li class="chapter" data-level="17" data-path="chap-nonparametrics.html"><a href="chap-nonparametrics.html"><i class="fa fa-check"></i><b>17</b> Nonparametric Methods</a></li>
+<li class="chapter" data-level="18" data-path="chap-exercises.html"><a href="chap-exercises.html"><i class="fa fa-check"></i><b>18</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="chap-exercises.html"><a href="chap-exercises.html#foundations"><i class="fa fa-check"></i><b>18.1</b> Foundations</a></li>
+<li class="chapter" data-level="18.2" data-path="chap-exercises.html"><a href="chap-exercises.html#probability"><i class="fa fa-check"></i><b>18.2</b> Probability</a></li>
+<li class="chapter" data-level="18.3" data-path="chap-exercises.html"><a href="chap-exercises.html#expected-values"><i class="fa fa-check"></i><b>18.3</b> Expected Values</a></li>
+<li class="chapter" data-level="18.4" data-path="chap-exercises.html"><a href="chap-exercises.html#joint-and-conditional-probability"><i class="fa fa-check"></i><b>18.4</b> Joint and Conditional Probability</a></li>
+<li class="chapter" data-level="18.5" data-path="chap-exercises.html"><a href="chap-exercises.html#sampling-distributions"><i class="fa fa-check"></i><b>18.5</b> Sampling Distributions</a></li>
+<li class="chapter" data-level="18.6" data-path="chap-exercises.html"><a href="chap-exercises.html#principles-of-statistical-inference"><i class="fa fa-check"></i><b>18.6</b> Principles of Statistical Inference</a></li>
+<li class="chapter" data-level="18.7" data-path="chap-exercises.html"><a href="chap-exercises.html#confidence-intervals"><i class="fa fa-check"></i><b>18.7</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="18.8" data-path="chap-exercises.html"><a href="chap-exercises.html#hypothesis-testing"><i class="fa fa-check"></i><b>18.8</b> Hypothesis Testing</a></li>
+<li class="chapter" data-level="18.9" data-path="chap-exercises.html"><a href="chap-exercises.html#comparing-two-populations"><i class="fa fa-check"></i><b>18.9</b> Comparing Two Populations</a></li>
+<li class="chapter" data-level="18.10" data-path="chap-exercises.html"><a href="chap-exercises.html#comparing-more-than-two-populations"><i class="fa fa-check"></i><b>18.10</b> Comparing More Than Two Populations</a></li>
+<li class="chapter" data-level="18.11" data-path="chap-exercises.html"><a href="chap-exercises.html#linear-regression"><i class="fa fa-check"></i><b>18.11</b> Linear Regression</a></li>
+<li class="chapter" data-level="18.12" data-path="chap-exercises.html"><a href="chap-exercises.html#more-flexible-regression-methods"><i class="fa fa-check"></i><b>18.12</b> More Flexible Regression Methods</a></li>
+<li class="chapter" data-level="18.13" data-path="chap-exercises.html"><a href="chap-exercises.html#categorical-data-analysis"><i class="fa fa-check"></i><b>18.13</b> Categorical Data Analysis</a></li>
+<li class="chapter" data-level="18.14" data-path="chap-exercises.html"><a href="chap-exercises.html#nonparametric-methods"><i class="fa fa-check"></i><b>18.14</b> Nonparametric Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html"><i class="fa fa-check"></i><b>19</b> Appendix: R Tutorial</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#downloading-and-installing-r-and-rstudio"><i class="fa fa-check"></i><b>19.1</b> Downloading and Installing R and RStudio</a></li>
+<li class="chapter" data-level="19.2" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-layout-of-rstudio"><i class="fa fa-check"></i><b>19.2</b> The Layout of RStudio</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-source-pane"><i class="fa fa-check"></i><b>19.2.1</b> The Source Pane</a></li>
+<li class="chapter" data-level="19.2.2" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-console-pane"><i class="fa fa-check"></i><b>19.2.2</b> The Console Pane</a></li>
+<li class="chapter" data-level="19.2.3" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-environments-pane"><i class="fa fa-check"></i><b>19.2.3</b> The Environments Pane</a></li>
+<li class="chapter" data-level="19.2.4" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#the-output-pane"><i class="fa fa-check"></i><b>19.2.4</b> The Output Pane</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#r-basics"><i class="fa fa-check"></i><b>19.3</b> R Basics</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#creating-a-.r-file"><i class="fa fa-check"></i><b>19.3.1</b> Creating a .R file</a></li>
+<li class="chapter" data-level="19.3.2" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#saving-your-.r-file"><i class="fa fa-check"></i><b>19.3.2</b> Saving your .R file</a></li>
+<li class="chapter" data-level="19.3.3" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#importing-data-into-r-for-analysis"><i class="fa fa-check"></i><b>19.3.3</b> Importing Data into R for Analysis</a></li>
+<li class="chapter" data-level="19.3.4" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#coding-in-rstudio"><i class="fa fa-check"></i><b>19.3.4</b> Coding in RStudio</a></li>
+<li class="chapter" data-level="19.3.5" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#comments"><i class="fa fa-check"></i><b>19.3.5</b> Comments</a></li>
+<li class="chapter" data-level="19.3.6" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#arithmetic-in-r"><i class="fa fa-check"></i><b>19.3.6</b> Arithmetic in R</a></li>
+<li class="chapter" data-level="19.3.7" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#variables-and-variable-assignment"><i class="fa fa-check"></i><b>19.3.7</b> Variables and Variable Assignment</a></li>
+<li class="chapter" data-level="19.3.8" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#data-types-in-r"><i class="fa fa-check"></i><b>19.3.8</b> Data Types in R</a></li>
+<li class="chapter" data-level="19.3.9" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#vectors"><i class="fa fa-check"></i><b>19.3.9</b> Vectors</a></li>
+<li class="chapter" data-level="19.3.10" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#logical-operators-in-r"><i class="fa fa-check"></i><b>19.3.10</b> Logical Operators in R</a></li>
+<li class="chapter" data-level="19.3.11" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#matrices-in-r"><i class="fa fa-check"></i><b>19.3.11</b> Matrices in R</a></li>
+<li class="chapter" data-level="19.3.12" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#factors-in-r"><i class="fa fa-check"></i><b>19.3.12</b> Factors in R</a></li>
+<li class="chapter" data-level="19.3.13" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#data-frames-in-r"><i class="fa fa-check"></i><b>19.3.13</b> Data Frames in R</a></li>
+<li class="chapter" data-level="19.3.14" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#lists-in-r"><i class="fa fa-check"></i><b>19.3.14</b> Lists in R</a></li>
+<li class="chapter" data-level="19.3.15" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#statistics-in-r"><i class="fa fa-check"></i><b>19.3.15</b> Statistics in R</a></li>
+<li class="chapter" data-level="19.3.16" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#visualizations-in-r"><i class="fa fa-check"></i><b>19.3.16</b> Visualizations in R</a></li>
+<li class="chapter" data-level="19.3.17" data-path="chap-r-tutorial.html"><a href="chap-r-tutorial.html#downloading-and-using-packages-in-r"><i class="fa fa-check"></i><b>19.3.17</b> Downloading and Using Packages in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="chap-glossary.html"><a href="chap-glossary.html"><i class="fa fa-check"></i><b>20</b> Glossary</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="chap-glossary.html"><a href="chap-glossary.html#overview"><i class="fa fa-check"></i><b>20.1</b> Overview</a></li>
+<li class="chapter" data-level="20.2" data-path="chap-glossary.html"><a href="chap-glossary.html#foundations-1"><i class="fa fa-check"></i><b>20.2</b> Foundations</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions"><i class="fa fa-check"></i><b>20.2.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.2.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands"><i class="fa fa-check"></i><b>20.2.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="chap-glossary.html"><a href="chap-glossary.html#probability-1"><i class="fa fa-check"></i><b>20.3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-1"><i class="fa fa-check"></i><b>20.3.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.3.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-1"><i class="fa fa-check"></i><b>20.3.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="chap-glossary.html"><a href="chap-glossary.html#random-variables-and-probability-distributions-1"><i class="fa fa-check"></i><b>20.4</b> Random Variables and Probability Distributions</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-2"><i class="fa fa-check"></i><b>20.4.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.4.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-2"><i class="fa fa-check"></i><b>20.4.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="chap-glossary.html"><a href="chap-glossary.html#expected-value"><i class="fa fa-check"></i><b>20.5</b> Expected Value</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-3"><i class="fa fa-check"></i><b>20.5.1</b> Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="chap-glossary.html"><a href="chap-glossary.html#the-normal-distribution"><i class="fa fa-check"></i><b>20.6</b> The Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-4"><i class="fa fa-check"></i><b>20.6.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.6.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-3"><i class="fa fa-check"></i><b>20.6.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.7" data-path="chap-glossary.html"><a href="chap-glossary.html#joint-and-conditional-distributions"><i class="fa fa-check"></i><b>20.7</b> Joint and Conditional Distributions</a>
+<ul>
+<li class="chapter" data-level="20.7.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-5"><i class="fa fa-check"></i><b>20.7.1</b> Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="20.8" data-path="chap-glossary.html"><a href="chap-glossary.html#sampling-distributions-and-central-limit-theorem"><i class="fa fa-check"></i><b>20.8</b> Sampling Distributions and Central Limit Theorem</a>
+<ul>
+<li class="chapter" data-level="20.8.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-6"><i class="fa fa-check"></i><b>20.8.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.8.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-4"><i class="fa fa-check"></i><b>20.8.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.9" data-path="chap-glossary.html"><a href="chap-glossary.html#confidence-intervals-1"><i class="fa fa-check"></i><b>20.9</b> Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="20.9.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-7"><i class="fa fa-check"></i><b>20.9.1</b> Definitions</a></li>
+<li class="chapter" data-level="20.9.2" data-path="chap-glossary.html"><a href="chap-glossary.html#r-commands-5"><i class="fa fa-check"></i><b>20.9.2</b> R Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="20.10" data-path="chap-glossary.html"><a href="chap-glossary.html#hypothesis-testing-1"><i class="fa fa-check"></i><b>20.10</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="20.10.1" data-path="chap-glossary.html"><a href="chap-glossary.html#definitions-8"><i class="fa fa-check"></i><b>20.10.1</b> Definitions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Probability and Statistics: Making Principled Decisions in an Uncertain World</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap-compare-two" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Comparing Two Populations<a href="chap-compare-two.html#chap-compare-two" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In Chapters <a href="chap-confidence-intervals.html#chap-confidence-intervals">9</a> and <a href="chap-hypothesis-testing.html#chap-hypothesis-testing">10</a>, we developed tools for inference about a single population parameter. In this chapter, we extend these ideas to compare <em>two populations</em>. Our goal is to quantify differences between populations or test whether such differences exist, using confidence intervals and hypothesis tests. Specifically, we will consider inferences on each of the following: a difference of two population means, a difference of two population proportions, and a <em>ratio</em> of two population variances.</p>
+<div id="sec-two-sample-means" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Inference on a Difference of Two Population Means<a href="chap-compare-two.html#sec-two-sample-means" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In Sections <a href="chap-confidence-intervals.html#sec-CI-mean">9.3</a> and <a href="chap-hypothesis-testing.html#sec-test-mean">10.2</a>, we developed methods for inference on a single population mean. In this section, we extend those ideas to the case of comparing <em>two population means</em>. For example, we might wish to compare the average tensile strength of materials produced by two different manufacturing processes, or the average exam scores for two different teaching methods.</p>
+<p>Suppose we have two populations, and we collect <em>independent</em> simple random samples from each:</p>
+<p><span class="math display">\[
+X_1, X_2, \dots, X_{n_1} \overset{\text{iid}}{\sim} N(\mu_1, \sigma_1^2)
+\]</span></p>
+<p><span class="math display">\[
+Y_1, Y_2, \dots, Y_{n_2} \overset{\text{iid}}{\sim} N(\mu_2, \sigma_2^2)
+\]</span></p>
+<p>where <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> are the population means, <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span> are the population standard deviations, and the two samples are assumed to be <em>independent of each other</em>.</p>
+<p>Alternatively, if the population distributions are not Normal, we may instead rely on the Central Limit Theorem (CLT), provided that both sample sizes <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are sufficiently large. For the purposes of this book, we will typically regard <span class="math inline">\(n_1 \geq 30\)</span> and <span class="math inline">\(n_2 \geq 30\)</span> as "large enough" for the CLT to apply.</p>
+<p>Our goal is to conduct inference on the difference in population means:</p>
+<p><span class="math display">\[
+\Delta = \mu_1 - \mu_2
+\]</span></p>
+<p>In what follows, we will again focus on two common cases. In both of these cases, we make the same, core assumptions:</p>
+<p><span class="math display">\[
+X_1, X_2, \dots, X_{n_1} \overset{\text{iid}}{\sim} N(\mu_1, \sigma_1^2)
+\quad \text{and} \quad
+Y_1, Y_2, \dots, Y_{n_2} \overset{\text{iid}}{\sim} N(\mu_2, \sigma_2^2)
+\]</span></p>
+<p>or, more generally, that <span class="math inline">\(n_1 \geq 30\)</span> and <span class="math inline">\(n_2 \geq 30\)</span> and hence are both sufficiently large for the Central Limit Theorem to apply. Also, we assume that the two samples are independent (for a major case where they are not assumed to be independent, see <a href="chap-confidence-intervals.html#sec-CI-matchedPairs">9.4</a>).</p>
+<ol style="list-style-type: decimal">
+<li>Known population standard deviations (<span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span> known): In this case, we will use <span class="math inline">\(Z\)</span>-based methods to construct confidence intervals and hypothesis tests.</li>
+<li>Unknown population standard deviations (<span class="math inline">\(\sigma_1\)</span> and/or <span class="math inline">\(\sigma_2\)</span> unknown): In this case, we will use <span class="math inline">\(t\)</span>-based methods, which require estimating the standard deviations from the data. This will have two sub-cases:</li>
+</ol>
+<ul>
+<li>Pooled: where we can assume <span class="math inline">\(\sigma_1 = \sigma_2\)</span> and hence 'pool' the sample variance <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span></li>
+<li>Welch's: where we do not assume they are equal and need to approximate the degrees of freedom (df), known as the Satterwaith's approximation.</li>
+</ul>
+<p>These two cases mirror the structure of our earlier development in Chapters <a href="chap-confidence-intervals.html#chap-confidence-intervals">9</a> and <a href="chap-hypothesis-testing.html#chap-hypothesis-testing">10</a> for the one-sample setting. <!--We will begin with the known-$\sigma$ case, and then we will extend the methods to the more realistic unknown-$\sigma$ case. --></p>
+<div id="when-sds-are-known-using-the-normal-distribution" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> When SDs are Known (Using the Normal Distribution)<a href="chap-compare-two.html#when-sds-are-known-using-the-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:ci-two-sample-means-z" class="proposition"><strong>Proposition 11.1  </strong></span>Assume that the population standard deviations <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span> are <strong>known</strong> (This will be explicitly stated in the problem, e.g. <span class="math inline">\(\sigma_1 = 4\)</span> and <span class="math inline">\(\sigma_2 = 10\)</span>).</p>
+<p>Then, a <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval for the difference in population means</p>
+<p><span class="math display">\[
+\Delta = \mu_1 - \mu_2
+\]</span></p>
+<p>is given by:</p>
+<p><span class="math display">\[
+\left[
+(\bar{X} - \bar{Y}) \pm z_{\alpha/2} \cdot
+\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}
+\right]
+\]</span></p>
+</div>
+</div>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:z-test-two-sample-means" class="proposition"><strong>Proposition 11.2  </strong></span>Under the same assumptions as Proposition <a href="chap-compare-two.html#prp:ci-two-sample-means-z">11.1</a>, to test</p>
+<p><span class="math display">\[
+H_0: \Delta = \mu_1 - \mu_2 = \Delta_0
+\quad \text{vs.} \quad
+H_A: \Delta \neq \Delta_0
+\]</span>
+Most commonly, <span class="math inline">\(\Delta_0 = 0\)</span>, which corresponds to testing if <span class="math inline">\(\mu_1 = \mu_2\)</span>.</p>
+<p>We use the test statistic:</p>
+<p><span class="math display">\[
+T = \frac{(\bar{X} - \bar{Y}) - 0}
+{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}}
+\;\sim\; N(0, 1) \quad \text{under } H_0
+\]</span></p>
+<p>After running the experiment and collecting data <span class="math inline">\(x_1, x_2, \dots, x_{n_1} \quad \text{and} \quad
+y_1, y_2, \dots, y_{n_2}\)</span> we form the observed test statistic</p>
+<p><span class="math display">\[
+T_{obs} = \frac{(\bar{x} - \bar{y}) - 0}
+{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}}
+\]</span>
+We reject <span class="math inline">\(H_0\)</span> at significance level <span class="math inline">\(\alpha\)</span> if:</p>
+<p><span class="math display">\[
+|T_{obs}| &gt; z_{\alpha/2}
+\]</span></p>
+<p>or, equivalently, if the p-value is less than <span class="math inline">\(\alpha\)</span>. For one-sided alternatives, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{obs} &gt; z_\alpha\)</span> (upper-tailed) or <span class="math inline">\(T_{obs} &lt; -z_\alpha\)</span> (lower-tailed).</p>
+</div>
+</div>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:two-means-coffee-ex" class="example"><strong>Example 11.1  </strong></span>Consider a dataset consisting of the weights of cups of coffee (in grams of brewed coffee extracted) of two profiles (<span class="math inline">\(n_1 = 15\)</span> cups from profile 'A' and <span class="math inline">\(n_2 = 14\)</span> cups from profile 'B'); the data are available in the <code>data</code> folder for the book, in the comma-delimited text file <code>coffee_2.csv</code>.</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="chap-compare-two.html#cb236-1" tabindex="-1"></a>dta <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/coffee_2.csv&quot;</span>)</span></code></pre></div>
+<p>The dataset contains the quantitative variable <code>x</code> for all 29 weights and the qualitative variable <code>grp</code> (taking values <code>A</code> and <code>B</code>) that designates the profile of each coffee cup. The following <code>R</code> code prints the dimensions of the dataset, displays the first few rows, and makes side-by-side boxplots of the weights by profile. We also create some new variables for later use.</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="chap-compare-two.html#cb237-1" tabindex="-1"></a><span class="co"># Quick inspection of data</span></span>
+<span id="cb237-2"><a href="chap-compare-two.html#cb237-2" tabindex="-1"></a><span class="fu">dim</span>(dta)</span></code></pre></div>
+<pre><code>## [1] 29  2</code></pre>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="chap-compare-two.html#cb239-1" tabindex="-1"></a><span class="fu">head</span>(dta)</span></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">x</th>
+<th align="left">grp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">261.8</td>
+<td align="left">A</td>
+</tr>
+<tr class="even">
+<td align="right">252.3</td>
+<td align="left">A</td>
+</tr>
+<tr class="odd">
+<td align="right">252.3</td>
+<td align="left">A</td>
+</tr>
+<tr class="even">
+<td align="right">243.0</td>
+<td align="left">A</td>
+</tr>
+<tr class="odd">
+<td align="right">250.8</td>
+<td align="left">A</td>
+</tr>
+<tr class="even">
+<td align="right">252.4</td>
+<td align="left">A</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="chap-compare-two.html#cb240-1" tabindex="-1"></a><span class="fu">boxplot</span>(x <span class="sc">~</span> grp, <span class="at">data =</span> dta)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-106-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="chap-compare-two.html#cb241-1" tabindex="-1"></a><span class="co"># Extract data components</span></span>
+<span id="cb241-2"><a href="chap-compare-two.html#cb241-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">with</span>(dta, x[grp <span class="sc">==</span> <span class="st">&quot;A&quot;</span>])</span>
+<span id="cb241-3"><a href="chap-compare-two.html#cb241-3" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">with</span>(dta, x[grp <span class="sc">==</span> <span class="st">&quot;B&quot;</span>])</span>
+<span id="cb241-4"><a href="chap-compare-two.html#cb241-4" tabindex="-1"></a>n_1 <span class="ot">=</span> <span class="fu">length</span>(x)</span>
+<span id="cb241-5"><a href="chap-compare-two.html#cb241-5" tabindex="-1"></a>n_2 <span class="ot">=</span> <span class="fu">length</span>(y)</span></code></pre></div>
+<p>The sample sizes are not large enough to appeal to the CLT, so, before applying the <span class="math inline">\(z\)</span>-based methods of Proposition <a href="chap-compare-two.html#prp:ci-two-sample-means-z">11.1</a> and <a href="chap-compare-two.html#prp:z-test-two-sample-means">11.2</a>, we create Normal QQ plots to check whether the data are plausibly Normally distributed.</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="chap-compare-two.html#cb242-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb242-2"><a href="chap-compare-two.html#cb242-2" tabindex="-1"></a><span class="fu">qqnorm</span>(x, <span class="at">main =</span> <span class="st">&quot;Q–Q Plot  Profile A&quot;</span>); <span class="fu">qqline</span>(x)</span>
+<span id="cb242-3"><a href="chap-compare-two.html#cb242-3" tabindex="-1"></a><span class="fu">qqnorm</span>(y, <span class="at">main =</span> <span class="st">&quot;Q–Q Plot  Profile B&quot;</span>); <span class="fu">qqline</span>(y)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-107-1.png" alt="" width="672" /></p>
+<p>As discussed in Section <a href="chap-normal-distribution.html#sec-QQ-plots">6.6</a>, our interest in QQ plots is in whether the plotted points follow roughly a linear pattern; if the pattern is linear, then we have support for the assumption that the underlying distribution is Normal. With our data, the QQ plots do support the assumption of Normality.</p>
+<p>We will assume for now that the population variances are known to be <span class="math inline">\(\sigma_1^2 = \sigma_2^2 = 20\)</span>. Applying the result in Proposition <a href="chap-compare-two.html#prp:ci-two-sample-means-z">11.1</a>, we compute a 95% confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span> as follows:</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="chap-compare-two.html#cb243-1" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb243-2"><a href="chap-compare-two.html#cb243-2" tabindex="-1"></a>sigma_1 <span class="ot">=</span> sigma_2 <span class="ot">=</span> <span class="fu">sqrt</span>(<span class="dv">20</span>)</span>
+<span id="cb243-3"><a href="chap-compare-two.html#cb243-3" tabindex="-1"></a>xBar <span class="ot">=</span> <span class="fu">mean</span>(x) </span>
+<span id="cb243-4"><a href="chap-compare-two.html#cb243-4" tabindex="-1"></a>yBar <span class="ot">=</span> <span class="fu">mean</span>(y)</span>
+<span id="cb243-5"><a href="chap-compare-two.html#cb243-5" tabindex="-1"></a>se   <span class="ot">=</span> <span class="fu">sqrt</span>(sigma_1<span class="sc">**</span><span class="dv">2</span> <span class="sc">/</span> n_1 <span class="sc">+</span> sigma_2<span class="sc">**</span><span class="dv">2</span> <span class="sc">/</span> n_2)</span>
+<span id="cb243-6"><a href="chap-compare-two.html#cb243-6" tabindex="-1"></a><span class="fu">c</span>(xBar <span class="sc">-</span> yBar <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> se,</span>
+<span id="cb243-7"><a href="chap-compare-two.html#cb243-7" tabindex="-1"></a>  xBar <span class="sc">-</span> yBar <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> se)</span></code></pre></div>
+<pre><code>## [1] -0.3824982  6.1320220</code></pre>
+<p>Similarly, applying the result in Proposition <a href="chap-compare-two.html#prp:z-test-two-sample-means">11.2</a>, we test <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> as follows:</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="chap-compare-two.html#cb245-1" tabindex="-1"></a>Tobs <span class="ot">=</span> (xBar <span class="sc">-</span> yBar) <span class="sc">/</span> se</span>
+<span id="cb245-2"><a href="chap-compare-two.html#cb245-2" tabindex="-1"></a>pval <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(Tobs)))</span>
+<span id="cb245-3"><a href="chap-compare-two.html#cb245-3" tabindex="-1"></a>pval</span></code></pre></div>
+<pre><code>## [1] 0.08366485</code></pre>
+<p>We do not have sufficient evidence to conclude that the population means are different (the confidence interval contains the value zero, and the p-value is greater than 0.05 = <span class="math inline">\(\alpha\)</span>).</p>
+</div>
+</div>
+<div id="power-and-sample-size-calculations-1" class="section level4 hasAnchor" number="11.1.1.1">
+<h4><span class="header-section-number">11.1.1.1</span> Power and Sample Size Calculations<a href="chap-compare-two.html#power-and-sample-size-calculations-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We can approach the calculation of statistical power to detect a particular difference in population means, <span class="math inline">\(\Delta = \mu_1 - \mu_2\)</span>, and associated sample size requirements using the same principles as were used in Chapter <a href="chap-hypothesis-testing.html#chap-hypothesis-testing">10</a>. In fact, in this idealized context of Normal populations and assumed-known variances, the calculations are relatively simple and can be done manually.</p>
+<p>Suppose we wish to test <span class="math inline">\(H_0: \mu_1 - \mu_2 = \Delta_0\)</span> against the alternative <span class="math inline">\(H_a: \mu_1 - \mu_2 \neq \Delta_0\)</span>. If the true difference is actually <span class="math inline">\(\Delta&#39;\)</span>, the power of the test is the probability that we correctly reject the null hypothesis.</p>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:power-two-sample-means-z" class="proposition"><strong>Proposition 11.3  </strong></span>For a test with Type I error rate <span class="math inline">\(\alpha\)</span>, the power <span class="math inline">\(1-\beta\)</span> to detect a true difference <span class="math inline">\(\Delta&#39;\)</span> is given by:</p>
+<p><span class="math display">\[1 - \beta = \Phi\left( -z_{\alpha/2} - \frac{\Delta&#39; - \Delta_0}{\sigma_{\bar{X} - \bar{Y}}} \right) + 1 - \Phi\left( z_{\alpha/2} - \frac{\Delta&#39; - \Delta_0}{\sigma_{\bar{X} - \bar{Y}}} \right)\]</span></p>
+<p>where <span class="math inline">\(\Phi(\cdot)\)</span> is commonly-used notation for the standard Normal CDF (i.e., <span class="math inline">\(\Phi(a) = Pr(Z \leq a)\)</span>), and the standard error of the difference is:</p>
+<p><span class="math display">\[\sigma_{\bar{X} - \bar{Y}} = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}\]</span></p>
+</div>
+</div>
+<p>If we assume equal sample sizes (<span class="math inline">\(n_1 = n_2 = n\)</span>) and equal variances (<span class="math inline">\(\sigma_1^2 = \sigma_2^2 = \sigma^2\)</span>), the required sample size <span class="math inline">\(n\)</span> to achieve a desired power of <span class="math inline">\(1-\beta\)</span> for a specific difference <span class="math inline">\(\Delta&#39;\)</span> is:</p>
+<p><span class="math display">\[n = \frac{2\sigma^2(z_{\alpha/2} + z_{\beta})^2}{(\Delta&#39; - \Delta_0)^2}\]</span></p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:two-means-coffee-ex-z-pwr" class="example"><strong>Example 11.2  </strong></span>Continuing with the coffee example context of Example <a href="chap-compare-two.html#exm:two-means-coffee-ex">11.1</a>, suppose we wish to compute the power to detect a mean difference of <span class="math inline">\(\Delta&#39; = 3\)</span> grams, again assuming for now that <span class="math inline">\(\sigma_1^2 = \sigma_2^2 = 20\)</span>.</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="chap-compare-two.html#cb247-1" tabindex="-1"></a>Delta_prime <span class="ot">=</span> <span class="dv">3</span> <span class="co"># the mean difference we wish to detect</span></span>
+<span id="cb247-2"><a href="chap-compare-two.html#cb247-2" tabindex="-1"></a>Delta_0 <span class="ot">=</span> <span class="dv">0</span> <span class="co"># the mean difference under H_0</span></span>
+<span id="cb247-3"><a href="chap-compare-two.html#cb247-3" tabindex="-1"></a></span>
+<span id="cb247-4"><a href="chap-compare-two.html#cb247-4" tabindex="-1"></a><span class="co"># Compute critical z-value</span></span>
+<span id="cb247-5"><a href="chap-compare-two.html#cb247-5" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb247-6"><a href="chap-compare-two.html#cb247-6" tabindex="-1"></a>z_crit <span class="ot">=</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb247-7"><a href="chap-compare-two.html#cb247-7" tabindex="-1"></a></span>
+<span id="cb247-8"><a href="chap-compare-two.html#cb247-8" tabindex="-1"></a><span class="co"># Compute power</span></span>
+<span id="cb247-9"><a href="chap-compare-two.html#cb247-9" tabindex="-1"></a>pwr <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="sc">-</span>z_crit <span class="sc">-</span> (Delta_prime <span class="sc">-</span> Delta_0) <span class="sc">/</span> se) <span class="sc">+</span> </span>
+<span id="cb247-10"><a href="chap-compare-two.html#cb247-10" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z_crit <span class="sc">-</span> (Delta_prime <span class="sc">-</span> Delta_0) <span class="sc">/</span> se))</span>
+<span id="cb247-11"><a href="chap-compare-two.html#cb247-11" tabindex="-1"></a>pwr</span></code></pre></div>
+<pre><code>## [1] 0.4385731</code></pre>
+<p>Suppose we want to have power <span class="math inline">\(1 - \beta = 0.80\)</span> to reject <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> when <span class="math inline">\(\mu_1 - \mu_2 = 3\)</span>, again testing with Type I error <span class="math inline">\(\alpha = 0.05\)</span> and assuming that <span class="math inline">\(\sigma_1^2 = \sigma_2^2 = 20\)</span>, and under the condition that the sample sizes are equal (<span class="math inline">\(n_1 = n_2 = n\)</span>), the minimum required sample size <span class="math inline">\(n\)</span> can be computed as follows:</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="chap-compare-two.html#cb249-1" tabindex="-1"></a>n_req_z <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">20</span> <span class="sc">*</span> (z_crit <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.8</span>)) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">/</span> (Delta_prime <span class="sc">-</span> Delta_0) <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb249-2"><a href="chap-compare-two.html#cb249-2" tabindex="-1"></a>n_req_z</span></code></pre></div>
+<pre><code>## [1] 34.88391</code></pre>
+<p>We thus estimate that, with the observed sample sizes <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>, our power to detect <span class="math inline">\(\Delta&#39; = \mu_1 - \mu_2 = 3\)</span> based on the two-sample <span class="math inline">\(z\)</span>-test with Type I error rate <span class="math inline">\(\alpha = 0.05\)</span> is about <span class="math inline">\(0.44\)</span>. In order to increase power to 0.8, if we were to enforce equal sample sizes, we would require <span class="math inline">\(n_1 = n_2\)</span> of at least 35.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="when-sds-are-unknown-using-the-t-distribution" class="section level3 hasAnchor" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> When SDs are Unknown (Using the T Distribution)<a href="chap-compare-two.html#when-sds-are-unknown-using-the-t-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now, we address the much more common and realistic scenario that the population variances <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span> are <strong>unknown</strong> (This will be explicitly stated in the problem, e.g. <span class="math inline">\(s_1^2 = 4\)</span> and <span class="math inline">\(s_2^2 = 10\)</span>). Here, we need to consider an intermediary scenario: that it is reasonable to assume the (unknown) <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span> are in fact equal (known as 'equal variances' or 'pooled'). Then, we will cover the most general case in which the (unknown) population variances <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span> can be arbitrary (known as 'Welch's' or 'Satterthwaite')</p>
+<div id="equal-variances-i.e.-pooled" class="section level4 hasAnchor" number="11.1.2.1">
+<h4><span class="header-section-number">11.1.2.1</span> Equal Variances (i.e. Pooled)<a href="chap-compare-two.html#equal-variances-i.e.-pooled" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:ci-two-sample-means-t" class="proposition"><strong>Proposition 11.4  </strong></span>Assume that <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span> are <strong>unknown</strong> but that they are equal (that is, <span class="math inline">\(\sigma_1^2 = \sigma_2^2 = \sigma^2\)</span> for some population parameter <span class="math inline">\(\sigma^2\)</span>). Note that the <strong>sample</strong> variances won't ever be equal (<span class="math inline">\(s_1^2 \neq s_2^2\)</span>), this is an assumption about the <strong>population</strong> variances.</p>
+<p>Then, a <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval for the difference in population means</p>
+<p><span class="math display">\[
+\Delta = \mu_1 - \mu_2
+\]</span></p>
+<p>is given by:</p>
+<p><span class="math display">\[
+\left[
+(\bar{X} - \bar{Y}) \pm t_{\alpha/2, n_1 + n_2 - 2} \cdot
+s_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
+\right]
+\]</span>
+In the above CI, there appears a new object: <span class="math inline">\(s_p^2\)</span>, which is the <strong>pooled sample variance</strong>. We will define and motivate <span class="math inline">\(s_p^2\)</span> now.</p>
+</div>
+</div>
+<p>Under the assumption that <span class="math inline">\(\sigma_1^2 = \sigma_2^2\)</span>, we can estimate this shared variance parameter by combining the sample variances <span class="math inline">\(s_1^2\)</span> and <span class="math inline">\(s_2^2\)</span>. We don't want to just average them to form <span class="math inline">\(\frac{s_1^2 + s_2^2}{2}\)</span>, however, as the sample sizes might be different. Therefore, we want to make a <strong>weighted</strong> average instead:</p>
+<p><span class="math display">\[
+s_p^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2 }{n_1 + n_2 - 2}
+\]</span>
+This reduces to the simple average <span class="math inline">\(\frac{s_1^2 + s_2^2}{2}\)</span> if <span class="math inline">\(n_1 = n_2\)</span> but in general will upweight the sample variance that is from the larger sample size.</p>
+<p>As a last observation, the <span class="math inline">\(t\)</span>-distribution has <span class="math inline">\(df = n_1 + n_2 - 2\)</span>. This is a direct extension of the results in Section <a href="chap-confidence-intervals.html#sec-CI-mean-unknown-sigma">9.3.3</a> in which the <span class="math inline">\(df = n - 1\)</span>. In fact, <span class="math inline">\(n_1 + n_2 - 2 = (n_1 - 1) + (n_2 - 1)\)</span>.</p>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:t-test-two-sample-means" class="proposition"><strong>Proposition 11.5  </strong></span>Under the same assumptions as Proposition <a href="chap-compare-two.html#prp:ci-two-sample-means-z">11.1</a>, to test</p>
+<p><span class="math display">\[
+H_0: \Delta = \mu_1 - \mu_2 = \Delta_0
+\quad \text{vs.} \quad
+H_A: \Delta \neq \Delta_0
+\]</span>
+Most commonly, <span class="math inline">\(\Delta_0 = 0\)</span>, which corresponds to testing if <span class="math inline">\(\mu_1 = \mu_2\)</span>.</p>
+<p>We use the test statistic:</p>
+<p><span class="math display">\[
+T = \frac{(\bar{X} - \bar{Y}) - 0}
+{S_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}
+\;\sim\; t(n_1 + n_2 - 2) \quad \text{under } H_0
+\]</span></p>
+<p>After running the experiment and collecting data <span class="math inline">\(x_1, x_2, \ldots, x_{n_1} \text{ and }
+y_1, y_2, \ldots, y_{n_2}\)</span> we form the observed test statistic</p>
+<p><span class="math display">\[
+T_{obs} = \frac{(\bar{x} - \bar{y}) - 0}
+{s_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}
+\]</span>
+We reject <span class="math inline">\(H_0\)</span> at significance level <span class="math inline">\(\alpha\)</span> if:</p>
+<p><span class="math display">\[
+|T_{obs}| &gt; t_{\alpha/2, n_1 + n_2 - 2}
+\]</span></p>
+<p>or, equivalently, if the p-value is less than <span class="math inline">\(\alpha\)</span>. For one-sided alternatives, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{obs} &gt; t_{\alpha, n_1 + n_2 - 2}\)</span> (upper-tailed) or <span class="math inline">\(T_{obs} &lt; -t_{\alpha, n_1 + n_2 - 2}\)</span> (lower-tailed).</p>
+</div>
+</div>
+<p>Here are some helpful <code>R</code> functions for computing the pooled sample variance and the degrees of freedom:</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="chap-compare-two.html#cb251-1" tabindex="-1"></a>pooledVar <span class="ot">=</span> <span class="cf">function</span>(sampVar1,sampVar2,n1,n2){</span>
+<span id="cb251-2"><a href="chap-compare-two.html#cb251-2" tabindex="-1"></a>  ((n1<span class="dv">-1</span>)<span class="sc">*</span>sampVar1 <span class="sc">+</span> (n2<span class="dv">-1</span>)<span class="sc">*</span>sampVar2)<span class="sc">/</span>(n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb251-3"><a href="chap-compare-two.html#cb251-3" tabindex="-1"></a>}</span>
+<span id="cb251-4"><a href="chap-compare-two.html#cb251-4" tabindex="-1"></a>pooledDF <span class="ot">=</span> <span class="cf">function</span>(n1,n2){</span>
+<span id="cb251-5"><a href="chap-compare-two.html#cb251-5" tabindex="-1"></a>  n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span></span>
+<span id="cb251-6"><a href="chap-compare-two.html#cb251-6" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="unequal-variances-i.e.-welchs-or-satterthwaite" class="section level4 hasAnchor" number="11.1.2.2">
+<h4><span class="header-section-number">11.1.2.2</span> Unequal Variances (i.e. 'Welch's' or 'Satterthwaite')<a href="chap-compare-two.html#unequal-variances-i.e.-welchs-or-satterthwaite" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:ci-two-sample-means-t-welch" class="proposition"><strong>Proposition 11.6  </strong></span>Assume that <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span> are <strong>unknown</strong>.</p>
+<p>Then, a <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval for the difference in population means</p>
+<p><span class="math display">\[
+\Delta = \mu_1 - \mu_2
+\]</span></p>
+<p>is given by:</p>
+<p><span class="math display">\[
+\left[
+(\bar{X} - \bar{Y}) \pm t_{\alpha/2, df_{sw}} \cdot
+\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
+\right]
+\]</span>
+To emphasize: there is no reference to the pooled sample variance <span class="math inline">\(s_p^2\)</span>; it does not make sense to pool the sample variances if the population variances are not equal.</p>
+<p>In the above CI, there once again appears a new object: <span class="math inline">\(df_{sw}\)</span>, which is the <strong>Satterthwaite</strong> approximation to the degrees of freedom.</p>
+</div>
+</div>
+<p>The formula for <span class="math inline">\(df_{sw}\)</span> is admittedly intimidating:
+<span class="math display">\[
+df_{sw} = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{\left(\frac{s_1^2}{n_1}\right)^2}{(n_1 - 1)}+\frac{\left(\frac{s_2^2}{n_2}\right)^2}{(n_2 - 1)}}
+\]</span>
+and is itself still just an approximation to the correct degrees of freedom. However, we will be interacting with it via software and hence should never need to compute it 'by hand. Here is an R function for doing this computation:</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="chap-compare-two.html#cb252-1" tabindex="-1"></a>unequalVar <span class="ot">=</span> <span class="cf">function</span>(sampVar1,sampVar2,n1,n2){</span>
+<span id="cb252-2"><a href="chap-compare-two.html#cb252-2" tabindex="-1"></a>  sampVar1<span class="sc">/</span>n1 <span class="sc">+</span> sampVar2<span class="sc">/</span>n2</span>
+<span id="cb252-3"><a href="chap-compare-two.html#cb252-3" tabindex="-1"></a>}</span>
+<span id="cb252-4"><a href="chap-compare-two.html#cb252-4" tabindex="-1"></a>unequalDF <span class="ot">=</span> <span class="cf">function</span>(sampVar1,sampVar2,n1,n2){  </span>
+<span id="cb252-5"><a href="chap-compare-two.html#cb252-5" tabindex="-1"></a>  (sampVar1<span class="sc">/</span>n1 <span class="sc">+</span> sampVar2<span class="sc">/</span>n2)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>((sampVar1<span class="sc">/</span>n1)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(n1 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">+</span> (sampVar2<span class="sc">/</span>n2)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(n2 <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb252-6"><a href="chap-compare-two.html#cb252-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:t-test-two-sample-means-welch" class="proposition"><strong>Proposition 11.7  </strong></span>Under the same assumptions as Proposition <a href="chap-compare-two.html#prp:ci-two-sample-means-t-welch">11.6</a>, to test</p>
+<p><span class="math display">\[
+H_0: \Delta = \mu_1 - \mu_2 = \Delta_0
+\quad \text{vs.} \quad
+H_A: \Delta \neq \Delta_0
+\]</span>
+Most commonly, <span class="math inline">\(\Delta_0 = 0\)</span>, which corresponds to testing if <span class="math inline">\(\mu_1 = \mu_2\)</span>.</p>
+<p>We use the test statistic:</p>
+<p><span class="math display">\[
+T = \frac{(\bar{X} - \bar{Y}) - 0}
+{\sqrt{\frac{S_1^2}{n_1} + \frac{S_1^2}{n_2}}}
+\;\sim\; t(df_{sw}) \quad \text{under } H_0
+\]</span></p>
+<p>After running the experiment and collecting data <span class="math inline">\(x_1, x_2, \dots, x_{n_1} \quad \text{and} \quad
+y_1, y_2, \dots, y_{n_2}\)</span> we form the observed test statistic</p>
+<p><span class="math display">\[
+T_{obs} = \frac{(\bar{x} - \bar{y}) - 0}
+{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+\]</span>
+We reject <span class="math inline">\(H_0\)</span> at significance level <span class="math inline">\(\alpha\)</span> if:</p>
+<p><span class="math display">\[
+|T_{obs}| &gt; t_{\alpha/2, df_{sw}}
+\]</span></p>
+<p>or, equivalently, if the p-value is less than <span class="math inline">\(\alpha\)</span>. For one-sided alternatives, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{obs} &gt; t_{\alpha, df_{sw}}\)</span> (upper-tailed) or <span class="math inline">\(T_{obs} &lt; -t_{\alpha, df_{sw}}\)</span> (lower-tailed).</p>
+</div>
+</div>
+<p>Let's consider the previous example (Example <a href="chap-compare-two.html#exm:two-means-coffee-ex">11.1</a>) but this time relaxing the assumption that we know the population variance. The same discussion applies about loading in the data, creating variables, and checking for normality. This part has been ommitted below for brevity.</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:two-means-coffee-unknownvar-ex" class="example"><strong>Example 11.3  </strong></span>We will assume now that the population variances are <strong>unknown</strong> but are <strong>equal</strong>: <span class="math inline">\(\sigma_1^2 = \sigma_2^2 = ?\)</span>. Applying the result in Proposition <a href="chap-compare-two.html#prp:ci-two-sample-means-t">11.4</a>, we compute a 95% confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span> as follows:</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="chap-compare-two.html#cb253-1" tabindex="-1"></a>alpha    <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb253-2"><a href="chap-compare-two.html#cb253-2" tabindex="-1"></a>s_1      <span class="ot">=</span> <span class="fu">sd</span>(x)</span>
+<span id="cb253-3"><a href="chap-compare-two.html#cb253-3" tabindex="-1"></a>s_2      <span class="ot">=</span> <span class="fu">sd</span>(y)</span>
+<span id="cb253-4"><a href="chap-compare-two.html#cb253-4" tabindex="-1"></a>s_p      <span class="ot">=</span> <span class="fu">sqrt</span>(<span class="fu">pooledVar</span>(s_1<span class="sc">**</span><span class="dv">2</span>, s_2<span class="sc">**</span><span class="dv">2</span>, n_1, n_2))</span>
+<span id="cb253-5"><a href="chap-compare-two.html#cb253-5" tabindex="-1"></a>xBar     <span class="ot">=</span> <span class="fu">mean</span>(x) </span>
+<span id="cb253-6"><a href="chap-compare-two.html#cb253-6" tabindex="-1"></a>yBar     <span class="ot">=</span> <span class="fu">mean</span>(y)</span>
+<span id="cb253-7"><a href="chap-compare-two.html#cb253-7" tabindex="-1"></a>sePooled <span class="ot">=</span> s_p<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">/</span> n_1 <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> n_2)</span>
+<span id="cb253-8"><a href="chap-compare-two.html#cb253-8" tabindex="-1"></a></span>
+<span id="cb253-9"><a href="chap-compare-two.html#cb253-9" tabindex="-1"></a><span class="fu">c</span>(xBar <span class="sc">-</span> yBar <span class="sc">-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, <span class="fu">pooledDF</span>(n_1,n_2)) <span class="sc">*</span> sePooled,</span>
+<span id="cb253-10"><a href="chap-compare-two.html#cb253-10" tabindex="-1"></a>  xBar <span class="sc">-</span> yBar <span class="sc">+</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, <span class="fu">pooledDF</span>(n_1,n_2)) <span class="sc">*</span> sePooled)</span></code></pre></div>
+<pre><code>## [1] -0.6633525  6.4128763</code></pre>
+<p>If we do not feel compfortable with the `equal variances' assumption, this can be removed in favor of the Welch's version:</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="chap-compare-two.html#cb255-1" tabindex="-1"></a>alpha   <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb255-2"><a href="chap-compare-two.html#cb255-2" tabindex="-1"></a>s_1     <span class="ot">=</span> <span class="fu">sd</span>(x)</span>
+<span id="cb255-3"><a href="chap-compare-two.html#cb255-3" tabindex="-1"></a>s_2     <span class="ot">=</span> <span class="fu">sd</span>(y)</span>
+<span id="cb255-4"><a href="chap-compare-two.html#cb255-4" tabindex="-1"></a>xBar    <span class="ot">=</span> <span class="fu">mean</span>(x) </span>
+<span id="cb255-5"><a href="chap-compare-two.html#cb255-5" tabindex="-1"></a>yBar    <span class="ot">=</span> <span class="fu">mean</span>(y)</span>
+<span id="cb255-6"><a href="chap-compare-two.html#cb255-6" tabindex="-1"></a>seWelch <span class="ot">=</span> <span class="fu">sqrt</span>(s_1<span class="sc">**</span><span class="dv">2</span> <span class="sc">/</span> n_1 <span class="sc">+</span> s_2<span class="sc">**</span><span class="dv">2</span> <span class="sc">/</span> n_2)</span>
+<span id="cb255-7"><a href="chap-compare-two.html#cb255-7" tabindex="-1"></a>df_sw   <span class="ot">=</span> <span class="fu">unequalDF</span>(s_1<span class="sc">**</span><span class="dv">2</span>, s_2<span class="sc">**</span><span class="dv">2</span>, n_1, n_2)</span>
+<span id="cb255-8"><a href="chap-compare-two.html#cb255-8" tabindex="-1"></a></span>
+<span id="cb255-9"><a href="chap-compare-two.html#cb255-9" tabindex="-1"></a><span class="fu">c</span>(xBar <span class="sc">-</span> yBar <span class="sc">-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, df_sw) <span class="sc">*</span> seWelch,</span>
+<span id="cb255-10"><a href="chap-compare-two.html#cb255-10" tabindex="-1"></a>  xBar <span class="sc">-</span> yBar <span class="sc">+</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, df_sw) <span class="sc">*</span> seWelch)</span></code></pre></div>
+<pre><code>## [1] -0.643971  6.393495</code></pre>
+<p>In this case, the two CIs are remarkedly similar. This is due to two factors: the sample sizes are equal and, more importantly, the sample variances are very similar (24.9398095 and 17.8618132)</p>
+<p>Similarly, applying the result in Proposition <a href="chap-compare-two.html#prp:t-test-two-sample-means">11.5</a>, we test <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> as follows:</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="chap-compare-two.html#cb257-1" tabindex="-1"></a>Tobs <span class="ot">=</span> (xBar <span class="sc">-</span> yBar) <span class="sc">/</span> sePooled</span>
+<span id="cb257-2"><a href="chap-compare-two.html#cb257-2" tabindex="-1"></a>pval <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Tobs), n_1 <span class="sc">+</span> n_2 <span class="sc">-</span> <span class="dv">2</span>))</span>
+<span id="cb257-3"><a href="chap-compare-two.html#cb257-3" tabindex="-1"></a>pval</span></code></pre></div>
+<pre><code>## [1] 0.1070469</code></pre>
+<p>Likewise, we could relax the equal variances assumption using <a href="chap-compare-two.html#prp:t-test-two-sample-means-welch">11.7</a>:</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="chap-compare-two.html#cb259-1" tabindex="-1"></a>Tobs <span class="ot">=</span> (xBar <span class="sc">-</span> yBar) <span class="sc">/</span> seWelch</span>
+<span id="cb259-2"><a href="chap-compare-two.html#cb259-2" tabindex="-1"></a>pval <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Tobs), df_sw))</span>
+<span id="cb259-3"><a href="chap-compare-two.html#cb259-3" tabindex="-1"></a>pval</span></code></pre></div>
+<pre><code>## [1] 0.1051827</code></pre>
+<p>The conclusion remains the same via any of the considered tests: we do not have sufficient evidence to conclude that the population means are different (the confidence interval contains the value zero, and the p-value is greater than 0.05 = <span class="math inline">\(\alpha\)</span>).</p>
+<p>Note that the very useful function <strong>t.test</strong> can do all of the above in a streamlined fashion:</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="chap-compare-two.html#cb261-1" tabindex="-1"></a><span class="fu">t.test</span>(x, y, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  x and y
+## t = 1.6671, df = 27, p-value = 0.107
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.6633525  6.4128763
+## sample estimates:
+## mean of x mean of y 
+##  252.9533  250.0786</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="chap-compare-two.html#cb263-1" tabindex="-1"></a><span class="fu">t.test</span>(x, y)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  x and y
+## t = 1.677, df = 26.76, p-value = 0.1052
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.643971  6.393495
+## sample estimates:
+## mean of x mean of y 
+##  252.9533  250.0786</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="sec-2pop-proportion" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Difference of Two Population Proportions<a href="chap-compare-two.html#sec-2pop-proportion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the special case where the <span class="math inline">\(X_i\)</span> and <span class="math inline">\(Y_i\)</span> only take on two outcomes (see Chapter <a href="chap-confidence-intervals.html#sec-CI-proportion">9.5</a> for examples and details) and <span class="math inline">\(P(X_i = 1) = p_1\)</span> and <span class="math inline">\(P(Y_i = 1) = p_2\)</span>, then we need to compare two population proportions: <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span>. There are of course many ways to compare them (e.g. <span class="math inline">\(\frac{p_1}{p_2}\)</span>) but we will focus our attention on their (arithmetic) difference: <span class="math inline">\(p_1 - p_2\)</span>. Setting this equal to zero is algebraically equivalent to asking: does <span class="math inline">\(p_1 = p_2\)</span>?</p>
+<p>We start by defining the associated sample proportions:</p>
+<p><span class="math display">\[
+\widehat{p_1} = \frac{\sum_{i=1}^{n_1} X_i}{n_1}
+\]</span>
+and
+<span class="math display">\[
+\widehat{p_2} = \frac{\sum_{i=1}^{n_2} Y_i}{n_2}
+\]</span></p>
+<p>Sensibly, to approximate <span class="math inline">\(p_1 - p_2\)</span> we can use <span class="math inline">\(\widehat{p_1} - \widehat{p_2}\)</span>. We will now develop and use confidence intervals and hypothesis tests for this new statistic. To do this, we need to identify and operationalize the sampling distribution of <span class="math inline">\(\widehat{p_1} - \widehat{p_2}\)</span></p>
+<p>Let <span class="math inline">\(\widehat{p_1}\)</span> and <span class="math inline">\(\widehat{p_2}\)</span> be the sample proportion. If <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are both such that:</p>
+<ul>
+<li><span class="math inline">\(\widehat{p_1}n_1 \geq 10\)</span></li>
+<li><span class="math inline">\((1-\widehat{p_1})n_1 \geq 10\)</span></li>
+<li><span class="math inline">\(\widehat{p_2}n_2 \geq 10\)</span></li>
+<li><span class="math inline">\((1-\widehat{p_2})n_2 \geq 10\)</span></li>
+</ul>
+<p>Then:</p>
+<p><span class="math display">\[
+\widehat{p_1} - \widehat{p_2} \sim N\left(p_1 - p_2, \frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}\right)
+\]</span></p>
+<p>Of course, just like in Chapters <a href="chap-confidence-intervals.html#sec-CI-proportion">9.5</a> and <a href="chap-hypothesis-testing.html#sec-HT-proportion">10.4</a>, the variance term needs to be approximated as well as the mean term. This approximation will be different for Confidence Intervals and Hypothesis Testing, however, so stay on your toes.</p>
+<div id="sec-2pop-CI-proportion" class="section level3 hasAnchor" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> Confidence Intervals for Two Population Proportions<a href="chap-compare-two.html#sec-2pop-CI-proportion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:ci-2pop-proportion-z" class="proposition"><strong>Proposition 11.8  </strong></span>Presuming the conditions stated about about <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> being large enough for the CLT, then a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval for the difference in population proportions <span class="math inline">\(p_1 - p_2\)</span> is:</p>
+<p><span class="math display">\[
+\left[ \, \widehat{p_1} -  \widehat{p_2} \pm z_{\alpha/2} \cdot \sqrt{ \frac{\widehat{p_1}(1 - \widehat{p_1})}{n_1} + \frac{\widehat{p_2}(1 - \widehat{p_2})}{n_2} } \, \right]
+\]</span></p>
+<p>where <span class="math inline">\(z_{\alpha/2}\)</span> is the critical value from the standard Normal distribution.</p>
+</div>
+</div>
+<p>Let's formalize this result via an example.</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:ci-2pop-proportion-example" class="example"><strong>Example 11.4  </strong></span>Here is some <code>R</code> code for this next example:</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="chap-compare-two.html#cb265-1" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">117</span></span>
+<span id="cb265-2"><a href="chap-compare-two.html#cb265-2" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">150</span></span>
+<span id="cb265-3"><a href="chap-compare-two.html#cb265-3" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="dv">112</span></span>
+<span id="cb265-4"><a href="chap-compare-two.html#cb265-4" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">148</span></span>
+<span id="cb265-5"><a href="chap-compare-two.html#cb265-5" tabindex="-1"></a></span>
+<span id="cb265-6"><a href="chap-compare-two.html#cb265-6" tabindex="-1"></a>alpha <span class="ot">=</span> .<span class="dv">1</span></span></code></pre></div>
+<p>A marketing team conducts a survey to estimate the proportion of customers who are satisfied with a new product. We want to compare the satisfaction of the brand name product (population 1) to the generic version (population 2). We randomly sample <span class="math inline">\(n_1 = 150\)</span> and <span class="math inline">\(n_2 = 148\)</span> customers and find that <span class="math inline">\(x = 117\)</span> and <span class="math inline">\(y = 112\)</span> report that they are satisfied with each product, respectively.</p>
+<p>Construct a 90% confidence interval for the difference in satisfaction rates: <span class="math inline">\(p_1- p_2\)</span>.</p>
+<p><em>Solution</em>: The sample proportions are <span class="math inline">\(\widehat{p_1} = 0.78\)</span> and <span class="math inline">\(\widehat{p_2} = 0.76\)</span>. Let's form a confidence interval. The quantile is approximately <span class="math inline">\(z_{\alpha/2} = z_{.05} = 1.6449\)</span>. Putting this all together:</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="chap-compare-two.html#cb266-1" tabindex="-1"></a>pHat1 <span class="ot">&lt;-</span> x1 <span class="sc">/</span> n1</span>
+<span id="cb266-2"><a href="chap-compare-two.html#cb266-2" tabindex="-1"></a>pHat2 <span class="ot">&lt;-</span> x2 <span class="sc">/</span> n2</span></code></pre></div>
+<!-- Because all combinations of $n_ \hat{p} = 117$ and $n(1 - \hat{p}) = 33$ are both greater than 10, the Normal approximation is appropriate.-->
+<p>We can compute the standard error and margin of error:</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="chap-compare-two.html#cb267-1" tabindex="-1"></a>se      <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pHat1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pHat1) <span class="sc">/</span> n1 <span class="sc">+</span> pHat2 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pHat2) <span class="sc">/</span> n2)</span>
+<span id="cb267-2"><a href="chap-compare-two.html#cb267-2" tabindex="-1"></a>margin  <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> se</span></code></pre></div>
+<p>And get the associated confidence interval:</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="chap-compare-two.html#cb268-1" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">c</span>(pHat1 <span class="sc">-</span> pHat2 <span class="sc">-</span> margin, pHat1 <span class="sc">-</span> pHat2 <span class="sc">+</span> margin)</span>
+<span id="cb268-2"><a href="chap-compare-two.html#cb268-2" tabindex="-1"></a><span class="fu">round</span>(ci, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] -0.057  0.104</code></pre>
+<p>We are 90% confident that the difference in population proportions of satisfied customers is between -0.057 and 0.104.</p>
+</div>
+</div>
+<p>We do not have sufficient evidence to conclude that the satisfaction rating is any different between the name brand and the generic brand. This could mean that there is more work to be done by the marketing firm to differentiate these two products. Or, if this experiment was performed on behalf of a supermarket chain, we should give more equal share of the shelf space to both products.</p>
+<p>Just like using <code>t.test</code> for problems involving <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\mu_D\)</span>, or <span class="math inline">\(\mu_1 - \mu_2\)</span>; we can use <code>prop.test</code> for problems involving <span class="math inline">\(p\)</span> or, as in this case, <span class="math inline">\(p_1 - p_2\)</span>:</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="chap-compare-two.html#cb270-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x1, x2), <span class="fu">c</span>(n1, n2), <span class="at">conf.level =</span> <span class="dv">1</span><span class="sc">-</span>alpha, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  2-sample test for equality of proportions without continuity correction
+## 
+## data:  c(x1, x2) out of c(n1, n2)
+## X-squared = 0.22619, df = 1, p-value = 0.6344
+## alternative hypothesis: two.sided
+## 90 percent confidence interval:
+##  -0.0571320  0.1036185
+## sample estimates:
+##    prop 1    prop 2 
+## 0.7800000 0.7567568</code></pre>
+<p><strong>Editorial comment:</strong> the <code>correct = FALSE</code> argument has been chosen to match the previous output and for simplicity. The correction, when used, helps the normal approximating via the Central Limit Theorem. Outside the confines of this class, you should drop this argument, which by default is <code>correct = TRUE</code>.</p>
+</div>
+<div id="sec-2pop-HT-proportion" class="section level3 hasAnchor" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> Hypothesis Tests for Two Population Proportions<a href="chap-compare-two.html#sec-2pop-HT-proportion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="colbox">
+<div class="proposition">
+<p><span id="prp:ht-2pop-proportion-z" class="proposition"><strong>Proposition 11.9  </strong></span>Presuming the conditions stated about about <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> being large enough for the CLT, then a hypothesis test for the difference in population proportions <span class="math inline">\(p_1 - p_2\)</span> is:</p>
+<p><span class="math display">\[
+H_0 : p_1 - p_2 = 0
+\quad\text{vs.}\quad
+H_A : p_1 - p_2 \neq 0
+\]</span>
+(note: for this class, and almost always in the real world as well, the difference is always compared to 0)</p>
+<p>We evaluate this hypothesis test with this test statistic</p>
+<p><span class="math display">\[
+T = \frac{\widehat{p_1} - \widehat{p_2}}
+         {\sqrt{\widehat{p_c}(1-\widehat{p_c})\left(\frac{1}{n_1} - \frac{1}{n_2}\right)}}
+\]</span>
+Here, <span class="math inline">\(\widehat{p_c}\)</span> is not a typo; rather a <strong>combined proportion</strong>. Leveraging the null hypothesis assumption that the two population proportions are equal, we combine the two sample proportions <span class="math inline">\(\widehat{p_1}\)</span> and <span class="math inline">\(\widehat{p_2}\)</span> by making a weighted averaged (much in the same way we pooled the variances for <span class="math inline">\(S_p^2\)</span> at the end of Proposition <a href="chap-compare-two.html#prp:ci-two-sample-means-t">11.4</a>)</p>
+<p><span class="math display">\[
+\widehat{p_c} = \frac{n_1 \widehat{p_1} + n_2\widehat{p_2}}{n_1 + n_2}
+\]</span>
+and then plugging that in for the standard error. To emphasize: this is not the same as the standard error for the confidence interval, which was derived under different assumptions. The test statistic is</p>
+<p><span class="math display">\[
+T =  \frac{\widehat{p_1} - \widehat{p_2}}{\sqrt{\widehat{p_c}*(1-\widehat{p_c})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}
+\]</span></p>
+<p>Under this null hypothesis assumption:</p>
+<p><span class="math display">\[
+T \;\sim\; N(0,1)
+\text{ assuming that } H_0 \text{ is true}
+\]</span></p>
+<p>After forming the observed test statistic in the usual way, we reject <span class="math inline">\(H_0\)</span> at significance level <span class="math inline">\(\alpha\)</span> if:</p>
+<p><span class="math display">\[
+|T_{obs}| &gt; z_{\alpha/2}
+\]</span></p>
+<p>For one-sided alternatives, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{obs} &gt; z_{\alpha}\)</span> (upper-tailed) or <span class="math inline">\(T_{obs} &lt; -z_{\alpha}\)</span> (lower-tailed). In all three cases, an equivent decision will be reached if the p-value is less than <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+</div>
+<p>Returning to the previous example (Example <a href="chap-compare-two.html#exm:ci-2pop-proportion-example">11.4</a>):</p>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:ht-2pop-proportion-example" class="example"><strong>Example 11.5  </strong></span>We want to test to see if the population proportions, <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> are equal or not using a 0.1 significance level.</p>
+<p><em>Solution</em>: Now, the quantile <span class="math inline">\(z_{\alpha/2} = z_{.05} = 1.6449\)</span> is the <strong>critical value</strong> for the test; we will reject if we observe a test statistic larger than this number in magnitude.</p>
+<p>Let's compute the <strong>combined proportion</strong></p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="chap-compare-two.html#cb272-1" tabindex="-1"></a>pHat_c <span class="ot">&lt;-</span> (n1 <span class="sc">*</span> pHat1 <span class="sc">+</span> n2 <span class="sc">*</span> pHat2)<span class="sc">/</span>(n1 <span class="sc">+</span> n2)</span></code></pre></div>
+<p>This combined proportion is <span class="math inline">\(\widehat{p_c} = 0.77\)</span>. Observe that it is about halfway between <span class="math inline">\(\widehat{p_1} = 0.78\)</span> and <span class="math inline">\(\widehat{p_2} = 0.76\)</span>; this is due to the sample sizes being approximately equal.</p>
+<p>We can compute the standard error using this combined proportion</p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="chap-compare-two.html#cb273-1" tabindex="-1"></a>se      <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pHat_c <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pHat_c) <span class="sc">*</span> (<span class="dv">1</span><span class="sc">/</span>n1 <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n2))</span></code></pre></div>
+<p>making the observed test statistic <span class="math inline">\(T_{obs} = 0.0232432/0.0488717 = 0.476\)</span></p>
+<p>Comparing this to the critical value:</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="chap-compare-two.html#cb274-1" tabindex="-1"></a>Tobs <span class="ot">=</span> (pHat1 <span class="sc">-</span> pHat2)<span class="sc">/</span>se</span>
+<span id="cb274-2"><a href="chap-compare-two.html#cb274-2" tabindex="-1"></a><span class="fu">abs</span>(Tobs) <span class="sc">&gt;</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>This false indicates that there is not enough evidence to reject the null hypothesis. Equivalently, we can compute the p-value:</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="chap-compare-two.html#cb276-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(Tobs)) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(Tobs)))</span></code></pre></div>
+<pre><code>## [1] 0.6343615</code></pre>
+<p>Which is indeed greater than <span class="math inline">\(\alpha = 0.1\)</span>.</p>
+</div>
+</div>
+<p>Overall, we do not have sufficient evidence to conclude that the satisfaction rating is any different between the name brand and the generic brand.</p>
+<p>As in the previous example, we can use <code>prop.test</code> as well with exactly the same syntax:</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="chap-compare-two.html#cb278-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x1, x2), <span class="fu">c</span>(n1, n2), <span class="at">conf.level =</span> <span class="dv">1</span><span class="sc">-</span>alpha, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  2-sample test for equality of proportions without continuity correction
+## 
+## data:  c(x1, x2) out of c(n1, n2)
+## X-squared = 0.22619, df = 1, p-value = 0.6344
+## alternative hypothesis: two.sided
+## 90 percent confidence interval:
+##  -0.0571320  0.1036185
+## sample estimates:
+##    prop 1    prop 2 
+## 0.7800000 0.7567568</code></pre>
+<div class="whitebox">
+<div class="example">
+<p><span id="exm:ht-2pop-proportion-example2" class="example"><strong>Example 11.6  </strong></span>If we had instead been interested in satisfaction for the name brand being <strong>more</strong> than the generic, we would have tested the one sided version:</p>
+<p><span class="math display">\[
+H_0 : p_1 - p_2 \leq 0
+\quad\text{vs.}\quad
+H_A : p_1 - p_2 &gt; 0
+\]</span></p>
+<p>The observed test statistic is the same: <span class="math inline">\(T_{obs} = 0.476\)</span>. Our rejection rule is different, however:</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="chap-compare-two.html#cb280-1" tabindex="-1"></a>Tobs <span class="sc">&gt;</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>As well as the p-value:</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="chap-compare-two.html#cb282-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(Tobs)</span></code></pre></div>
+<pre><code>## [1] 0.3171808</code></pre>
+<p>We can modify the syntax of <code>prop.test</code> as follows:</p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="chap-compare-two.html#cb284-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x1, x2), <span class="fu">c</span>(n1, n2), <span class="at">conf.level =</span> <span class="dv">1</span><span class="sc">-</span>alpha, <span class="at">alternative =</span> <span class="st">&#39;greater&#39;</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  2-sample test for equality of proportions without continuity correction
+## 
+## data:  c(x1, x2) out of c(n1, n2)
+## X-squared = 0.22619, df = 1, p-value = 0.3172
+## alternative hypothesis: greater
+## 90 percent confidence interval:
+##  -0.03937936  1.00000000
+## sample estimates:
+##    prop 1    prop 2 
+## 0.7800000 0.7567568</code></pre>
+<p>We would still find there is not enough evidence to conclude that customer satisfaction for the brand name is more than for the generic one.</p>
+</div>
+</div>
+<p><strong>Editorial comment:</strong> the <code>correct = FALSE</code> argument has been chosen to match the previous output and for simplicity. The correction, when used, helps the normal approximating via the Central Limit Theorem. Outside the confines of this class, you should drop this argument, which by default is <code>correct = TRUE</code>.</p>
+</div>
+</div>
+<div id="inference-on-a-ratio-of-two-population-variances" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Inference on a Ratio of Two Population Variances<a href="chap-compare-two.html#inference-on-a-ratio-of-two-population-variances" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section is still under construction</p>
+<div class="figure" style="text-align: left"><span style="display:block;" id="fig:unnamed-chunk-129"></span>
+<img src="figures/underConstruction.png" alt="Picture of a traffic sign warning of a section of road being under construction." width="50%" />
+<p class="caption">
+Figure 11.1: Under construction sign
+</p>
+</div>
+
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-hypothesis-testing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap-compare-more-than-two.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": null,
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection",
+    "scroll_highlight": true
+  },
+  "info": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

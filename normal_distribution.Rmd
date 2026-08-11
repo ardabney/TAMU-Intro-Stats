@@ -1,0 +1,548 @@
+# The [Normal Distribution]{#def-the-normal-distribution-normal-distribution} {#chap-normal-distribution}
+
+The **Normal distribution** is one of the most fundamental and widely used probability distributions in Statistics. First studied in the 18th century by Abraham de Moivre and later formalized by Carl Friedrich Gauss (leading to its alternative name the **Gaussian distribution**), the Normal distribution arose from investigations into errors in astronomical measurements. Gauss’ work in the early 19th century demonstrated that random errors in repeated observations tended to follow the same bell-shaped curve.
+
+Since then, the Normal distribution has become a cornerstone of probability and statistics, describing a vast array of real-world phenomena. It models natural variations in biological traits (e.g., human heights, blood pressure, IQ scores), economic and financial data (e.g., stock returns, measurement errors in production processes), and even physical and engineering systems (e.g., noise in electronic signals, material tolerances in manufacturing). 
+
+More so, the central role of the Normal distribution is due to the Central Limit Theorem, which explains why sums (and hence averages and proportions) of large numbers of independent random variables have an approximately Normal distribution; we will cover this topic in detail in Chapter \@ref(chap-sampling-distributions).
+
+Because of its mathematical properties and real-world relevance, the Normal distribution serves as the foundation for many statistical methods, including confidence intervals (Chapter \@ref(chap-confidence-intervals)), hypothesis tests (Chapter \@ref(chap-hypothesis-testing)), and regression analysis (Chapters \@ref(chap-simple-linear-regression) and \@ref(chap-multiple-linear-regression)). 
+
+## The Normal and Standard Normal Distributions
+
+### The Normal Distribution {#chap-non-standard-normal}
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+A continuous rv $X$ has a **Normal distribution** with mean $\mu$ and variance $\sigma^2 > 0$, written $X \sim N([\mu, \sigma^2]{#def-the-normal-distribution-probabilities-of-n-mu-sigma-2})$, has pdf:
+
+$$
+f(x) = \frac{1}{ \sqrt{2\pi\sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}, \quad -\infty < x < \infty
+$$
+:::
+::::
+
+The Normal distribution has a characteristic symmetric **bell shape**, with most of the probability mass concentrated near the mean $\mu$.
+
+The spread of the distribution is determined by $\sigma$, which is the square root of the variance ($\sigma = +\sqrt{\sigma^2}$); larger values of $\sigma$ correspond to wider, more spread-out distributions, while smaller values of $\sigma$ correspond to narrower, more concentrated distributions. 
+<!-- One interesting note: $\sigma$ equals the distance between from $\mu$ to the points of inflection of the pdf curve.  -->
+Figure \@ref(fig:normal-pdf) shows the pdfs of three example Normal distributions. 
+
+```{r normal-pdf, out.width="80%", fig.align='center', fig.cap="Example Normal distribution pdfs with different means and standard deviations", echo=FALSE}
+x <- seq(-10, 10, length.out = 1000)
+mu_vals <- c(0, 0, -3)
+sigma_vals <- c(1, 2, 1)
+
+# Plot first Normal PDF
+colors <- c("black", "red", "blue")
+plot(x, dnorm(x, mean = mu_vals[1], sd = sigma_vals[1]), type = "l", lwd = 2, col = colors[1],
+     xlab = "x", ylab = "f(x)", main = "Normal Distribution PDFs",
+     ylim = c(0, 0.45))
+
+# Add other PDFs
+for (i in 2:length(mu_vals)) {
+  lines(x, dnorm(x, mean = mu_vals[i], sd = sigma_vals[i]), lwd = 2, col = colors[i])
+}
+
+# Add legend
+legend("topright", legend = c(expression(mu == 0 ~ "," ~ sigma == 1), 
+                              expression(mu == 0 ~ "," ~ sigma == 2), 
+                              expression(mu == -3 ~ "," ~ sigma == 1)), 
+       col = colors, lwd = 2, bty = "n")
+```
+
+### The [Standard Normal Distribution]{#def-the-normal-distribution-standard-normal-distribution} {#chap-standard-normal}
+
+A special case of the Normal distribution, known as the **standard Normal distribution**, corresponds to when $\mu = 0$ and $\sigma^2 = 1$.
+
+
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+A continuous rv $Z$ has a **standard Normal distribution**, written $Z \sim N(0,1)$, has pdf
+
+$$
+f(z) = \frac{1}{\sqrt{2\pi}} e^{-z^2/2}, \quad -\infty < z < \infty
+$$
+
+As the standard Normal distribution has $\mu = 0$, the pdf is centered at 0. In this textbook, $Z$ will always be used to represent the standard normal.
+:::
+::::
+
+## [Standardization]{#def-the-normal-distribution-standardization}
+
+The pdf of the Normal distribution is impossible to integrate analytically in general.  Historically, before the widespread use of computers, scientists relied on standardized probability tables. Using standardization, any Normal random variable can be transformed into a standard normal (and vice versa). Hence, probability calculations could be performed using a single table rather than computing values separately for each possible mean and variance. While modern computing has made it easy to work directly with any Normal distribution, standardization is at the core of many methods, such as Hypothesis testing \@ref(hypothesis_testing). 
+
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+The process of going from a Normal random variable to a standard Normal random variable is called **standardization**.  In particular, if $X \sim N(\mu, \sigma^2)$, then
+$$
+Z = \frac{X - \mu}{\sigma} \sim N(0,1)
+$$
+Similarly, by inverting this transformation, we can unstandardize a standard Normal:
+$$
+X = \mu + \sigma Z \sim N(\mu,\sigma^2)
+$$
+(note the use of the standard deviation $\sigma$ in these formulae; hence the consistent usage of the word 'standard').
+:::
+::::
+
+The simplicity of this result belies its utility.  As a first application, let's define and explore a famous term: **$z$-score**.
+
+## $z$-scores
+
+Standardization is a process that allows us to compare values from different distributions by expressing them on a common scale. A **$z$-score** represents how many standard deviations an observed value is from the mean of its distribution. This idea is especially useful when we want to assess which of two values is more unusual or extreme, even if they come from populations with different means and standard deviations. A **$z$-score** will always look like $z = \frac{\textrm{value} - \textrm{mean}}{\textrm{sd}}$.
+
+:::: {.whitebox data-latex=""}
+::: {.example #zscore-bass}
+Suppose biologists are monitoring the size of largemouth bass in two different lakes. Let $X$ represent the weight (in grams) of a randomly caught bass. The weight distribution depends on which lake is being sampled:
+
+- In **Lake Bryan**, $X \sim N(1200, 300^2)$
+- In **Somerville Lake**, $Y \sim N(1000, 200^2)$
+
+Now suppose that a 1700g bass is caught in Lake Bryan, and a 1500g bass is caught in Somerville Lake. Which fish is more "unusual" or "extreme" relative to its lake's population if bass?
+
+To find these values is more extreme, we can compute **[z-scores]{#def-the-normal-distribution-z-score}**:
+
+- Lake Bryan: $z = \frac{1700 - 1200}{300} = 1.67$
+- Somerville Lake: $z = \frac{1500 - 1000}{200} = 2.50$
+
+Although the 1700g fish is heavier in absolute terms, the 1500g fish from Somerville Lake is more extreme *relative to the distribution in that lake*. One way to think about the above $z$-scores is as follows: the 1700g fish from Lake Bryan is 1.67 standard deviations away from the Lake Bryan population mean, while the 1500g fish from Somerville Lake is 2.5 standard deviations away from the Somerville Lake population mean. 
+
+Figure \@ref(fig:zscore-bass) shows the two distributions and the observed values.
+:::
+::::
+
+```{r zscore-bass, out.width="90%", fig.align='center', fig.cap="Comparison of observed fish weights relative to their respective distributions", echo=FALSE, fig.asp=0.5}
+
+# Set up plotting window with 1 row, 2 columns
+par(mfrow = c(1, 2), mar = c(4.5, 4.5, 3, 1))
+
+# Define common x range
+x <- seq(0, 2200, length.out = 1000)
+
+# Define parameters for each lake
+lakeA_mu <- 1200
+lakeA_sd <- 300
+lakeB_mu <- 1000
+lakeB_sd <- 200
+
+# Plot for Lake Bryan
+plot(x, dnorm(x, mean = lakeA_mu, sd = lakeA_sd), type = "l", lwd = 2, col = "steelblue",
+     xlab = "Fish Weight (g)", ylab = "f(x)",
+     main = "Lake Bryan: N(1200, 300²)", ylim = c(0, 0.002), xlim = c(0, 2200), 
+     xaxt = "n")
+abline(v = 1700, col = "red", lty = 2, lwd = 2)
+axis(side = 1, at = c(0, 2100))
+axis(side = 1, at = 1200, col = "blue")
+axis(side = 1, at = 1700, col = "red")#, labels = FALSE)
+
+# Plot for Somerville Lake
+plot(x, dnorm(x, mean = lakeB_mu, sd = lakeB_sd), type = "l", lwd = 2, col = "darkgreen",
+     xlab = "Fish Weight (g)", ylab = "f(x)",
+     main = "Somerville Lake: N(1000, 200²)", ylim = c(0, 0.002), xlim = c(0, 2200), 
+     xaxt = "n")
+abline(v = 1500, col = "red", lty = 2, lwd = 2)
+axis(side = 1, at = c(0, 2100))
+axis(side = 1, at = 1000, col = "blue")
+axis(side = 1, at = 1500, col = "red")#, labels = FALSE)
+
+# Reset graphics settings
+par(mfrow = c(1,1))
+```
+
+## Probabilities
+
+### Computing Standard Normal Probabilities
+
+
+First, we will explore calculating probabilites from the standard normal distribution. This will be an important topic for computing **p-values** (Chapter \@ref(chap-hypothesis-testing)), among other applications.
+
+:::: {.whitebox data-latex=""}
+::: {.example #normal-probs}
+Figure \@ref(fig:normal-cumulative-prob) shows the pdf of the standard Normal distribution. In the figure, the probability $P(Z \leq z)$ is shown by shading the area under the standard Normal pdf to the left of $z$ for $z = 1.6449$. In particular, $P(Z \leq 1.6449) = 0.95$. Notice that, as the probabilities must sum to one, $P(Z > z) = 1 - P(Z \leq z)$. 
+
+Referencing the figure again, since the area under the pdf to the left of 1.6449 is 0.95, we have that the area under the pdf to the *right* of 1.6449 is 0.05. We can verify the above calculations in `R` using the `pnorm` function (think of `p` as meaning `probability`).
+
+```{r}
+pnorm(1.6449)
+1 - pnorm(1.6449)
+```
+
+```{r normal-cumulative-prob, fig.cap = "Standard Normal pdf and a cumulative probability", out.width = "90%", fig.align = 'center', echo = FALSE}
+# Set up values
+x <- seq(-3.5, 3.5, length.out = 1000)
+y <- dnorm(x)
+z <- qnorm(0.95)
+
+plot(x, y, type = "l", lwd = 2, col = "black",
+     main = "", xlab = "z", ylab = "f(z)", axes = FALSE)
+polygon(c(x[x <= z], z), c(y[x <= z], 0), col = "pink", border = NA)
+axis(1, at = c(0, round(z, 4)), labels = c("0", "1.6449"))
+axis(2)
+box()
+```
+
+In addition to left-tail (cumulative) and right-tail probabilities, we can integrate the pdf to obtain a probability corresponding to rv values *between* two values. For example, consider the probability $P(-0.6745 \leq Z \leq 1.6449)$. Figure \@ref(fig:normal-prob-interval) shows this probability as the shaded area under the standard Normal pdf between $-0.6745$ and $1.6449$, which happens to equal $\approx 0.70$. We saw in Section \@ref(chap-rvs-sec-cdf) that a probability for an interval of values can be written as a difference of cdf probabilities. In our example, we have that 
+
+$$
+P(-0.6745 \leq Z \leq 1.6449) = P(Z \leq 1.6449) - P(Z \leq -0.6745) 
+$$
+
+```{r}
+pnorm(1.6449) - pnorm(-0.6745)
+```
+
+```{r normal-prob-interval, fig.cap = "Standard Normal pdf and the probability for an interval of values", out.width = "90%", fig.align = 'center', echo = FALSE}
+# Set up values
+x <- seq(-3.5, 3.5, length.out = 1000)
+y <- dnorm(x)
+z_1 <- qnorm(0.25)
+z_2 <- qnorm(0.95)
+
+plot(x, y, type = "l", lwd = 2, col = "black",
+     main = "", xlab = "z", ylab = "f(z)", axes = FALSE)
+polygon(c(x[x >= z_1 & x <= z_2], z_2, z_1), 
+        c(y[x >= z_1 & x <= z_2], 0, 0), col = "pink", border = NA)
+axis(1, at = c(round(z_1, 4), 0, round(z_2, 4)), 
+     labels = c("-0.6745", "0", "1.6449"))
+axis(2)
+box()
+```
+
+:::
+::::
+
+Returning to the $z$-score example (Example \@ref(exm:zscore-bass)), we can find the probability of having caught the particular fish from each lake.  The observed $z$-scores are 1.67 from Lake Bryan and 2.5 from Somerville Lake, indicating the largemouth bass from Somerville Lake was more unusual.  Another, related way of describing this would be via probability: a low probability indicates an observation is more unusual as well:
+
+- For the 1700g fish from Lake Bryan with $z$-score 1.67:
+\[
+P(Z \leq 1.67)
+\]
+- For the 1500g fish from Somerville Lake with $z$-score 2.50:
+\[
+P(Z \leq 2.50)
+\]
+
+These probabilities can be once again computed using the `pnorm` function in `R`:
+
+```{r}
+pnorm(1.67)    # in Lake Bryan
+pnorm(2.50)    # in Somerville Lake
+```
+
+Thus, the 1700g fish is just above the 95th percentile for Lake Bryan, while the 1500g fish is just above the 99th percentile for Somerville Lake.
+
+### Computing Normal Probabilities
+
+We can actually compute the above probabilities directly by using the `pnorm` function in `R` more generally.  In example \@ref(exm:zscore-bass), we considered 
+
+- In **Lake Bryan**, $X \sim N(1200, 300^2)$
+- In **Somerville Lake**, $Y \sim N(1000, 200^2)$
+
+If we were only interested in the probability of getting bass that weighed 1700g and 1500g, respectively, we could calculate it directly:
+
+
+```{r}
+pnorm(1700, 1200, 300)    # in Lake Bryan
+pnorm(1500, 1000, 200)    # in Somerville Lake
+```
+
+hence,
+
+\[
+P(X \leq 1700) = 0.9522
+\]
+
+and 
+
+\[
+P(Y \leq 1500) = 0.9938
+\]
+
+The fact that these answers match the ones using the standard Normal is no coincidence; finding the $z$-score and using the standard Normal or using the (general) Normal directly will always result in the same solution. 
+
+**Warning** The `pnorm` function uses the standard deviation $\sigma$, not the variance $\sigma^2$!
+
+To demonstrate this point, let's do another example.
+
+
+:::: {.whitebox data-latex=””}
+::: {.example #normal-rods}
+Suppose a factory produces cylindrical rods whose diameters (in millimeters) are Normally distributed with a mean of 50 and a standard deviation of 2. Let $X$ represent the diameter of a randomly selected rod: $X \sim N(50, 2^2)$. The manufacturing specifications require rods to be between 48 mm and 54 mm in diameter. What is the probability that a randomly selected rod meets this specification?
+
+_Solution_: We can compute this probability directly in `R` using the `pnorm` function:
+
+```{r}
+pnorm(54, mean = 50, sd = 2) - pnorm(48, mean = 50, sd = 2)
+```
+
+Alternatively, we can standardize both bounds and compute the equivalent probability under the standard Normal distribution:
+\[
+P(48 \leq X \leq 54) = P\left( \frac{48 - 50}{2} \leq \frac{X - 50}{2} \leq \frac{54 - 50}{2} \right) = P(-1 \leq Z \leq 2)
+\]
+
+```{r}
+pnorm(2) - pnorm(-1)
+```
+
+As expected, both calculations yield the same result. Figure \@ref(fig:normal-rods-interval) shows the relationship between the original distribution and its standardized version. The shaded areas represent the same probability under each distribution.
+
+```{r normal-rods-interval, out.width="90%", fig.align='center', fig.cap="Probability for an interval in an arbitrary Normal distribution alongside corresponding probability in the standard Normal distribution", fig.asp=0.5, echo=FALSE}
+# Set up layout
+par(mfrow = c(1, 2), mar = c(4.5, 4.5, 3, 1))
+
+# Define x values
+x1 <- seq(43, 57, length.out = 1000)
+x2 <- seq(-4, 4, length.out = 1000)
+
+# PDF values
+f1 <- dnorm(x1, mean = 50, sd = 2)
+f2 <- dnorm(x2)
+
+# Plot for original distribution
+plot(x1, f1, type = "l", lwd = 2, 
+     main = "Original: N(50, 2²)", xlab = "x", ylab = "f(x)", 
+     ylim = c(0, 0.22), xaxt = "n")
+polygon(c(48, x1[x1 >= 48 & x1 <= 54], 54), 
+        c(0, f1[x1 >= 48 & x1 <= 54], 0), col = "pink", border = NA)
+abline(v = c(48, 50, 54), lty = 2, col = "gray")
+axis(1, at = c(48, 50, 54), labels = c("48", "50", "54"))
+
+# Plot for standard Normal
+plot(x2, f2, type = "l", lwd = 2, 
+     main = "Standard Normal: N(0, 1)", xlab = "z", ylab = "f(z)", 
+     ylim = c(0, 0.42), xaxt = "n")
+polygon(c(-1, x2[x2 >= -1 & x2 <= 2], 2), 
+        c(0, f2[x2 >= -1 & x2 <= 2], 0), col = "pink", border = NA)
+abline(v = c(-1, 0, 2), lty = 2, col = "gray")
+axis(1, at = c(-1, 0, 2), labels = c("-1", "0", "2"))
+
+# Reset
+par(mfrow = c(1,1))
+```
+
+:::
+::::
+
+In the preceding example, our desired calculation boiled down to the probability that our rv, following an arbitrary Normal distribution, would fall between the mean minus one standard deviation and the mean plus two standard deviations. There is a relevant rule of thumb that can be applied to approximate such a probability based on a Normal distribution.
+
+:::: {.whitebox data-latex=””}
+::: {.note}
+**Note**: For a Normal distribution with mean $\mu$ and standard deviation $\sigma$, the following approximate probabilities hold:
+
+- $P(\mu - \sigma \leq X \leq \mu + \sigma) \approx 0.68$
+- $P(\mu - 2\sigma \leq X \leq \mu + 2\sigma) \approx 0.95$
+- $P(\mu - 3\sigma \leq X \leq \mu + 3\sigma) \approx 0.997$
+
+These are sometimes referred to as the **[Empirical Rule]{#def-the-normal-distribution-empirical-rule-68-95-99-7-rule}** or the **68–95–99.7 Rule**, and they provide a useful reference for assessing how typical or unusual an observation is under a Normal distribution.
+:::
+::::
+
+In Example \@ref(exm:normal-rods), our desired probability could be written as $P(\mu - \sigma \leq X \leq \mu + 2\sigma)$, where $X \sim N(50, 2^2)$, or equivalently $P(-1 \leq Z \leq 2)$, where $Z \sim N(0, 1)$. Note that we can write
+$$
+P(-1 \leq Z \leq 2) = P(-1 \leq Z \leq 0) + P(0 \leq Z \leq 2)
+$$
+According to the Empirical Rule, because the Normal distribution is symmetric about the mean, we have $P(-1 \leq Z \leq 0) \approx 0.68 / 2 = 0.34$ and $P(0 \leq Z \leq 2) \approx 0.95 / 2 = 0.475$. Thus, we have the approximation
+$$
+P(48 \leq X \leq 54) = P(-1 \leq Z \leq 2) \approx 0.34 + 0.475 = 0.815
+$$
+
+## Quantiles
+
+In Section \@ref(sec-percentiles-median), we introduced the idea of a **sample quartile**. As with most sample statistics, there is a corresponding population parameter. The most general term used in this context is **quantile**.  Think of this as a generalization of quartile or percentile. In particular, the $p$th **population quantile** is the value such that the probability of being less than that value is $p$. <!--In practice, we often assume that a particular named distribution describes the population of interest, in which case a quantile of this distribution represents a *population percentile*. -->
+
+In what follows, we discuss quantiles of the standard Normal distribution (from section \@ref(chap-non-standard-normal)). In section \@ref(chap-normal-percentiles) we will show how to compute general Normal quantiles, both from converting the standard Normal quantiles then by computing the quantiles directly.
+
+### Computing Standard Normal Quantiles {#sec-normal-percentiles-visual}
+
+
+A convention that we will make use of later in the book (e.g., Chapters \@ref(chap-confidence-intervals) and \@ref(chap-hypothesis-testing) on confidence intervals and hypothesis tests, respectively) is to use the symbol $z_{\alpha}$ to represent the number in the standard Normal distribution such that $P(Z > z_{\alpha}) = \alpha$. Note that, because $P(Z > z_{\alpha}) = \alpha$, we have that $P(Z \leq z_{\alpha}) = 1-\alpha$. In other words, **$z_{\alpha}$ is simply the $(1-\alpha)\times 100$th quantile of the standard Normal distribution**. 
+
+$$
+z_p = -z_{1 - p}
+$$
+
+We can use the `R` function `qnorm` to obtain quantiles (and hence $z_{\alpha}$ values) for the standard Normal distribution.
+
+```{r}
+qnorm(0.95)
+qnorm(0.05)
+```
+
+Note that other named distributions have analogous functions in `R`; see e.g. `pbinom` \& `qbinom` for the binomial distribution, `pexp` \& `qexp` for the exponential distribution, etc. Note also that we will mimic the $z_{\alpha}$ notation with other probability distributions. For example, $\chi^2_{\alpha; $n - 1$}$ would indicate the $(1 - \alpha) \times 100$th quantile of the $\chi^2$ distribution with $n - 1$ degrees of freedom. 
+
+### Computing Normal Quantiles {#chap-normal-percentiles}
+
+The following Proposition states a relationship between a quantile of an arbitrary Normal distribution and the analogous quantile of the standard Normal distribution.
+
+:::: {.colbox data-latex=””}
+::: {.proposition}
+Let $X \sim N(\mu, \sigma^2)$ be a Normally distributed random variable, and let $z_p$ denote the $p$th quantile of the standard Normal distribution (i.e., $P(Z \leq z_p) = p$ for $Z \sim N(0,1)$). Then, the $p$th quantile of $X$ is given by:
+
+$$
+x_p = \mu + z_p \cdot \sigma
+$$
+
+That is, to obtain a quantile of an arbitrary Normal distribution, we can scale and shift the corresponding standard Normal quantile.
+:::
+::::
+
+:::: {.whitebox data-latex=””}
+::: {.example}
+Suppose systolic blood pressure in a particular population of adult women follows a Normal distribution with mean $\mu = 120$ mmHg and standard deviation $\sigma = 15$ mmHg (that is, $X \sim N(120, 15^2)$). What is the 95th percentile of systolic blood pressure in this population?
+
+_Solution_: We can answer this question in two ways:
+
+(a) Use `qnorm` directly:
+
+```{r}
+qnorm(0.95, mean = 120, sd = 15)
+```
+
+The 95th percentile of systolic blood pressure is 144.6728 mmHg. 
+
+(b) Use the standard Normal quantile and apply the Proposition:
+
+```{r}
+qnorm(0.95)
+```
+
+The 95th quantile of the standard Normal distribution is about 1.6449. Applying the formula from the Proposition gives
+$$
+x_{0.95} = 120 + 1.6449 \cdot 15 = 144.6735
+$$
+with the difference relative to the earlier result being due to rounding. Figure \@ref(fig:bp-percentile) shows the Normal pdf with the 95th quantile marked and the area under the curve to the left of it shaded in.
+
+```{r bp-percentile, out.width="80%", fig.align='center', fig.cap="Normal distribution of systolic blood pressure with 95th percentile shown", fig.asp=0.5, echo=FALSE}
+# Parameters
+mu <- 120
+sigma <- 15
+x95 <- qnorm(0.95, mean = mu, sd = sigma)
+
+# Sequence of x values
+x_vals <- seq(60, 180, length.out = 1000)
+y_vals <- dnorm(x_vals, mean = mu, sd = sigma)
+
+# Plot
+plot(x_vals, y_vals, type = "l", lwd = 2, col = "black",
+     xlab = "Systolic Blood Pressure (mmHg)", ylab = "f(x)",
+     main = "", axes = FALSE)
+polygon(c(x_vals[x_vals <= x95], x95),
+        c(y_vals[x_vals <= x95], 0),
+        col = "pink", border = NA)
+
+axis(1, at = c(mu, round(x95, 1)), labels = c("120", "144.7"))
+axis(2)
+box()
+```
+
+:::
+::::
+
+## Q-Q Plots for Checking Normality {#sec-QQ-plots}
+
+One of the most commonly used graphical tools for assessing whether a dataset plausibly comes from a Normal distribution is the **[quantile-quantile plot]{#def-the-normal-distribution-q-q-plot-quantile-quantile-plot}**, or **Q-Q plot**.
+
+A Q-Q plot compares the quantiles of the observed data to the corresponding quantiles of a theoretical distribution—in this case, the Normal distribution. If the data follow a Normal distribution, then the points on the Q-Q plot will approximately fall along a straight line. Systematic deviations from linearity suggest departures from Normality.
+
+Interpretation:
+
+- Points that fall roughly along the line indicate approximate Normality.
+- A curved pattern suggests skewness:
+ - Points that curve upward suggest right-skewness (long right tail).
+ - Points that curve downward suggest left-skewness (long left tail).
+- Heavy-tailed or light-tailed distributions may show as deviations at the ends of the plot.
+
+Below, we simulate three datasets and construct a panel of plots that includes a histogram and a Q-Q plot for each dataset:
+
+	1.	Normal distribution
+	2.	Right-skewed distribution (exponential)
+	3.	Left-skewed distribution (negative exponential)
+	
+```{r, echo = TRUE, fig.cap = "Histograms and Q-Q plots for three datasets: Normal (top), right-skewed (middle), and left-skewed (bottom)"}
+set.seed(42)
+
+# Sample size
+n <- 100
+
+# Simulated data
+normal_data <- rnorm(n)
+right_skewed <- rexp(n, rate = 1)
+left_skewed <- -rexp(n, rate = 1)
+
+# Plot settings
+par(mfrow = c(3, 2), mar = c(4, 4, 2, 1))
+
+# Normal
+hist(normal_data, main = "Histogram: Normal", xlab = "", col = "lightgray")
+qqnorm(normal_data, main = "Q-Q Plot: Normal")
+qqline(normal_data, col = "blue", lwd = 2)
+
+# Right-skewed
+hist(right_skewed, main = "Histogram: Right-Skewed", xlab = "", col = "lightgray")
+qqnorm(right_skewed, main = "Q-Q Plot: Right-Skewed")
+qqline(right_skewed, col = "blue", lwd = 2)
+
+# Left-skewed
+hist(left_skewed, main = "Histogram: Left-Skewed", xlab = "", col = "lightgray")
+qqnorm(left_skewed, main = "Q-Q Plot: Left-Skewed")
+qqline(left_skewed, col = "blue", lwd = 2)
+```
+
+These plots illustrate how Q-Q plots reveal distributional shape:
+
+- The Q-Q plot for the Normal data shows points that mostly fall along a straight line.
+- The right-skewed data deviate upward in the tails.
+- The left-skewed data deviate downward in the tails.
+
+Q-Q plots are a valuable visual diagnostic, especially when interpreted in conjunction with histograms and contextual knowledge of the data. For large datasets, even minor departures from Normality may appear in a Q-Q plot, while for small datasets, random variation may obscure real patterns.
+
+## t Distribution {#sec-t-distribution}
+
+The **t distribution** arises frequently in statistical inference, particularly when conducting inference on a population mean based on a small sample. It is similar in shape to the standard Normal distribution but has heavier tails, which reflect the additional uncertainty associated with estimating the population standard deviation from the sample.
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+Let $Z$ be a standard Normal random variable and let $V$ be an independent chi-squared random variable with $\nu$ degrees of freedom. Then the random variable
+
+$$
+T = \frac{Z}{\sqrt{V / \nu}}
+$$
+
+follows a **t distribution with $\nu$ degrees of freedom**, denoted $T \sim t_\nu$.
+:::
+::::
+
+The t distribution is symmetric about 0 and becomes increasingly similar to the standard Normal distribution as the degrees of freedom increase. Figure \@ref(fig:t-distribution-pdfs) shows a few t distributions for various values of $\nu$.
+
+```{r t-distribution-pdfs, out.width="80%", fig.align='center', fig.cap="Example t distribution pdfs compared to the standard Normal pdf", echo=FALSE}
+x <- seq(-4, 4, length.out = 500)
+colors <- c("black", "red", "blue", "green4")
+dfs <- c(1, 3, 10, 30)
+labels <- c("df = 1", "df = 3", "df = 10", "df = 30")
+
+plot(x, dt(x, df = dfs[1]), type = "l", lwd = 2, col = colors[1],
+     ylim = c(0, 0.4), xlab = "x", ylab = "Density", main = "t Distributions")
+
+for (i in 2:length(dfs)) {
+  lines(x, dt(x, df = dfs[i]), lwd = 2, col = colors[i])
+}
+
+legend("topright", legend = labels, col = colors, lwd = 2, bty = "n")
+```
+
+As with other common named probability distributions, you can generate random numbers, compute probabilities, obtain quantiles, etc. for a t distribution with the `R` functions `rt`, `pt`, `qt`, and `dt`. Our first usage of the t distribution will be in Chapter \@ref(chap-confidence-intervals).
+
+In particular, we will make use of the notation $t_{\alpha,n-1}$ to be the analogous object to $z_{\alpha}$ as we defined in Section \@ref(sec-normal-percentiles-visual):
+
+```{r talpha}
+n       <- 30
+nu      <- n-1
+alpha   <- .01
+t_alpha <- qt(1-alpha,nu)
+t_alpha
+```
+
+This means that the degrees of freedom is $\nu = n-1 = 29$ and hence $t_{.01,29} =$ `r t_alpha`.

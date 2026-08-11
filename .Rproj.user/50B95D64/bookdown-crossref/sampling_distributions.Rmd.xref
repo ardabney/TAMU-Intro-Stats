@@ -1,0 +1,14 @@
+h1:chap-sampling-distributions Sampling Distributions and 
+h2:what-is-a-sampling-distribution-and-why-should-you-care What Is a , and Why Should You Care?
+h3:preliminary-definitions Preliminary Definitions
+h2:illustration-via-simulation Illustration Via Simulation
+h3:chap-sampling-distributions-sim-normal Simulation Setup: Normal Population
+fig:sbp-normal-samples Histograms of the first four random samples from a Normal population. The smooth grey density curve corresponds to the population distribution pdf. The blue vertical line segment corresponds to the population mean, while the red vertical line segment corresponds to the sample mean.
+tab:echo Sample Means and Standard Deviations for First Four Samples
+fig:sbp-normal-sampling-distns Sampling distributions of the sample mean and sample standard deviation (Normal population). The blue vertical line segments correspond to the population parameter values.
+h2:sec-distn-sample-mean The Distribution of the Sample Mean
+h2:the-central-limit-theorem The Central Limit Theorem
+h3:simulation-setup-non-normal-population Simulation Setup: Non-Normal Population
+fig:echo Histograms of the first four random samples from a Non-Normal population (mixture of two Normals). The grey curve shows the population pdf. Blue and red vertical line segments indicate the population and sample means, respectively.
+fig:sbp-mixture-sampling-distns Sampling distributions of the sample mean and sample standard deviation (mixture population). Blue lines represent the true population mean and SD.
+

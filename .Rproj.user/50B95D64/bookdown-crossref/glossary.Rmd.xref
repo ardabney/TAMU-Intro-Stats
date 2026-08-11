@@ -1,0 +1,31 @@
+h1:chap-glossary Glossary
+h2:overview Overview
+h2:foundations Foundations
+h3:definitions Definitions
+h3:r-commands R Commands
+h2:probability Probability
+h3:definitions-1 Definitions
+h3:r-commands-1 R Commands
+h2:random-variables-and-probability-distributions Random Variables and Probability Distributions
+h3:definitions-2 Definitions
+h4:discrete-distributions Discrete Distributions
+h4:continuous-distributions Continuous Distributions
+h3:r-commands-2 R Commands
+h2:expected-value Expected Value
+h3:definitions-3 Definitions
+h4:discrete-distributions-1 Discrete Distributions
+h4:continuous-distributions-1 Continuous Distributions
+h2:the-normal-distribution The Normal Distribution
+h3:definitions-4 Definitions
+h3:r-commands-3 R Commands
+h2:joint-and-conditional-distributions Joint and Conditional Distributions
+h3:definitions-5 Definitions
+h2:sampling-distributions-and-central-limit-theorem Sampling Distributions and Central Limit Theorem
+h3:definitions-6 Definitions
+h3:r-commands-4 R Commands
+h2:confidence-intervals Confidence Intervals
+h3:definitions-7 Definitions
+h3:r-commands-5 R Commands
+h2:hypothesis-testing Hypothesis Testing
+h3:definitions-8 Definitions
+

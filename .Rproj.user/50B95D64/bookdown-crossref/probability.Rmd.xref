@@ -1,0 +1,19 @@
+h1:chap-probability 
+h2:motivation-and-intuition Motivation and Intuition
+h3:previewing-statistical-inference Previewing Statistical Inference
+h3:probability-a-long-run-average Probability: A 
+h2:sample-spaces-and-events Sample Spaces and Events
+fig:venn-1 Venn diagrams showing union and intersection.
+h2:axioms-and-properties Axioms and Properties
+fig:venn-2 Adding P(A) and P(B) 
+fig:reliability-1 (a) A two-component series system; (b) A two-component parallel system
+fig:venn-3 Venn diagram corresponding to the event that only one of two components work
+h2:sec-probability-counting Counting
+h3:product-rule Product Rule
+h3:permutations-and-combinations Permutations and Combinations
+h2:conditional-probability 
+fig:tree-1 Tree diagram for the transportation example
+fig:lawtotprob Partitioning of an event $B$
+h2:independence Independence
+fig:reliability-2 Three-component systems: (a) series and (b) parallel.
+

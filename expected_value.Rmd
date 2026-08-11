@@ -1,0 +1,610 @@
+# [Expected Value]{#def-expected-value-expected-value} {#chap-expected-value}
+
+Recall our discussion in Chapter \@ref(chap-foundations) of **populations**, **parameters**, **samples**, and **sample statistics**. A parameter is a numeric characteristic of the population of interest. Often, parameters can be defined in terms of **expected values**.
+
+Expected value can be thought of as a **weighted average**.  If we write down the usual, unweighted average:
+
+$$
+\overline{X} = \frac{1}{n} \sum_{ i=1}^n X_i = \frac{1}{n}X_1 + \cdots \frac{1}{n}X_n
+$$
+we can see that we are equally weighting each term in the sum by $1/n$. This can be generalized to a weighted average by making these weights not equal to each other.  A prominent example in your academic lives is your total grade in a class
+
+:::: {.whitebox data-latex=""}
+::: {.example #overall-glass-grade}
+Suppose a class rubric weights the total scores for a class like: 10% quizzes, 40% homework, 25% for a midterm, and 25% for final.
+
+If a student has scores in each of these categories of 85%, 87%, 88%, and 95%, then this student's total score in the class would be
+$$
+86*.1 + 88*.4 + 90*.25 + 95*.25 = 90.05
+$$
+Compare this to an equally weight rubric where each category has the same 25% weight:
+$$
+86*.25 + 88*.25 + 90*.25 + 95*.25 = 89.75
+$$
+In either case, the average is found via the general procedure of: "sum" of the "values" times the "weights".  This will be the same idea for expected value in what follows.
+:::
+::::
+
+
+
+In Section \@ref(numerical-summaries), we introduced the mean as a way of characterizing a "typical value" for a variable. We will formalize this now.  As the mathematical device is different for discrete and continuous variables, we will treat them separately.  The overall idea is the same.
+
+## Expected Value for Discrete Variables
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+Let $X$ be a discrete rv with set of possible values $\mathcal{S}_X$ and pmf $f(x)$. The **expected value** or **population mean** of $X$ is
+$$
+E[X] = \mu_X = \sum_{ \mathcal{S}_X} x \cdot f(x)
+$$
+:::
+::::
+
+Note that this, like the weighted average, has the form "sum" of "values" times the "weights".
+
+The term $\sum_{ \mathcal{S}_X}$ deserves some comment.  The just represents the idea that in different problems, the valid values for $X$ might be different.  Commonly, $X$ will take on just the first few integers, such as $x = 0, 1, 2, 3$ and hence $\mathcal{S}_X = \{0,1,2,3\}$ and $\sum_{ \mathcal{S}_X} = \sum_{ x = 0}^3$
+
+:::: {.whitebox data-latex=""}
+::: {.example #enzyme-activity-mu}
+In the context of Example \@ref(exm:enzyme-activity), where a certain enzyme's activity can be categorized into five discrete levels: $x =  0, 1, 2, 3, 4$, then $\mathcal{S}_X = {0,1,2,3,4}$.  We can find the expected value of $X$:
+\begin{align*}
+E[X] = \mu_X &= 0 \cdot f(0) + 1 \cdot f(1) + 2 \cdot f(2) + 3 \cdot f(3) + 4 \cdot f(4) \\
+&= (0)(0.10) + (1)(0.20) + (2)(0.30) + (3)(0.25) + (4)(0.15) \\
+&= 2.15
+\end{align*}
+Note that 2.15 is not one of the possible values of $X$.
+:::
+::::
+
+The expected value in Example \@ref(exm:enzyme-activity-mu) can be easily computed in `R`:
+```{r}
+x <- 0:4
+f_x <- c(0.10, 0.20, 0.30, 0.25, 0.15)
+sum(x * f_x)
+```
+
+There is actually nothing special about computing the expected value of $X$ itself.  In fact, we can, and often will, compute expected values of **functions** of $X$, $h(X$):
+
+:::: {.colbox data-latex=""}
+::: {.definition #chap-expected-value-def-ehx}
+Let $X$ be a discrete rv with set of possible values $\mathcal{S}_X$ and pmf $f(x)$. The expected value of the discrete random variable $h(X)$ is
+$$
+E[h(X)] = \sum_{ \mathcal{S}_X} h(x) f(x)
+$$
+:::
+::::
+
+Again, this should be thought of as a weighted average.  Except, now the values are $h(x)$ instead of just $x$.  Here is an example:
+
+:::: {.whitebox data-latex=""}
+::: {.example #grocery-expected-h}
+A grocery store purchases five crates of fresh produce at \$30 each and will sell them for \$60 each. The store has an agreement that any unused crates can be returned at the end of a week for \$10 each. Let $X$ be the number of crates sold during the week, and suppose that $f(0) = 0.10, f(1) = 0.15, f(2) = 0.25, f(3) = 0.30, f(4) = 0.15$, and $f(5) = 0.05$. Net revenue, denoted as $h(X)$, can be calculated as
+$$
+h(X) = 60X + 10(5 - X) - 150 = 50X - 100
+$$
+Expected net revenue is
+\begin{align*}
+E[h(X)] &= h(0) \cdot f(0) + h(1) \cdot f(1) + h(2) \cdot f(2) + h(3) \cdot f(3) + h(4) \cdot f(4) + h(5) \cdot f(5) \\
+&= (-100)(0.10) + (-50)(0.15) + (0)(0.25) + (50)(0.30) + (100)(0.15) + (150)(0.05) \\
+&= \$20
+\end{align*}
+:::
+::::
+
+Notice in Example \@ref(exm:grocery-expected-h) that we did not have to derive the pmf of $h(X)$. We computed $E[h(X)]$ in terms of the pmf of $X$.  This is because while the values changed, the weights (that is, the pmf) did not. The following `R` code can be used:
+```{r}
+x <- 0:5
+f_x <- c(0.10, 0.15, 0.25, 0.30, 0.15, 0.05)
+h <- function(x) { 50 * x - 100 }
+h_x <- h(x)
+sum(h_x * f_x)
+```
+
+## Expected Value for Continuous Variables
+
+For a continuous rv, instead of $E[X]$ being a weighted average (possible values of $X$ weighted by the pmf), $E[X]$ is an _integral_.
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+Let $X$ be a continuous random variable with pdf $f(x)$. The **expected value** or **population mean** of $X$ is defined as
+
+$$
+E[X] = \mu_X = \int_{-\infty}^{\infty} x f(x)\, dx
+$$
+:::
+::::
+
+Recall (e.g., reference Example \@ref(exm:chap-rvs-bus-pdf)) the definition of the [uniform]{#def-expected-value-uniform} distribution for a continuous rv. 
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-exp-val-uniform-continuous}
+Suppose our company manufactures biodegradable paper straws, and we are concerned about consumer complaints that the straws fall apart before they finish their drink. Let $X$ be the length of time (in minutes) that a straw remains intact while being used. Suppose this time is uniformly distributed between 10 and 20 minutes:
+\[
+X \sim \text{Uniform}(10, 20)
+\]
+Then the probability density function (pdf) of $X$ is:
+\[
+f(x) = \begin{cases}
+\frac{1}{10}, & 10 \leq x \leq 20 \\\\
+0, & \text{otherwise}
+\end{cases}
+\]
+The expected value of $X$ is:
+\[
+E[X] = \int_{10}^{20} x \cdot \frac{1}{10} \, dx = \frac{1}{10} \int_{10}^{20} x \, dx = \frac{1}{10} \left[ \frac{x^2}{2} \right]_{10}^{20} = \frac{1}{10} \left( \frac{400}{2} - \frac{100}{2} \right) = 15
+\]
+Thus, on average, a paper straw from our production line lasts 15 minutes before deteriorating.
+:::
+::::
+
+Similarly to discrete random variables, we will want to compute the expected value of functions of continuous random variables.  Fortunately, this works in way you would 'expect':
+
+:::: {.colbox data-latex=""}
+::: {.definition #chap-expected-value-def-ehxCont}
+Let $X$ be a continuous rv with pdf $f(x)$. The expected value of the random variable $h(X)$ is
+$$
+E[h(X)] = \int_{-\infty}^{\infty} h(x) f(x)\, dx
+$$
+:::
+::::
+
+## Expected Value for Linear Functions
+
+When the function $h(X)$ is a particularly simple function, we can simplify our results:
+
+:::: {.colbox data-latex=""}
+::: {.proposition #chap-expected-value-prop-ehx}
+For the linear function $h(X) = aX + b$,
+$$
+E[h(X)] = E[aX + b] = a \cdot E[X] + b
+$$
+
+In words, this means that for linear functions, the "expected value of the function" is the "function of the expected value".  
+:::
+::::
+
+::: {.proof}
+For discrete random variables:
+\begin{align*}
+E[aX + b] &= \sum_{ \mathcal{S}_X} (ax + b) f(x) = a \sum_{ \mathcal{S}_X} x \cdot f(x) + b\sum_{ \mathcal{S}_X} f(x) \\
+&= aE[X] + b
+\end{align*}
+Note that the proof follows for continuous random variables almost identically due to integration being a linear operation just like summation.
+:::
+
+:::: {.whitebox data-latex=""}
+::: {.example}
+In the context of Example \@ref(exm:grocery-expected-h), we can compute the expected value of $X$:
+$$
+E[X] = \sum_{ \mathcal{S}_X} x \cdot f(x) = 2.4
+$$
+
+Therefore:
+$$
+E[h(X)] = E[50X - 100] = 50E[X] - 100 = 50*2.4 - 100 = \$20
+$$
+:::
+::::
+
+
+
+
+Likewise, we can apply Proposition \@ref(prp:chap-expected-value-prop-ehx) to continuous random variables.  
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-exp-val-uniform-continuous-hx}
+Suppose our company issues a 10&cent; refund to customers if their paper straw lasts less than 14 minutes before breaking down. Let $Y = h(X)$ denote the **cost** to the company for a single straw that lasts $X$ minutes. Then the cost function is:
+\[
+h(x) = \begin{cases}
+10, & x < 14 \\\\
+0, & x \geq 14
+\end{cases}
+\]
+To compute the expected cost per straw, we calculate $E[h(X)]$:
+\[
+E[h(X)] = \int_{10}^{20} h(x) f(x)\, dx
+\]
+Since $f(x) = \frac{1}{10}$ on the interval $[10, 20]$ and $h(x) = 10$ only when $x < 14$:
+\[
+E[h(X)] = \int_{10}^{14} 10 \cdot \frac{1}{10} \, dx + \int_{14}^{20} 0 \cdot \frac{1}{10} \, dx = \int_{10}^{14} 1 \, dx = 14 - 10 = 4
+\]
+Thus, the expected cost per straw is **4&cent;**.
+:::
+::::
+
+
+
+
+## [Variance]{#def-expected-value-variance} and [Standard Deviation]{#def-expected-value-standard-deviation}
+
+In Section \@ref(numerical-summaries), we also introduced the **sample variance** and **sample standard deviation** as ways of characterizing the "spread" of a variable.  When referencing a random variable we can compute the population variance and the population standard deviation.  
+
+The idea is we want to quantify "how far" "on average" we "expect" values of the random variable to be from its "mean". Let's make this precise:
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+Let $X$ be a rv with population mean $\mu_X$. The **variance** of $X$, denoted by $\text{Var}[X]$ or $\sigma^2_X$, is
+$$
+\sigma_X^2 = \text{Var}[X] = E \left[ (X - \mu_X)^2 \right] = 
+\begin{cases}
+\sum_{ \mathcal{S}_X} (x - \mu_X)^2 f(x) & \textrm{ if $X$ is discrete} \\
+\int_{-\infty}^\infty (x - \mu_X)^2 f(x) \, dx & \textrm{ if $X$ is continuous}
+\end{cases}
+$$
+The **standard deviation** of $X$ is
+$$
+\sigma_X = +\sqrt{\sigma^2_X}
+$$
+:::
+::::
+
+According to its definition, the variance of $X$ is the mean of the quantity $(X - \mu)^2$. That is, the variance represents a "typical value" of the squared difference between $X$ and its mean. If the probability distribution is closely packed around $\mu$, this squared difference will tend to be small, which means $\sigma^2_X$ will be small. Conversely, if $X$ is frequently far from $\mu$, $\sigma^2_X$ will be large. 
+
+:::: {.whitebox data-latex=""}
+::: {.example #enzyme-activity-sigma}
+Following Example \@ref(exm:enzyme-activity-mu) where we computed $\mu_X = 2.15$, we can find the variance as well:
+\begin{align*}
+\text{Var}[X] = \sigma^2_X &= \sum_{ \mathcal{S}_X} (x - 2.15)^2 \cdot f(x) \\
+&= (0 - 2.15)^2(0.10) + (1 - 2.15)^2(0.20) + \cdots + (4 - 2.15)^2(0.15) \\
+&= 1.4275
+\end{align*}
+The standard deviation is $\sigma_X = \sqrt{1.4275} = 1.19478$.
+:::
+::::
+
+Here is the calculation in `R`:
+```{r}
+x <- 0:4
+f_x <- c(0.10, 0.20, 0.30, 0.25, 0.15)
+mu <- sum(x * f_x)
+sum((x - mu) ^ 2 * f_x)
+```
+
+The following "shortcut" formula will almost always be used as it is easier to use:
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+$$
+\text{Var}[X] = \sigma^2_X = E \left[ X^2 \right] - \left( E[X] \right)^2
+$$
+Note that the order of the brackets and the square are very important in this equation.
+:::
+::::
+
+::: {.proof}
+\begin{align*}
+\text{Var}[X] &= E[(X - \mu_X)^2] \\
+&= E \left[ X^2 \right] - E[2 X * \mu_X] + \mu_X^2  \\
+& = E \left[ X^2 \right] - 2 \mu_X * \mu_X + \mu_X^2  \\
+& = E \left[ X^2 \right] - \mu_X^2
+\end{align*}
+
+:::
+
+:::: {.whitebox data-latex=""}
+::: {.example}
+Returning again to Example \@ref(exm:enzyme-activity-sigma)
+\begin{align*}
+E \left[ X^2 \right] &= \sum_{\mathcal{S}_X} x^2 \cdot f(x) \\
+&= (0^2)(0.10) + (1^2)(0.20) + \cdots + (4^2)(0.15) \\
+&= 6.05
+\end{align*}
+We can now confirm our previous variance calculation:
+$$
+\sigma^2_X = E \left[ X^2 \right] - \mu_X^2 = 6.05 - 2.15^2 = 1.4275
+$$
+:::
+::::
+
+Similarly to Proposition \@ref(prp:chap-expected-value-prop-ehx), we can compute the variance of linear combinations.  It is important to see in which ways this similar and, even more importantly, which ways is is different:
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+For the linear function $h(X) = aX + b$,
+$$
+\text{Var}[h(X)] = \text{Var}[aX + b] = a^2 \text{Var}[X]
+$$
+In words, this means the variance of a linear function squares the multiplicative constant and eliminates the additive constant
+:::
+::::
+
+::: {.proof}
+Using Proposition \@ref(prp:chap-expected-value-prop-ehx), $E[aX + b] = a E[X] + b = a\mu_X + b$:
+\begin{align*}
+\text{Var}[aX + b] &= E[(aX + b - (a \mu_X + b))^2] \\ 
+& = E[(aX - a \mu_X)^2] \\
+& = E[a^2(X - \mu_X)^2] \\
+& = a^2E[(X - \mu_X)^2] \\
+& = a^2 \text{Var}[X]\\
+\end{align*}
+:::
+
+:::: {.whitebox data-latex=""}
+::: {.example}
+Returning to the context of Example \@ref(exm:grocery-expected-h), we have 
+$$
+E \left[ X^2 \right] = (0^2)(0.10) + (1^2)(0.15) + (2^2)(0.25) + (3^2)(0.30) + (4^2)(0.15) + (5^2)(0.05) = 7.5
+$$
+and $\sigma^2_X = E \left[ X^2 \right] - \mu_X^2 = 7.5 - 2.4^2 = 1.74$. Thus,
+$$
+\text{Var}[h(X)] = \text{Var}[50X - 100] = 50^2 \sigma^2_X = (2500)(1.74) = 4350
+$$
+:::
+::::
+
+## Means and Variances of Common Distributions
+
+### [Binomial]{#def-expected-value-binomial}
+
+First, note that it is straightforward to derive the mean and variance of a [Bernoulli]{#def-expected-value-bernoulli} rv. We have
+$$
+E[X] = \mu_X = \sum_{\mathcal{S}_X} xf(x) = (0)(1-p) + (1)(p) = p
+$$
+and we will then use the shortcut formula to compute $\text{Var}(X)$. Since $E \left[ X^2 \right] = p$,
+$$
+\text{Var}[X] = \sigma^2_X = E \left[ X^2 \right] - \mu_X^2 = p - p^2 = p(1-p)
+$$
+We can now obtain the mean and variance of a Binomial rv.
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+If $Y \sim \text{Bin}(n, p)$, then $E[Y] = np$ and $\text{Var}[Y] = np(1-p)$
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-exp-val-exam-mult-choice}
+Recall the multiple choice exam referenced in Example \@ref(exm:chap-rvs-exam-mult-choice). We defined the rv $Y \sim \text{Bin}(n=20, p=0.25)$ to represent the number of correct answers out of the 20 multiple choice questions on the exam. What is the mean and standard deviation of the number of questions answered correctly?
+
+_Solution_: The mean is $E[Y] = np = (20)(0.25) = 5$, and the standard deviation is 
+$$
+\sqrt{\text{Var}[Y]} = \sqrt{np(1-p)} = \sqrt{(20)(0.25)(0.75)} = 1.936492
+$$
+:::
+::::
+
+### [Hypergeometric]{#def-expected-value-hypergeometric}
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+With $X \sim \text{Hypergeometric}(n, M, N)$, 
+$$
+E[X] = n \frac{M}{N}, \hspace{1cm} \text{Var}[X] = n \frac{M}{N} \frac{N-n}{N-1} \left( 1 - \frac{M}{N} \right)
+$$
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-exp-val-lightbulbs-hyper}
+Recall Example \@ref(exm:chap-rvs-lightbulbs-hyper), where we defined the number of defective lightbulbs as $X \sim \text{hypergeometric}(10, 8, 80)$. What are $E[X]$ and $\text{Var}[X]$?
+
+_Solution_: $E[X] = 10 \left( \frac{8}{80} \right) = 1$ and $\text{Var}[X] = 10 \left( \frac{8}{80} \right) \left( \frac{80-10}{80-1} \right) \left( 1 - \frac{8}{80} \right) = 0.7974684$
+:::
+::::
+
+We introduced the hypergeometric distribution as being related to the binomial distribution. A related note: let $p$ denote $M/N$ (the proportion of successes in the population), and note that we can now write the mean and variance of the hypergeometric distribution as follows:
+$$
+E[X] = np, \hspace{1cm} \text{Var}[X] = \left( \frac{N-n}{N-1} \right) np(1-p)
+$$
+Comparing these results with those for the binomial distribution, we see that a finite population has no impact on the mean but requires a multiplicative adjustment to the variance. The factor $(N-n) / (N-1)$ is called the **finite population correction factor**.
+
+### [Negative Binomial]{#def-expected-value-negative-binomial}
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+With $X \sim \text{NegBin}(r, p)$,
+$$
+E[X] = \frac{r}{p}, \hspace{1cm} \text{Var}[X] = r \frac{1-p}{p^2}
+$$
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-exp-val-lightbulbs-negbinom}
+As in Example \@ref(exm:lightbulbs-negbinom), let the number of lightbulbs that will need to be inspected before we find the third defective bulb ($X$) be distributed as $\text{NegBin}(r=3, p=0.10)$. What are $E[X]$ and $\text{Var}[X]$?
+
+_Solution_: $E[X] = \frac{3}{0.10} = 30$ and $\text{Var}[X] = 3 \left( \frac{1-0.10}{0.10^2} \right) = 270$.
+:::
+::::
+
+### [Poisson]{#def-expected-value-poisson}
+
+Recall the limiting relationship between the binomial and Poisson distributions that we discussed in Section \@ref(chap-rvs-distributions-binpois-limit). That relationship can be used to reveal the mean and variance of a Poisson rv. In particular, the mean and variance of a $\text{Bin}(n, p)$ rv will approach those of a $\text{Poisson}(\lambda)$ rv. That is, $np \rightarrow \lambda$ and $np(1-p) \rightarrow \lambda$; the latter limit follows as a result of $1-p$ approaching 1. Note that, for a Poisson rv, the mean equals the variance. These results can also be derived directly from the Poisson pmf and the definitions of mean and variance.  
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+If $X \sim \text{Poisson}(\lambda)$, then $E[X] = \text{Var}[X] = \lambda$.
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-exp-val-emails-pois}
+Recall Example \@ref(exm:chap-rvs-emails-pois), where we defined the number of emails received by a company's customer support service as $X \sim \text{Poisson}(\lambda = 25)$. What are $E[X]$ and $\text{Var}[X]$?
+
+_Solution_: $E[X] = \text{Var}[X] = 25$.
+:::
+::::
+
+### [Exponential]{#def-expected-value-exponential}
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+With $X \sim \text{Exp}(\lambda)$,
+
+\[
+E[X] = \frac{1}{\lambda}, \quad \text{Var}[X] = \frac{1}{\lambda^2}.
+\]
+
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-exp-val-coffee-shop}
+Referencing Example \@ref(exm:chap-rvs-coffee-shop), suppose that customers arrive at a coffee shop at an average rate of 5 per hour. The time $X$ (in hours) until the next customer arrives follows an exponential distribution with rate parameter $\lambda = 5$. What are $E[X]$ and $\text{Var}[X]$?
+
+_Solution_:
+\[
+X \sim \text{Exp}(5).
+\]
+
+Using the formulas from the Proposition:
+
+\[
+E[X] = \frac{1}{\lambda} = \frac{1}{5} = 0.2 
+\]
+
+\[
+\text{Var}[X] = \frac{1}{\lambda^2} = \frac{1}{5^2} = 0.04
+\]
+
+Thus, the expected waiting time between arrivals is 0.2 hours (or 12 minutes), and the variance quantifies the variability of waiting times.
+:::
+::::
+
+### [Gamma]{#def-expected-value-gamma}
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+With $X \sim \text{Gamma}(\alpha, \lambda)$, 
+
+\[
+E[X] = \frac{\alpha}{\lambda}, \quad \text{Var}[X] = \frac{\alpha}{\lambda^2}
+\]
+
+where:
+
+- $\alpha > 0$ is the **shape parameter** (the number of events),
+- $\lambda > 0$ is the **rate parameter** (events per unit time).
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-exp-val-bank-wait}
+Referencing Example \@ref(exm:chap-rvs-bank-wait), suppose that the time (in minutes) a customer spends waiting in line at a bank follows a gamma distribution with parameters $\alpha = 3$ (representing 3 phases in the service process) and $\lambda = 0.5$ (events occurring at an average rate of 0.5 per minute). What are $E[X]$ and $\text{Var}[X]$?
+
+_Solution_:
+\[
+X \sim \text{Gamma}(3, 0.5).
+\]
+
+Using the formulas from the Proposition:
+
+\[
+E[X] = \frac{\alpha}{\lambda} = \frac{3}{0.5} = 6 
+\]
+
+\[
+\text{Var}[X] = \frac{\alpha}{\lambda^2} = \frac{3}{0.5^2} = 12
+\]
+:::
+::::
+
+### Chi-Squared
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+With $X \sim \chi^2_{\nu}$,
+
+\[
+E[X] = \nu, \quad \text{Var}[X] = 2\nu
+\]
+
+where $\nu$ represents the **degrees of freedom**.
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-exp-val-machine-temp}
+Referencing Example \@ref(exm:chap-rvs-machine-temp), suppose a company monitors the sum of squared deviations in temperature readings from a machine. Based on historical data, the sum of squared deviations follows a chi-squared distribution with $\nu = 8$ degrees of freedom. What are $E[X]$ and $\text{Var}[X]$?
+
+_Solution_:
+\[
+X \sim \chi^2_8
+\]
+
+Using the formulas from the Proposition:
+
+\[
+E[X] = \nu = 8, \quad \text{Var}[X] = 2\nu = 16
+\]
+
+Thus, the expected sum of squared deviations is 8, with variance 16.
+:::
+::::
+
+## [Moment]{#def-expected-value-the-moment} Generating Functions
+
+One way to characterize a random variable and its probability distribution is via its *moments*.  The term moment here is used in exactly the same way as it is in physics whereby the zeroth moment is the total mass, the first moment corresponds to center of mass, and so on.
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+The **$k^{th} moment** of a random variable $X$ is $E \left[ X^k \right]$. 
+:::
+::::
+
+Notice that the mean $\mu_X = E[X]$ is a moment (the "first" moment, since it corresponds to $n=1$ in the definition). Similarly, the variance $\sigma^2_X = E \left[ X^2 \right] - \mu_X^2$ involves the second moment $E[X^2]$ (that is, $k=2$). There are other moments (e.g., skewness and kurtosis) that are of interest in some settings. 
+<!-- One technical note: a more general definition of the $n$th moment is $E \left[\left( X - \mu_X \right)^n\right]$. By excluding the subtraction of the mean in the above definition, we are technically defining a moment "about the origin" (as though the mean were 0). In what follows, for simplicity, we use "moment" to refer to "moment about the mean." -->
+
+
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+The **[moment generating function]{#def-expected-value-moment-generating-function-mgf}** (MGF) of $X$ is
+$$
+M_X(t) = E \left[ e^{tX} \right]
+$$
+This somewhat obscure looking function corresponds to the (inverse) Laplace transform, though this insight isn't important for how we will use the MGF.
+:::
+::::
+
+MGFs are useful as we can they can be used to find moments of random variable using the following result:
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+The $k^{th}$ moment of $X$ about the origin is given by the $k^{th}$ derivative of $M_X(t)$ evaluated at $t=0$:
+$$
+E \left[ X^k \right] = \frac{d^k}{dt^k} M_X(t) \Big|_{t=0}
+$$
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-exp-val-mgf-exponential}
+The exponential distribution is commonly used in engineering applications to model **time until failure** for electronic components, mechanical systems, and communication networks. Let $X \sim \text{Exp}(\lambda)$ have an **exponential distribution** with rate parameter $\lambda > 0$. The MGF of $X$ is:
+
+\[
+M_X(t) = E[e^{tX}] = \int_0^\infty e^{tx} \lambda e^{-\lambda x} dx.
+\]
+
+Solving the integral gives:
+
+\[
+M_X(t) = \frac{\lambda}{\lambda - t}, \quad t < \lambda.
+\]
+
+To find the expected value of $X$, we differentiate once:
+
+\[
+E[X] = M'_X(0) = \frac{1}{\lambda}.
+\]
+
+To find the variance, we differentiate twice:
+
+\[
+E \left[ X^2 \right] = M''_X(0) = \frac{2}{\lambda^2},
+\]
+
+\[
+\text{Var}[X] = E \left[ X^2 \right] - \left( E[X] \right)^2 = \frac{2}{\lambda^2} - \left(\frac{1}{\lambda}\right)^2 = \frac{1}{\lambda^2}.
+\]
+
+Thus, we recover the known results:
+
+\[
+E[X] = \frac{1}{\lambda}, \quad \text{Var}[X] = \frac{1}{\lambda^2}.
+\]
+
+In reliability engineering, this result tells us that if a machine part has an average lifespan of 500 hours, then the failure rate is $\lambda = 1/500$, and the variance quantifies the variability in failure times.
+:::
+::::
+

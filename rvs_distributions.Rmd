@@ -1,0 +1,922 @@
+# Random Variables and Probability Distributions {#chap-rvs-distributions}
+
+In Statistics, we often have a dataset that we wish to explore and learn from. Typically, the dataset consists of a sample from our population of interest, and the observed values in the dataset are subject to randomness due to the nature of selecting the individuals to sample and then observing or measuring specific pieces of information as variables. Because of the randomness that typically affects the observed values in the dataset, we can think of our variables as being **random variables**. Thus, in order to learn from a dataset, we apply probability theory to characterize and work with random variables. 
+
+## Random Variables
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+A **[random variable]{#def-random-variables-and-probability-distributions-random-variable} (rv)** is a rule that associates a number with each outcome of the sample space of a random experiment.
+:::
+::::
+
+We generally denote random variables by uppercase letters, such as $X$, $Y$, or $Z$. From this point on in the book, we will use lowercase letters ($x$, $y$, $z$) to denote particular values of random variables. 
+
+:::: {.whitebox data-latex=""}
+::: {.example}
+The sample space for the random experiment of flipping a coin is $\mathcal{S} = \{H, T\}$. We can define the rv $X$ as equal to 0 if the result of the flip is tails and 1 if the result is heads. If we were to actually carry out a coin flip and observe, say, tails, we could then say that we observed $x = 0$.
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example}
+Define the rv $Y$ as the number of calls to a help center in one week. The possible values of $Y$ are $0, 1, 2, \ldots$ (in theory, continuing to infinity). 
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example}
+Let $Z$ be the percent purity of a chemical compound. $Z$ can take any value in the interval $[0, 100]$. 
+:::
+::::
+
+In the first two examples, the random variables were discrete, while the rv in the third example was continuous.
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+A **discrete** random variable is an rv that can take a finite or at most countably infinite number of values. A **continuous** random variable is an rv that can take any value within an interval (possibly infinite) of the real number line. We will use the notation $S_X$ to denote the possible values of a discrete rv $X$.
+
+Almost always, $S_X$ will be the first few counting numbers (say, 0, 1, 2, ...)
+:::
+::::
+
+## Probability Functions
+
+The **probability distribution** of an rv describes how much probability to assign to each value. There are a few functions that completely characterize a probability distribution. We will begin with the [probability mass function]{#def-random-variables-and-probability-distributions-probability-mass-function-discrete-rvs} for a discrete rv and then turn to the [probability density function]{#def-random-variables-and-probability-distributions-probability-density-function-continuous-rvs} for a continuous rv.
+
+### Probability Mass Function (Discrete RVs)
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+The **probability mass function** (pmf) of a discrete rv $X$ is a function that returns the probabilities $f(x) = P(X = x)$ for each value $x$ in $\mathcal{S}_X$.
+:::
+::::
+
+That is, the pmf defines the probability associated with each possible value of the discrete rv $X$. Note that we must have that $f(x) \geq 0$ for all $x$ in $\mathcal{S}$ and $\sum_{x} f(x) = 1$.
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-rvs-coin-pmf}
+In the coin flip example, suppose we purchase a special coin that is biased to land on heads with probability 0.6. With $X$ again defined to be 0 in the case of tails and 1 in the case of heads, the pmf of $X$ would have $f(0) = 0.4$ and $f(1) = 0.6$. To fully define the function, we can use the following:
+$$
+f(x) = \begin{cases}
+0.4 & \text{if } x = 0 \\
+0.6 & \text{if } x = 1 \\
+0 & \text{if } x \neq 0 \text{ or } 1
+\end{cases}
+$$
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #enzyme-activity}
+Suppose we are studying the activity levels of a certain enzyme in a population of cells. The enzyme's activity can be categorized into five discrete levels. Let $X$ be the rv that takes the values 0, 1, 2, 3, 4 if the activity level is very low, low, moderate, high, or very high, respectively. The pmf of $X$ is
+$$
+f(x) = \begin{cases}
+0.10 & \text{if } x = 0 \\
+0.20 & \text{if } x = 1 \\
+0.30 & \text{if } x = 2 \\
+0.25 & \text{if } x = 3 \\
+0.15 & \text{if } x = 4 \\
+0 & \text{if } x \neq 0,1,2,3, \text{ or } 4
+\end{cases}
+$$
+Figure \@ref(fig:enzyme-pmf) is a line graph visualization of the pmf.
+:::
+::::
+
+```{r enzyme-pmf, out.width="80%", fig.align = 'center', fig.cap = "Enzyme activity example pmf", echo = FALSE}
+require(ggplot2, quietly = TRUE)
+
+x <- 0:4
+f <- c(0.1, 0.2, 0.3, 0.25, 0.15)
+dta <- data.frame("x" = x, "f" = f)
+
+#ggplot(dta, aes(x = x, y = f)) + 
+#  geom_segment(aes(xend = x, yend = 0), color = "blue") + 
+#  geom_point(aes(x = x, y = f), color = "blue", size = 2) + 
+#  labs(x = "x", y = "f(x)") 
+plot(x, f, pch = 20, col = "blue", xlab = "x", ylab = "f(x)")
+segments(x, rep(0, 5), x, f, col = "blue")
+```
+
+### Probability Density Function (Continuous RVs) {#chap-rvs-sec-pdf}
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+The **probability density function** (pdf) of a continuous rv $X$ is a function $f(x)$ such that, for any two numbers $a$ and $b$ with $a \leq b$,
+$$
+P(a \leq X \leq b) = \int_a^b f(x) dx
+$$
+:::
+::::
+
+That is, the probability that $X$ takes a value in the interval $[a, b]$ equals the area under $f(x)$ between $a$ and $b$ (an integral of $f(x)$). Note that $f(x)$ is *not* equal to $P(X = x)$. In fact, due to the continuous nature of the rv $X$, $P(X = x) = 0$.  The pdf (as opposed to the pmf) can only be interpretted in terms of an integral over an interval.
+
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-rvs-bus-pdf}
+Consider the time a student spends waiting for her bus to arrive. Suppose that the bus arrives at the stop every 10 minutes. If the student arrives at the bus stop at a randomly-specified time, without regard for the bus schedule, we might assume that the time spent (in minutes) waiting will follow the **[uniform]{#def-random-variables-and-probability-distributions-uniform-a-b} distribution** on the interval $[0, 10]$. 
+
+The pdf of a rv $X$ from the uniform distribution on the interval $[a, b]$ is
+$$
+f(x) = \begin{cases}
+\frac{1}{b-a} & \text{if } a \leq x \leq b \\
+0 & \text{otherwise}
+\end{cases}
+$$
+In our example, we have $a = 0$ and $b = 10$, so our pdf would be $f(x) = 1/10$ for all $0 \leq x \leq 10$; reference Figure \@ref(fig:bus-pdf). Suppose we want to compute the probability that the student must wait between 1 and 3 minutes. The probability can be expressed as the following integral:
+$$
+P(1 \leq X \leq 3) = \int_1^3 f(t) dt = \int_1^3 \frac{1}{10} dt = \frac{2}{10}
+$$
+The last equality reflects the fact that the uniform pdf is a rectangle, making our desired probability the area of a rectangle (height times width). 
+:::
+::::
+
+```{r bus-pdf, out.width="80%", fig.align = 'center', fig.cap = "Bus wait example pdf", echo = FALSE}
+# Define the limits of the Uniform distribution
+a <- 0
+b <- 10
+
+# Define the shading limits
+x_start <- 1
+x_end <- 3
+
+# Define the uniform PDF function
+uniform_pdf <- function(x, a, b) {
+  ifelse(x >= a & x <= b, 1 / (b - a), 0)
+}
+
+# Create a sequence of x values for plotting
+x <- seq(a - 1, b + 1, length.out = 1000)  # Includes points outside the range for visual clarity
+
+# Compute the PDF values
+y <- uniform_pdf(x, a, b)
+
+# Plot the PDF
+plot(x, y, type = "l", lwd = 2, col = "blue", 
+     xlab = "x", ylab = "Density", 
+     main = "PDF of Uniform(0, 10)")
+
+# Shade the area under the curve between 1 and 3
+x_shade <- seq(x_start, x_end, length.out = 500)
+y_shade <- uniform_pdf(x_shade, a, b)
+polygon(c(x_start, x_shade, x_end), c(0, y_shade, 0), col = "red", border = NA)
+
+# Add text to indicate the probability
+text(x = 5, y = 0.04, 
+     labels = paste0("P(1 < X < 3) = ", round((x_end - x_start) / (b - a), 2)),
+     col = "black")
+```
+
+## [Cumulative Distribution Function]{#def-random-variables-and-probability-distributions-cumulative-distribution-function} {#chap-rvs-sec-cdf}
+
+The pmf can be used to completely specify the probability distribution of a discrete rv. However, an alternative way to completely specify a probability distribution is in terms of *cumulative* probabilities of the form $P(X \leq x)$.
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+The **cumulative distribution function** (cdf) of a discrete rv $X$ with pmf $f(x)$ is a function that returns the (cumulative) probabilities
+$$
+F(x) = P(X \leq x) = \sum_{t: t \leq x} f(t)
+$$
+for each value $x$ in $\mathcal{S}_X$.
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #enzyme-activity-cdf}
+Returning to the context of Example \@ref(exm:enzyme-activity), we can obtain the cdf of $X$ by computing $F(x)$ for each $x$ in $\{0, 1, 2, 3, 4\}$:
+\begin{align*}
+F(0) &= P(X \leq 0) = P(X = 0) = f(0) = 0.10 \\
+F(1) &= P(X \leq 1) = P(X = 0 \text{ or } 1) = f(0) + f(1) = 0.30 \\
+F(2) &= P(X \leq 2) = P(X = 0 \text{ or } 1 \text{ or } 2) = f(0) + f(1) + f(2) = 0.60 \\
+F(3) &= P(X \leq 3) = P(X = 0 \text{ or } 1 \text{ or } 2 \text{ or } 3) = f(0) + f(1) + f(2) + f(3) = 0.85 \\
+F(4) &= P(X \leq 4) = P(X = 0 \text{ or } 1 \text{ or } 2 \text{ or } 3 \text{ or } 4) = 1
+\end{align*}
+The cdf would then be the **step function** shown in Figure \@ref(fig:enzyme-cdf).
+
+```{r enzyme-cdf, out.width="80%", fig.align = 'center', fig.cap = "Enzyme activity example cdf", echo = FALSE}
+x <- 0:4
+cdf <- c(0.10, 0.30, 0.60, 0.85, 1)
+
+plot(c(-0.5, 4.5), c(0, 1), xlab = "x", ylab = "F(x)", type = "n")
+points(x, cdf, pch = 20, col = "blue")
+segments(c(-1, x), c(0, cdf), c(x, 5), c(0, cdf), col = "blue")
+```
+
+There are only probability "jumps" or "steps" at the values $x$ in $\{0, 1, 2, 3, 4\}$. For any other $x$ value, $F(x)$ is defined to be the cumulative probability for the nearest possible value of the rv $X$ that is to the left of $x$. For example, $P(X \leq 1.4) = P(X \leq 1) = F(1) = 0.30$. We can now write the cdf as
+$$
+F(x) = \begin{cases}
+0 & \text{if } x < 0 \\
+0.10 & \text{if } 0 \leq x < 1 \\
+0.30 & \text{if } 1 \leq x < 2 \\
+0.60 & \text{if } 2 \leq x < 3 \\
+0.85 & \text{if } 3 \leq x < 4 \\
+1 & \text{if } 4 \leq x
+\end{cases}
+$$
+
+:::
+::::
+
+In Example \@ref(exm:enzyme-activity-cdf), we derived the cdf from the pmf. Note that we can also derive the pmf from the cdf. For example,
+\begin{align*}
+f(2) &= P(X = 2) \\
+&= [f(0) + f(1) + f(2)] - [f(0) + f(1)] \\
+&= P(X \leq 2) - P(X \leq 1) \\
+&= F(2) - F(1)
+\end{align*}
+More generally, we can use the cdf to compute the probability that $X$ falls within any interval. For example, again with reference to Example \@ref(exm:enzyme-activity-cdf),
+\begin{align*}
+P(1 \leq X \leq 3) &= f(1) + f(2) + f(3) \\
+&= [f(0) + f(1) + f(2) + f(3)] - f(0) \\
+&= P(X \leq 3) - P(X \leq 0) \\
+&= F(3) - F(0)
+\end{align*}
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+Let $X$ be a discrete rv with possible values $\mathcal{S}_X = \{x_1, x_2, \cdots\}$. The probability of an event of the form $[a \leq X \leq b]$ can be written in terms of the pmf as
+$$
+P(a \leq X \leq b) = \sum_{a \leq x_i \leq b} f(x_i)
+$$
+and in terms of the cdf as
+$$
+P(a \leq X \leq b) = F(b) - F(a-)
+$$
+where "$a-$" represents the largest possible $X$ value that is strictly less than $a$. In particular, if all of $x_1, x_2, \ldots$ are integers and if $a$ and $b$ are integers, then $P(a \leq X \leq b) = F(b) - F(a-1)$. Note the special case that when $a = b$, $P(X = a) = F(a) - F(a-1)$. 
+:::
+::::
+
+Note that we can similarly use the cdf of a continuous rv to derive its pdf via the relationship $f(x) = F'(x)$; that is, the pdf is obtained by differentiating the cdf.
+
+:::: {.colbox data-latex=""}
+::: {.definition #chap-rvs-cdf-cont}
+The cdf of a continuous rv $X$ with pdf $f(x)$ is a function that returns the cumulative probability
+$$
+F(x) = P(X \leq x) = \int_{-\infty}^{x} f(t) dt
+$$
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-rvs-bus-cdf}
+Recall Example \@ref(exm:chap-rvs-bus-pdf). The waiting time $X$ (in minutes) follows a uniform distribution on the interval $[0, 10]$, i.e., $X \sim \text{Uniform}(0,10)$. The cdf $F(x)$ is obtained by integrating the pdf:
+
+\[
+F(x) = P(X \leq x) = \int_0^x \frac{1}{10} dt = \frac{x}{10}, \quad 0 \leq x \leq 10
+\]
+
+which leads to the full definition:
+
+$$
+F(x) = \begin{cases}
+0, & x < 0 \\
+\frac{x}{10}, & 0 \leq x \leq 10 \\
+1, & x > 10
+\end{cases}
+$$
+
+Figure \@ref(fig:bus-cdf) shows the graph of the cdf.
+
+```{r bus-cdf, out.width="80%", fig.align = 'center', fig.cap = "Bus wait example cdf", echo = FALSE}
+# Define x values for plotting
+x <- seq(-2, 12, length.out = 1000)
+
+# Define the CDF function for Uniform(0,10)
+uniform_cdf <- function(x, a, b) {
+  ifelse(x < a, 0, ifelse(x > b, 1, (x - a) / (b - a)))
+}
+
+# Compute the CDF values
+y <- uniform_cdf(x, 0, 10)
+
+# Plot the CDF
+plot(x, y, type = "l", lwd = 2, col = "blue",
+     xlab = "x", ylab = "F(x)", 
+     main = "CDF of Uniform(0,10)")
+
+# Add reference lines
+abline(v = 0, lty = 2, col = "gray")
+abline(v = 10, lty = 2, col = "gray")
+abline(h = 1, lty = 2, col = "gray")
+```
+
+Suppose we want to compute the probability that a student must wait no more than 3 minutes for the bus. Using the CDF:
+
+$$
+P(X \leq 3) = F(3) = \frac{3}{10} = 0.3
+$$
+
+We can confirm the calculation in `R` using `punif`:
+```{r}
+punif(3, min = 0, max = 10)
+```
+:::
+::::
+
+## Discrete Distributions
+
+### [Binomial]{#def-random-variables-and-probability-distributions-binomial-n-p} Distribution
+
+A **[Bernoulli]{#def-random-variables-and-probability-distributions-bernoulli-p} trial** describes any random experiment that generates two outcomes.  These are conventionally referred to as a "success" or a "failure". A **Bernoulli random variable** $X$ takes the value 1 if the outcome is a success and the value 0 if it is a failure. 
+
+:::: {.whitebox data-latex=""}
+::: {.example}
+(a) Flip a coin and designate heads as success and tails as failure.
+(b) A cancer patient is either in remission (success) or not (failure).
+(c) A smartphone is either defective (failure) or not (success).
+
+In each case, we could use the rv $X$ to denote the outcome of an individual trial. Note that the choice of which outcome to call "success" is arbitrary.
+:::
+::::
+
+Let $p$ be the probability of success for a Bernoulli rv ($p = P(X = 1)$). We can write the pmf simply:
+$$
+f(x) = p^x(1-p)^{1-x}
+$$
+That is, $f(x) = p$ when $x = 1$ and $f(x) = 1-p$ when $x = 0$. 
+
+Now consider running $n$ Bernoulli trials, each with the same probability $p$ of success, and with each trial being independent of all others, and suppose that we will count up the number of successes out of the $n$ trials. This is defined as a **binomial experiment**, and the variable $X$ that records the number of successes out of the $n$ trials is called a **binomial random variable**. 
+
+Letting $X_i$ be the Bernoulli rv associated with the $i$th Bernoulli trial, we can write the binomial rv $Y$ as
+$$
+Y = \sum_{i=1}^n X_i
+$$
+Thus, $Y$ can take any of the integer values between 0 (all $X_i = 0$) and $n$ (all $X_i = 1$), inclusive. We will write $Y \sim \text{Bin}(n, p)$ to indicate that $Y$ is a binomial rv and its probability distribution has parameters $n$ and $p$. 
+
+We will now derive the binomial pmf. To begin, consider the case where $n = 5$ (e.g., we flip a coin 5 times and count the number of heads) and suppose that we wish to compute the probability of the specific outcome $FFFSS$ (that is, the first 3 flips are tails and the last 2 flips are heads). Since the trials are independent, the probability of this outcome is the product of the individual Bernoulli probabilities:
+\begin{align*}
+P(FFFSS) &= P(F) \cdot P(F) \cdot P(F) \cdot P(S) \cdot P(S) \\
+&= (1-p) \cdot (1-p) \cdot (1-p) \cdot p \cdot p \\
+&= p^2 (1-p)^3.
+\end{align*}
+
+While it is true that $Y = 2$ in the above scenario, it is *not* true that $P(Y=2)$ equals $P(FFFSS)$. The reason for this is that there are multiple outcomes to the $n = 5$ Bernoulli trials for which $Y$ would equal 2 ($FFFSS$ is just one of the possible outcomes). In fact, using our counting tools from Chapter \@ref(chap-probability), we know that there are $\binom{5}{2} = 10$ ways to choose 2 successes out of 5 trials: 
+$$
+FFFSS, FFSFS, FFSSF, FSFFS, FSFSF, FSSFF, SFFFS, SFFSF, SFSFF, SSFFF
+$$ 
+To compute $P(Y=2)$, we need to add up the probabilities of each outcome for which $Y=2$. Since the probability is $p^2(1-p)^3$ for each of these outcomes, we have $P(Y=2) = 10p^2(1-p)^3$. 
+
+:::: {.colbox data-latex=""}
+::: {.theorem}
+If $Y \sim \text{Bin}(n, p)$, the pmf of $Y$ is
+$$
+P(Y=y) = \binom{n}{y} p^y (1-p)^{n-y}, \hspace{1cm} y=0, 1, \ldots, n
+$$
+:::
+::::
+
+Note that, while in Examples \@ref(exm:chap-rvs-coin-pmf) and \@ref(exm:enzyme-activity) we explicitly specified that $f(x) = 0$ when $x$ is not in $\mathcal{S}_X$, here (and in the rest of the book), this is implied but not stated. To be clear, $P(Y = y) = 0$ for any $y$ not in $\left\{ 0, 1, 2, \ldots, n \right\}$. 
+
+:::: {.whitebox data-latex=""}
+::: {.example #lightbulbs}
+A factory produces light bulbs, and 10% of them are defective. You randomly select 10 light bulbs. 
+
+(a) What is the probability that exactly 2 of them are defective?
+(b) What is the probability that at least 2 of them are defective?
+
+_Solution_: Let $Y$ be the number of defective light bulbs out of the $10$ that were sampled. We have that $Y \sim \text{Bin}(n=10,p=0.10)$.
+
+(a) $P(Y=2) = \binom{10}{2} 0.10^2 0.90^8 = 0.1937102$
+
+(b) 
+
+\begin{align*}
+P(Y \geq 2) &= 1 - P(Y \leq 1) \\
+&= 1 - \binom{10}{0} 0.10^0 0.90^{10} - \binom{10}{1} 0.10^1 0.90^9 \\
+&= 0.2639011
+\end{align*}
+
+Figure \@ref(fig:lightbulbs-pmf) is a line graph visualization of the pmf.
+:::
+::::
+
+```{r lightbulbs-pmf, out.width="80%", fig.align = 'center', fig.cap = "Light bulb example pmf", echo = FALSE}
+
+y <- 0:10
+n <- 10
+p <- 0.10
+pmf <- dbinom(y, n, p)
+
+plot(y, pmf, pch = 20, col = "blue", xlab = "y", ylab = "f(y)")
+segments(y, rep(0, 11), y, pmf, col = "blue")
+```
+
+There are four binomial-specific functions in `R`:
+
+- `dbinom`: Evaluate the pmf
+- `pbinom`: Evaluate the cdf
+- `qbinom`: Return a percentile
+- `rbinom`: Generate random realizations
+
+For example, the probabilities in Example \@ref(exm:lightbulbs) can be computed as follows:
+
+```{r}
+dbinom(2, 10, 0.10)
+1 - pbinom(1, 10, 0.10)
+```
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-rvs-exam-mult-choice}
+In a multiple-choice exam with 20 questions, each question has 4 answer choices. Suppose a student guesses on every question. What is the probability that they get at least 15 questions correct?
+
+_Solution_: Let $Y$ be the number of correct answers based on guessing, so that $Y \sim \text{Bin}(n=20, p=0.25)$. We can write the desired probability as $P(Y \geq 15) = 1 - P(Y \leq 14)$ and use `pbinom`:
+
+```{r}
+1 - pbinom(14, 20, 0.25)
+```
+:::
+::::
+
+### Distributions Related to the Bernoulli
+
+There are other random experiment scenarios that involve independent Bernoulli trials and are therefore related to the binomial experiment. The binomial distribution can be thought of as involving sampling from an *infinite* population of "successes" ($S\text{'s}$) and "failures" ($F\text{'s}$). The **[hypergeometric]{#def-random-variables-and-probability-distributions-hypergeometric-n-m-n} distribution**, on the other hand, applies when we sample $S\text{'s}$ and $F\text{'s}$ (without replacement) from a *finite* population. The binomial distribution involves a fixed number of Bernoulli trials, based on which we count the number of $S$'s. The **[negative binomial]{#def-random-variables-and-probability-distributions-negative-binomial-r-p} distribution**, by contrast, applies when we conduct trials until a specified number $r$ of $S\text{'s}$ is observed; the **[geometric]{#def-random-variables-and-probability-distributions-geometric-p} distribution** applies in the special case when $r = 1$ (i.e., we conduct trials until the first $S$). Finally, the **[Poisson]{#def-random-variables-and-probability-distributions-poisson} distribution** is typically applied to counts of events that occur in a particular interval of time or space. While it does not correspond to any simple experiment, like a Bernoulli trial, there is a limiting relationship between the Poisson distribution and binomial distribution. 
+
+#### Geometric Distribution
+
+Before turning to the hypergeometric, let's cover the geometric distribution.  As opposed to the Binomial example of counting the number of successes out of $n$ trials, let's consider another question of interest: how many failures would we have to observe before we see the first success (that is, see an $X_i = 1$).  
+
+Intuitively, as $p$ gets closer to 1, we should have to see fewer trials as $p = P(X_i = 1)$.  The probability we see a success on the first trial is $p$.  Hence, we would say the for a rv $X \sim geom(p)$, $P(X = 0) = p$ as we would have observed no failures.  However, suppose we see 1 failure before our first success, then $P(X = 1) = P(FS) = (1-p)*p$.  Therefore, in general,
+
+$$
+P(X = x) = f(x) = (1-p)^xp
+$$
+
+for $x = 0, 1, \ldots$.  Note that it could theoretically take infinitely long, but the probability goes to zero very fast.  How fast, you ask?  Geometrically, of course!
+
+:::: {.whitebox data-latex=""}
+::: {.example #hyper-urn}
+We are monitoring a production run of circuit boards.  We need to run the machine until it produces a defective circuit board so we can calibrate our new  machine.  At the speed we are running, the probability of producing a defective circuit board is 0.0001 and produces 1,000 circuit boards an hour.  We want to know what is the probability that we will get a defective circuit board in less than 1.5 hours.
+
+_Solution_:
+
+We would produce 1,500 circuit boards in 1.5 hours.  Hence, we want to know if we will get the first defective circuit board on the first, second, third, ..., 1,500th try.  This corresponds to:
+
+$$
+P(X \leq 1499) = f(0) + f(1) + \cdots + f(1499) = F(1499).
+$$
+
+We can find this via R with the pgeom function, which evaluates the cdf of the geometric(.0001) distribution:
+:::
+::::
+
+```{r}
+pgeom(1499,.0001)
+```
+
+#### Hypergeometric Distribution
+
+The canonical example that is used to illustrate the hypergeometric distribution is that of counting the number of red balls in a simple random sample of $n$ balls (sampled without replacement) selected from an urn that contains $N$ balls, $M$ of which are red and $N-M$ of which are black; reference Section \@ref(chap-foundations-sampling) for a reminder of what a simple random sample is. Crucially, the population in the context of a hypergeometric experiment is *finite*.
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+Let $X$ be the number of $S$'s in a simple random sample of size $n$ drawn from a population consisting of $M$ $S$'s and $(N-M)$ $F$'s; that is, 
+$$
+X \sim \text{Hypergeometric}(n, M, N)
+$$
+The pmf of $X$ is
+$$
+P(X = x) = \frac{\binom{M}{x} \binom{N-M}{n-x}}{\binom{N}{n}}
+$$
+for any integer $x$ such that $\text{max}(0, n - N + M) \leq x \leq \text{min}(n, M)$.
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #hyper-urn}
+Consider the canonical example: An urn contains $N = 15$ balls, $M = 5$ of which are red and $N - M = 10$ of which are black. We randomly select $n = 7$ balls (without replacement) and count the number $X$ of red balls in our sample.
+
+(a) What is $P(X = 5)$?
+
+(b) What is $P(X \leq 1)$?
+
+_Solution_:
+
+(a) 
+$$
+P(X = 5) = \frac{\binom{5}{5} \binom{10}{2}}{\binom{15}{7}} = 0.006993007
+$$
+
+(b)
+$$
+P(X \leq 1) = P(X = 0) + P(X = 1) = \frac{\binom{5}{0} \binom{10}{7}}{\binom{15}{7}} + \frac{\binom{5}{1} \binom{10}{6}}{\binom{15}{7}} = 0.1818182
+$$
+:::
+::::
+
+As with the binomial distribution, there are `R` functions `dhyper`, `phyper`, `qhyper`, and `rhyper` for the pmf, cdf, percentiles, and random realizations, respectively, with the hypergeometric distribution. For example, we can match the calculations in Example \@ref(exm:hyper-urn) as follows:
+
+```{r}
+dhyper(5, 5, 10, 7)
+phyper(1, 5, 10, 7)
+```
+
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-rvs-lightbulbs-hyper}
+In Example \@ref(exm:lightbulbs), the context was defective lightbulbs. We implicitly assumed that there were an infinite number of lightbulbs in the population. Suppose, however, that we limit our attention to a batch of $N = 80$ lightbulbs, assuming again that 10\% ($M = 8$) of them are defective. We again take a sample of size $n = 10$. Let $X$ be the number of defective lightbulbs in our sample, so $X \sim \text{hypergeometric}(10, 8, 80)$. 
+
+(a) What is $P(X = 2)$?
+
+(b) What is $P(X \geq 2)$?
+
+_Solution_:
+
+(a) 
+
+$$
+P(X = 2) = \frac{\binom{8}{2} \binom{72}{8}}{\binom{80}{10}} = 0.2035433
+$$
+
+(b) 
+
+\begin{align*}
+P(X \geq 2) &= 1 - P(X \leq 1) \\
+&= 1 - \frac{\binom{8}{0} \binom{72}{10}}{\binom{80}{10}} - \frac{\binom{8}{1} \binom{72}{9}}{\binom{80}{10}} \\
+&= 0.2607824
+\end{align*}
+:::
+::::
+
+Both Examples \@ref(exm:lightbulbs) and \@ref(exm:chap-rvs-lightbulbs-hyper) involved defective lightbulbs. The population was assumed to be infinite in Example \@ref(exm:lightbulbs) but treated as finite in Example \@ref(exm:chap-rvs-lightbulbs-hyper). In both examples, we computed the same probabilities. When the population was treated as infinite, we had $P(X = 2) \approx 0.19$ and $P(X \geq 2) \approx 0.26$. In the finite population case, we had $P(X = 2) \approx 0.20$ and $P(X \geq 2) \approx 0.26$, reflecting only a minor difference. Probability differences would become more pronounced if the population size were made smaller. For example, changing $N$ from 80 to 20 results in $P(X = 2) \approx 0.08$ and $P(X \geq 2) \approx 0.99$. As a rule of thumb, the binomial distribution gives *approximately* correct probabilities with a finite population as long as $n/N$ is "small" ($0.05$ is a common threshold) and $M/N$ is not "too close" to 0 or 1 ($0.1 \leq M/N \leq 0.9$, say). 
+
+#### Negative Binomial Distribution
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+Let $X$ be the number of trials required to achieve $r$ successes in a sequence of independent Bernoulli trials, where each trial has the same probability $p$ of success. Then, 
+$$
+X \sim \text{NegBin}(r, p)
+$$
+The pmf of $X$ is given by
+$$
+P(X = x) = \binom{x-1}{r-1} p^r (1-p)^{x-r}, \hspace{1cm} x = r, r+1, r+2, \ldots
+$$
+where $x$ is the total number of trials, and $r$ is the number of required successes.
+:::
+::::
+
+:::: {.whitebox data-latex=""}
+::: {.example #lightbulbs-negbinom}
+In the context of the defective lightbulb example, suppose we are interested in how many bulbs will need to be inspected before we find the third defective bulb. Letting $X$ be the number of lightbulbs that need to be inspected before finding the third defective lightbulb. Then, $X \sim \text{NegBin}(r=3, p=0.10)$.
+
+To find the probability that the third defective bulb is discovered on the seventh test, we use the pmf of the negative binomial distribution:
+\begin{align*}
+P(X = 7) &= \binom{7-1}{3-1} 0.10^3 0.90^{7-3} \\
+&= 15 (0.10^3)(0.90^4) = 0.0098415
+\end{align*}
+:::
+::::
+
+The `dnbinom`, `pnbinom`, `qnbinom`, and `rnbinom` functions in `R` can be used for negative binomial values, cumulative probabilities, quantiles, and random numbers. Note that there are multiple parameterizations for the negative binomial distribution, so you should always verify that you know how exactly the software you are using is set up. In `R`, for example, to match the probability calculation in Example \@ref(exm:lightbulbs-negbinom), the first argument to `dnbinom` must be the number of *non-defective* bulbs that are found before the third defective bulb:
+
+```{r}
+dnbinom(7-3, 3, 0.10)
+```
+
+Similarly, if we wish to randomly generate negative binomial observations in `R` according to our parameterization, we need to add $r$ to the result of calling `rnbinom`. For example, here is a random sample of 5 observations from the $\text{NegBin}(r=3, p=0.10)$ distribution:
+
+```{r}
+3 + rnbinom(5, 3, 0.10)
+```
+
+#### Poisson Distribution
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+Let $X$ be a rv that can take the values $0, 1, 2, \ldots$. Then, 
+$$
+X \sim \text{Poisson}(\lambda)
+$$
+means that the pmf of $X$ is
+$$
+P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!}
+$$
+where $\lambda > 0$.
+:::
+::::
+
+The letter $e$ in the pmf expression is the base of the natural logarithm, equal to approximately 2.71828. To show that the claimed pmf sums to one, we can use the fact that $e^{\lambda} = \sum_{k=0}^{\infty} \left( \lambda^k / k! \right)$. In `R`, see the functions `dpois`, `ppois`, `qpois`, and `rpois`.
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-rvs-emails-pois}
+Suppose the number of emails received by a company's customer support service follows a Poisson distribution with rate $\lambda = 25$. 
+
+(a) What is the probability of receiving exactly 20 support emails in a day?
+(b) What is the probability of receiving at least 40 support emails in a day?
+
+_Solution_: Let $X$ be the number of support emails received in a day; $X \sim \text{Poisson}(\lambda = 25)$.
+
+(a) $P(X = 20) = e^{-25} \frac{25^{20}}{20!} = 0.05191747$. We can confirm this via `dpois(20, 25)`.
+
+(b) $P(X \geq 40) = 1 - P(X \leq 39)$. We can compute this via `1-ppois(39, 25)`, which returns $0.003443569$.
+:::
+::::
+
+##### Poisson as a Binomial Limit {#chap-rvs-distributions-binpois-limit}
+
+While the Poisson distribution was not defined in terms of Bernoulli trials, there is a limiting relationship between the Poisson and binomial distributions.
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+Let $b(x; n, p)$ be the pmf for a binomial rv and $f(x; \lambda)$ be the pmf for a Poisson rv. If we let $n \rightarrow \infty$ and $p \rightarrow 0$ in such a way that $np$ approaches a value $\lambda > 0$, then $b(x; n, p) \rightarrow f(x; \lambda)$. 
+:::
+::::
+
+Thus, in the context of a binomial experiment, if $n$ is large and $p$ is small, probabilities can be approximated by the Poisson distribution with $\lambda = np$. A rule of thumb for applying this approximation is $n \geq 100$ and $np < 10$. Figure \@ref(fig:bin-pois-approx) illustrates the approximation, using the $\text{Bin}(n=100, p=0.05)$ and $\text{Poisson}(5)$ distributions.
+
+```{r bin-pois-approx, out.width = "80%", fig.align = 'center', fig.cap = "Illustration of Poisson approximation to binomial", echo=FALSE}
+x <- 0:10
+n <- 100
+p <- 0.05
+lambda <- n * p
+bb <- dbinom(x, n, p)
+pp <- dpois(x, lambda)
+
+plot(x, bb, pch = 20, col = "blue", xlab = "x", ylab = expression(f(x)))
+points(x, pp, pch = 20, col = "red")
+segments(x, rep(0, 11), x, pp, col = "red")
+legend(8, 0.16, legend = c("Binomial", "Poisson"), pch = rep(20, 2), col = c("blue", "red"), bty = "n")
+```
+
+## Continuous Distributions
+
+### [Exponential]{#def-random-variables-and-probability-distributions-exponential} Distribution {#sec-exponential}
+
+The exponential distribution is commonly used to model waiting times until an event occurs. Examples include the time until a lightbulb burns out, the time until a customer arrives at a service counter, or the time between earthquakes in a given region.
+
+:::: {.colbox data-latex=""}
+::: {.proposition}
+A continuous rv $X$ follows the **exponential distribution** with rate parameter $\lambda > 0$, written
+$$
+X \sim \text{Exp}(\lambda)
+$$
+if its probability density function (pdf) is given by
+$$
+f(x) = \lambda e^{-\lambda x}, \hspace{1cm} x > 0
+$$
+where $\lambda$ is the rate of occurrence of events.
+:::
+::::
+
+```{r exp-pdf, out.width="80%", fig.align='center', fig.cap="Example exponential distribution pdfs", echo=FALSE}
+# Define the range of x values
+x <- seq(0, 5, length.out = 500)
+
+# Define lambda values
+lambda_1 <- 1
+lambda_2 <- 0.5
+lambda_3 <- 2
+
+# Compute the pdf values for each lambda
+pdf_1 <- dexp(x, rate = lambda_1)
+pdf_2 <- dexp(x, rate = lambda_2)
+pdf_3 <- dexp(x, rate = lambda_3)
+
+# Plot the first pdf with axis labels and title
+plot(x, pdf_1, type = "l", lwd = 2, col = "black",
+     xlab = "x", ylab = "f(x)", 
+     main = expression("Exponential Distribution PDFs"),
+     ylim = c(0, max(pdf_3))) 
+
+# Add the other two pdfs
+lines(x, pdf_2, col = "red", lwd = 2)
+lines(x, pdf_3, col = "blue", lwd = 2)
+
+# Add a legend
+legend("topright", legend = c(expression(lambda == 1), 
+                              expression(lambda == 0.5), 
+                              expression(lambda == 2)), 
+       col = c("black", "red", "blue"), lwd = 2, bty = "n")
+```
+
+Figure \@ref(fig:exp-pdf) shows a few examples of exponential pdfs with different values of $\lambda$.
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-rvs-coffee-shop}
+Suppose that customers arrive at a coffee shop at an average rate of 5 per hour. The time $X$ (in hours) until the next customer arrives can be modeled as an exponential random variable with rate $\lambda = 5$; i.e., $X \sim \text{Exp}(5)$. What is the probability that the next customer arrives within 10 minutes?
+
+_Solution_: We seek $P(X \leq 10/60)$. This is a left-tail probability, given by the cumulative distribution function (cdf):
+$$
+P(X \leq x) = \int_0^x \lambda e^{-\lambda t}dt = 1 - e^{-\lambda x}
+$$
+Substituting $\lambda = 5$ and $x = 10/60$:
+$$
+P(X \leq 10/60) = 1 - e^{-5(10/60)} = 1 - e^{-5/6}
+$$
+In `R`, we can compute this probability using the `pexp` function:
+
+```{r}
+pexp(10/60, rate = 5)
+```
+:::
+::::
+
+#### Memoryless Property
+
+A notable property of the exponential distribution is that it is **memoryless**. This means that the probability of waiting an additional time $t$ does not depend on how long one has already waited:
+$$
+P(X > s+t | X > s) = P(X > t)
+$$
+for all $s, t > 0$. This property is unique to the exponential distribution among all continuous distributions.
+
+#### Poisson-Exponential Connection
+
+The exponential and Poisson distributions are closely related. Specifically, the exponential distribution models the waiting time between successive arrivals in a Poisson process.
+
+:::: {.colbox data-latex=””}
+::: {.proposition}
+If events occur according to a Poisson process with rate $\lambda$ per unit time, then the waiting time $X$ between successive events follows an exponential distribution: $X \sim \text{Exp}(\lambda)$.
+:::
+::::
+
+::: {.proof}
+Consider the Poisson distribution with parameter $\lambda$ for the number of events occurring in an interval of length $t$ (call this number $N(t)$). The probability that no event occurs up to time $t$ is equivalent to the probability that the waiting time exceeds $t$:
+$$
+P(X > t) = P(N(t) = 0) = e^{-\lambda t}
+$$
+The expression $P(X > t)$ is called the **survival function** and equals one minus the cdf: $P(X > t) = 1 - F(t) = 1 - P(X \leq t)$. As noted at the end of Section \@ref(chap-rvs-sec-cdf), we can obtain a pdf by differentiating the cdf. Here, differentiating both sides with respect to $t$ yields the exponential pdf:
+$$
+f(x) = \lambda e^{-\lambda x}, \quad x > 0
+$$
+:::
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-rvs-call-center}
+A customer service call center receives calls at an average rate of 12 per hour. The number of calls in an hour follows a Poisson distribution with $\lambda = 12$.
+
+(a) What is the probability that the next call will arrive within 5 minutes?
+(b) What is the probability that no calls will arrive in a 15-minute interval?
+
+_Solution_: 
+(a) The waiting time $X$ follows an exponential distribution with rate $\lambda = 12$. We compute:
+$$
+P(X \leq 5/60) = 1 - e^{-12(5/60)}
+$$
+```{r}
+pexp(5/60, rate = 12)
+```
+
+(b) The probability that no calls arrive in a 15-minute interval is the probability that the waiting time exceeds 15 minutes:
+$$
+P(X > 15/60) = e^{-12(15/60)}
+$$
+```{r}
+1 - pexp(15/60, rate = 12)
+```
+
+According to the Poisson-exponential connection, we can also express the above probability for waiting time in terms of a Poisson rv. In particular, defining $Y \sim \text{Poisson(3)}$ (with the rate parameter value of 3 reflecting that, on average, 3 events occur every 15 minutes), we have that 
+$$
+P(X > 15/60) = P(Y = 0) = e^{-3}
+$$
+We can verify the calculation using `dpois`:
+```{r}
+dpois(0, lambda = 3)
+```
+:::
+::::
+
+### [Gamma]{#def-random-variables-and-probability-distributions-gamma} Distribution
+
+To define the gamma distribution, we first define the **[gamma function]{#def-random-variables-and-probability-distributions-the-gamma-function}**.
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+The **Gamma function**, denoted as $\Gamma(\alpha)$, is a generalization of the factorial function to positive real numbers and is defined as:
+
+\[
+\Gamma(\alpha) = \int_0^\infty x^{\alpha-1} e^{-x} dx, \quad \alpha > 0.
+\]
+
+Some important properties of the Gamma function are:
+
+- $\Gamma(\alpha) = (\alpha - 1) \Gamma(\alpha - 1)$
+- For a positive integer $n$, $\Gamma(n) = (n - 1)!$
+- $\Gamma(1/2) = \sqrt{\pi}$
+:::
+::::
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+A continuous rv $X$ follows a **gamma distribution** with shape parameter $\alpha > 0$ and rate parameter $\lambda > 0$ if its pdf is:
+
+\[
+f(x; \alpha, \lambda) = \frac{\lambda^\alpha}{\Gamma(\alpha)} x^{\alpha - 1} e^{-\lambda x}, \quad x > 0.
+\]
+
+We denote this as $X \sim \text{Gamma}(\alpha, \lambda)$.
+:::
+::::
+
+```{r gamma-pdf, out.width="80%", fig.align='center', fig.cap="Example gamma distribution pdfs", echo=FALSE}
+
+# Define x range
+x <- seq(0, 10, length.out = 1000)
+
+# Define parameter values for Gamma distributions
+alpha_vals <- c(1, 2, 5)
+lambda_vals <- c(1, 1, 1)  # Keeping lambda = 1 for simplicity
+
+# Define colors
+colors <- c("black", "red", "blue")
+
+# Plot the Gamma PDFs
+plot(x, dgamma(x, shape = alpha_vals[1], rate = lambda_vals[1]), type = "l", 
+     lwd = 2, col = colors[1], ylim = c(0, 0.5), 
+     xlab = "x", ylab = "f(x)", main = "Gamma Distribution PDFs")
+
+# Add additional Gamma PDFs
+for (i in 2:length(alpha_vals)) {
+  lines(x, dgamma(x, shape = alpha_vals[i], rate = lambda_vals[i]), 
+        lwd = 2, col = colors[i])
+}
+
+# Add legend
+legend("topright", legend = c(expression(alpha == 1), 
+                              expression(alpha == 2), 
+                              expression(alpha == 5)), 
+       col = colors, lwd = 2, bty = "n")
+```
+
+Figure \@ref(fig:gamma-pdf) shows a few examples of gamma pdfs with different values of $\alpha$, keeping $\lambda = 1$ for simplicity. The parameter  $\lambda$  serves as a scaling factor: increasing $\lambda$ compresses the distribution, shifting the density toward smaller values of $x$, while decreasing $\lambda$ stretches the distribution, shifting the density toward larger values.
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-rvs-bank-wait}
+Suppose the time (in minutes) that a customer spends waiting in line at a bank follows a gamma distribution with $\alpha = 3$ and $\lambda = 0.5$. What is the probability that a customer waits between 4 and 7 minutes?
+
+_Solution_: Let $X$ denote the waiting time. We have $X \sim \text{Gamma}(3, 0.5)$. The probability we seek is:
+
+\[
+P(4 \leq X \leq 7) = P(X \leq 7) - P(X \leq 4).
+\]
+
+Using `R`:
+
+```{r}
+pgamma(7, shape = 3, rate = 0.5) - pgamma(4, shape = 3, rate = 0.5)
+```
+:::
+::::
+
+Note: In Example \@ref(exm:chap-rvs-bank-wait), we wrote $P(4 \leq X \leq 7)$ as the difference of cumulative probabilities $P(X \leq 7) - P(X \leq 4)$. Strictly speaking, we might instead write the difference as $P(X \leq 7) - P(X < 4)$. However, as was pointed out in Section \@ref(chap-rvs-sec-pdf), with a continuous rv, the probability of any one possible realized value equals 0; i.e., for a continuous rv, $P(X \leq x) = P(X < x)$. 
+
+### Chi-Squared Distribution {#sec-chi-squared-distribution}
+
+The Chi-Squared distribution arises frequently in statistical applications, particularly in hypothesis testing and variance estimation.
+
+:::: {.colbox data-latex=""}
+::: {.definition}
+A random variable $X$ follows a **Chi-Squared Distribution** with $\nu$ degrees of freedom (denoted $X \sim \chi^2_{\nu}$) if its pdf is given by
+
+\[
+f(x; \nu) = \frac{1}{2^{\nu/2} \Gamma(\nu/2)} x^{(\nu/2)-1} e^{-x/2}, \quad x > 0
+\]
+
+where $\nu > 0$ is the degrees of freedom, and $\Gamma(\cdot)$ is the gamma function.
+:::
+::::
+
+```{r chi-squared-pdfs, out.width="80%", fig.align='center', fig.cap="Example chi-squared distribution pdfs", echo=FALSE}
+# Define x values
+x <- seq(0, 15, length.out = 1000)
+
+# Define degrees of freedom
+df_vals <- c(2, 5, 10)
+colors <- c("red", "blue", "black")
+
+# Create an empty plot
+plot(x, dchisq(x, df=df_vals[1]), type="l", lwd=2, col=colors[1],
+     xlab="x", ylab="f(x)", main="Chi-Squared Distribution PDFs")
+
+# Add lines for each df value
+for (i in 2:length(df_vals)) {
+  lines(x, dchisq(x, df=df_vals[i]), col=colors[i], lwd=2)
+}
+
+# Add a legend
+legend("topright", legend = c(expression(nu == 2), 
+                              expression(nu == 5), 
+                              expression(nu == 10)), col=colors, lwd=2, bty="n")
+```
+
+:::: {.whitebox data-latex=""}
+::: {.example #chap-rvs-machine-temp}
+A company monitors the temperature of a critical machine component every hour. Based on historical data, the sum of squared deviations of these temperature readings from a target value follows a Chi-Squared distribution with $\nu = 8$ degrees of freedom.
+
+If the sum of squared deviations exceeds 15, an alarm is triggered. What is the probability that the alarm is triggered in any given hour?
+
+_Solution_:
+We need to compute $P(X > 15)$ for $X \sim \chi^2(8)$:
+\[
+P(X > 15) = 1 - P(X \leq 15)
+\]
+
+Using pchisq in R:
+```{r}
+1 - pchisq(15, df = 8)
+```
+:::
+::::
+
+
+
