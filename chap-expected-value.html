@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Expected Value | Probability and Statistics: Making Principled Decisions in an Uncertain World</title>
-  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Expected Value | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 5 Expected Value | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   
-  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
-<meta name="author" content="Alan Dabney, Scott Crawford, Darren Homrighausen" />
+<meta name="author" content="Alan Dabney, Scott Crawford, and Darren Homrighausen" />
 
 
-<meta name="date" content="2026-09-25" />
+<meta name="date" content="2026-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -282,7 +282,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.5.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-normal-percentiles-visual"><i class="fa fa-check"></i><b>6.5.1</b> Computing Standard Normal Quantiles</a></li>
 <li class="chapter" data-level="6.5.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-normal-percentiles"><i class="fa fa-check"></i><b>6.5.2</b> Computing Normal Quantiles</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking Normality</a></li>
+<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking normality</a></li>
 <li class="chapter" data-level="6.7" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-t-distribution"><i class="fa fa-check"></i><b>6.7</b> t Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html"><i class="fa fa-check"></i><b>7</b> Joint and Conditional Distributions</a>
@@ -536,7 +536,7 @@ div.csl-indent {
 <p><span class="math display">\[
 \overline{X} = \frac{1}{n} \sum_{ i=1}^n X_i = \frac{1}{n}X_1 + \cdots \frac{1}{n}X_n
 \]</span>
-we can see that we are equally weighting each term in the sum by <span class="math inline">\(1/n\)</span>. This can be generalized to a weighted average by making these weights not equal to each other. A prominent example in your academic lives is your total grade in a class</p>
+we can see that we are equally weighting each term in the sum by <span class="math inline">\(1/n\)</span>. This can be generalized to a weighted average by making these weights not equal to each other. A prominent example in your academic lives is your total grade in a class.</p>
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:overall-glass-grade" class="example"><strong>Example 5.1  </strong></span>Suppose a class rubric weights the total scores for a class like: 10% quizzes, 40% homework, 25% for a midterm, and 25% for final.</p>
@@ -548,7 +548,7 @@ Compare this to an equally weight rubric where each category has the same 25% we
 <span class="math display">\[
 86*.25 + 88*.25 + 90*.25 + 95*.25 = 89.75
 \]</span>
-In either case, the average is found via the general procedure of: "sum" of the "values" times the "weights". This will be the same idea for expected value in what follows.</p>
+In either case, the average is found via the general procedure of: "sum" of the "values" times the "weights." This will be the same idea for expected value in what follows.</p>
 </div>
 </div>
 <p>In Section <a href="chap-foundations.html#numerical-summaries">2.5</a>, we introduced the mean as a way of characterizing a "typical value" for a variable. We will formalize this now. As the mathematical device is different for discrete and continuous variables, we will treat them separately. The overall idea is the same.</p>
@@ -562,8 +562,8 @@ E[X] = \mu_X = \sum_{ \mathcal{S}_X} x \cdot f(x)
 \]</span></p>
 </div>
 </div>
-<p>Note that this, like the weighted average, has the form "sum" of "values" times the "weights".</p>
-<p>The term <span class="math inline">\(\sum_{ \mathcal{S}_X}\)</span> deserves some comment. The just represents the idea that in different problems, the valid values for <span class="math inline">\(X\)</span> might be different. Commonly, <span class="math inline">\(X\)</span> will take on just the first few integers, such as <span class="math inline">\(x = 0, 1, 2, 3\)</span> and hence <span class="math inline">\(\mathcal{S}_X = \{0,1,2,3\}\)</span> and <span class="math inline">\(\sum_{ \mathcal{S}_X} = \sum_{ x = 0}^3\)</span></p>
+<p>Note that this, like the weighted average, has the form "sum" of "values" times the "weights."</p>
+<p>The term <span class="math inline">\(\sum_{ \mathcal{S}_X}\)</span> deserves some comment. This just represents the idea that in different problems, the valid values for <span class="math inline">\(X\)</span> might be different. Commonly, <span class="math inline">\(X\)</span> will take on just the first few integers, such as <span class="math inline">\(x = 0, 1, 2, 3\)</span> and hence <span class="math inline">\(\mathcal{S}_X = \{0,1,2,3\}\)</span> and <span class="math inline">\(\sum_{ \mathcal{S}_X} = \sum_{ x = 0}^3\)</span></p>
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:enzyme-activity-mu" class="example"><strong>Example 5.2  </strong></span>In the context of Example <a href="chap-rvs-distributions.html#exm:enzyme-activity">4.5</a>, where a certain enzyme's activity can be categorized into five discrete levels: <span class="math inline">\(x =  0, 1, 2, 3, 4\)</span>, then <span class="math inline">\(\mathcal{S}_X = {0,1,2,3,4}\)</span>. We can find the expected value of <span class="math inline">\(X\)</span>:
@@ -644,7 +644,7 @@ E[X] = \int_{10}^{20} x \cdot \frac{1}{10} \, dx = \frac{1}{10} \int_{10}^{20} x
 Thus, on average, a paper straw from our production line lasts 15 minutes before deteriorating.</p>
 </div>
 </div>
-<p>Similarly to discrete random variables, we will want to compute the expected value of functions of continuous random variables. Fortunately, this works in way you would 'expect':</p>
+<p>Similarly to discrete random variables, we will want to compute the expected value of functions of continuous random variables. Fortunately, this works in way you would "expect":</p>
 <div class="colbox">
 <div class="definition">
 <p><span id="def:chap-expected-value-def-ehxCont" class="definition"><strong>Definition 5.4  </strong></span>Let <span class="math inline">\(X\)</span> be a continuous rv with pdf <span class="math inline">\(f(x)\)</span>. The expected value of the random variable <span class="math inline">\(h(X)\)</span> is
@@ -663,7 +663,7 @@ E[h(X)] = \int_{-\infty}^{\infty} h(x) f(x)\, dx
 <span class="math display">\[
 E[h(X)] = E[aX + b] = a \cdot E[X] + b
 \]</span></p>
-<p>In words, this means that for linear functions, the "expected value of the function" is the "function of the expected value".</p>
+<p>In words, this means that for linear functions, the "expected value of the function" is the "function of the expected value."</p>
 </div>
 </div>
 <div class="proof">
@@ -711,7 +711,7 @@ Thus, the expected cost per straw is <strong>4¢</strong>.</p>
 <div id="variance-and-standard-deviation-1" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> <span id="def-expected-value-variance">Variance</span> and <span id="def-expected-value-standard-deviation">Standard Deviation</span><a href="chap-expected-value.html#variance-and-standard-deviation-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In Section <a href="chap-foundations.html#numerical-summaries">2.5</a>, we also introduced the <strong>sample variance</strong> and <strong>sample standard deviation</strong> as ways of characterizing the "spread" of a variable. When referencing a random variable we can compute the population variance and the population standard deviation.</p>
-<p>The idea is we want to quantify "how far" "on average" we "expect" values of the random variable to be from its "mean". Let's make this precise:</p>
+<p>The idea is we want to quantify "how far" "on average" we "expect" values of the random variable to be from its "mean." Let's make this precise:</p>
 <div class="colbox">
 <div class="definition">
 <p><span id="def:unlabeled-div-61" class="definition"><strong>Definition 5.5  </strong></span>Let <span class="math inline">\(X\)</span> be a rv with population mean <span class="math inline">\(\mu_X\)</span>. The <strong>variance</strong> of <span class="math inline">\(X\)</span>, denoted by <span class="math inline">\(\text{Var}[X]\)</span> or <span class="math inline">\(\sigma^2_X\)</span>, is
@@ -728,7 +728,7 @@ The <strong>standard deviation</strong> of <span class="math inline">\(X\)</span
 \]</span></p>
 </div>
 </div>
-<p>According to its definition, the variance of <span class="math inline">\(X\)</span> is the mean of the quantity <span class="math inline">\((X - \mu)^2\)</span>. That is, the variance represents a "typical value" of the squared difference between <span class="math inline">\(X\)</span> and its mean. If the probability distribution is closely packed around <span class="math inline">\(\mu\)</span>, this squared difference will tend to be small, which means <span class="math inline">\(\sigma^2_X\)</span> will be small. Conversely, if <span class="math inline">\(X\)</span> is frequently far from <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma^2_X\)</span> will be large.</p>
+<p>According to its definition, the variance of <span class="math inline">\(X\)</span> is the mean of the quantity <span class="math inline">\((X - \mu_X)^2\)</span>. That is, the variance represents a "typical value" of the squared difference between <span class="math inline">\(X\)</span> and its mean. If the probability distribution is closely packed around <span class="math inline">\(\mu_X\)</span>, this squared difference will tend to be small, which means <span class="math inline">\(\sigma^2_X\)</span> will be small. Conversely, if <span class="math inline">\(X\)</span> is frequently far from <span class="math inline">\(\mu_X\)</span>, <span class="math inline">\(\sigma^2_X\)</span> will be large.</p>
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:enzyme-activity-sigma" class="example"><strong>Example 5.7  </strong></span>Following Example <a href="chap-expected-value.html#exm:enzyme-activity-mu">5.2</a> where we computed <span class="math inline">\(\mu_X = 2.15\)</span>, we can find the variance as well:
@@ -777,14 +777,14 @@ We can now confirm our previous variance calculation:
 \]</span></p>
 </div>
 </div>
-<p>Similarly to Proposition <a href="chap-expected-value.html#prp:chap-expected-value-prop-ehx">5.1</a>, we can compute the variance of linear combinations. It is important to see in which ways this similar and, even more importantly, which ways is is different:</p>
+<p>Similarly to Proposition <a href="chap-expected-value.html#prp:chap-expected-value-prop-ehx">5.1</a>, we can compute the variance of linear combinations. It is important to see in which ways this is similar and, even more importantly, in which ways it is different.</p>
 <div class="colbox">
 <div class="proposition">
 <p><span id="prp:unlabeled-div-65" class="proposition"><strong>Proposition 5.3  </strong></span>For the linear function <span class="math inline">\(h(X) = aX + b\)</span>,
 <span class="math display">\[
 \text{Var}[h(X)] = \text{Var}[aX + b] = a^2 \text{Var}[X]
 \]</span>
-In words, this means the variance of a linear function squares the multiplicative constant and eliminates the additive constant</p>
+In words, this means the variance of a linear function squares the multiplicative constant and eliminates the additive constant.</p>
 </div>
 </div>
 <div class="proof">
@@ -984,10 +984,10 @@ E[X] = \nu = 8, \quad \text{Var}[X] = 2\nu = 16
 <p>One way to characterize a random variable and its probability distribution is via its <em>moments</em>. The term moment here is used in exactly the same way as it is in physics whereby the zeroth moment is the total mass, the first moment corresponds to center of mass, and so on.</p>
 <div class="colbox">
 <div class="definition">
-<p><span id="def:unlabeled-div-75" class="definition"><strong>Definition 5.6  </strong></span>The <strong>$k^{th} moment</strong> of a random variable <span class="math inline">\(X\)</span> is <span class="math inline">\(E \left[ X^k \right]\)</span>.</p>
+<p><span id="def:unlabeled-div-75" class="definition"><strong>Definition 5.6  </strong></span>The <span class="math inline">\(k^{th}\)</span> <strong>moment</strong> of a random variable <span class="math inline">\(X\)</span> is <span class="math inline">\(E \left[ X^k \right]\)</span>.</p>
 </div>
 </div>
-<p>Notice that the mean <span class="math inline">\(\mu_X = E[X]\)</span> is a moment (the "first" moment, since it corresponds to <span class="math inline">\(n=1\)</span> in the definition). Similarly, the variance <span class="math inline">\(\sigma^2_X = E \left[ X^2 \right] - \mu_X^2\)</span> involves the second moment <span class="math inline">\(E[X^2]\)</span> (that is, <span class="math inline">\(k=2\)</span>). There are other moments (e.g., skewness and kurtosis) that are of interest in some settings.
+<p>Notice that the mean <span class="math inline">\(\mu_X = E[X]\)</span> is a moment (the "first" moment, since it corresponds to <span class="math inline">\(k=1\)</span> in the definition). Similarly, the variance <span class="math inline">\(\sigma^2_X = E \left[ X^2 \right] - \mu_X^2\)</span> involves the second moment <span class="math inline">\(E[X^2]\)</span> (that is, <span class="math inline">\(k=2\)</span>). There are other moments (e.g., skewness and kurtosis) that are of interest in some settings.
 <!-- One technical note: a more general definition of the $n$th moment is $E \left[\left( X - \mu_X \right)^n\right]$. By excluding the subtraction of the mean in the above definition, we are technically defining a moment "about the origin" (as though the mean were 0). In what follows, for simplicity, we use "moment" to refer to "moment about the mean." --></p>
 <div class="colbox">
 <div class="definition">
@@ -998,7 +998,7 @@ M_X(t) = E \left[ e^{tX} \right]
 This somewhat obscure looking function corresponds to the (inverse) Laplace transform, though this insight isn't important for how we will use the MGF.</p>
 </div>
 </div>
-<p>MGFs are useful as we can they can be used to find moments of random variable using the following result:</p>
+<p>MGFs are useful because they can be used to find moments of random variables using the following result:</p>
 <div class="colbox">
 <div class="proposition">
 <p><span id="prp:unlabeled-div-77" class="proposition"><strong>Proposition 5.11  </strong></span>The <span class="math inline">\(k^{th}\)</span> moment of <span class="math inline">\(X\)</span> about the origin is given by the <span class="math inline">\(k^{th}\)</span> derivative of <span class="math inline">\(M_X(t)\)</span> evaluated at <span class="math inline">\(t=0\)</span>:

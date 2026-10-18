@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Probability | Probability and Statistics: Making Principled Decisions in an Uncertain World</title>
-  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Probability | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 3 Probability | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   
-  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
-<meta name="author" content="Alan Dabney, Scott Crawford, Darren Homrighausen" />
+<meta name="author" content="Alan Dabney, Scott Crawford, and Darren Homrighausen" />
 
 
-<meta name="date" content="2026-09-25" />
+<meta name="date" content="2026-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -282,7 +282,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.5.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-normal-percentiles-visual"><i class="fa fa-check"></i><b>6.5.1</b> Computing Standard Normal Quantiles</a></li>
 <li class="chapter" data-level="6.5.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-normal-percentiles"><i class="fa fa-check"></i><b>6.5.2</b> Computing Normal Quantiles</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking Normality</a></li>
+<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking normality</a></li>
 <li class="chapter" data-level="6.7" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-t-distribution"><i class="fa fa-check"></i><b>6.7</b> t Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html"><i class="fa fa-check"></i><b>7</b> Joint and Conditional Distributions</a>
@@ -544,7 +544,7 @@ div.csl-indent {
 <p>Suppose we flip a coin 10 times. Intuitively, we would <em>expect</em> about half of the flips to result in heads. However, since the result of each flip is governed by <em>randomness</em>, we cannot <em>guarantee</em> that exactly 5 out of our 10 flips will be heads. Just by chance, we might see 4 heads, or 6, or even 0 or 10. The further the actual count gets away from 5, the less likely it is to happen, but even highly unlikely events are still <em>possible</em> and, in fact, highly unlikely events <em>will</em> almost certainly happen if given enough chances.</p>
 <p>A simple way to explore basic probability is with the <code>sample</code> function in <code>R</code>. For example, we can simulate a single coin flip with the command <code>sample(c(0, 1))</code>, letting the value 1 represent "heads"; <code>R</code> interprets this as "Choose one of the values 0 or 1, with each possible value having equal chance of being selected." In what follows, before randomly generating numbers, we run the command <code>set.seed</code> to ensure that the same random numbers are obtained each time our code is run; this way, if you follow along and run our code, you will get exactly the same results.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="chap-probability.html#cb55-1" tabindex="-1"></a><span class="do">## Set the random seed</span></span>
-<span id="cb55-2"><a href="chap-probability.html#cb55-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1010</span>)</span>
+<span id="cb55-2"><a href="chap-probability.html#cb55-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1010</span>) <span class="do">## 1010 is an arbitrary number</span></span>
 <span id="cb55-3"><a href="chap-probability.html#cb55-3" tabindex="-1"></a></span>
 <span id="cb55-4"><a href="chap-probability.html#cb55-4" tabindex="-1"></a><span class="do">## Flip a coin one time. The &#39;size&#39; argument tells R to sample just once.</span></span>
 <span id="cb55-5"><a href="chap-probability.html#cb55-5" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div>
@@ -553,7 +553,8 @@ div.csl-indent {
 <span id="cb57-2"><a href="chap-probability.html#cb57-2" tabindex="-1"></a><span class="do">## both 0 and 1 each time.</span></span>
 <span id="cb57-3"><a href="chap-probability.html#cb57-3" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>##  [1] 1 1 1 1 1 0 1 1 0 1</code></pre>
-<p>When we flipped the coin 10 times, we got eight heads, just by chance. To illustrate the meaning of the statement "Probability(heads) = 0.5", we have to consider what happens in the <em>long run</em>, after flipping the coin many, many times. Here, we flip the coin one thousand times and compute a running proportion of heads along the way; for example, the proportion displayed after 100 flips equals the number of heads out of the first 100 flips divided by 100.</p>
+<p>When we flipped the coin 10 times, we got eight heads, just by chance. To illustrate the meaning of the statement "Probability(heads) = 0.5", we have to consider what happens in the <em>long run</em>, after flipping the coin many, many times.</p>
+<p>Below, we flip the coin one thousand times and compute a running proportion of heads along the way; for example, the proportion displayed after 100 flips equals the number of heads out of the first 100 flips divided by 100.</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="chap-probability.html#cb59-1" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb59-2"><a href="chap-probability.html#cb59-2" tabindex="-1"></a>heads <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">size =</span> S, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb59-3"><a href="chap-probability.html#cb59-3" tabindex="-1"></a>p_running <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(heads) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">:</span>S)</span>
@@ -587,8 +588,13 @@ div.csl-indent {
 </ol>
 </div>
 </div>
-<p>An <strong><span id="def-probability-event">event</span></strong> is a collection of outcomes, which is necessarily a <span id="def-probability-subset">subset</span> of the sample space. Events are sets, so we will use set theory with them. An event that consists of a single outcome is called <strong>simple</strong>, while an event that consists of multiple outcomes is called <strong>compound</strong>. Possible simple events after flipping a coin three times are <span class="math inline">\(A = \{HTH\}\)</span> (the first flip was heads, the second was tails, and the third was heads) and <span class="math inline">\(B = \{2\}\)</span> (there were two heads out of the three flips). A possible compound event is <span class="math inline">\(C = \{2, 3\}\)</span> (at least two heads).</p>
-The <strong><span id="def-probability-union">union</span></strong> of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> (denoted <span class="math inline">\(A \cup B\)</span>) is the event that consists of outcomes that are in <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> or both. Clues that the operation should be a union are words like 'or', 'at least', or 'either'. The <strong><span id="def-probability-intersection">intersection</span></strong> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> (denoted <span class="math inline">\(A \cap B\)</span>) is the event that consists of outcomes that are in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. Clues that the operation should be an intersection are words like 'and' or 'both'. The <strong><span id="def-probability-complement">complement</span></strong> <span class="math inline">\(A^c\)</span> of <span class="math inline">\(A\)</span> is the event that consists of all outcomes that are not in <span class="math inline">\(A\)</span>. The events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>disjoint</strong> (alternatively called <strong>mutually exclusive</strong>) if they have no outcomes in common. Note that if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint, <span class="math inline">\(A \cap B = \emptyset\)</span>, where <span class="math inline">\(\emptyset\)</span> is the empty set. This means that the events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> cannot both occur; either <span class="math inline">\(A\)</span> occurs, <span class="math inline">\(B\)</span> occurs, or neither occurs. Event <span class="math inline">\(B\)</span> is a <strong>subset</strong> of <span class="math inline">\(A\)</span> (denoted <span class="math inline">\(B \subseteq A\)</span>) if all outcomes in <span class="math inline">\(B\)</span> are also in <span class="math inline">\(A\)</span>. We can visualize union and intersection using a <strong>Venn diagram</strong> like those in Figure <a href="chap-probability.html#fig:venn-1">3.1</a>.
+<p>An <strong><span id="def-probability-event">event</span></strong> is a collection of outcomes, which is necessarily a <span id="def-probability-subset">subset</span> of the sample space. Events are sets, so we will use set theory with them. An event that consists of a single outcome is called <strong>simple</strong>, while an event that consists of multiple outcomes is called <strong>compound</strong>.</p>
+<p>For example, when flipping a coin three times:</p>
+<ul>
+<li><strong>Simple events:</strong> <span class="math inline">\(A = \{HTH\}\)</span> (the sequence heads, tails, heads) or <span class="math inline">\(B = \{3\}\)</span> (obtaining three heads, which corresponds solely to the single outcome <span class="math inline">\(\{HHH\}\)</span>).</li>
+<li><strong>Compound events:</strong> <span class="math inline">\(C = \{2\}\)</span> (obtaining exactly two heads, which consists of three outcomes: <span class="math inline">\(\{HHT, HTH, THH\}\)</span>) or <span class="math inline">\(D = \{2, 3\}\)</span> (obtaining at least two heads, which consists of four outcomes: <span class="math inline">\(\{HHT, HTH, THH, HHH\}\)</span>).</li>
+</ul>
+The <strong><span id="def-probability-union">union</span></strong> of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> (denoted <span class="math inline">\(A \cup B\)</span>) is the event that consists of outcomes that are in <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> or both. Clues that the operation should be a union are words like "or," at least," or "either." The <strong><span id="def-probability-intersection">intersection</span></strong> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> (denoted <span class="math inline">\(A \cap B\)</span>) is the event that consists of outcomes that are in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. Clues that the operation should be an intersection are words like "and" or "both." The <strong><span id="def-probability-complement">complement</span></strong> <span class="math inline">\(A^c\)</span> of <span class="math inline">\(A\)</span> is the event that consists of all outcomes that are not in <span class="math inline">\(A\)</span>. The events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>disjoint</strong> (alternatively called <strong>mutually exclusive</strong>) if they have no outcomes in common. Note that if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint, <span class="math inline">\(A \cap B = \emptyset\)</span>, where <span class="math inline">\(\emptyset\)</span> is the empty set. This means that the events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> cannot both occur; either <span class="math inline">\(A\)</span> occurs, <span class="math inline">\(B\)</span> occurs, or neither occurs. Event <span class="math inline">\(B\)</span> is a <strong>subset</strong> of <span class="math inline">\(A\)</span> (denoted <span class="math inline">\(B \subseteq A\)</span>) if all outcomes in <span class="math inline">\(B\)</span> are also in <span class="math inline">\(A\)</span>. We can visualize union and intersection using a <strong>Venn diagram</strong> like those in Figure <a href="chap-probability.html#fig:venn-1">3.1</a>.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:venn-1"></span>
 <img src="figures/venn_1.png" alt="Venn diagrams showing union and intersection." width="80%" />
 <p class="caption">
@@ -641,7 +647,7 @@ Figure 3.1: Venn diagrams showing union and intersection.
 <li>Use the distributive law to explain the meaning of <span class="math inline">\((E_1 \cap E_2) \cup E_3\)</span>.</li>
 <li>Use De Morgan's law to explain the meaning of <span class="math inline">\((E_2 \cup E_3)^c\)</span>.</li>
 </ol>
-<p><em>Solution:</em></p>
+<p><em>Solution: (for each of these solutions, the same processes can be applied to the unions)</em></p>
 <ol style="list-style-type: lower-alpha">
 <li>Replacing events <span class="math inline">\(E_k\)</span>, <span class="math inline">\(k = 1, 2, 3\)</span>, with words, it is clear that the commutative laws are true. For example, "(Sarah owns headphones) and (Sarah owns a cellphone)" is clearly equivalent to "(Sarah owns a cellphone) and (Sarah owns headphones)."</li>
 <li>In words, <span class="math inline">\((E_1 \cup E_2) \cup E_3\)</span> means "(Sarah owns headphones, a cellphone, or both) or (Sarah owns a laptop)," which is equivalent to "(Sarah owns headphones, a cellphone, a laptop, or any <span id="def-probability-combination">combination</span> of these items)." According to the associative law, <span class="math inline">\((E_1 \cup E_2) \cup E_3 = E_1 \cup (E_2 \cup E_3)\)</span>, and <span class="math inline">\(E_1 \cup (E_2 \cup E_3)\)</span> means "(Sarah owns headphones) or (Sarah owns a cellphone, a laptop, or both)," which is again equivalent to "(Sarah owns headphones, a cellphone, a laptop, or any combination of these items)."</li>
@@ -665,7 +671,7 @@ P \left( E_1 \cup E_2 \cup \cdots \cup E_V \right) = \sum_{v=1}^{V} P(E_v)
 \]</span></p>
 </div>
 </div>
-<p>The first axiom states that a probability must be between 0 and 1, inclusive. The second axiom states that the probability the sample space will occur equals one; this is intuitive, since the sample space is defined as the collection of all possible outcomes. The third axiom states that for a collection of disjoint events, the probability of at least one occurring is the sum of the individual probabilities; note that Axiom 3 applies even in the case of a countably <em>infinite</em> sequence of disjoint events.</p>
+<p>The first axiom states that a probability must be between 0 and 1, inclusive. The second axiom states that the probability the sample space will occur equals one; the probability that something occurs = 1. This is intuitive, since the sample space is defined as the collection of all possible outcomes. The third axiom states that for a union of disjoint events, the probability of at least one occurring is the sum of the individual probabilities; note that Axiom 3 applies even in the case of a countably <em>infinite</em> sequence of disjoint events. Countably infinite means a set is infinite, but its elements can still be put into an order so that every single item eventually gets counted.</p>
 <div class="colbox">
 <div class="proposition">
 <p><span id="prp:unlabeled-div-6" class="proposition"><strong>Proposition 3.1  </strong></span>The above axioms imply the following properties:</p>
@@ -797,28 +803,28 @@ P(A) = \frac{\#(A)}{N} = \frac{12}{52} = \frac{3}{13}
 <div id="permutations-and-combinations" class="section level3 hasAnchor" number="3.4.2">
 <h3><span class="header-section-number">3.4.2</span> Permutations and Combinations<a href="chap-probability.html#permutations-and-combinations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now consider the task of selecting <span class="math inline">\(k\)</span> individuals from a collection of <span class="math inline">\(n\)</span> individuals. Here, "individual" could generically refer to people, animals, objects, or any other distinct entity. The coach of a basketball team, for example, needs to choose 5 starters from his 15 active players before a game. Or, we might want to select 4 pizza toppings from a list of 12 available toppings. How many possible lineups are there for the basketball coach to choose from, and how many pizza possibilities are there?</p>
-<p>An important distinction between the two examples just given is that outcomes in the basketball example are ordered, whereas outcomes in the pizza are example are unordered. That is, the ordering of the players selected to start the basketball game matters, because ordering corresponds to position played. For example, suppose the selected lineup is {Maya, Zoe, Mia, Harper, Olivia}, corresponding to the positions {point guard, shooting guard, small forward, power forward, and center}. Changing the ordering of the names in the lineup would mean changing position assignments. In the pizza example, on the other hand, the order in which the toppings are listed is irrelevant. Shuffling the list of toppings {pepperoni, mushrooms, green bell peppers, and sausage} does not change the pizza.</p>
+<p>An important distinction between the two examples just given is that outcomes in the basketball example are ordered, whereas outcomes in the pizza are example are unordered. That is, the ordering of the players selected to start the basketball game matters, because ordering corresponds to position played. For example, suppose the selected lineup is {Maya, Zoe, Mia, Harper, Olivia}, corresponding to the positions {point guard, shooting guard, small forward, power forward, and center}. Changing the ordering of the names in the lineup would mean changing position assignments. In the pizza example, on the other hand, the order in which the toppings are listed is irrelevant. Shuffling the list of toppings {pepperoni, mushrooms, green bell peppers, and sausage} does not change the pizza. Remark: If order matters, {1,2,3,4} . If order does not matter, {1,2,3,4} = {4,3,2,1}</p>
 <div class="colbox">
 <div class="definition">
-<p><span id="def:unlabeled-div-16" class="definition"><strong>Definition 3.3  </strong></span>An ordered subset is called a <strong>permutation</strong>, and an unordered subset is called a <strong>combination</strong>. We will use <span class="math inline">\(P_{k,n}\)</span> to denote the number of permutations of size <span class="math inline">\(k\)</span> that can be formed from <span class="math inline">\(n\)</span> individuals. To denote the number of combinations of size <span class="math inline">\(k\)</span> that can be formed from <span class="math inline">\(n\)</span> individuals, we will use the notation <span class="math inline">\(\binom{n}{k}\)</span>, read "<span class="math inline">\(n\)</span> choose <span class="math inline">\(k\)</span>."</p>
+<p><span id="def:unlabeled-div-16" class="definition"><strong>Definition 3.3  </strong></span>An ordered subset is called a <strong>permutation</strong>, and an unordered subset is called a <strong>combination</strong>. We will use <span class="math inline">\(P_{n,k}\)</span> to denote the number of permutations of size <span class="math inline">\(k\)</span> that can be formed from <span class="math inline">\(n\)</span> individuals. To denote the number of combinations of size <span class="math inline">\(k\)</span> that can be formed from <span class="math inline">\(n\)</span> individuals, we will use the notation <span class="math inline">\(\binom{n}{k}\)</span>, read "<span class="math inline">\(n\)</span> choose <span class="math inline">\(k\)</span>."</p>
 </div>
 </div>
 <p>We can apply the product rule to deduce formulas for counting permutations. For example, consider the task of selecting 5 starters from 15 active players on a basketball team. Following the ordering used in the example above, we will first select the point guard, then the shooting guard, and so on. Assuming for simplicity that all 15 players can play every position, we have 15 possibilities for point guard. Once the point guard has been selected, we have 14 players remaining from whom to choose the shooting guard, then 13 players from whom to choose the small forward, and so on. The total number of possible lineups is therefore <span class="math inline">\(15 \cdot 14 \cdot 13 \cdot 12 \cdot 11\)</span> = 360,360.</p>
 <p>We can formulate a general expression using <em><span id="def-probability-factorial">factorial</span></em> notation. Recall that <span class="math inline">\(m! = m(m-1)\cdots(2)(1)\)</span>, read "<span class="math inline">\(m\)</span> factorial." As a special case, note that <span class="math inline">\(1!=1\)</span>, and we define <span class="math inline">\(0! = 1\)</span>. With the basketball example, note also that we can write
 <span class="math display">\[
-P_{5,15} = (15)(14)(13)(12)(11) = \frac{(15)(14)(13)(12)(11)(10!)}{(10!)} = \frac{15!}{10!}
+P_{15,5} = (15)(14)(13)(12)(11) = \frac{(15)(14)(13)(12)(11)(10!)}{(10!)} = \frac{15!}{10!}
 \]</span>
 This enables us to write the following general expression.</p>
 <div class="colbox">
 <div class="proposition">
 <p><span id="prp:unlabeled-div-17" class="proposition"><strong>Proposition 3.4  </strong></span><span class="math display">\[
-P_{k,n} = \frac{n!}{(n-k)!}
+P_{n,k} = \frac{n!}{(n-k)!}
 \]</span></p>
 </div>
 </div>
 <div class="whitebox">
 <div class="example">
-<p><span id="exm:unlabeled-div-18" class="example"><strong>Example 3.10  </strong></span>Consider forming letter combinations (which may or may not make sensible words) using the letters "H", "O", "U", "S", and "E."</p>
+<p><span id="exm:unlabeled-div-18" class="example"><strong>Example 3.10  </strong></span>Consider forming letter combinations (which may or may not make sensible words) using the letters "H," "O," "U," "S," and "E."</p>
 <ol style="list-style-type: lower-alpha">
 <li>How many letter combinations can we form using all 5 letters?</li>
 <li>How many letter combinations can we form if we use just 3 letters?</li>
@@ -826,21 +832,21 @@ P_{k,n} = \frac{n!}{(n-k)!}
 <p><em>Solution</em>: We have <span class="math inline">\(n = 5\)</span> distinct letters to choose from.</p>
 <ol style="list-style-type: lower-alpha">
 <li><span class="math inline">\(P_{5,5} = \frac{5!}{0!} = 5! = 120\)</span></li>
-<li><span class="math inline">\(P_{3,5} = \frac{5!}{2!} = 5(4)(3) = 60\)</span></li>
+<li><span class="math inline">\(P_{5,3} = \frac{5!}{2!} = 5(4)(3) = 60\)</span></li>
 </ol>
 </div>
 </div>
-<p>Now consider combinations, for which order does not matter. In the pizza example, consider the selection of toppings {pepperoni, mushrooms, green bell peppers, and sausage}. These four toppings can be ordered in <span class="math inline">\(4! = 24\)</span> ways. We know that there are <span class="math inline">\(P_{4,12}\)</span> = 12! / 8! = 11,880 <em>permutations</em> of four out of twelve toppings. To calculate the number of possible <em>combinations</em>, we need to correct for the fact that we do not care about order. We can accomplish this by dividing <span class="math inline">\(P_{4,12}\)</span> by <span class="math inline">\(4!\)</span>: <span class="math inline">\(\binom{12}{4} = P_{4,12} / 4! = 495\)</span>.</p>
+<p>Now consider <em>combinations</em>, for which order does not matter. In the pizza example, consider the selection of toppings {pepperoni, mushrooms, green bell peppers, and sausage}. These four toppings can be ordered in <span class="math inline">\(4! = 24\)</span> ways. We know that there are <span class="math inline">\(P_{12,4}\)</span> = 12! / 8! = 11,880 <em>permutations</em> of four out of twelve toppings. To calculate the number of possible <em>combinations</em>, we need to correct for the fact that we do not care about order. To factor out order, divide the permutation by the number of ways the four toppings can be arranged (<span class="math inline">\(4! = 24\)</span> different orderings). Thus, <span class="math inline">\(\binom{12}{4} = P_{12,4} / 4! = 495\)</span>.</p>
 <div class="colbox">
 <div class="proposition">
 <p><span id="prp:unlabeled-div-19" class="proposition"><strong>Proposition 3.5  </strong></span><span class="math display">\[
-\binom{n}{k} = \frac{P_{k,n}}{k!} = \frac{n!}{k!(n-k)!}
+\binom{n}{k} = \frac{P_{n,k}}{k!} = \frac{n!}{k!(n-k)!}
 \]</span></p>
 </div>
 </div>
 <div class="whitebox">
 <div class="example">
-<p><span id="exm:unlabeled-div-20" class="example"><strong>Example 3.11  </strong></span>It is movie night, and you want to select two movies to watch out of your library of six movies. How many way can you make this selection?</p>
+<p><span id="exm:unlabeled-div-20" class="example"><strong>Example 3.11  </strong></span>It is movie night, and you want to select two movies to watch out of your library of six movies. How many ways can you make this selection?</p>
 <p><em>Solution</em>: We want to choose <span class="math inline">\(k = 2\)</span> movies from a collection of <span class="math inline">\(n = 6\)</span> movies:
 <span class="math display">\[
 \binom{6}{2} = \frac{6!}{2!(6-2)!} = \frac{6(5)}{2} = 15
@@ -863,7 +869,7 @@ P_{k,n} = \frac{n!}{(n-k)!}
 <div id="conditional-probability" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> <span id="def-probability-conditional-probability">Conditional Probability</span><a href="chap-probability.html#conditional-probability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Consider computing the probability of an event <span class="math inline">\(A\)</span> when we have information on another event <span class="math inline">\(B\)</span>. The <strong>conditional probability of <span class="math inline">\(A\)</span> given that <span class="math inline">\(B\)</span> has occurred</strong> (denoted <span class="math inline">\(P(A|B)\)</span>) will potentially be different from the <strong>unconditional probability of <span class="math inline">\(A\)</span></strong>.</p>
-<p>For example, early in the COVID-19 pandemic, there were diagnostic tests that could be conducted at home, but they were prone to errors (false positives for people without COVID-19 or false negatives for people with COVID-19). Consider a hypothetical early diagnostic test. If the test were given to a randomly-selected individual (selected without regard for whether they had symptoms), suppose that the probability of a positive result were 0.10 (10%); since the majority of people do not have COVID-19, most of the 10% positives would be false positives. However, if the test were given to an individual with COVID-19, suppose the probability of a positive result were 0.80 (80%). Thus, the probability of a positive test result would <em>depend on</em> whether an individual had COVID-19. The first probability (0.10) was an unconditional probability, while the second was a conditional probability.</p>
+<p>For example, early in the COVID-19 pandemic, there were diagnostic tests that could be conducted at home, but they were prone to errors (false positives for people without COVID-19 or false negatives for people with COVID-19). Consider a hypothetical early diagnostic test. If the test were given to a randomly-selected individual (selected without regard for whether they had symptoms), suppose that the probability of a positive result were 0.10 (10%); since the majority of people do not have COVID-19, most of the 10% positives would be false positives. However, if the test were given to an individual with COVID-19, the probability of a positive result would increase to 0.80 (80%), because we already knew this individual carries COVID-19. Thus, the probability of a positive test result would <em>depend on</em> whether an individual had COVID-19. The first probability (0.10) was an unconditional probability, while the second was a conditional probability.</p>
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:unlabeled-div-22" class="example"><strong>Example 3.13  </strong></span>Consider drawing a card from a 52-card deck, and define the events <span class="math inline">\(A = \{ \text{red card} \}\)</span> (hearts or diamonds) and <span class="math inline">\(B = \{ \text{face card} \}\)</span> (jack, queen, or king). Using our counting techniques, the unconditional probability of <span class="math inline">\(A\)</span> is
@@ -884,12 +890,12 @@ P(A|B) = \frac{P(A \cap B)}{P(B)}
 \]</span></p>
 </div>
 </div>
-<p>Some clues that conditional probability should be used would be words like 'given', 'we know', 'it is known that', or other similar phrases conveying <strong>information</strong>.</p>
+<p>Some clues that indicate conditional probability should be used include words like "given," "we know," "it is known that," and similar phrases conveying <strong>information</strong>.</p>
 <div class="whitebox">
 <div class="example">
-<p><span id="exm:chap-probability-weather" class="example"><strong>Example 3.14  </strong></span>Consider today's weather. Let <span class="math inline">\(A\)</span> be the event that it rains and <span class="math inline">\(B\)</span> be the event that the weather forecaster predicts that it will rain. Suppose that <span class="math inline">\(P(A) = 0.15\)</span>, <span class="math inline">\(P(B) = 0.25\)</span>, and <span class="math inline">\(P(A|B) = 0.80\)</span> (that is, when a forecaster predicts rain it actually rains 80% of the time). What is the probability that it will rain and the forecaster will predict rain, <span class="math inline">\(P(A \cap B)\)</span>?</p>
+<p><span id="exm:chap-probability-weather" class="example"><strong>Example 3.14  </strong></span>Consider today's weather. Let <span class="math inline">\(A\)</span> be the event that it rains and <span class="math inline">\(B\)</span> be the event that the weather forecaster predicts that it will rain. Suppose that <span class="math inline">\(P(A) = 0.15\)</span>, <span class="math inline">\(P(B) = 0.25\)</span>, and <span class="math inline">\(P(A|B) = 0.80\)</span> (that is, if a forecaster predicts that it rains, then it actually rains 80% of the time). What is the probability that it will rain and the forecaster will predict rain, <span class="math inline">\(P(A \cap B)\)</span>?</p>
 <p><em>Solution</em>: <span class="math inline">\(P(A \cap B) = P(A|B) \cdot P(B) = 0.80 \cdot 0.25 = 0.20\)</span>.</p>
-<p>Notice the use of 'given' and 'and' in the problem statement. These are important words for determining if we should conditional probability or an intersection.</p>
+<p>Notice the use of "given" and "and" in the problem statement. These are important words for determining if we should conditional probability or an intersection.</p>
 </div>
 </div>
 <div class="whitebox">
@@ -1033,9 +1039,21 @@ P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{P(A|B)P(B)}{P(A)} = \frac{P(A)P(B)}{P(
 <ol style="list-style-type: decimal">
 <li>Note that we can write <span class="math inline">\(B = (A \cap B) \cup (A^c \cap B)\)</span> so that
 <span class="math display">\[
-P(B) = P(A \cap B) + P(A^c \cap B) = P(A)P(B) + P(A^c \cap B)
+P(B) = P(A \cap B) + P(A^c \cap B)
 \]</span>
-where the second equality is an application of the fact that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent. Rearranging, we have <span class="math inline">\(P(A^c \cap B) = P(B)(1-P(A)) = P(A^c)P(B)\)</span>, proving that <span class="math inline">\(A^c\)</span> and <span class="math inline">\(B\)</span> are independent. Proofs for the other two pairs of events are similar.</li>
+<span class="math display">\[
+P(B) = P(A)P(B) + P(A^c \cap B)
+\]</span>
+<span class="math display">\[
+P(B) - P(A)P(B) = P(A^c \cap B)
+\]</span>
+<span class="math display">\[
+P(B)(1 - P(A)) = P(A^c \cap B)
+\]</span>
+<span class="math display">\[
+P(B)P(A^c) = P(A^c \cap B)
+\]</span>
+where the second equality is an application of the fact that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent. Rearranging, we have <span class="math inline">\(P(A^c \cap B) = P(A^c)P(B)\)</span>, proving that <span class="math inline">\(A^c\)</span> and <span class="math inline">\(B\)</span> are independent. Proofs for the other two pairs of events are similar.</li>
 <li>For any event <span class="math inline">\(A\)</span>, <span class="math inline">\(A \cap \emptyset = \emptyset\)</span>, so <span class="math inline">\(0 = P(A \cap \emptyset) = P(\emptyset)P(A) = 0\)</span>; hence, <span class="math inline">\(A\)</span> and <span class="math inline">\(\emptyset\)</span> are independent. Similarly, since <span class="math inline">\(\mathcal{S} = \emptyset^c\)</span>, part 1 of this proposition proves that <span class="math inline">\(A\)</span> and <span class="math inline">\(\mathcal{S}\)</span> are independent.</li>
 <li>Assume without loss of generality that <span class="math inline">\(P(A) &gt; 0\)</span>. Since <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint, if <span class="math inline">\(B\)</span> occurs, then <span class="math inline">\(A\)</span> cannot possibly occur, so <span class="math inline">\(P(A|B) = 0 \neq P(A)\)</span>.</li>
 </ol>

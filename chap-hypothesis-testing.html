@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Hypothesis Testing | Probability and Statistics: Making Principled Decisions in an Uncertain World</title>
-  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Hypothesis Testing | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 10 Hypothesis Testing | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   
-  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
-<meta name="author" content="Alan Dabney, Scott Crawford, Darren Homrighausen" />
+<meta name="author" content="Alan Dabney, Scott Crawford, and Darren Homrighausen" />
 
 
-<meta name="date" content="2026-09-25" />
+<meta name="date" content="2026-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -282,7 +282,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.5.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-normal-percentiles-visual"><i class="fa fa-check"></i><b>6.5.1</b> Computing Standard Normal Quantiles</a></li>
 <li class="chapter" data-level="6.5.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-normal-percentiles"><i class="fa fa-check"></i><b>6.5.2</b> Computing Normal Quantiles</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking Normality</a></li>
+<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking normality</a></li>
 <li class="chapter" data-level="6.7" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-t-distribution"><i class="fa fa-check"></i><b>6.7</b> t Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html"><i class="fa fa-check"></i><b>7</b> Joint and Conditional Distributions</a>
@@ -682,37 +682,37 @@ where the values <span class="math inline">\(\bar{x}\)</span> and <span class="m
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:ht-pop-mean-t-example" class="example"><strong>Example 10.1  </strong></span>Continuing the soup‐can study from Example <a href="chap-confidence-intervals.html#exm:ci-pop-mean-t-example">9.2</a>, suppose the manufacturer’s label now claims that the average sodium content is 830 mg per can. Recall that we had the following <span class="math inline">\(n = 12\)</span> sodium content measurements (in mg):</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="chap-hypothesis-testing.html#cb185-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">810</span>, <span class="dv">805</span>, <span class="dv">820</span>, <span class="dv">830</span>, <span class="dv">840</span>, <span class="dv">815</span>, <span class="dv">825</span>, <span class="dv">835</span>, <span class="dv">810</span>, <span class="dv">820</span>, <span class="dv">810</span>, <span class="dv">825</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="chap-hypothesis-testing.html#cb189-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">810</span>, <span class="dv">805</span>, <span class="dv">820</span>, <span class="dv">830</span>, <span class="dv">840</span>, <span class="dv">815</span>, <span class="dv">825</span>, <span class="dv">835</span>, <span class="dv">810</span>, <span class="dv">820</span>, <span class="dv">810</span>, <span class="dv">825</span>)</span></code></pre></div>
 <p>We wish to test
 <span class="math display">\[
 H_0 : \mu = 830 \quad\text{vs.}\quad H_A : \mu \neq 830,
 \]</span>
 at the <span class="math inline">\(\alpha = 0.05\)</span> significance level.</p>
 <p>The following <code>R</code> code computes the test statistic:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="chap-hypothesis-testing.html#cb186-1" tabindex="-1"></a>alpha  <span class="ot">=</span> <span class="fl">0.05</span></span>
-<span id="cb186-2"><a href="chap-hypothesis-testing.html#cb186-2" tabindex="-1"></a>n      <span class="ot">=</span> <span class="fu">length</span>(x)</span>
-<span id="cb186-3"><a href="chap-hypothesis-testing.html#cb186-3" tabindex="-1"></a>xbar   <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
-<span id="cb186-4"><a href="chap-hypothesis-testing.html#cb186-4" tabindex="-1"></a>s      <span class="ot">=</span> <span class="fu">sd</span>(x)</span>
-<span id="cb186-5"><a href="chap-hypothesis-testing.html#cb186-5" tabindex="-1"></a>mu0    <span class="ot">=</span> <span class="dv">830</span></span>
-<span id="cb186-6"><a href="chap-hypothesis-testing.html#cb186-6" tabindex="-1"></a>Tobs <span class="ot">=</span> (xbar <span class="sc">-</span> mu0) <span class="sc">/</span> (s <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
-<span id="cb186-7"><a href="chap-hypothesis-testing.html#cb186-7" tabindex="-1"></a>Tobs</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="chap-hypothesis-testing.html#cb190-1" tabindex="-1"></a>alpha  <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb190-2"><a href="chap-hypothesis-testing.html#cb190-2" tabindex="-1"></a>n      <span class="ot">=</span> <span class="fu">length</span>(x)</span>
+<span id="cb190-3"><a href="chap-hypothesis-testing.html#cb190-3" tabindex="-1"></a>xbar   <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
+<span id="cb190-4"><a href="chap-hypothesis-testing.html#cb190-4" tabindex="-1"></a>s      <span class="ot">=</span> <span class="fu">sd</span>(x)</span>
+<span id="cb190-5"><a href="chap-hypothesis-testing.html#cb190-5" tabindex="-1"></a>mu0    <span class="ot">=</span> <span class="dv">830</span></span>
+<span id="cb190-6"><a href="chap-hypothesis-testing.html#cb190-6" tabindex="-1"></a>Tobs <span class="ot">=</span> (xbar <span class="sc">-</span> mu0) <span class="sc">/</span> (s <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb190-7"><a href="chap-hypothesis-testing.html#cb190-7" tabindex="-1"></a>Tobs</span></code></pre></div>
 <pre><code>## [1] -3.027174</code></pre>
 <p>To make our decision regarding <span class="math inline">\(H_0\)</span>, we can either compute a p-value and reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\text{p-value} &lt; \alpha\)</span>, or, equivalently, we can reject <span class="math inline">\(H_0\)</span> if the test statistic exceeds in absolute value the associated critical value.</p>
 <p>Let's look at these options via a plot:</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" alt="" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-76-1.png" alt="" width="672" /></p>
 <p>The p-value is probability of observing a value from the <span class="math inline">\(t_{n-1}\)</span> distribution that is at least as large as our observed test statistic. In other words, how unusual is the <span class="math inline">\(T_{obs}\)</span> that we got?</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="chap-hypothesis-testing.html#cb188-1" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Tobs), n <span class="sc">-</span> <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="chap-hypothesis-testing.html#cb192-1" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Tobs), n <span class="sc">-</span> <span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## [1] 0.01150728</code></pre>
 <p>Because the p-value is less than <span class="math inline">\(\alpha = 0.05\)</span>, we reject <span class="math inline">\(H_0\)</span>. We have sufficient evidence to conclude that the population mean <span class="math inline">\(\mu\)</span>, whatever value it may be, is not equal to <span class="math inline">\(\mu_0 = 830\)</span>.</p>
-<p>We can additionally compare <span class="math inline">\(T_{obs}\)</span> to the appropriate critical value: <span class="math inline">\(t_{.025, 11}\)</span>:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="chap-hypothesis-testing.html#cb190-1" tabindex="-1"></a>cVal <span class="ot">=</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb190-2"><a href="chap-hypothesis-testing.html#cb190-2" tabindex="-1"></a>cVal</span></code></pre></div>
+<p>We can additionally compare <span class="math inline">\(T_{obs}\)</span> to the appropriate critical value: <span class="math inline">\(t_{1-.025, 11}\)</span>:</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="chap-hypothesis-testing.html#cb194-1" tabindex="-1"></a>cVal <span class="ot">=</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb194-2"><a href="chap-hypothesis-testing.html#cb194-2" tabindex="-1"></a>cVal</span></code></pre></div>
 <pre><code>## [1] 2.200985</code></pre>
 <p>Because the absolute value of our observed test statistic is greater than this critical value, we come to the same conclusion: reject <span class="math inline">\(H_0\)</span>.</p>
 </div>
 </div>
 <p>The built-in <code>R</code> function <code>t.test</code> conducts the above one-sample <span class="math inline">\(t\)</span>-test (and constructs the confidence interval that we manually computed in Example <a href="chap-confidence-intervals.html#exm:ci-pop-mean-t-example">9.2</a>):</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="chap-hypothesis-testing.html#cb192-1" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> mu0, <span class="at">conf.level =</span> <span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="chap-hypothesis-testing.html#cb196-1" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> mu0, <span class="at">conf.level =</span> <span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -755,7 +755,7 @@ T_{obs} = \frac{\bar{d} - \Delta_0}{s_D/\sqrt{n}}
 where the values <span class="math inline">\(\bar{d}\)</span> and <span class="math inline">\(s_D\)</span> are the observed values of the statistics we get from our experiment. It is now our task to decide: how much evidence does this number give against <span class="math inline">\(H_0\)</span>?</p>
 <p>There will always be two equivalent ways to test a hypothesis. Reject <span class="math inline">\(H_0\)</span> if..</p>
 <ul>
-<li><strong>Critical Value</strong>: <span class="math inline">\(|T_{obs}| &gt; t_{\alpha/2, n-1}\)</span>, where <span class="math inline">\(t_{\alpha/2, n-1}\)</span> is defined in Section <a href="chap-normal-distribution.html#sec-t-distribution">6.7</a>.</li>
+<li><strong>Critical Value</strong>: <span class="math inline">\(|T_{obs}| &gt; t_{\alpha/2, n-1}\)</span>, where <span class="math inline">\(t_{1-\alpha/2, n-1}\)</span> is defined in Section <a href="chap-normal-distribution.html#sec-t-distribution">6.7</a>.</li>
 <li><strong>p-value</strong>: p-value &lt; <span class="math inline">\(\alpha\)</span>.</li>
 </ul>
 </div>
@@ -763,7 +763,7 @@ where the values <span class="math inline">\(\bar{d}\)</span> and <span class="m
 <p>Let's return to the example <a href="chap-confidence-intervals.html#exm:ci-matched-pairs-summary-stats">9.3</a>.</p>
 <p><em>Solution</em>: For <span class="math inline">\(\alpha\)</span> = 0.05 and <span class="math inline">\(\Delta_0 = 0\)</span>, we will reject the null hypothesis that the mean difference is 0 if</p>
 <p><span class="math display">\[
-|T| &gt; 2.0452 = t_{.025,29}
+|T| &gt; 2.0452 = t_{1-.025,29}
 \]</span>
 To emphasize: this is our plan, we must now conduct the experiment and make our decision.</p>
 <p><em>Back to the problem statement</em>: Now, we actually conduct our experiment and collect a simple random sample <span class="math inline">\(n = 30\)</span> customers. We find for design 1, a sample average of $4.98 and for design 2 a sample average of $4.23. Hence, <span class="math inline">\(\overline{d} = \$0.75\)</span>. As well, after finding the differences <span class="math inline">\(d_i\)</span>, we find that the sample standard deviation of the difference is <span class="math inline">\(s_d\)</span> = $0.9.</p>
@@ -775,14 +775,14 @@ which, absolute value, gets compared to 2.0452. Hence, we reject <span class="ma
 <p>:::
 ::::</p>
 <p>The above method is usable when we are only given the <strong>summary statistics</strong>, e.g. the sample averages. There is another, sleeker way if we have the actual measurements, again using the very useful function <code>t.test</code>:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="chap-hypothesis-testing.html#cb194-1" tabindex="-1"></a>alpha <span class="ot">=</span> .<span class="dv">02</span></span>
-<span id="cb194-2"><a href="chap-hypothesis-testing.html#cb194-2" tabindex="-1"></a></span>
-<span id="cb194-3"><a href="chap-hypothesis-testing.html#cb194-3" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">884</span>,<span class="dv">806</span>,<span class="dv">885</span>,<span class="dv">873</span>,<span class="dv">813</span>,<span class="dv">835</span>,<span class="dv">818</span>,<span class="dv">884</span>,<span class="dv">896</span>,<span class="dv">873</span>,<span class="dv">828</span>,<span class="dv">845</span>,<span class="dv">898</span>,<span class="dv">810</span>,<span class="dv">884</span>,<span class="dv">818</span>,<span class="dv">834</span>,</span>
-<span id="cb194-4"><a href="chap-hypothesis-testing.html#cb194-4" tabindex="-1"></a>      <span class="dv">823</span>,<span class="dv">890</span>,<span class="dv">878</span>,<span class="dv">813</span>,<span class="dv">804</span>,<span class="dv">822</span>,<span class="dv">818</span>,<span class="dv">809</span>,<span class="dv">829</span>,<span class="dv">829</span>,<span class="dv">873</span>,<span class="dv">807</span>,<span class="dv">813</span>)</span>
-<span id="cb194-5"><a href="chap-hypothesis-testing.html#cb194-5" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">901</span>,<span class="dv">885</span>,<span class="dv">834</span>,<span class="dv">908</span>,<span class="dv">903</span>,<span class="dv">825</span>,<span class="dv">857</span>,<span class="dv">833</span>,<span class="dv">892</span>,<span class="dv">824</span>,<span class="dv">855</span>,<span class="dv">837</span>,<span class="dv">843</span>,<span class="dv">849</span>,<span class="dv">907</span>,<span class="dv">848</span>,<span class="dv">851</span>,</span>
-<span id="cb194-6"><a href="chap-hypothesis-testing.html#cb194-6" tabindex="-1"></a>      <span class="dv">886</span>,<span class="dv">864</span>,<span class="dv">900</span>,<span class="dv">869</span>,<span class="dv">864</span>,<span class="dv">877</span>,<span class="dv">842</span>,<span class="dv">914</span>,<span class="dv">915</span>,<span class="dv">826</span>,<span class="dv">870</span>,<span class="dv">821</span>,<span class="dv">885</span>)</span>
-<span id="cb194-7"><a href="chap-hypothesis-testing.html#cb194-7" tabindex="-1"></a></span>
-<span id="cb194-8"><a href="chap-hypothesis-testing.html#cb194-8" tabindex="-1"></a><span class="fu">t.test</span>(x, y, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">conf.level=</span><span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="chap-hypothesis-testing.html#cb198-1" tabindex="-1"></a>alpha <span class="ot">=</span> .<span class="dv">02</span></span>
+<span id="cb198-2"><a href="chap-hypothesis-testing.html#cb198-2" tabindex="-1"></a></span>
+<span id="cb198-3"><a href="chap-hypothesis-testing.html#cb198-3" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">884</span>,<span class="dv">806</span>,<span class="dv">885</span>,<span class="dv">873</span>,<span class="dv">813</span>,<span class="dv">835</span>,<span class="dv">818</span>,<span class="dv">884</span>,<span class="dv">896</span>,<span class="dv">873</span>,<span class="dv">828</span>,<span class="dv">845</span>,<span class="dv">898</span>,<span class="dv">810</span>,<span class="dv">884</span>,<span class="dv">818</span>,<span class="dv">834</span>,</span>
+<span id="cb198-4"><a href="chap-hypothesis-testing.html#cb198-4" tabindex="-1"></a>      <span class="dv">823</span>,<span class="dv">890</span>,<span class="dv">878</span>,<span class="dv">813</span>,<span class="dv">804</span>,<span class="dv">822</span>,<span class="dv">818</span>,<span class="dv">809</span>,<span class="dv">829</span>,<span class="dv">829</span>,<span class="dv">873</span>,<span class="dv">807</span>,<span class="dv">813</span>)</span>
+<span id="cb198-5"><a href="chap-hypothesis-testing.html#cb198-5" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">901</span>,<span class="dv">885</span>,<span class="dv">834</span>,<span class="dv">908</span>,<span class="dv">903</span>,<span class="dv">825</span>,<span class="dv">857</span>,<span class="dv">833</span>,<span class="dv">892</span>,<span class="dv">824</span>,<span class="dv">855</span>,<span class="dv">837</span>,<span class="dv">843</span>,<span class="dv">849</span>,<span class="dv">907</span>,<span class="dv">848</span>,<span class="dv">851</span>,</span>
+<span id="cb198-6"><a href="chap-hypothesis-testing.html#cb198-6" tabindex="-1"></a>      <span class="dv">886</span>,<span class="dv">864</span>,<span class="dv">900</span>,<span class="dv">869</span>,<span class="dv">864</span>,<span class="dv">877</span>,<span class="dv">842</span>,<span class="dv">914</span>,<span class="dv">915</span>,<span class="dv">826</span>,<span class="dv">870</span>,<span class="dv">821</span>,<span class="dv">885</span>)</span>
+<span id="cb198-7"><a href="chap-hypothesis-testing.html#cb198-7" tabindex="-1"></a></span>
+<span id="cb198-8"><a href="chap-hypothesis-testing.html#cb198-8" tabindex="-1"></a><span class="fu">t.test</span>(x, y, <span class="at">paired =</span> <span class="cn">TRUE</span>, <span class="at">conf.level=</span><span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -818,7 +818,7 @@ T = \frac{\hat{p} - p_0}
 T \;\sim\; N(0,1)
 \text{ assuming that } H_0 \text{ is true}
 \]</span></p>
-<p>To test with Type I error <span class="math inline">\(\alpha\)</span>, reject <span class="math inline">\(H_0\)</span> if the p-value is less than <span class="math inline">\(\alpha\)</span>. Equivalently, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|Z| &gt; z_{\alpha/2}\)</span>, where <span class="math inline">\(z_{\alpha/2}\)</span> is the <span class="math inline">\((1 - \alpha/2)\)</span> quantile of the standard Normal distribution.</p>
+<p>To test with Type I error <span class="math inline">\(\alpha\)</span>, reject <span class="math inline">\(H_0\)</span> if the p-value is less than <span class="math inline">\(\alpha\)</span>. Equivalently, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|Z| &gt; z_{1-\alpha/2}\)</span>, where <span class="math inline">\(z_{1-\alpha/2}\)</span> is the <span class="math inline">\((1 - \alpha/2)\)</span> quantile of the standard normal distribution.</p>
 </div>
 </div>
 <div class="whitebox">
@@ -830,27 +830,29 @@ H_0 : p = 0.75 \quad\text{vs.}\quad H_A : p \neq 0.75,
 \]</span>
 at the <span class="math inline">\(\alpha = 0.05\)</span> significance level. We confirmed in Example <a href="chap-confidence-intervals.html#exm:ci-pop-proportion-example">9.4</a> that the sample size is sufficient for us to apply the usual one-sample <span class="math inline">\(z\)</span>-based inferential methods.</p>
 <p>The following <code>R</code> code computes the test statistic:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="chap-hypothesis-testing.html#cb196-1" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">150</span></span>
-<span id="cb196-2"><a href="chap-hypothesis-testing.html#cb196-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">117</span></span>
-<span id="cb196-3"><a href="chap-hypothesis-testing.html#cb196-3" tabindex="-1"></a>phat <span class="ot">=</span> x <span class="sc">/</span> n</span>
-<span id="cb196-4"><a href="chap-hypothesis-testing.html#cb196-4" tabindex="-1"></a>p0 <span class="ot">=</span> <span class="fl">0.75</span></span>
-<span id="cb196-5"><a href="chap-hypothesis-testing.html#cb196-5" tabindex="-1"></a>z_stat <span class="ot">=</span> (phat <span class="sc">-</span> p0) <span class="sc">/</span> <span class="fu">sqrt</span>(p0 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p0) <span class="sc">/</span> n)</span>
-<span id="cb196-6"><a href="chap-hypothesis-testing.html#cb196-6" tabindex="-1"></a>z_stat</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="chap-hypothesis-testing.html#cb200-1" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">150</span></span>
+<span id="cb200-2"><a href="chap-hypothesis-testing.html#cb200-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">117</span></span>
+<span id="cb200-3"><a href="chap-hypothesis-testing.html#cb200-3" tabindex="-1"></a>phat <span class="ot">=</span> x <span class="sc">/</span> n</span>
+<span id="cb200-4"><a href="chap-hypothesis-testing.html#cb200-4" tabindex="-1"></a>p0 <span class="ot">=</span> <span class="fl">0.75</span></span>
+<span id="cb200-5"><a href="chap-hypothesis-testing.html#cb200-5" tabindex="-1"></a>z_stat <span class="ot">=</span> (phat <span class="sc">-</span> p0) <span class="sc">/</span> <span class="fu">sqrt</span>(p0 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p0) <span class="sc">/</span> n)</span>
+<span id="cb200-6"><a href="chap-hypothesis-testing.html#cb200-6" tabindex="-1"></a>z_stat</span></code></pre></div>
 <pre><code>## [1] 0.8485281</code></pre>
-<p>The p-value is two times the probability of observing a value from the standard Normal distribution that is as or more extreme as the absolute value of our observed test statistic. That is,</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="chap-hypothesis-testing.html#cb198-1" tabindex="-1"></a>p_val <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(z_stat)))</span>
-<span id="cb198-2"><a href="chap-hypothesis-testing.html#cb198-2" tabindex="-1"></a>p_val</span></code></pre></div>
+<p>The p-value is two times the probability of observing a value from the standard normal distribution that is as or more extreme as the absolute value of our observed test statistic. That is,</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="chap-hypothesis-testing.html#cb202-1" tabindex="-1"></a>p_val <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(z_stat)))</span>
+<span id="cb202-2"><a href="chap-hypothesis-testing.html#cb202-2" tabindex="-1"></a>p_val</span></code></pre></div>
 <pre><code>## [1] 0.3961439</code></pre>
 <p>Because the p-value is greater than <span class="math inline">\(\alpha = 0.05\)</span>, we "fail to reject" <span class="math inline">\(H_0\)</span>. In other words, with 95% confidence, <span class="math inline">\(0.75\)</span> cannot be excluded as a plausible value for <span class="math inline">\(p\)</span>.</p>
-<p>The relevant critical value for comparison with the test statistic itself is <span class="math inline">\(z_{\alpha / 2} = z_{0.025}\)</span>:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="chap-hypothesis-testing.html#cb200-1" tabindex="-1"></a>z_alpha <span class="ot">=</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
-<span id="cb200-2"><a href="chap-hypothesis-testing.html#cb200-2" tabindex="-1"></a>z_alpha</span></code></pre></div>
+<p>The relevant critical value for comparison with the test statistic itself is <span class="math inline">\(z_{1-\alpha / 2} = z_{1-0.025}\)</span>:</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="chap-hypothesis-testing.html#cb204-1" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb204-2"><a href="chap-hypothesis-testing.html#cb204-2" tabindex="-1"></a></span>
+<span id="cb204-3"><a href="chap-hypothesis-testing.html#cb204-3" tabindex="-1"></a>z_alpha2 <span class="ot">=</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb204-4"><a href="chap-hypothesis-testing.html#cb204-4" tabindex="-1"></a>z_alpha2</span></code></pre></div>
 <pre><code>## [1] 1.959964</code></pre>
 <p>Because the absolute value of our observed test statistic is not greater than this critical value, we come to the same conclusion: fail to reject <span class="math inline">\(H_0\)</span> (with 95% confidence).</p>
 </div>
 </div>
 <p>The built-in <code>R</code> function <code>prop.test</code> conducts the above one-sample <span class="math inline">\(z\)</span>-test (and constructs the confidence interval that we manually computed in Example <a href="chap-confidence-intervals.html#exm:ci-pop-proportion-example">9.4</a>):</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="chap-hypothesis-testing.html#cb202-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> x, <span class="at">n =</span> n, <span class="at">p =</span> p0, <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="chap-hypothesis-testing.html#cb206-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> x, <span class="at">n =</span> n, <span class="at">p =</span> p0, <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  1-sample proportions test without continuity correction
 ## 
@@ -862,7 +864,7 @@ at the <span class="math inline">\(\alpha = 0.05\)</span> significance level. We
 ## sample estimates:
 ##    p 
 ## 0.78</code></pre>
-<p>In order to match our manually-calculated p-value, we set the <code>correct</code> argument in <code>prop.test</code> to <code>FALSE</code>; this argument controls whether a "continuity correction" is applied to adjust for the fact that we are using a continuous probability distribution (the Normal distribution) to approximate a discrete distribution (the Binomial distribution).</p>
+<p>In order to match our manually-calculated p-value, we set the <code>correct</code> argument in <code>prop.test</code> to <code>FALSE</code>; this argument controls whether a "continuity correction" is applied to adjust for the fact that we are using a continuous probability distribution (the normal distribution) to approximate a discrete distribution (the Binomial distribution).</p>
 <div id="hypothesis-test-for-a-population-variance" class="section level3 hasAnchor" number="10.4.1">
 <h3><span class="header-section-number">10.4.1</span> Hypothesis Test for a Population Variance<a href="chap-hypothesis-testing.html#hypothesis-test-for-a-population-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Returning to the Section <a href="chap-confidence-intervals.html#sec-CI-variance">9.6</a> context of inference on a population variance, we now consider a hypothesis test about a population variance.</p>
@@ -884,31 +886,33 @@ H_A : \sigma^2 \neq \sigma_0^2
 \]</span></p>
 <p>To test with significance level <span class="math inline">\(\alpha\)</span>, reject <span class="math inline">\(H_0\)</span> if the p-value is less than <span class="math inline">\(\alpha\)</span>. Equivalently, reject <span class="math inline">\(H_0\)</span> if
 <span class="math display">\[
-  \chi^2 &lt; \chi^2_{1 - \alpha/2, \; n - 1}
+  \chi^2 &lt; \chi^2_{\alpha/2, \; n - 1}
   \quad\text{or}\quad
-  \chi^2 &gt; \chi^2_{\alpha/2, \; n - 1}
+  \chi^2 &gt; \chi^2_{1-\alpha/2, \; n - 1}
   \]</span>
-where <span class="math inline">\(\chi^2_{\alpha/2, n - 1}\)</span> and <span class="math inline">\(\chi^2_{1-\alpha/2, n-1}\)</span> denote the <span class="math inline">\((1 - \alpha/2)\)</span> and <span class="math inline">\(\alpha/2\)</span> quantiles, respectively, of the <span class="math inline">\(\chi^2\)</span> distribution with <span class="math inline">\(n - 1\)</span> degrees of freedom.</p>
+where <span class="math inline">\(\chi^2_{\alpha/2, n - 1}\)</span> and <span class="math inline">\(\chi^2_{1-\alpha/2, n-1}\)</span> denote the <span class="math inline">\((\alpha/2)\)</span> and <span class="math inline">\(1-\alpha/2\)</span> quantiles, respectively, of the <span class="math inline">\(\chi^2\)</span> distribution with <span class="math inline">\(n - 1\)</span> degrees of freedom.</p>
 </div>
 </div>
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:ht-pop-proportion-example" class="example"><strong>Example 10.2  </strong></span>Continuing with the chemistry data from Example <a href="chap-confidence-intervals.html#exm:ci-pop-variance-example">9.5</a>, suppose we wish to test <span class="math inline">\(H_0: \sigma^2 = 0.10\)</span> vs. the <em>one-sided</em> alternative <span class="math inline">\(H_A: \sigma^2 &gt; 0.10\)</span> at significance level <span class="math inline">\(\alpha = 0.01\)</span>.</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="chap-hypothesis-testing.html#cb204-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.9</span>, <span class="fl">5.4</span>, <span class="fl">5.2</span>, <span class="fl">5.0</span>, <span class="fl">4.8</span>, <span class="fl">5.3</span>, <span class="fl">5.2</span>)</span>
-<span id="cb204-2"><a href="chap-hypothesis-testing.html#cb204-2" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(x)</span>
-<span id="cb204-3"><a href="chap-hypothesis-testing.html#cb204-3" tabindex="-1"></a>s2 <span class="ot">=</span> <span class="fu">var</span>(x)</span>
-<span id="cb204-4"><a href="chap-hypothesis-testing.html#cb204-4" tabindex="-1"></a>s2_0 <span class="ot">=</span> <span class="fl">0.10</span></span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="chap-hypothesis-testing.html#cb208-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.9</span>, <span class="fl">5.4</span>, <span class="fl">5.2</span>, <span class="fl">5.0</span>, <span class="fl">4.8</span>, <span class="fl">5.3</span>, <span class="fl">5.2</span>)</span>
+<span id="cb208-2"><a href="chap-hypothesis-testing.html#cb208-2" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(x)</span>
+<span id="cb208-3"><a href="chap-hypothesis-testing.html#cb208-3" tabindex="-1"></a>s2 <span class="ot">=</span> <span class="fu">var</span>(x)</span>
+<span id="cb208-4"><a href="chap-hypothesis-testing.html#cb208-4" tabindex="-1"></a>s2_0 <span class="ot">=</span> <span class="fl">0.10</span></span></code></pre></div>
 <p>The following <code>R</code> code computes the test statistic, p-value, and critical value:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="chap-hypothesis-testing.html#cb205-1" tabindex="-1"></a>tesTobs <span class="ot">=</span> (n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> s2 <span class="sc">/</span> s2_0</span>
-<span id="cb205-2"><a href="chap-hypothesis-testing.html#cb205-2" tabindex="-1"></a>p_val <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(tesTobs, n <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb205-3"><a href="chap-hypothesis-testing.html#cb205-3" tabindex="-1"></a>crit_val <span class="ot">=</span> <span class="fu">qchisq</span>(<span class="fl">0.99</span>, n <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb205-4"><a href="chap-hypothesis-testing.html#cb205-4" tabindex="-1"></a>tesTobs</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="chap-hypothesis-testing.html#cb209-1" tabindex="-1"></a>tesTobs <span class="ot">=</span> (n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> s2 <span class="sc">/</span> s2_0</span>
+<span id="cb209-2"><a href="chap-hypothesis-testing.html#cb209-2" tabindex="-1"></a>p_val <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(tesTobs, n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb209-3"><a href="chap-hypothesis-testing.html#cb209-3" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.01</span></span>
+<span id="cb209-4"><a href="chap-hypothesis-testing.html#cb209-4" tabindex="-1"></a><span class="co"># uses alpha, not alpha/2 because it is a one-sided alternative</span></span>
+<span id="cb209-5"><a href="chap-hypothesis-testing.html#cb209-5" tabindex="-1"></a>crit_val <span class="ot">=</span> <span class="fu">qchisq</span>(alpha, n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb209-6"><a href="chap-hypothesis-testing.html#cb209-6" tabindex="-1"></a>tesTobs</span></code></pre></div>
 <pre><code>## [1] 2.8875</code></pre>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="chap-hypothesis-testing.html#cb207-1" tabindex="-1"></a>p_val</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="chap-hypothesis-testing.html#cb211-1" tabindex="-1"></a>p_val</span></code></pre></div>
 <pre><code>## [1] 0.8952106</code></pre>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="chap-hypothesis-testing.html#cb209-1" tabindex="-1"></a>crit_val</span></code></pre></div>
-<pre><code>## [1] 18.47531</code></pre>
-<p>Note that, because of the form of the alternative hypothesis, evidence against <span class="math inline">\(H_0\)</span> looks like <em>large</em> test statistic values. That is, the p-value is the probability, under <span class="math inline">\(H_0\)</span>, of observing a test statistic value <em>greater than</em> our observed test statistic value (a "one-tailed" probability). Similarly, there is a single critical value, <span class="math inline">\(\chi^2_{1 - \alpha, n-1} = \chi^2_{0.01, n-1}\)</span>, equal to the 99th percentile of the <span class="math inline">\(\chi^2_{n-1}\)</span> distribution.</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="chap-hypothesis-testing.html#cb213-1" tabindex="-1"></a>crit_val</span></code></pre></div>
+<pre><code>## [1] 1.239042</code></pre>
+<p>Note that, because of the form of the alternative hypothesis, evidence against <span class="math inline">\(H_0\)</span> looks like <em>large</em> test statistic values. That is, the p-value is the probability, under <span class="math inline">\(H_0\)</span>, of observing a test statistic value <em>greater than</em> our observed test statistic value (a "one-tailed" probability). Similarly, there is a single critical value, <span class="math inline">\(\chi^2_{ \alpha, n-1} = \chi^2_{0.01, n-1}\)</span>, equal to the 99th percentile of the <span class="math inline">\(\chi^2_{n-1}\)</span> distribution.</p>
 <p>Because the p-value is greater than <span class="math inline">\(\alpha = 0.01\)</span> and the test statistic is less than the critical value, we fail to reject <span class="math inline">\(H_0\)</span> (with 99% confidence).</p>
 </div>
 </div>
@@ -925,17 +929,17 @@ H_0 : \mu = \mu_0
 H_A : \mu \neq \mu_0
 \]</span></p>
 <p>In this case, you look for evidence in the test statistic being unusually large in magnitude:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-86"></span>
-<img src="_main_files/figure-html/unnamed-chunk-86-1.png" alt="Example of a two-sided hypothesis test." width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-88"></span>
+<img src="_main_files/figure-html/unnamed-chunk-88-1.png" alt="Example of a two-sided hypothesis test." width="672" />
 <p class="caption">
 Figure 10.1: Example of a two-sided hypothesis test.
 </p>
 </div>
-<p>In the above plot, the observed test statistic <span class="math inline">\(T_{obs}\)</span> = -3.027. We would (and did in this case) reject since <span class="math inline">\(|T_{obs}| &gt; t_{\alpha/2, n-1}\)</span> = 2.718..</p>
+<p>In the above plot, the observed test statistic <span class="math inline">\(T_{obs}\)</span> = -3.027. We would (and did in this case) reject since <span class="math inline">\(|T_{obs}| &gt; t_{1-\alpha/2, n-1}\)</span> = 3.106..</p>
 <p>Similarly, we compute the p-value <span class="math inline">\(P(T &lt; T_{obs} \text{ or } T &gt; T_{obs}) = 2\cdot P(T &gt; |T_{obs}|)\)</span>:</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="chap-hypothesis-testing.html#cb211-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Tobs),n<span class="dv">-1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="chap-hypothesis-testing.html#cb215-1" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Tobs),n<span class="dv">-1</span>))</span></code></pre></div>
 <pre><code>## [1] 0.01150728</code></pre>
-<p>We have conducted this test with <span class="math inline">\(\alpha\)</span> = 0.02, which should be compared to the p-value. As always, we will reject when this p-value is too small: p-value &lt; <span class="math inline">\(\alpha\)</span>. Again, we would decide to reject <span class="math inline">\(H_0\)</span>.</p>
+<p>We have conducted this test with <span class="math inline">\(\alpha\)</span> = 0.01, which should be compared to the p-value. As always, we will reject when this p-value is too small: p-value &lt; <span class="math inline">\(\alpha\)</span>. Again, we would decide to reject <span class="math inline">\(H_0\)</span>.</p>
 <ul>
 <li><strong>One-sided <span class="math inline">\(&lt;\)</span>:</strong> If the scientifically interesting result would be to detect a <em>decrease</em> in the parameter from your existing understanding (e.g. <span class="math inline">\(\mu_0\)</span> or <span class="math inline">\(p_0\)</span>), then you should phrase the hypothesis as:
 <span class="math display">\[
@@ -945,17 +949,17 @@ H_A : \mu &lt; \mu_0
 \]</span></li>
 </ul>
 <p>In this case, you look for evidence in the test statistic being unusually small (in the negative direction):</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-88"></span>
-<img src="_main_files/figure-html/unnamed-chunk-88-1.png" alt="Example of a one-sided $&lt;$ hypothesis test." width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-90"></span>
+<img src="_main_files/figure-html/unnamed-chunk-90-1.png" alt="Example of a one-sided $&lt;$ hypothesis test." width="672" />
 <p class="caption">
 Figure 10.2: Example of a one-sided <span class="math inline">\(&lt;\)</span> hypothesis test.
 </p>
 </div>
-<p>In the above plot, the observed test statistic <span class="math inline">\(T_{obs}\)</span> = -3.027. We would (and did in this case) reject since <span class="math inline">\(T_{obs} &lt; - t_{\alpha, n-1}\)</span> = -2.328..</p>
+<p>In the above plot, the observed test statistic <span class="math inline">\(T_{obs}\)</span> = -3.027. We would (and did in this case) reject since <span class="math inline">\(T_{obs} &lt; - t_{1-\alpha, n-1}\)</span> = -2.718..</p>
 <p>Similarly, we compute the p-value via <span class="math inline">\(P(T &lt; T_{obs})\)</span>:</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="chap-hypothesis-testing.html#cb213-1" tabindex="-1"></a><span class="fu">pt</span>(Tobs,n<span class="dv">-1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="chap-hypothesis-testing.html#cb217-1" tabindex="-1"></a><span class="fu">pt</span>(Tobs,n<span class="dv">-1</span>)</span></code></pre></div>
 <pre><code>## [1] 0.005753638</code></pre>
-<p>We have conducted this test with <span class="math inline">\(\alpha\)</span> = 0.02, which should be compared to the p-value. As always, we will reject when this p-value is too small: p-value &lt; <span class="math inline">\(\alpha\)</span>. Again, we would decide to reject <span class="math inline">\(H_0\)</span>.</p>
+<p>We have conducted this test with <span class="math inline">\(\alpha\)</span> = 0.01, which should be compared to the p-value. As always, we will reject when this p-value is too small: p-value &lt; <span class="math inline">\(\alpha\)</span>. Again, we would decide to reject <span class="math inline">\(H_0\)</span>.</p>
 <ul>
 <li><strong>One-sided <span class="math inline">\(&gt;\)</span>:</strong> If the scientifically interesting result would be to detect an <em>increase</em> in the parameter from your existing understanding (e.g. <span class="math inline">\(\mu_0\)</span> or <span class="math inline">\(p_0\)</span>), then you should phrase the hypothesis as:
 <span class="math display">\[
@@ -964,17 +968,17 @@ H_0 : \mu \leq \mu_0
 H_A : \mu &gt; \mu_0
 \]</span></li>
 </ul>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-90"></span>
-<img src="_main_files/figure-html/unnamed-chunk-90-1.png" alt="Example of a one-sided $&gt;$ hypothesis test." width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-92"></span>
+<img src="_main_files/figure-html/unnamed-chunk-92-1.png" alt="Example of a one-sided $&gt;$ hypothesis test." width="672" />
 <p class="caption">
 Figure 10.3: Example of a one-sided <span class="math inline">\(&gt;\)</span> hypothesis test.
 </p>
 </div>
-<p>In the above plot, the observed test statistic <span class="math inline">\(T_{obs}\)</span> = -3.027. We would (but did <strong>not</strong> in this case) reject if <span class="math inline">\(T_{obs} &gt; t_{\alpha, n-1}\)</span> = 2.328.</p>
+<p>In the above plot, the observed test statistic <span class="math inline">\(T_{obs}\)</span> = -3.027. We would (but did <strong>not</strong> in this case) reject if <span class="math inline">\(T_{obs} &gt; t_{1-\alpha, n-1}\)</span> = 2.718.</p>
 <p>Similarly, we compute the p-value via <span class="math inline">\(P(T &gt; T_{obs}) = P(T &gt; T_{obs})\)</span></p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="chap-hypothesis-testing.html#cb215-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(Tobs,n<span class="dv">-1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="chap-hypothesis-testing.html#cb219-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(Tobs,n<span class="dv">-1</span>)</span></code></pre></div>
 <pre><code>## [1] 0.9942464</code></pre>
-<p>We have conducted this test with <span class="math inline">\(\alpha\)</span> = 0.02, which should be compared to the p-value. As always, we will reject when this p-value is too small: p-value &lt; <span class="math inline">\(\alpha\)</span>. We would decide not to reject <span class="math inline">\(H_0\)</span> as 0.9942464 &gt; 0.02.</p>
+<p>We have conducted this test with <span class="math inline">\(\alpha\)</span> = 0.01, which should be compared to the p-value. As always, we will reject when this p-value is too small: p-value &lt; <span class="math inline">\(\alpha\)</span>. We would decide not to reject <span class="math inline">\(H_0\)</span> as 0.9942464 &gt; 0.01.</p>
 <p><strong>Comment:</strong> This example deserves more explanation. It would be unusual to get a negative <span class="math inline">\(T_{obs}\)</span> when doing a one-sided <span class="math inline">\(&gt;\)</span> test. However, if we did, this would be the result</p>
 </div>
 <div id="sec-HT-power" class="section level2 hasAnchor" number="10.6">
@@ -989,30 +993,30 @@ Figure 10.3: Example of a one-sided <span class="math inline">\(&gt;\)</span> hy
 </ul>
 <p>Power is an essential consideration in the design of studies and in fact is used in concert with the results about choosing the sample size. Researchers often want to ensure that they have a sufficiently high probability of detecting an effect, if one exists. This is often accomplished via <strong>sample size calculations</strong>, which we will return to shortly.</p>
 <p>Below, is the <strong>power curve</strong> of our test from the above simulation for a range of possible values of <span class="math inline">\(\mu\)</span>: Let's define a function:</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="chap-hypothesis-testing.html#cb217-1" tabindex="-1"></a><span class="co"># Function to compute values for a given value of mu</span></span>
-<span id="cb217-2"><a href="chap-hypothesis-testing.html#cb217-2" tabindex="-1"></a>get_pvals <span class="ot">=</span> <span class="cf">function</span>(mu_true) {</span>
-<span id="cb217-3"><a href="chap-hypothesis-testing.html#cb217-3" tabindex="-1"></a>  <span class="fu">replicate</span>(num_sims, {</span>
-<span id="cb217-4"><a href="chap-hypothesis-testing.html#cb217-4" tabindex="-1"></a>    x <span class="ot">=</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu_true, <span class="at">sd =</span> sigma)</span>
-<span id="cb217-5"><a href="chap-hypothesis-testing.html#cb217-5" tabindex="-1"></a>    xbar <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
-<span id="cb217-6"><a href="chap-hypothesis-testing.html#cb217-6" tabindex="-1"></a>    se <span class="ot">=</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
-<span id="cb217-7"><a href="chap-hypothesis-testing.html#cb217-7" tabindex="-1"></a>    <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(xbar), <span class="at">mean =</span> mu_null, <span class="at">sd =</span> se))</span>
-<span id="cb217-8"><a href="chap-hypothesis-testing.html#cb217-8" tabindex="-1"></a>  })</span>
-<span id="cb217-9"><a href="chap-hypothesis-testing.html#cb217-9" tabindex="-1"></a>}</span>
-<span id="cb217-10"><a href="chap-hypothesis-testing.html#cb217-10" tabindex="-1"></a></span>
-<span id="cb217-11"><a href="chap-hypothesis-testing.html#cb217-11" tabindex="-1"></a>n        <span class="ot">=</span> <span class="dv">15</span></span>
-<span id="cb217-12"><a href="chap-hypothesis-testing.html#cb217-12" tabindex="-1"></a>sigma    <span class="ot">=</span> <span class="fl">1.4</span></span>
-<span id="cb217-13"><a href="chap-hypothesis-testing.html#cb217-13" tabindex="-1"></a>mu_null  <span class="ot">=</span> <span class="fl">5.0</span></span>
-<span id="cb217-14"><a href="chap-hypothesis-testing.html#cb217-14" tabindex="-1"></a>mu_alt   <span class="ot">=</span> <span class="fl">5.25</span></span>
-<span id="cb217-15"><a href="chap-hypothesis-testing.html#cb217-15" tabindex="-1"></a>alpha    <span class="ot">=</span> <span class="fl">0.05</span></span>
-<span id="cb217-16"><a href="chap-hypothesis-testing.html#cb217-16" tabindex="-1"></a>num_sims <span class="ot">=</span> <span class="dv">10000</span></span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="chap-hypothesis-testing.html#cb221-1" tabindex="-1"></a><span class="co"># Function to compute values for a given value of mu</span></span>
+<span id="cb221-2"><a href="chap-hypothesis-testing.html#cb221-2" tabindex="-1"></a>get_pvals <span class="ot">=</span> <span class="cf">function</span>(mu_true) {</span>
+<span id="cb221-3"><a href="chap-hypothesis-testing.html#cb221-3" tabindex="-1"></a>  <span class="fu">replicate</span>(num_sims, {</span>
+<span id="cb221-4"><a href="chap-hypothesis-testing.html#cb221-4" tabindex="-1"></a>    x <span class="ot">=</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu_true, <span class="at">sd =</span> sigma)</span>
+<span id="cb221-5"><a href="chap-hypothesis-testing.html#cb221-5" tabindex="-1"></a>    xbar <span class="ot">=</span> <span class="fu">mean</span>(x)</span>
+<span id="cb221-6"><a href="chap-hypothesis-testing.html#cb221-6" tabindex="-1"></a>    se <span class="ot">=</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb221-7"><a href="chap-hypothesis-testing.html#cb221-7" tabindex="-1"></a>    <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(xbar), <span class="at">mean =</span> mu_null, <span class="at">sd =</span> se))</span>
+<span id="cb221-8"><a href="chap-hypothesis-testing.html#cb221-8" tabindex="-1"></a>  })</span>
+<span id="cb221-9"><a href="chap-hypothesis-testing.html#cb221-9" tabindex="-1"></a>}</span>
+<span id="cb221-10"><a href="chap-hypothesis-testing.html#cb221-10" tabindex="-1"></a></span>
+<span id="cb221-11"><a href="chap-hypothesis-testing.html#cb221-11" tabindex="-1"></a>n        <span class="ot">=</span> <span class="dv">15</span></span>
+<span id="cb221-12"><a href="chap-hypothesis-testing.html#cb221-12" tabindex="-1"></a>sigma    <span class="ot">=</span> <span class="fl">1.4</span></span>
+<span id="cb221-13"><a href="chap-hypothesis-testing.html#cb221-13" tabindex="-1"></a>mu_null  <span class="ot">=</span> <span class="fl">5.0</span></span>
+<span id="cb221-14"><a href="chap-hypothesis-testing.html#cb221-14" tabindex="-1"></a>mu_alt   <span class="ot">=</span> <span class="fl">5.25</span></span>
+<span id="cb221-15"><a href="chap-hypothesis-testing.html#cb221-15" tabindex="-1"></a>alpha    <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb221-16"><a href="chap-hypothesis-testing.html#cb221-16" tabindex="-1"></a>num_sims <span class="ot">=</span> <span class="dv">10000</span></span></code></pre></div>
 <p>Then</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="chap-hypothesis-testing.html#cb218-1" tabindex="-1"></a>mu_vals <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="at">by =</span> <span class="fl">0.05</span>)</span>
-<span id="cb218-2"><a href="chap-hypothesis-testing.html#cb218-2" tabindex="-1"></a>powers <span class="ot">=</span> <span class="fu">sapply</span>(mu_vals, <span class="cf">function</span>(mu) <span class="fu">mean</span>(<span class="fu">get_pvals</span>(mu) <span class="sc">&lt;</span> alpha))</span>
-<span id="cb218-3"><a href="chap-hypothesis-testing.html#cb218-3" tabindex="-1"></a></span>
-<span id="cb218-4"><a href="chap-hypothesis-testing.html#cb218-4" tabindex="-1"></a><span class="fu">plot</span>(mu_vals, powers, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb218-5"><a href="chap-hypothesis-testing.html#cb218-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(mu), <span class="at">ylab =</span> <span class="st">&quot;Power&quot;</span>,</span>
-<span id="cb218-6"><a href="chap-hypothesis-testing.html#cb218-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Power Curve&quot;</span>)</span>
-<span id="cb218-7"><a href="chap-hypothesis-testing.html#cb218-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> alpha, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="chap-hypothesis-testing.html#cb222-1" tabindex="-1"></a>mu_vals <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="at">by =</span> <span class="fl">0.05</span>)</span>
+<span id="cb222-2"><a href="chap-hypothesis-testing.html#cb222-2" tabindex="-1"></a>powers <span class="ot">=</span> <span class="fu">sapply</span>(mu_vals, <span class="cf">function</span>(mu) <span class="fu">mean</span>(<span class="fu">get_pvals</span>(mu) <span class="sc">&lt;</span> alpha))</span>
+<span id="cb222-3"><a href="chap-hypothesis-testing.html#cb222-3" tabindex="-1"></a></span>
+<span id="cb222-4"><a href="chap-hypothesis-testing.html#cb222-4" tabindex="-1"></a><span class="fu">plot</span>(mu_vals, powers, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb222-5"><a href="chap-hypothesis-testing.html#cb222-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(mu), <span class="at">ylab =</span> <span class="st">&quot;Power&quot;</span>,</span>
+<span id="cb222-6"><a href="chap-hypothesis-testing.html#cb222-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Power Curve&quot;</span>)</span>
+<span id="cb222-7"><a href="chap-hypothesis-testing.html#cb222-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> alpha, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:power-curve"></span>
 <img src="_main_files/figure-html/power-curve-1.png" alt="Power Curve for Simulation Context" width="624" />
 <p class="caption">
@@ -1038,19 +1042,19 @@ H_0: \mu = 5 \quad \text{vs.} \quad H_A: \mu \neq 5
 <p>To achieve 80% power, we want 80% of the sampling distribution under the alternative (centered at 5.75) to fall outside the null hypothesis’s <strong><span id="def-hypothesis-testing-rejection-region">rejection region</span></strong> — that is, the range of <span class="math inline">\(\bar{x}\)</span> values we would consider “too unlikely” under <span class="math inline">\(H_0\)</span>.</p>
 <p>In a two-sided test with significance level <span class="math inline">\(\alpha = 0.05\)</span>, the rejection region corresponds to the values of <span class="math inline">\(\bar{x}\)</span> that lie in the outer 2.5% tails of the null distribution. That is, we reject <span class="math inline">\(H_0\)</span> if:</p>
 <p><span class="math display">\[
-\bar{x} &lt; \mu_0 - z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \quad \text{or} \quad
-\bar{x} &gt; \mu_0 + z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}
+\bar{x} &lt; \mu_0 - z_{1-\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \quad \text{or} \quad
+\bar{x} &gt; \mu_0 + z_{1-\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}
 \]</span></p>
 <p>We can solve algebraically for the sample size <span class="math inline">\(n\)</span> required to achieve a given power. The resulting formula is:</p>
 <p><span class="math display">\[
-n = \left( \frac{z_{\alpha/2} + z_{\text{power}}}{\mu_a - \mu_0} \cdot \sigma \right)^2
+n = \left( \frac{z_{1-\alpha/2} + z_{\text{power}}}{\mu_a - \mu_0} \cdot \sigma \right)^2
 \]</span></p>
 <p>Where:</p>
 <ul>
 <li><span class="math inline">\(\mu_0 = 5\)</span> is the null-hypothesized mean,</li>
 <li><span class="math inline">\(\mu_a = 5.75\)</span> is the alternative mean we wish to detect,</li>
 <li><span class="math inline">\(\sigma = 1.4\)</span> is the population standard deviation,</li>
-<li><span class="math inline">\(z_{\alpha/2} = 1.96\)</span> for a two-sided test at <span class="math inline">\(\alpha = 0.05\)</span> (<code>qnorm(0.975)</code>),</li>
+<li><span class="math inline">\(z_{1-\alpha/2} = 1.96\)</span> for a two-sided test at <span class="math inline">\(\alpha = 0.05\)</span> (<code>qnorm(0.975)</code>),</li>
 <li><span class="math inline">\(z_{\text{power}} = 0.84\)</span> to achieve 80% power (<code>qnorm(0.80)</code>).</li>
 </ul>
 <p>Plugging in the numbers:</p>
@@ -1059,8 +1063,8 @@ n = \left( \frac{1.96 + 0.84}{0.75} \cdot 1.4 \right)^2 \approx 27.3
 \]</span></p>
 <p>So, we would need approximately <span class="math inline">\(n = 28\)</span> observations to have 80% power to detect that the true mean is 5.75, assuming we use <span class="math inline">\(\bar{x}\)</span> as our test statistic and the population standard deviation is known to be 1.4. Note that, since it is not possible to sample a fraction of an individual, we always <em>round up</em> to the nearest integer when computing sample size requirements.</p>
 <p>The following figure shows power curves for our simulation context that correspond to a variety of sample sizes.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-93"></span>
-<img src="_main_files/figure-html/unnamed-chunk-93-1.png" alt="Power Curves for Different Sample Sizes in Simulation Context" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-95"></span>
+<img src="_main_files/figure-html/unnamed-chunk-95-1.png" alt="Power Curves for Different Sample Sizes in Simulation Context" width="672" />
 <p class="caption">
 Figure 10.5: Power Curves for Different Sample Sizes in Simulation Context
 </p>
@@ -1069,8 +1073,8 @@ Figure 10.5: Power Curves for Different Sample Sizes in Simulation Context
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:ht-pop-mean-t-example-power" class="example"><strong>Example 10.3  </strong></span>In the context of the soup-can data from Example <a href="chap-hypothesis-testing.html#exm:ht-pop-mean-t-example">10.1</a>, suppose we wish to estimate the power of our test to detect that the population mean equals <span class="math inline">\(835\)</span>; that is, supposing that <span class="math inline">\(H_A\)</span> is true and <span class="math inline">\(\mu = 835\)</span>, we wish to compute the probability that we would (correctly) reject <span class="math inline">\(H_0\)</span>.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="chap-hypothesis-testing.html#cb219-1" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n =</span> n, <span class="at">delta =</span> <span class="dv">835</span> <span class="sc">-</span> <span class="dv">830</span>, <span class="at">sd =</span> s, <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
-<span id="cb219-2"><a href="chap-hypothesis-testing.html#cb219-2" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;one.sample&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="chap-hypothesis-testing.html#cb223-1" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n =</span> n, <span class="at">delta =</span> <span class="dv">835</span> <span class="sc">-</span> <span class="dv">830</span>, <span class="at">sd =</span> s, <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
+<span id="cb223-2"><a href="chap-hypothesis-testing.html#cb223-2" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;one.sample&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##      One-sample t test power calculation 
 ## 
@@ -1082,8 +1086,8 @@ Figure 10.5: Power Curves for Different Sample Sizes in Simulation Context
 ##     alternative = two.sided</code></pre>
 <p>Thus, we estimate that the one-sample <span class="math inline">\(t\)</span>-test has about 30% power to reject <span class="math inline">\(H_0: \mu = 830\)</span> if in fact <span class="math inline">\(\mu = 835\)</span>.</p>
 <p>Suppose we wish to compute the sample size that would be required for this power to be 60%.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="chap-hypothesis-testing.html#cb221-1" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">power =</span> <span class="fl">0.60</span>, <span class="at">delta =</span> <span class="dv">835</span> <span class="sc">-</span> <span class="dv">830</span>, <span class="at">sd =</span> s, <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
-<span id="cb221-2"><a href="chap-hypothesis-testing.html#cb221-2" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;one.sample&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="chap-hypothesis-testing.html#cb225-1" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">power =</span> <span class="fl">0.60</span>, <span class="at">delta =</span> <span class="dv">835</span> <span class="sc">-</span> <span class="dv">830</span>, <span class="at">sd =</span> s, <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
+<span id="cb225-2"><a href="chap-hypothesis-testing.html#cb225-2" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;one.sample&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##      One-sample t test power calculation 
 ## 
@@ -1095,13 +1099,13 @@ Figure 10.5: Power Curves for Different Sample Sizes in Simulation Context
 ##     alternative = two.sided</code></pre>
 <p>Rounding <em>up</em> to the nearest integer, we estimate that a sample size of <span class="math inline">\(n = 26\)</span> would be required for 60% power to detect that <span class="math inline">\(\mu = 835\)</span>.</p>
 <p>Note that <code>n</code>, <code>power</code>, and <code>delta</code> arguments can be specified as vectors, enabling us to easily create e.g. a power curve (a plot of power for a variety of effect sizes).</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="chap-hypothesis-testing.html#cb223-1" tabindex="-1"></a>delta_vec <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">15</span>, <span class="at">to =</span> <span class="dv">15</span>, <span class="at">length =</span> <span class="dv">500</span>)</span>
-<span id="cb223-2"><a href="chap-hypothesis-testing.html#cb223-2" tabindex="-1"></a>power_vec <span class="ot">=</span> <span class="fu">power.t.test</span>(<span class="at">n =</span> n, <span class="at">delta =</span> delta_vec, <span class="at">sd =</span> s, <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
-<span id="cb223-3"><a href="chap-hypothesis-testing.html#cb223-3" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;one.sample&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)<span class="sc">$</span>power</span>
-<span id="cb223-4"><a href="chap-hypothesis-testing.html#cb223-4" tabindex="-1"></a></span>
-<span id="cb223-5"><a href="chap-hypothesis-testing.html#cb223-5" tabindex="-1"></a><span class="fu">plot</span>(mu0 <span class="sc">+</span> delta_vec, power_vec, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;True Mean&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Power&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-96"></span>
-<img src="_main_files/figure-html/unnamed-chunk-96-1.png" alt="Estimated Power Curve for Soup-Can Example" width="576" />
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="chap-hypothesis-testing.html#cb227-1" tabindex="-1"></a>delta_vec <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">15</span>, <span class="at">to =</span> <span class="dv">15</span>, <span class="at">length =</span> <span class="dv">500</span>)</span>
+<span id="cb227-2"><a href="chap-hypothesis-testing.html#cb227-2" tabindex="-1"></a>power_vec <span class="ot">=</span> <span class="fu">power.t.test</span>(<span class="at">n =</span> n, <span class="at">delta =</span> delta_vec, <span class="at">sd =</span> s, <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
+<span id="cb227-3"><a href="chap-hypothesis-testing.html#cb227-3" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;one.sample&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)<span class="sc">$</span>power</span>
+<span id="cb227-4"><a href="chap-hypothesis-testing.html#cb227-4" tabindex="-1"></a></span>
+<span id="cb227-5"><a href="chap-hypothesis-testing.html#cb227-5" tabindex="-1"></a><span class="fu">plot</span>(mu0 <span class="sc">+</span> delta_vec, power_vec, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;True Mean&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Power&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-98"></span>
+<img src="_main_files/figure-html/unnamed-chunk-98-1.png" alt="Estimated Power Curve for Soup-Can Example" width="576" />
 <p class="caption">
 Figure 10.6: Estimated Power Curve for Soup-Can Example
 </p>
@@ -1115,8 +1119,8 @@ Figure 10.6: Estimated Power Curve for Soup-Can Example
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:ht-pop-proportion-example-power" class="example"><strong>Example 10.4  </strong></span>In the context of the marketing data from Example <a href="chap-hypothesis-testing.html#exm:ht-pop-proportion-example">10.2</a>, suppose we wish to estimate the power of our test to detect that the population proportion equals 0.70; that is, supposing that <span class="math inline">\(H_A\)</span> is true and <span class="math inline">\(p = 0.70\)</span>, we wish to compute the probability that we would (correctly) reject <span class="math inline">\(H_0\)</span>.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="chap-hypothesis-testing.html#cb224-1" tabindex="-1"></a><span class="fu">power.prop.test</span>(<span class="at">n =</span> <span class="dv">150</span>, <span class="at">p1 =</span> <span class="fl">0.70</span>, <span class="at">p2 =</span> <span class="fl">0.75</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
-<span id="cb224-2"><a href="chap-hypothesis-testing.html#cb224-2" tabindex="-1"></a>  <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="chap-hypothesis-testing.html#cb228-1" tabindex="-1"></a><span class="fu">power.prop.test</span>(<span class="at">n =</span> <span class="dv">150</span>, <span class="at">p1 =</span> <span class="fl">0.70</span>, <span class="at">p2 =</span> <span class="fl">0.75</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>, </span>
+<span id="cb228-2"><a href="chap-hypothesis-testing.html#cb228-2" tabindex="-1"></a>  <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##      Two-sample comparison of proportions power calculation 
 ## 
@@ -1154,19 +1158,19 @@ H_0: \sigma^2 = \sigma_0^2 \quad \text{vs.} \quad H_A: \sigma^2 &gt; \sigma_0^2
 \]</span></p>
 <p>The power is the probability of rejecting <span class="math inline">\(H_0\)</span> when <span class="math inline">\(\sigma^2 = \sigma_1^2\)</span>, which can be calculated as:</p>
 <p><span class="math display">\[
-\text{Power} = P\left( \chi^2 &gt; \chi^2_{\alpha, n-1} \mid \sigma^2 = \sigma_1^2 \right)
+\text{Power} = P\left( \chi^2 &gt; \chi^2_{1-\alpha, n-1} \mid \sigma^2 = \sigma_1^2 \right)
 \]</span></p>
-<p>where <span class="math inline">\(\chi^2_{\alpha, n-1}\)</span> is the appropriate critical value.</p>
+<p>where <span class="math inline">\(\chi^2_{1-\alpha, n-1}\)</span> is the appropriate critical value.</p>
 <p>We can compute this manually in <code>R</code>. In the context of Example <a href="chap-hypothesis-testing.html#exm:ht-pop-proportion-example">10.2</a>, suppose we wish to compute the power to reject <span class="math inline">\(H_0: \sigma^2 = 0.10\)</span> when the true value of <span class="math inline">\(\sigma^2\)</span> is 0.12:</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="chap-hypothesis-testing.html#cb226-1" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.01</span></span>
-<span id="cb226-2"><a href="chap-hypothesis-testing.html#cb226-2" tabindex="-1"></a>s2_0 <span class="ot">=</span> <span class="fl">0.10</span>       <span class="co"># Null value</span></span>
-<span id="cb226-3"><a href="chap-hypothesis-testing.html#cb226-3" tabindex="-1"></a>s2_1 <span class="ot">=</span> <span class="fl">0.12</span>       <span class="co"># True value under H_A</span></span>
-<span id="cb226-4"><a href="chap-hypothesis-testing.html#cb226-4" tabindex="-1"></a></span>
-<span id="cb226-5"><a href="chap-hypothesis-testing.html#cb226-5" tabindex="-1"></a>scale <span class="ot">=</span> s2_0 <span class="sc">/</span> s2_1  <span class="co"># Scaling factor</span></span>
-<span id="cb226-6"><a href="chap-hypothesis-testing.html#cb226-6" tabindex="-1"></a>crit_val <span class="ot">=</span> <span class="fu">qchisq</span>(<span class="dv">1</span> <span class="sc">-</span> alpha, n <span class="sc">-</span> <span class="dv">1</span>)  <span class="co"># Critical value</span></span>
-<span id="cb226-7"><a href="chap-hypothesis-testing.html#cb226-7" tabindex="-1"></a></span>
-<span id="cb226-8"><a href="chap-hypothesis-testing.html#cb226-8" tabindex="-1"></a>power <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(crit_val <span class="sc">*</span> scale, n <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb226-9"><a href="chap-hypothesis-testing.html#cb226-9" tabindex="-1"></a>power</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="chap-hypothesis-testing.html#cb230-1" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.01</span></span>
+<span id="cb230-2"><a href="chap-hypothesis-testing.html#cb230-2" tabindex="-1"></a>s2_0 <span class="ot">=</span> <span class="fl">0.10</span>       <span class="co"># Null value</span></span>
+<span id="cb230-3"><a href="chap-hypothesis-testing.html#cb230-3" tabindex="-1"></a>s2_1 <span class="ot">=</span> <span class="fl">0.12</span>       <span class="co"># True value under H_A</span></span>
+<span id="cb230-4"><a href="chap-hypothesis-testing.html#cb230-4" tabindex="-1"></a></span>
+<span id="cb230-5"><a href="chap-hypothesis-testing.html#cb230-5" tabindex="-1"></a>scale <span class="ot">=</span> s2_0 <span class="sc">/</span> s2_1  <span class="co"># Scaling factor</span></span>
+<span id="cb230-6"><a href="chap-hypothesis-testing.html#cb230-6" tabindex="-1"></a>crit_val <span class="ot">=</span> <span class="fu">qchisq</span>(<span class="dv">1</span> <span class="sc">-</span> alpha, n <span class="sc">-</span> <span class="dv">1</span>)  <span class="co"># Critical value</span></span>
+<span id="cb230-7"><a href="chap-hypothesis-testing.html#cb230-7" tabindex="-1"></a></span>
+<span id="cb230-8"><a href="chap-hypothesis-testing.html#cb230-8" tabindex="-1"></a>power <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(crit_val <span class="sc">*</span> scale, n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb230-9"><a href="chap-hypothesis-testing.html#cb230-9" tabindex="-1"></a>power</span></code></pre></div>
 <pre><code>## [1] 0.04232558</code></pre>
 <p>We estimate a power of <span class="math inline">\(\sim 3\)</span>% to reject <span class="math inline">\(H_0: \sigma^2 = 0.1\)</span> when <span class="math inline">\(\sigma^2 = 0.12\)</span>.</p>
 <p>The same approach can be adapted to determine the sample size required to achieve a desired power by iterating over candidate values of <span class="math inline">\(n\)</span> until the computed power meets the specified threshold.</p>
@@ -1187,7 +1191,7 @@ H_0: \sigma^2 = \sigma_0^2 \quad \text{vs.} \quad H_A: \sigma^2 &gt; \sigma_0^2
 <p><em>What values of the test statistic would we expect to see if <span class="math inline">\(H_0\)</span> were actually true?</em></p>
 </blockquote>
 <p>The shape and spread of this null sampling distribution allow us to determine how extreme our observed test statistic is. If the observed test statistic falls far into the tails of the null distribution, we will consider it unlikely to have occurred under <span class="math inline">\(H_0\)</span>, and may choose to reject <span class="math inline">\(H_0\)</span>.</p>
-<p>In many standard testing scenarios, the null distribution of the test statistic follows a well-known theoretical distribution (such as a standard Normal, <span class="math inline">\(t\)</span>, or <span class="math inline">\(\chi^2\)</span> distribution), either exactly or approximately. In other cases, especially when assumptions are questionable or sample sizes are small, we may instead estimate the null distribution empirically using simulation or resampling techniques (e.g., the bootstrap).</p>
+<p>In many standard testing scenarios, the null distribution of the test statistic follows a well-known theoretical distribution (such as a standard normal, <span class="math inline">\(t\)</span>, or <span class="math inline">\(\chi^2\)</span> distribution), either exactly or approximately. In other cases, especially when assumptions are questionable or sample sizes are small, we may instead estimate the null distribution empirically using simulation or resampling techniques (e.g., the bootstrap).</p>
 </div>
 <div id="simulation-study-repeated-hypothesis-testing-under-h_0-and-h_a" class="section level3 hasAnchor" number="10.7.2">
 <h3><span class="header-section-number">10.7.2</span> Simulation Study: Repeated Hypothesis Testing Under <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span><a href="chap-hypothesis-testing.html#simulation-study-repeated-hypothesis-testing-under-h_0-and-h_a" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1196,41 +1200,41 @@ H_0: \sigma^2 = \sigma_0^2 \quad \text{vs.} \quad H_A: \sigma^2 &gt; \sigma_0^2
 <p><span class="math display">\[
 H_0: \mu = 5 \quad \text{vs.} \quad H_A: \mu \neq 5
 \]</span></p>
-<p>We will use the sample mean <span class="math inline">\(\bar{x}\)</span> as our test statistic and assume the population distribution is Normal; note, later in this chapter, we will replace <span class="math inline">\(\bar{x}\)</span> as the test statistic with a better option, but we use temporarily use <span class="math inline">\(\bar{x}\)</span> to keep things simple for illustration purposes. Under <span class="math inline">\(H_0\)</span>, the test statistic follows a Normal distribution:
+<p>We will use the sample mean <span class="math inline">\(\bar{x}\)</span> as our test statistic and assume the population distribution is normal; note, later in this chapter, we will replace <span class="math inline">\(\bar{x}\)</span> as the test statistic with a better option, but we use temporarily use <span class="math inline">\(\bar{x}\)</span> to keep things simple for illustration purposes. Under <span class="math inline">\(H_0\)</span>, the test statistic follows a normal distribution:
 <span class="math display">\[
 \bar{X} \overset{H_0}{\sim} N \left( 5, \frac{1.4}{\sqrt{15}} \right)
 \]</span>
 That is, recalling Section <a href="chap-sampling-distributions.html#sec-distn-sample-mean">8.3</a>:</p>
 <ul>
-<li>Because the population distribution is Normal, we know that the sampling distribution of <span class="math inline">\(\bar{X}\)</span> is also Normal.</li>
+<li>Because the population distribution is normal, we know that the sampling distribution of <span class="math inline">\(\bar{X}\)</span> is also normal.</li>
 <li>Also, we know that the mean of the sampling distribution of <span class="math inline">\(\bar{X}\)</span> is equal to the population mean, whatever it is, and the standard deviation (a.k.a. standard error) of <span class="math inline">\(\bar{X}\)</span> is equal to the population standard deviation divided by the square root of the sample size. Because our strategy for hypothesis testing is to consider the likelihood of a value of our test statistic as or more extreme as our observed value, we set as the mean of the sampling distribution of <span class="math inline">\(\bar{X}\)</span> the null-hypothesized value of <span class="math inline">\(\mu\)</span>, here equal to 5.</li>
 </ul>
 <p>To explore the behavior of hypothesis testing under both <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span>, we conduct the following simulation:</p>
 <ul>
-<li>We simulate 10,000 samples of size <span class="math inline">\(n = 15\)</span> from a Normal distribution with <span class="math inline">\(\mu = 5.0\)</span> (i.e., assuming <span class="math inline">\(H_0\)</span> is true).</li>
+<li>We simulate 10,000 samples of size <span class="math inline">\(n = 15\)</span> from a normal distribution with <span class="math inline">\(\mu = 5.0\)</span> (i.e., assuming <span class="math inline">\(H_0\)</span> is true).</li>
 <li>For each sample, we compute the test statistic (<span class="math inline">\(\bar{x}\)</span>) and the corresponding two-sided <span class="math inline">\(p\)</span>-value.</li>
 <li>We repeat the same process assuming <span class="math inline">\(\mu = 5.25\)</span> (i.e., under one example alternative).</li>
 </ul>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="chap-hypothesis-testing.html#cb228-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb228-2"><a href="chap-hypothesis-testing.html#cb228-2" tabindex="-1"></a></span>
-<span id="cb228-3"><a href="chap-hypothesis-testing.html#cb228-3" tabindex="-1"></a>n        <span class="ot">=</span> <span class="dv">15</span></span>
-<span id="cb228-4"><a href="chap-hypothesis-testing.html#cb228-4" tabindex="-1"></a>sigma    <span class="ot">=</span> <span class="fl">1.4</span></span>
-<span id="cb228-5"><a href="chap-hypothesis-testing.html#cb228-5" tabindex="-1"></a>mu_null  <span class="ot">=</span> <span class="fl">5.0</span></span>
-<span id="cb228-6"><a href="chap-hypothesis-testing.html#cb228-6" tabindex="-1"></a>mu_alt   <span class="ot">=</span> <span class="fl">5.25</span></span>
-<span id="cb228-7"><a href="chap-hypothesis-testing.html#cb228-7" tabindex="-1"></a>alpha    <span class="ot">=</span> <span class="fl">0.05</span></span>
-<span id="cb228-8"><a href="chap-hypothesis-testing.html#cb228-8" tabindex="-1"></a>num_sims <span class="ot">=</span> <span class="dv">10000</span></span>
-<span id="cb228-9"><a href="chap-hypothesis-testing.html#cb228-9" tabindex="-1"></a></span>
-<span id="cb228-10"><a href="chap-hypothesis-testing.html#cb228-10" tabindex="-1"></a><span class="co"># P-value distributions under H_0 and (one specific case of) H_A</span></span>
-<span id="cb228-11"><a href="chap-hypothesis-testing.html#cb228-11" tabindex="-1"></a>pvals_null <span class="ot">=</span> <span class="fu">get_pvals</span>(mu_null)</span>
-<span id="cb228-12"><a href="chap-hypothesis-testing.html#cb228-12" tabindex="-1"></a>pvals_alt <span class="ot">=</span> <span class="fu">get_pvals</span>(mu_alt)</span>
-<span id="cb228-13"><a href="chap-hypothesis-testing.html#cb228-13" tabindex="-1"></a></span>
-<span id="cb228-14"><a href="chap-hypothesis-testing.html#cb228-14" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb228-15"><a href="chap-hypothesis-testing.html#cb228-15" tabindex="-1"></a><span class="fu">hist</span>(pvals_null, <span class="at">breaks =</span> <span class="dv">30</span>, <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb228-16"><a href="chap-hypothesis-testing.html#cb228-16" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;P-values under &quot;</span>, H[<span class="dv">0</span>], <span class="st">&quot;: &quot;</span>, mu, <span class="st">&quot; = 5.0&quot;</span>)),</span>
-<span id="cb228-17"><a href="chap-hypothesis-testing.html#cb228-17" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;p-value&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb228-18"><a href="chap-hypothesis-testing.html#cb228-18" tabindex="-1"></a><span class="fu">hist</span>(pvals_alt, <span class="at">breaks =</span> <span class="dv">30</span>, <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb228-19"><a href="chap-hypothesis-testing.html#cb228-19" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;P-values when &quot;</span>, mu, <span class="st">&quot; = 5.25&quot;</span>)),</span>
-<span id="cb228-20"><a href="chap-hypothesis-testing.html#cb228-20" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;p-value&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="chap-hypothesis-testing.html#cb232-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb232-2"><a href="chap-hypothesis-testing.html#cb232-2" tabindex="-1"></a></span>
+<span id="cb232-3"><a href="chap-hypothesis-testing.html#cb232-3" tabindex="-1"></a>n        <span class="ot">=</span> <span class="dv">15</span></span>
+<span id="cb232-4"><a href="chap-hypothesis-testing.html#cb232-4" tabindex="-1"></a>sigma    <span class="ot">=</span> <span class="fl">1.4</span></span>
+<span id="cb232-5"><a href="chap-hypothesis-testing.html#cb232-5" tabindex="-1"></a>mu_null  <span class="ot">=</span> <span class="fl">5.0</span></span>
+<span id="cb232-6"><a href="chap-hypothesis-testing.html#cb232-6" tabindex="-1"></a>mu_alt   <span class="ot">=</span> <span class="fl">5.25</span></span>
+<span id="cb232-7"><a href="chap-hypothesis-testing.html#cb232-7" tabindex="-1"></a>alpha    <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb232-8"><a href="chap-hypothesis-testing.html#cb232-8" tabindex="-1"></a>num_sims <span class="ot">=</span> <span class="dv">10000</span></span>
+<span id="cb232-9"><a href="chap-hypothesis-testing.html#cb232-9" tabindex="-1"></a></span>
+<span id="cb232-10"><a href="chap-hypothesis-testing.html#cb232-10" tabindex="-1"></a><span class="co"># P-value distributions under H_0 and (one specific case of) H_A</span></span>
+<span id="cb232-11"><a href="chap-hypothesis-testing.html#cb232-11" tabindex="-1"></a>pvals_null <span class="ot">=</span> <span class="fu">get_pvals</span>(mu_null)</span>
+<span id="cb232-12"><a href="chap-hypothesis-testing.html#cb232-12" tabindex="-1"></a>pvals_alt <span class="ot">=</span> <span class="fu">get_pvals</span>(mu_alt)</span>
+<span id="cb232-13"><a href="chap-hypothesis-testing.html#cb232-13" tabindex="-1"></a></span>
+<span id="cb232-14"><a href="chap-hypothesis-testing.html#cb232-14" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb232-15"><a href="chap-hypothesis-testing.html#cb232-15" tabindex="-1"></a><span class="fu">hist</span>(pvals_null, <span class="at">breaks =</span> <span class="dv">30</span>, <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb232-16"><a href="chap-hypothesis-testing.html#cb232-16" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;P-values under &quot;</span>, H[<span class="dv">0</span>], <span class="st">&quot;: &quot;</span>, mu, <span class="st">&quot; = 5.0&quot;</span>)),</span>
+<span id="cb232-17"><a href="chap-hypothesis-testing.html#cb232-17" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;p-value&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb232-18"><a href="chap-hypothesis-testing.html#cb232-18" tabindex="-1"></a><span class="fu">hist</span>(pvals_alt, <span class="at">breaks =</span> <span class="dv">30</span>, <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb232-19"><a href="chap-hypothesis-testing.html#cb232-19" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;P-values when &quot;</span>, mu, <span class="st">&quot; = 5.25&quot;</span>)),</span>
+<span id="cb232-20"><a href="chap-hypothesis-testing.html#cb232-20" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;p-value&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:simulate-hypothesis-test"></span>
 <img src="_main_files/figure-html/simulate-hypothesis-test-1.png" alt="Simulation-Based Distribution of P-Values Under the Null Hypothesis and For One Example Alternative Mean Value" width="960" />
 <p class="caption">
@@ -1260,26 +1264,26 @@ Figure 10.7: Simulation-Based Distribution of P-Values Under the Null Hypothesis
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:bootstrap-ht-leaf" class="example"><strong>Example 10.5  </strong></span>Recall Example <a href="chap-confidence-intervals.html#exm:bootstrap-skewed">9.10</a>, in which a botanist measured the lengths (in cm) of 15 leaves from a particular species and obtained the following sample:</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="chap-hypothesis-testing.html#cb229-1" tabindex="-1"></a>leaf <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">2.5</span>, <span class="fl">2.7</span>, <span class="fl">2.8</span>, <span class="fl">3.0</span>, <span class="fl">3.1</span>, <span class="fl">3.2</span>, <span class="fl">3.5</span>, <span class="fl">3.6</span>, <span class="fl">4.0</span>, <span class="fl">4.5</span>, <span class="fl">5.2</span>, <span class="fl">5.8</span>, <span class="fl">6.4</span>, <span class="fl">8.0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="chap-hypothesis-testing.html#cb233-1" tabindex="-1"></a>leaf <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">2.5</span>, <span class="fl">2.7</span>, <span class="fl">2.8</span>, <span class="fl">3.0</span>, <span class="fl">3.1</span>, <span class="fl">3.2</span>, <span class="fl">3.5</span>, <span class="fl">3.6</span>, <span class="fl">4.0</span>, <span class="fl">4.5</span>, <span class="fl">5.2</span>, <span class="fl">5.8</span>, <span class="fl">6.4</span>, <span class="fl">8.0</span>)</span></code></pre></div>
 <p>Suppose we wish to test the null hypothesis that the population mean leaf length is 4 cm, against the two-sided alternative that it is not:</p>
 <p><span class="math display">\[
 H_0: \mu = 4 \quad \text{vs.} \quad H_A: \mu \ne 4
 \]</span></p>
 <p>The observed sample mean is:</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="chap-hypothesis-testing.html#cb230-1" tabindex="-1"></a>x_bar <span class="ot">=</span> <span class="fu">mean</span>(leaf)</span>
-<span id="cb230-2"><a href="chap-hypothesis-testing.html#cb230-2" tabindex="-1"></a>x_bar</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="chap-hypothesis-testing.html#cb234-1" tabindex="-1"></a>x_bar <span class="ot">=</span> <span class="fu">mean</span>(leaf)</span>
+<span id="cb234-2"><a href="chap-hypothesis-testing.html#cb234-2" tabindex="-1"></a>x_bar</span></code></pre></div>
 <pre><code>## [1] 4.026667</code></pre>
 <p>To simulate the distribution of the sample mean under <span class="math inline">\(H_0\)</span>, we center the data so that the sample mean equals the null value of 4:</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="chap-hypothesis-testing.html#cb232-1" tabindex="-1"></a>leaf_centered <span class="ot">=</span> leaf <span class="sc">-</span> x_bar <span class="sc">+</span> <span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="chap-hypothesis-testing.html#cb236-1" tabindex="-1"></a>leaf_centered <span class="ot">=</span> leaf <span class="sc">-</span> x_bar <span class="sc">+</span> <span class="dv">4</span></span></code></pre></div>
 <p>We then generate 10,000 bootstrap resamples from the centered data, computing the sample mean for each:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="chap-hypothesis-testing.html#cb233-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb233-2"><a href="chap-hypothesis-testing.html#cb233-2" tabindex="-1"></a>B <span class="ot">=</span> <span class="dv">10000</span></span>
-<span id="cb233-3"><a href="chap-hypothesis-testing.html#cb233-3" tabindex="-1"></a>boot_means <span class="ot">=</span> <span class="fu">replicate</span>(B, <span class="fu">mean</span>(<span class="fu">sample</span>(leaf_centered, <span class="fu">length</span>(leaf), </span>
-<span id="cb233-4"><a href="chap-hypothesis-testing.html#cb233-4" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="chap-hypothesis-testing.html#cb237-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb237-2"><a href="chap-hypothesis-testing.html#cb237-2" tabindex="-1"></a>B <span class="ot">=</span> <span class="dv">10000</span></span>
+<span id="cb237-3"><a href="chap-hypothesis-testing.html#cb237-3" tabindex="-1"></a>boot_means <span class="ot">=</span> <span class="fu">replicate</span>(B, <span class="fu">mean</span>(<span class="fu">sample</span>(leaf_centered, <span class="fu">length</span>(leaf), </span>
+<span id="cb237-4"><a href="chap-hypothesis-testing.html#cb237-4" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span></code></pre></div>
 <p>Finally, we compute the two-sided p-value as the proportion of bootstrap means that are at least as far from the null value as the observed sample mean:</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="chap-hypothesis-testing.html#cb234-1" tabindex="-1"></a>obs_diff <span class="ot">=</span> <span class="fu">abs</span>(x_bar <span class="sc">-</span> <span class="dv">4</span>)</span>
-<span id="cb234-2"><a href="chap-hypothesis-testing.html#cb234-2" tabindex="-1"></a>p_val <span class="ot">=</span> <span class="fu">mean</span>(<span class="fu">abs</span>(boot_means <span class="sc">-</span> <span class="dv">4</span>) <span class="sc">&gt;=</span> obs_diff)</span>
-<span id="cb234-3"><a href="chap-hypothesis-testing.html#cb234-3" tabindex="-1"></a><span class="fu">round</span>(p_val, <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="chap-hypothesis-testing.html#cb238-1" tabindex="-1"></a>obs_diff <span class="ot">=</span> <span class="fu">abs</span>(x_bar <span class="sc">-</span> <span class="dv">4</span>)</span>
+<span id="cb238-2"><a href="chap-hypothesis-testing.html#cb238-2" tabindex="-1"></a>p_val <span class="ot">=</span> <span class="fu">mean</span>(<span class="fu">abs</span>(boot_means <span class="sc">-</span> <span class="dv">4</span>) <span class="sc">&gt;=</span> obs_diff)</span>
+<span id="cb238-3"><a href="chap-hypothesis-testing.html#cb238-3" tabindex="-1"></a><span class="fu">round</span>(p_val, <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## [1] 0.9557</code></pre>
 <p>If this p-value is less than our chosen significance level <span class="math inline">\(\alpha = 0.05\)</span>, then we reject <span class="math inline">\(H_0\)</span>. Otherwise, we do not reject <span class="math inline">\(H_0\)</span>. In this example, we obtain a p-value of approximately 0.9557, so we fail to reject <span class="math inline">\(H_0\)</span> at the 5% level.</p>
 </div>

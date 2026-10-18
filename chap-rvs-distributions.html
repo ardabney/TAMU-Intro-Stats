@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Random Variables and Probability Distributions | Probability and Statistics: Making Principled Decisions in an Uncertain World</title>
-  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Random Variables and Probability Distributions | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 4 Random Variables and Probability Distributions | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   
-  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
-<meta name="author" content="Alan Dabney, Scott Crawford, Darren Homrighausen" />
+<meta name="author" content="Alan Dabney, Scott Crawford, and Darren Homrighausen" />
 
 
-<meta name="date" content="2026-09-25" />
+<meta name="date" content="2026-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -282,7 +282,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.5.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-normal-percentiles-visual"><i class="fa fa-check"></i><b>6.5.1</b> Computing Standard Normal Quantiles</a></li>
 <li class="chapter" data-level="6.5.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-normal-percentiles"><i class="fa fa-check"></i><b>6.5.2</b> Computing Normal Quantiles</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking Normality</a></li>
+<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking normality</a></li>
 <li class="chapter" data-level="6.7" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-t-distribution"><i class="fa fa-check"></i><b>6.7</b> t Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html"><i class="fa fa-check"></i><b>7</b> Joint and Conditional Distributions</a>
@@ -559,7 +559,7 @@ div.csl-indent {
 <div class="colbox">
 <div class="definition">
 <p><span id="def:unlabeled-div-40" class="definition"><strong>Definition 4.2  </strong></span>A <strong>discrete</strong> random variable is an rv that can take a finite or at most countably infinite number of values. A <strong>continuous</strong> random variable is an rv that can take any value within an interval (possibly infinite) of the real number line. We will use the notation <span class="math inline">\(S_X\)</span> to denote the possible values of a discrete rv <span class="math inline">\(X\)</span>.</p>
-<p>Almost always, <span class="math inline">\(S_X\)</span> will be the first few counting numbers (say, 0, 1, 2, ...)</p>
+<p>Almost always, <span class="math inline">\(S_X\)</span> will be the first few counting numbers (say, 0, 1, 2, ...).</p>
 </div>
 </div>
 </div>
@@ -619,7 +619,7 @@ P(a \leq X \leq b) = \int_a^b f(x) dx
 \]</span></p>
 </div>
 </div>
-<p>That is, the probability that <span class="math inline">\(X\)</span> takes a value in the interval <span class="math inline">\([a, b]\)</span> equals the area under <span class="math inline">\(f(x)\)</span> between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> (an integral of <span class="math inline">\(f(x)\)</span>). Note that <span class="math inline">\(f(x)\)</span> is <em>not</em> equal to <span class="math inline">\(P(X = x)\)</span>. In fact, due to the continuous nature of the rv <span class="math inline">\(X\)</span>, <span class="math inline">\(P(X = x) = 0\)</span>. The pdf (as opposed to the pmf) can only be interpretted in terms of an integral over an interval.</p>
+<p>That is, the probability that <span class="math inline">\(X\)</span> takes a value in the interval <span class="math inline">\([a, b]\)</span> equals the area under <span class="math inline">\(f(x)\)</span> between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> (an integral of <span class="math inline">\(f(x)\)</span>). Note that <span class="math inline">\(f(x)\)</span> is <em>not</em> equal to <span class="math inline">\(P(X = x)\)</span>. In fact, due to the continuous nature of the rv <span class="math inline">\(X\)</span>, <span class="math inline">\(P(X = x) = 0\)</span>. The pdf (as opposed to the pmf) can only be interpreted in terms of an integral over an interval.</p>
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:chap-rvs-bus-pdf" class="example"><strong>Example 4.6  </strong></span>Consider the time a student spends waiting for her bus to arrive. Suppose that the bus arrives at the stop every 10 minutes. If the student arrives at the bus stop at a randomly-specified time, without regard for the bus schedule, we might assume that the time spent (in minutes) waiting will follow the <strong><span id="def-random-variables-and-probability-distributions-uniform-a-b">uniform</span> distribution</strong> on the interval <span class="math inline">\([0, 10]\)</span>.</p>
@@ -758,7 +758,7 @@ P(X \leq 3) = F(3) = \frac{3}{10} = 0.3
 <h2><span class="header-section-number">4.4</span> Discrete Distributions<a href="chap-rvs-distributions.html#discrete-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="binomial-distribution" class="section level3 hasAnchor" number="4.4.1">
 <h3><span class="header-section-number">4.4.1</span> <span id="def-random-variables-and-probability-distributions-binomial-n-p">Binomial</span> Distribution<a href="chap-rvs-distributions.html#binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A <strong><span id="def-random-variables-and-probability-distributions-bernoulli-p">Bernoulli</span> trial</strong> describes any random experiment that generates two outcomes. These are conventionally referred to as a "success" or a "failure". A <strong>Bernoulli random variable</strong> <span class="math inline">\(X\)</span> takes the value 1 if the outcome is a success and the value 0 if it is a failure.</p>
+<p>A <strong><span id="def-random-variables-and-probability-distributions-bernoulli-p">Bernoulli</span> trial</strong> describes any random experiment that generates two outcomes. These are conventionally referred to as a "success" or a "failure." A <strong>Bernoulli random variable</strong> <span class="math inline">\(X\)</span> takes the value 1 if the outcome is a success and the value 0 if it is a failure.</p>
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:unlabeled-div-45" class="example"><strong>Example 4.9  </strong></span></p>
@@ -775,7 +775,7 @@ P(X \leq 3) = F(3) = \frac{3}{10} = 0.3
 f(x) = p^x(1-p)^{1-x}
 \]</span>
 That is, <span class="math inline">\(f(x) = p\)</span> when <span class="math inline">\(x = 1\)</span> and <span class="math inline">\(f(x) = 1-p\)</span> when <span class="math inline">\(x = 0\)</span>.</p>
-<p>Now consider running <span class="math inline">\(n\)</span> Bernoulli trials, each with the same probability <span class="math inline">\(p\)</span> of success, and with each trial being independent of all others, and suppose that we will count up the number of successes out of the <span class="math inline">\(n\)</span> trials. This is defined as a <strong>binomial experiment</strong>, and the variable <span class="math inline">\(X\)</span> that records the number of successes out of the <span class="math inline">\(n\)</span> trials is called a <strong>binomial random variable</strong>.</p>
+<p>Now consider running <span class="math inline">\(n\)</span> Bernoulli trials, each with the same probability <span class="math inline">\(p\)</span> of success, and with each trial being independent of all others, and suppose that we will count up the number of successes out of the <span class="math inline">\(n\)</span> trials. This is defined as a <strong>binomial experiment</strong>, and the variable <span class="math inline">\(Y\)</span> that records the number of successes out of the <span class="math inline">\(n\)</span> trials is called a <strong>binomial random variable</strong>.</p>
 <p>Letting <span class="math inline">\(X_i\)</span> be the Bernoulli rv associated with the <span class="math inline">\(i\)</span>th Bernoulli trial, we can write the binomial rv <span class="math inline">\(Y\)</span> as
 <span class="math display">\[
 Y = \sum_{i=1}^n X_i
@@ -854,7 +854,7 @@ Figure 4.5: Light bulb example pmf
 <div id="geometric-distribution" class="section level4 hasAnchor" number="4.4.2.1">
 <h4><span class="header-section-number">4.4.2.1</span> Geometric Distribution<a href="chap-rvs-distributions.html#geometric-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Before turning to the hypergeometric, let's cover the geometric distribution. As opposed to the Binomial example of counting the number of successes out of <span class="math inline">\(n\)</span> trials, let's consider another question of interest: how many failures would we have to observe before we see the first success (that is, see an <span class="math inline">\(X_i = 1\)</span>).</p>
-<p>Intuitively, as <span class="math inline">\(p\)</span> gets closer to 1, we should have to see fewer trials as <span class="math inline">\(p = P(X_i = 1)\)</span>. The probability we see a success on the first trial is <span class="math inline">\(p\)</span>. Hence, we would say the for a rv <span class="math inline">\(X \sim geom(p)\)</span>, <span class="math inline">\(P(X = 0) = p\)</span> as we would have observed no failures. However, suppose we see 1 failure before our first success, then <span class="math inline">\(P(X = 1) = P(FS) = (1-p)*p\)</span>. Therefore, in general,</p>
+<p>Intuitively, as <span class="math inline">\(p\)</span> gets closer to 1, we should have to see fewer trials as <span class="math inline">\(p = P(X_i = 1)\)</span>. The probability we see a success on the first trial is <span class="math inline">\(p\)</span>. Hence, we would say for a rv <span class="math inline">\(X \sim geom(p)\)</span>, <span class="math inline">\(P(X = 0) = p\)</span> as we would have observed no failures. However, suppose we see 1 failure before our first success, then <span class="math inline">\(P(X = 1) = P(FS) = (1-p)*p\)</span>. Therefore, in general,</p>
 <p><span class="math display">\[
 P(X = x) = f(x) = (1-p)^xp
 \]</span></p>
@@ -1073,18 +1073,21 @@ for all <span class="math inline">\(s, t &gt; 0\)</span>. This property is uniqu
 <p>The exponential and Poisson distributions are closely related. Specifically, the exponential distribution models the waiting time between successive arrivals in a Poisson process.</p>
 <div class="colbox">
 <div class="proposition">
-<p><span id="prp:unlabeled-div-52" class="proposition"><strong>Proposition 4.6  </strong></span>If events occur according to a Poisson process with rate <span class="math inline">\(\lambda\)</span> per unit time, then the waiting time <span class="math inline">\(X\)</span> between successive events follows an exponential distribution: <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span>.</p>
+<p><span id="prp:unlabeled-div-52" class="proposition"><strong>Proposition 4.6  </strong></span>If events occur according to a Poisson process with rate <span class="math inline">\(\lambda\)</span> per unit time, then the waiting time <span class="math inline">\(X\)</span> until the first (or next) event follows an exponential distribution: <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span>.</p>
 </div>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-53" class="proof"><em>Proof</em>. </span>Consider the Poisson distribution with parameter <span class="math inline">\(\lambda\)</span> for the number of events occurring in an interval of length <span class="math inline">\(t\)</span> (call this number <span class="math inline">\(N(t)\)</span>). The probability that no event occurs up to time <span class="math inline">\(t\)</span> is equivalent to the probability that the waiting time exceeds <span class="math inline">\(t\)</span>:
-<span class="math display">\[
-P(X &gt; t) = P(N(t) = 0) = e^{-\lambda t}
-\]</span>
-The expression <span class="math inline">\(P(X &gt; t)\)</span> is called the <strong>survival function</strong> and equals one minus the cdf: <span class="math inline">\(P(X &gt; t) = 1 - F(t) = 1 - P(X \leq t)\)</span>. As noted at the end of Section <a href="chap-rvs-distributions.html#chap-rvs-sec-cdf">4.3</a>, we can obtain a pdf by differentiating the cdf. Here, differentiating both sides with respect to <span class="math inline">\(t\)</span> yields the exponential pdf:
-<span class="math display">\[
-f(x) = \lambda e^{-\lambda x}, \quad x &gt; 0
-\]</span></p>
+<p><span id="unlabeled-div-53" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(X\)</span> denote the waiting time until the first event occurs, and let <span class="math inline">\(N(x)\)</span> denote the number of events that occur in the time interval <span class="math inline">\([0, x]\)</span>. To find the distribution of <span class="math inline">\(X\)</span>, we first construct its cumulative distribution function (CDF), <span class="math inline">\(F(x) = P(X \le x)\)</span> for <span class="math inline">\(x &gt; 0\)</span>:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Complementary Event:</strong> Note that the event <span class="math inline">\(\{X &gt; x\}\)</span> (waiting longer than <span class="math inline">\(x\)</span> units for the first event) is logically equivalent to the event <span class="math inline">\(\{N(x) = 0\}\)</span> (observing zero events in the interval <span class="math inline">\([0, x]\)</span>).</p></li>
+<li><p><strong>Poisson Probability:</strong> Since <span class="math inline">\(N(x) \sim \text{Poisson}(\lambda x)\)</span>, the probability of observing no events in time <span class="math inline">\(x\)</span> is:
+<span class="math display">\[P(X &gt; x) = P(N(x) = 0) = \frac{(\lambda x)^0 e^{-\lambda x}}{0!} = e^{-\lambda x}\]</span></p></li>
+<li><p><strong>Forming the CDF:</strong> Using the complement rule, the CDF of <span class="math inline">\(X\)</span> is:
+<span class="math display">\[F(x) = P(X \le x) = 1 - P(X &gt; x) = 1 - e^{-\lambda x}, \quad x &gt; 0\]</span></p></li>
+<li><p><strong>Deriving the PDF:</strong> Taking the derivative of <span class="math inline">\(F(x)\)</span> with respect to <span class="math inline">\(x\)</span> yields the probability density function (PDF):
+<span class="math display">\[f(x) = \frac{d}{dx} F(x) = \frac{d}{dx} \left( 1 - e^{-\lambda x} \right) = 0 - \left( -\lambda e^{-\lambda x} \right) = \lambda e^{-\lambda x}, \quad x &gt; 0\]</span></p></li>
+</ol>
+<p>This matches the density function of an exponential random variable with parameter <span class="math inline">\(\lambda\)</span>.</p>
 </div>
 <div class="whitebox">
 <div class="example">
@@ -1154,7 +1157,7 @@ Figure 4.8: Example gamma distribution pdfs
 <p>Figure <a href="chap-rvs-distributions.html#fig:gamma-pdf">4.8</a> shows a few examples of gamma pdfs with different values of <span class="math inline">\(\alpha\)</span>, keeping <span class="math inline">\(\lambda = 1\)</span> for simplicity. The parameter <span class="math inline">\(\lambda\)</span> serves as a scaling factor: increasing <span class="math inline">\(\lambda\)</span> compresses the distribution, shifting the density toward smaller values of <span class="math inline">\(x\)</span>, while decreasing <span class="math inline">\(\lambda\)</span> stretches the distribution, shifting the density toward larger values.</p>
 <div class="whitebox">
 <div class="example">
-<p><span id="exm:chap-rvs-bank-wait" class="example"><strong>Example 4.18  </strong></span>Suppose the time (in minutes) that a customer spends waiting in line at a bank follows a gamma distribution with <span class="math inline">\(\alpha = 3\)</span> and <span class="math inline">\(\lambda = 0.5\)</span>. What is the probability that a customer waits between 4 and 7 minutes?</p>
+<p><span id="exm:chap-rvs-bank-wait" class="example"><strong>Example 4.18  </strong></span>Suppose the time (in minutes) that a customer spends waiting in line at a bank follows a gamma distribution with <span class="math inline">\(\alpha = 3\)</span> (representing 3 phases in the service process) and <span class="math inline">\(\lambda = 0.5\)</span>. What is the probability that a customer waits between 4 and 7 minutes?</p>
 <p><em>Solution</em>: Let <span class="math inline">\(X\)</span> denote the waiting time. We have <span class="math inline">\(X \sim \text{Gamma}(3, 0.5)\)</span>. The probability we seek is:</p>
 <p><span class="math display">\[
 P(4 \leq X \leq 7) = P(X \leq 7) - P(X \leq 4).

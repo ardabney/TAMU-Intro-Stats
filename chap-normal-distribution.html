@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 The Normal Distribution | Probability and Statistics: Making Principled Decisions in an Uncertain World</title>
-  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 The Normal Distribution | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 6 The Normal Distribution | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   
-  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
-<meta name="author" content="Alan Dabney, Scott Crawford, Darren Homrighausen" />
+<meta name="author" content="Alan Dabney, Scott Crawford, and Darren Homrighausen" />
 
 
-<meta name="date" content="2026-09-25" />
+<meta name="date" content="2026-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -282,7 +282,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.5.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-normal-percentiles-visual"><i class="fa fa-check"></i><b>6.5.1</b> Computing Standard Normal Quantiles</a></li>
 <li class="chapter" data-level="6.5.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-normal-percentiles"><i class="fa fa-check"></i><b>6.5.2</b> Computing Normal Quantiles</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking Normality</a></li>
+<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking normality</a></li>
 <li class="chapter" data-level="6.7" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-t-distribution"><i class="fa fa-check"></i><b>6.7</b> t Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html"><i class="fa fa-check"></i><b>7</b> Joint and Conditional Distributions</a>
@@ -531,57 +531,57 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="chap-normal-distribution" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chapter 6</span> The <span id="def-the-normal-distribution-normal-distribution">Normal Distribution</span><a href="chap-normal-distribution.html#chap-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The <strong>Normal distribution</strong> is one of the most fundamental and widely used probability distributions in Statistics. First studied in the 18th century by Abraham de Moivre and later formalized by Carl Friedrich Gauss (leading to its alternative name the <strong>Gaussian distribution</strong>), the Normal distribution arose from investigations into errors in astronomical measurements. Gauss’ work in the early 19th century demonstrated that random errors in repeated observations tended to follow the same bell-shaped curve.</p>
-<p>Since then, the Normal distribution has become a cornerstone of probability and statistics, describing a vast array of real-world phenomena. It models natural variations in biological traits (e.g., human heights, blood pressure, IQ scores), economic and financial data (e.g., stock returns, measurement errors in production processes), and even physical and engineering systems (e.g., noise in electronic signals, material tolerances in manufacturing).</p>
-<p>More so, the central role of the Normal distribution is due to the Central Limit Theorem, which explains why sums (and hence averages and proportions) of large numbers of independent random variables have an approximately Normal distribution; we will cover this topic in detail in Chapter <a href="chap-sampling-distributions.html#chap-sampling-distributions">8</a>.</p>
-<p>Because of its mathematical properties and real-world relevance, the Normal distribution serves as the foundation for many statistical methods, including confidence intervals (Chapter <a href="chap-confidence-intervals.html#chap-confidence-intervals">9</a>), hypothesis tests (Chapter <a href="chap-hypothesis-testing.html#chap-hypothesis-testing">10</a>), and regression analysis (Chapters <a href="chap-simple-linear-regression.html#chap-simple-linear-regression">13</a> and <a href="chap-multiple-linear-regression.html#chap-multiple-linear-regression">14</a>).</p>
+<p>The <strong>normal distribution</strong> is one of the most fundamental and widely used probability distributions in Statistics. First studied in the 18th century by Abraham de Moivre and later formalized by Carl Friedrich Gauss (leading to its alternative name the <strong>Gaussian distribution</strong>), the normal distribution arose from investigations into errors in astronomical measurements. Gauss’ work in the early 19th century demonstrated that random errors in repeated observations tended to follow the same bell-shaped curve.</p>
+<p>Since then, the normal distribution has become a cornerstone of probability and Statistics, describing a vast array of real-world phenomena. It models natural variations in biological traits (e.g., human heights, blood pressure, IQ scores), economic and financial data (e.g., stock returns, measurement errors in production processes), and even physical and engineering systems (e.g., noise in electronic signals, material tolerances in manufacturing).</p>
+<p>More so, the central role of the normal distribution is due to the Central Limit Theorem, which explains why sums (and hence averages and proportions) of large numbers of independent random variables have an approximately normal distribution; we will cover this topic in detail in Chapter <a href="chap-sampling-distributions.html#chap-sampling-distributions">8</a>.</p>
+<p>Because of its mathematical properties and real-world relevance, the normal distribution serves as the foundation for many statistical methods, including confidence intervals (Chapter <a href="chap-confidence-intervals.html#chap-confidence-intervals">9</a>), hypothesis tests (Chapter <a href="chap-hypothesis-testing.html#chap-hypothesis-testing">10</a>), and regression analysis (Chapters <a href="chap-simple-linear-regression.html#chap-simple-linear-regression">13</a> and <a href="chap-multiple-linear-regression.html#chap-multiple-linear-regression">14</a>).</p>
 <div id="the-normal-and-standard-normal-distributions" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> The Normal and Standard Normal Distributions<a href="chap-normal-distribution.html#the-normal-and-standard-normal-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="chap-non-standard-normal" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> The Normal Distribution<a href="chap-normal-distribution.html#chap-non-standard-normal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="colbox">
 <div class="definition">
-<p><span id="def:unlabeled-div-78" class="definition"><strong>Definition 6.1  </strong></span>A continuous rv <span class="math inline">\(X\)</span> has a <strong>Normal distribution</strong> with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &gt; 0\)</span>, written <span class="math inline">\(X \sim N([\mu, \sigma^2]{#def-the-normal-distribution-probabilities-of-n-mu-sigma-2})\)</span>, has pdf:</p>
+<p><span id="def:unlabeled-div-78" class="definition"><strong>Definition 6.1  </strong></span>A continuous rv <span class="math inline">\(X\)</span> has a <strong>normal distribution</strong> with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &gt; 0\)</span>, written <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, has pdf:</p>
 <p><span class="math display">\[
 f(x) = \frac{1}{ \sqrt{2\pi\sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}, \quad -\infty &lt; x &lt; \infty
 \]</span></p>
 </div>
 </div>
-<p>The Normal distribution has a characteristic symmetric <strong>bell shape</strong>, with most of the probability mass concentrated near the mean <span class="math inline">\(\mu\)</span>.</p>
+<p>The normal distribution has a characteristically symmetric <strong>bell shape</strong>, with most of the probability mass concentrated near the mean <span class="math inline">\(\mu\)</span>.</p>
 <p>The spread of the distribution is determined by <span class="math inline">\(\sigma\)</span>, which is the square root of the variance (<span class="math inline">\(\sigma = +\sqrt{\sigma^2}\)</span>); larger values of <span class="math inline">\(\sigma\)</span> correspond to wider, more spread-out distributions, while smaller values of <span class="math inline">\(\sigma\)</span> correspond to narrower, more concentrated distributions.
 <!-- One interesting note: $\sigma$ equals the distance between from $\mu$ to the points of inflection of the pdf curve.  -->
-Figure <a href="chap-normal-distribution.html#fig:normal-pdf">6.1</a> shows the pdfs of three example Normal distributions.</p>
+Figure <a href="chap-normal-distribution.html#fig:normal-pdf">6.1</a> shows the pdfs of three example normal distributions.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:normal-pdf"></span>
-<img src="_main_files/figure-html/normal-pdf-1.png" alt="Example Normal distribution pdfs with different means and standard deviations" width="80%" />
+<img src="_main_files/figure-html/normal-pdf-1.png" alt="Example normal distribution pdfs with different means and standard deviations" width="80%" />
 <p class="caption">
-Figure 6.1: Example Normal distribution pdfs with different means and standard deviations
+Figure 6.1: Example normal distribution pdfs with different means and standard deviations
 </p>
 </div>
 </div>
 <div id="chap-standard-normal" class="section level3 hasAnchor" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> The <span id="def-the-normal-distribution-standard-normal-distribution">Standard Normal Distribution</span><a href="chap-normal-distribution.html#chap-standard-normal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A special case of the Normal distribution, known as the <strong>standard Normal distribution</strong>, corresponds to when <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma^2 = 1\)</span>.</p>
+<p>A special case of the normal distribution, known as the <strong>standard normal distribution</strong>, corresponds to when <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma^2 = 1\)</span>.</p>
 <div class="colbox">
 <div class="definition">
-<p><span id="def:unlabeled-div-79" class="definition"><strong>Definition 6.2  </strong></span>A continuous rv <span class="math inline">\(Z\)</span> has a <strong>standard Normal distribution</strong>, written <span class="math inline">\(Z \sim N(0,1)\)</span>, has pdf</p>
+<p><span id="def:unlabeled-div-79" class="definition"><strong>Definition 6.2  </strong></span>A continuous rv <span class="math inline">\(Z\)</span> has a <strong>standard normal distribution</strong>, written <span class="math inline">\(Z \sim N(0,1)\)</span>, has pdf</p>
 <p><span class="math display">\[
 f(z) = \frac{1}{\sqrt{2\pi}} e^{-z^2/2}, \quad -\infty &lt; z &lt; \infty
 \]</span></p>
-<p>As the standard Normal distribution has <span class="math inline">\(\mu = 0\)</span>, the pdf is centered at 0. In this textbook, <span class="math inline">\(Z\)</span> will always be used to represent the standard normal.</p>
+<p>As the standard normal distribution has <span class="math inline">\(\mu = 0\)</span>, the pdf is centered at 0. In this textbook, <span class="math inline">\(Z\)</span> will always be used to represent the standard normal.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="standardization" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> <span id="def-the-normal-distribution-standardization">Standardization</span><a href="chap-normal-distribution.html#standardization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The pdf of the Normal distribution is impossible to integrate analytically in general. Historically, before the widespread use of computers, scientists relied on standardized probability tables. Using standardization, any Normal random variable can be transformed into a standard normal (and vice versa). Hence, probability calculations could be performed using a single table rather than computing values separately for each possible mean and variance. While modern computing has made it easy to work directly with any Normal distribution, standardization is at the core of many methods, such as Hypothesis testing @ref(hypothesis_testing).</p>
+<p>The pdf of the normal distribution is impossible to integrate analytically in general. Historically, before the widespread use of computers, scientists relied on standardized probability tables. Using standardization, any normal random variable can be transformed into a standard normal (and vice versa). Hence, probability calculations could be performed using a single table rather than computing values separately for each possible mean and variance. While modern computing has made it easy to work directly with any normal distribution, standardization is at the core of many methods, such as Hypothesis testing <a href="chap-hypothesis-testing.html#chap-hypothesis-testing">10</a>.</p>
 <div class="colbox">
 <div class="definition">
-<p><span id="def:unlabeled-div-80" class="definition"><strong>Definition 6.3  </strong></span>The process of going from a Normal random variable to a standard Normal random variable is called <strong>standardization</strong>. In particular, if <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, then
+<p><span id="def:unlabeled-div-80" class="definition"><strong>Definition 6.3  </strong></span>The process of going from a normal random variable to a standard normal random variable is called <strong>standardization</strong>. In particular, if <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, then
 <span class="math display">\[
 Z = \frac{X - \mu}{\sigma} \sim N(0,1)
 \]</span>
-Similarly, by inverting this transformation, we can unstandardize a standard Normal:
+Similarly, by inverting this transformation, we can unstandardize a standard normal:
 <span class="math display">\[
 X = \mu + \sigma Z \sim N(\mu,\sigma^2)
 \]</span>
@@ -600,8 +600,8 @@ X = \mu + \sigma Z \sim N(\mu,\sigma^2)
 <li>In <strong>Lake Bryan</strong>, <span class="math inline">\(X \sim N(1200, 300^2)\)</span></li>
 <li>In <strong>Somerville Lake</strong>, <span class="math inline">\(Y \sim N(1000, 200^2)\)</span></li>
 </ul>
-<p>Now suppose that a 1700g bass is caught in Lake Bryan, and a 1500g bass is caught in Somerville Lake. Which fish is more "unusual" or "extreme" relative to its lake's population if bass?</p>
-<p>To find these values is more extreme, we can compute <strong><span id="def-the-normal-distribution-z-score">z-scores</span></strong>:</p>
+<p>Now suppose that a 1700g bass is caught in Lake Bryan, and a 1500g bass is caught in Somerville Lake. Which fish is more "unusual" or "extreme" relative to its lake's population of bass?</p>
+<p>To find which value is more extreme, we can compute <strong><span id="def-the-normal-distribution-z-score">z-scores</span></strong>:</p>
 <ul>
 <li>Lake Bryan: <span class="math inline">\(z = \frac{1700 - 1200}{300} = 1.67\)</span></li>
 <li>Somerville Lake: <span class="math inline">\(z = \frac{1500 - 1000}{200} = 2.50\)</span></li>
@@ -624,33 +624,33 @@ Figure 6.2: Comparison of observed fish weights relative to their respective dis
 <p>First, we will explore calculating probabilites from the standard normal distribution. This will be an important topic for computing <strong>p-values</strong> (Chapter <a href="chap-hypothesis-testing.html#chap-hypothesis-testing">10</a>), among other applications.</p>
 <div class="whitebox">
 <div class="example">
-<p><span id="exm:normal-probs" class="example"><strong>Example 6.2  </strong></span>Figure <a href="chap-normal-distribution.html#fig:normal-cumulative-prob">6.3</a> shows the pdf of the standard Normal distribution. In the figure, the probability <span class="math inline">\(P(Z \leq z)\)</span> is shown by shading the area under the standard Normal pdf to the left of <span class="math inline">\(z\)</span> for <span class="math inline">\(z = 1.6449\)</span>. In particular, <span class="math inline">\(P(Z \leq 1.6449) = 0.95\)</span>. Notice that, as the probabilities must sum to one, <span class="math inline">\(P(Z &gt; z) = 1 - P(Z \leq z)\)</span>.</p>
+<p><span id="exm:normal-probs" class="example"><strong>Example 6.2  </strong></span>Figure <a href="chap-normal-distribution.html#fig:normal-cumulative-prob">6.3</a> shows the pdf of the standard normal distribution. In the figure, the probability <span class="math inline">\(P(Z \leq z)\)</span> is shown by shading the area under the standard normal pdf to the left of <span class="math inline">\(z\)</span> for <span class="math inline">\(z = 1.6449\)</span>. In particular, <span class="math inline">\(P(Z \leq 1.6449) = 0.95\)</span>. Notice that, as the probabilities must sum to one, <span class="math inline">\(P(Z &gt; z) = 1 - P(Z \leq z)\)</span>.</p>
 <p>Referencing the figure again, since the area under the pdf to the left of 1.6449 is 0.95, we have that the area under the pdf to the <em>right</em> of 1.6449 is 0.05. We can verify the above calculations in <code>R</code> using the <code>pnorm</code> function (think of <code>p</code> as meaning <code>probability</code>).</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="chap-normal-distribution.html#cb100-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.6449</span>)</span></code></pre></div>
 <pre><code>## [1] 0.9500048</code></pre>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="chap-normal-distribution.html#cb102-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">1.6449</span>)</span></code></pre></div>
 <pre><code>## [1] 0.04999522</code></pre>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:normal-cumulative-prob"></span>
-<img src="_main_files/figure-html/normal-cumulative-prob-1.png" alt="Standard Normal pdf and a cumulative probability" width="90%" />
+<img src="_main_files/figure-html/normal-cumulative-prob-1.png" alt="Standard normal pdf and a cumulative probability" width="90%" />
 <p class="caption">
-Figure 6.3: Standard Normal pdf and a cumulative probability
+Figure 6.3: Standard normal pdf and a cumulative probability
 </p>
 </div>
-<p>In addition to left-tail (cumulative) and right-tail probabilities, we can integrate the pdf to obtain a probability corresponding to rv values <em>between</em> two values. For example, consider the probability <span class="math inline">\(P(-0.6745 \leq Z \leq 1.6449)\)</span>. Figure <a href="chap-normal-distribution.html#fig:normal-prob-interval">6.4</a> shows this probability as the shaded area under the standard Normal pdf between <span class="math inline">\(-0.6745\)</span> and <span class="math inline">\(1.6449\)</span>, which happens to equal <span class="math inline">\(\approx 0.70\)</span>. We saw in Section <a href="chap-rvs-distributions.html#chap-rvs-sec-cdf">4.3</a> that a probability for an interval of values can be written as a difference of cdf probabilities. In our example, we have that</p>
+<p>In addition to left-tail (cumulative) and right-tail probabilities, we can integrate the pdf to obtain a probability corresponding to rv values <em>between</em> two values. For example, consider the probability <span class="math inline">\(P(-0.6745 \leq Z \leq 1.6449)\)</span>. Figure <a href="chap-normal-distribution.html#fig:normal-prob-interval">6.4</a> shows this probability as the shaded area under the standard normal pdf between <span class="math inline">\(-0.6745\)</span> and <span class="math inline">\(1.6449\)</span>, which happens to equal approximately <span class="math inline">\(0.70\)</span>. We saw in Section <a href="chap-rvs-distributions.html#chap-rvs-sec-cdf">4.3</a> that a probability for an interval of values can be written as a difference of cdf probabilities. In our example, we have that</p>
 <p><span class="math display">\[
 P(-0.6745 \leq Z \leq 1.6449) = P(Z \leq 1.6449) - P(Z \leq -0.6745)
 \]</span></p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="chap-normal-distribution.html#cb104-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.6449</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.6745</span>)</span></code></pre></div>
 <pre><code>## [1] 0.700008</code></pre>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:normal-prob-interval"></span>
-<img src="_main_files/figure-html/normal-prob-interval-1.png" alt="Standard Normal pdf and the probability for an interval of values" width="90%" />
+<img src="_main_files/figure-html/normal-prob-interval-1.png" alt="Standard normal pdf and the probability for an interval of values" width="90%" />
 <p class="caption">
-Figure 6.4: Standard Normal pdf and the probability for an interval of values
+Figure 6.4: Standard normal pdf and the probability for an interval of values
 </p>
 </div>
 </div>
 </div>
-<p>Returning to the <span class="math inline">\(z\)</span>-score example (Example <a href="chap-normal-distribution.html#exm:zscore-bass">6.1</a>), we can find the probability of having caught the particular fish from each lake. The observed <span class="math inline">\(z\)</span>-scores are 1.67 from Lake Bryan and 2.5 from Somerville Lake, indicating the largemouth bass from Somerville Lake was more unusual. Another, related way of describing this would be via probability: a low probability indicates an observation is more unusual as well:</p>
+<p>Returning to the <span class="math inline">\(z\)</span>-score example (Example <a href="chap-normal-distribution.html#exm:zscore-bass">6.1</a>), we can find the probability of catching a fish with a particular size or larger from each lake. The observed <span class="math inline">\(z\)</span>-scores are 1.67 from Lake Bryan and 2.5 from Somerville Lake, indicating the largemouth bass from Somerville Lake was more unusual. Another, related way of describing this would be via probability: a low probability indicates an observation is more unusual as well:</p>
 <ul>
 <li>For the 1700g fish from Lake Bryan with <span class="math inline">\(z\)</span>-score 1.67:
 <span class="math display">\[
@@ -688,16 +688,16 @@ P(X \leq 1700) = 0.9522
 <p><span class="math display">\[
 P(Y \leq 1500) = 0.9938
 \]</span></p>
-<p>The fact that these answers match the ones using the standard Normal is no coincidence; finding the <span class="math inline">\(z\)</span>-score and using the standard Normal or using the (general) Normal directly will always result in the same solution.</p>
-<p><strong>Warning</strong> The <code>pnorm</code> function uses the standard deviation <span class="math inline">\(\sigma\)</span>, not the variance <span class="math inline">\(\sigma^2\)</span>!</p>
+<p>The fact that these answers match the ones using the standard normal is no coincidence; finding the <span class="math inline">\(z\)</span>-score and using the standard normal or using the (general) normal directly will always result in the same solution.</p>
+<p><strong>Warning</strong> The <code>pnorm</code> function's third argument is for the standard deviation <span class="math inline">\(\sigma\)</span>. Be careful not to enter the variance <span class="math inline">\(\sigma^2\)</span>!</p>
 <p>To demonstrate this point, let's do another example.</p>
 <div class="whitebox">
 <div class="example">
-<p><span id="exm:normal-rods" class="example"><strong>Example 6.3  </strong></span>Suppose a factory produces cylindrical rods whose diameters (in millimeters) are Normally distributed with a mean of 50 and a standard deviation of 2. Let <span class="math inline">\(X\)</span> represent the diameter of a randomly selected rod: <span class="math inline">\(X \sim N(50, 2^2)\)</span>. The manufacturing specifications require rods to be between 48 mm and 54 mm in diameter. What is the probability that a randomly selected rod meets this specification?</p>
+<p><span id="exm:normal-rods" class="example"><strong>Example 6.3  </strong></span>Suppose a factory produces cylindrical rods whose diameters (in millimeters) are normally distributed with a mean of 50 and a standard deviation of 2. Let <span class="math inline">\(X\)</span> represent the diameter of a randomly selected rod: <span class="math inline">\(X \sim N(50, 2^2)\)</span>. The manufacturing specifications require rods to be between 48 mm and 54 mm in diameter. What is the probability that a randomly selected rod meets this specification?</p>
 <p><em>Solution</em>: We can compute this probability directly in <code>R</code> using the <code>pnorm</code> function:</p>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="chap-normal-distribution.html#cb114-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">54</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">48</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 0.8185946</code></pre>
-<p>Alternatively, we can standardize both bounds and compute the equivalent probability under the standard Normal distribution:
+<p>Alternatively, we can standardize both bounds and compute the equivalent probability under the standard normal distribution:
 <span class="math display">\[
 P(48 \leq X \leq 54) = P\left( \frac{48 - 50}{2} \leq \frac{X - 50}{2} \leq \frac{54 - 50}{2} \right) = P(-1 \leq Z \leq 2)
 \]</span></p>
@@ -705,30 +705,30 @@ P(48 \leq X \leq 54) = P\left( \frac{48 - 50}{2} \leq \frac{X - 50}{2} \leq \fra
 <pre><code>## [1] 0.8185946</code></pre>
 <p>As expected, both calculations yield the same result. Figure <a href="chap-normal-distribution.html#fig:normal-rods-interval">6.5</a> shows the relationship between the original distribution and its standardized version. The shaded areas represent the same probability under each distribution.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:normal-rods-interval"></span>
-<img src="_main_files/figure-html/normal-rods-interval-1.png" alt="Probability for an interval in an arbitrary Normal distribution alongside corresponding probability in the standard Normal distribution" width="90%" />
+<img src="_main_files/figure-html/normal-rods-interval-1.png" alt="Probability for an interval in an arbitrary normal distribution alongside corresponding probability in the standard normal distribution" width="90%" />
 <p class="caption">
-Figure 6.5: Probability for an interval in an arbitrary Normal distribution alongside corresponding probability in the standard Normal distribution
+Figure 6.5: Probability for an interval in an arbitrary normal distribution alongside corresponding probability in the standard normal distribution
 </p>
 </div>
 </div>
 </div>
-<p>In the preceding example, our desired calculation boiled down to the probability that our rv, following an arbitrary Normal distribution, would fall between the mean minus one standard deviation and the mean plus two standard deviations. There is a relevant rule of thumb that can be applied to approximate such a probability based on a Normal distribution.</p>
+<p>In the preceding example, our desired calculation boiled down to the probability that our rv, following an arbitrary normal distribution, would fall between the mean minus one standard deviation and the mean plus two standard deviations. There is a relevant rule of thumb that can be applied to approximate such a probability based on a normal distribution.</p>
 <div class="whitebox">
 <div class="note">
-<p><strong>Note</strong>: For a Normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, the following approximate probabilities hold:</p>
+<p><strong>Note</strong>: For a normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, the following approximate probabilities hold:</p>
 <ul>
 <li><span class="math inline">\(P(\mu - \sigma \leq X \leq \mu + \sigma) \approx 0.68\)</span></li>
 <li><span class="math inline">\(P(\mu - 2\sigma \leq X \leq \mu + 2\sigma) \approx 0.95\)</span></li>
 <li><span class="math inline">\(P(\mu - 3\sigma \leq X \leq \mu + 3\sigma) \approx 0.997\)</span></li>
 </ul>
-<p>These are sometimes referred to as the <strong><span id="def-the-normal-distribution-empirical-rule-68-95-99-7-rule">Empirical Rule</span></strong> or the <strong>68–95–99.7 Rule</strong>, and they provide a useful reference for assessing how typical or unusual an observation is under a Normal distribution.</p>
+<p>These are sometimes referred to as the <strong><span id="def-the-normal-distribution-empirical-rule-68-95-99-7-rule">Empirical Rule</span></strong> or the <strong>68–95–99.7 Rule</strong>, and they provide a useful reference for assessing how typical or unusual an observation is under a normal distribution.</p>
 </div>
 </div>
 <p>In Example <a href="chap-normal-distribution.html#exm:normal-rods">6.3</a>, our desired probability could be written as <span class="math inline">\(P(\mu - \sigma \leq X \leq \mu + 2\sigma)\)</span>, where <span class="math inline">\(X \sim N(50, 2^2)\)</span>, or equivalently <span class="math inline">\(P(-1 \leq Z \leq 2)\)</span>, where <span class="math inline">\(Z \sim N(0, 1)\)</span>. Note that we can write
 <span class="math display">\[
 P(-1 \leq Z \leq 2) = P(-1 \leq Z \leq 0) + P(0 \leq Z \leq 2)
 \]</span>
-According to the Empirical Rule, because the Normal distribution is symmetric about the mean, we have <span class="math inline">\(P(-1 \leq Z \leq 0) \approx 0.68 / 2 = 0.34\)</span> and <span class="math inline">\(P(0 \leq Z \leq 2) \approx 0.95 / 2 = 0.475\)</span>. Thus, we have the approximation
+According to the Empirical Rule, because the normal distribution is symmetric about the mean, we have <span class="math inline">\(P(-1 \leq Z \leq 0) \approx 0.68 / 2 = 0.34\)</span> and <span class="math inline">\(P(0 \leq Z \leq 2) \approx 0.95 / 2 = 0.475\)</span>. Thus, we have the approximation
 <span class="math display">\[
 P(48 \leq X \leq 54) = P(-1 \leq Z \leq 2) \approx 0.34 + 0.475 = 0.815
 \]</span></p>
@@ -737,56 +737,104 @@ P(48 \leq X \leq 54) = P(-1 \leq Z \leq 2) \approx 0.34 + 0.475 = 0.815
 <div id="quantiles" class="section level2 hasAnchor" number="6.5">
 <h2><span class="header-section-number">6.5</span> Quantiles<a href="chap-normal-distribution.html#quantiles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In Section <a href="chap-foundations.html#sec-percentiles-median">2.5.2</a>, we introduced the idea of a <strong>sample quartile</strong>. As with most sample statistics, there is a corresponding population parameter. The most general term used in this context is <strong>quantile</strong>. Think of this as a generalization of quartile or percentile. In particular, the <span class="math inline">\(p\)</span>th <strong>population quantile</strong> is the value such that the probability of being less than that value is <span class="math inline">\(p\)</span>. <!--In practice, we often assume that a particular named distribution describes the population of interest, in which case a quantile of this distribution represents a *population percentile*. --></p>
-<p>In what follows, we discuss quantiles of the standard Normal distribution (from section <a href="chap-normal-distribution.html#chap-non-standard-normal">6.1.1</a>). In section <a href="chap-normal-distribution.html#chap-normal-percentiles">6.5.2</a> we will show how to compute general Normal quantiles, both from converting the standard Normal quantiles then by computing the quantiles directly.</p>
+<p>In what follows, we discuss quantiles of the standard normal distribution (from section <a href="chap-normal-distribution.html#chap-non-standard-normal">6.1.1</a>). In section <a href="chap-normal-distribution.html#chap-normal-percentiles">6.5.2</a> we will show how to compute general normal quantiles, both from converting the standard normal quantiles then by computing the quantiles directly.</p>
 <div id="sec-normal-percentiles-visual" class="section level3 hasAnchor" number="6.5.1">
 <h3><span class="header-section-number">6.5.1</span> Computing Standard Normal Quantiles<a href="chap-normal-distribution.html#sec-normal-percentiles-visual" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A convention that we will make use of later in the book (e.g., Chapters <a href="chap-confidence-intervals.html#chap-confidence-intervals">9</a> and <a href="chap-hypothesis-testing.html#chap-hypothesis-testing">10</a> on confidence intervals and hypothesis tests, respectively) is to use the symbol <span class="math inline">\(z_{\alpha}\)</span> to represent the number in the standard Normal distribution such that <span class="math inline">\(P(Z &gt; z_{\alpha}) = \alpha\)</span>. Note that, because <span class="math inline">\(P(Z &gt; z_{\alpha}) = \alpha\)</span>, we have that <span class="math inline">\(P(Z \leq z_{\alpha}) = 1-\alpha\)</span>. In other words, <strong><span class="math inline">\(z_{\alpha}\)</span> is simply the <span class="math inline">\((1-\alpha)\times 100\)</span>th quantile of the standard Normal distribution</strong>.</p>
+<p>A convention that we will make use of later in the book (e.g., Chapters <a href="chap-confidence-intervals.html#chap-confidence-intervals">9</a> and <a href="chap-hypothesis-testing.html#chap-hypothesis-testing">10</a> on confidence intervals and hypothesis tests, respectively) is to use the symbol <span class="math inline">\(z_{1-\alpha}\)</span> to represent a number in the standard normal distribution.</p>
+<p>Essentially, <span class="math inline">\(z_{1-\alpha}\)</span> is a quantile that equals <span class="math inline">\(Q(1-\alpha)\)</span>, where <span class="math inline">\(Q\)</span> is the quantile function, or the inverse of the cumulative distribution function. The quantile function's input is probability, and the output is the respective quantile.</p>
 <p><span class="math display">\[
-z_p = -z_{1 - p}
+z_{1-\alpha} = Q(1-\alpha)
 \]</span></p>
-<p>We can use the <code>R</code> function <code>qnorm</code> to obtain quantiles (and hence <span class="math inline">\(z_{\alpha}\)</span> values) for the standard Normal distribution.</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="chap-normal-distribution.html#cb118-1" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>)</span></code></pre></div>
+<p>When we take the probability of both sides (using the cdf), we can see that the quantile function cancels out, because it is the inverse of the cdf.</p>
+<p><span class="math display">\[
+P(Z \leq z_{1-\alpha}) = 1-\alpha
+\]</span></p>
+<p>In other words, <strong><span class="math inline">\(z_{1-\alpha}\)</span> is simply the <span class="math inline">\((1-\alpha)\times 100\)</span>th quantile (or the percentile) of the standard normal distribution</strong>.</p>
+<p>We can use the <code>R</code> function <code>qnorm</code> to obtain quantiles (and hence <span class="math inline">\(z_{1-\alpha}\)</span> values) for the standard normal distribution.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="chap-normal-distribution.html#cb118-1" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb118-2"><a href="chap-normal-distribution.html#cb118-2" tabindex="-1"></a></span>
+<span id="cb118-3"><a href="chap-normal-distribution.html#cb118-3" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
 <pre><code>## [1] 1.644854</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="chap-normal-distribution.html#cb120-1" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.05</span>)</span></code></pre></div>
-<pre><code>## [1] -1.644854</code></pre>
-<p>Note that other named distributions have analogous functions in <code>R</code>; see e.g. <code>pbinom</code> &amp; <code>qbinom</code> for the binomial distribution, <code>pexp</code> &amp; <code>qexp</code> for the exponential distribution, etc. Note also that we will mimic the <span class="math inline">\(z_{\alpha}\)</span> notation with other probability distributions. For example, $^2_{; <span class="math inline">\(n - 1\)</span>}$ would indicate the <span class="math inline">\((1 - \alpha) \times 100\)</span>th quantile of the <span class="math inline">\(\chi^2\)</span> distribution with <span class="math inline">\(n - 1\)</span> degrees of freedom.</p>
+<p>Since <span class="math inline">\(z_{1-alpha}\)</span> = <span class="math inline">\(Q(1-\alpha)\)</span> = <span class="math inline">\(Q(1-0.05)\)</span> = <span class="math inline">\(Q(0.95)\)</span> = <span class="math inline">\(1.644854\)</span>, then <span class="math inline">\(P(Z \leq 1.644854) = 1 - \alpha\)</span> = <span class="math inline">\(0.95\)</span>. We can prove this here:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="chap-normal-distribution.html#cb120-1" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb120-2"><a href="chap-normal-distribution.html#cb120-2" tabindex="-1"></a></span>
+<span id="cb120-3"><a href="chap-normal-distribution.html#cb120-3" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.644854</span>)</span></code></pre></div>
+<pre><code>## [1] 0.95</code></pre>
+<p>This further proves that the <code>R</code> functions <code>qnorm</code> and <code>pnorm</code> are inverses.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="chap-normal-distribution.html#cb122-1" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb122-2"><a href="chap-normal-distribution.html#cb122-2" tabindex="-1"></a></span>
+<span id="cb122-3"><a href="chap-normal-distribution.html#cb122-3" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha)) <span class="co"># The inputs of qnorm (probability) will be the outputs of pnorm(qnorm()) = probability</span></span></code></pre></div>
+<pre><code>## [1] 0.95</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="chap-normal-distribution.html#cb124-1" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fu">pnorm</span>(<span class="fl">1.644854</span>)) <span class="co"># The inputs of pnorm (quantile) will be the outputs of pnorm(qnorm()) = quantile</span></span></code></pre></div>
+<pre><code>## [1] 1.644854</code></pre>
+<p>Note that other named distributions have analogous functions in <code>R</code>; see e.g. <code>pbinom</code> &amp; <code>qbinom</code> for the binomial distribution, <code>pexp</code> &amp; <code>qexp</code> for the exponential distribution, etc. Note also that we will mimic the <span class="math inline">\(z_{1-\alpha}\)</span> notation with other probability distributions. For example, <span class="math inline">\(\chi^2_{1-\alpha; n - 1}\)</span> would indicate the <span class="math inline">\((1 - \alpha) \times 100\text{th}\)</span> quantile of the <span class="math inline">\(\chi^2\)</span> distribution with <span class="math inline">\(n - 1\)</span> degrees of freedom.</p>
+<p>Because the normal distribution is symmetrical, the probability of getting a value greater than a given quantile equals the probability of getting a value less than the negative of that quantile. Additionally, the probability of getting a value <strong>less</strong> than a given quantile equals the probability of getting a value <strong>greater</strong> than the negative of that quantile. Using our previous notation, <span class="math inline">\(z_{1-\alpha}\)</span>, we already know:
+<span class="math display">\[
+P(Z \leq z_{1-\alpha}) = 1-\alpha
+\]</span>
+Now, we analyze <span class="math inline">\(z_{\alpha}\)</span>:
+<span class="math display">\[
+P(Z \leq z_{\alpha}) = \alpha
+\]</span>
+Using properties of the cdf, we have:
+<span class="math display">\[
+1 - P(Z \leq z_{\alpha}) = 1 - \alpha
+\]</span>
+<span class="math display">\[
+P(Z \geq z_{\alpha}) = 1-\alpha
+\]</span>
+Because our distribution is symmetrical, we can substitute <span class="math inline">\(P(Z \geq z_{\alpha})\)</span> for <span class="math inline">\(P(Z \leq -z_{\alpha})\)</span>
+<span class="math display">\[
+P(Z \leq -z_{\alpha}) = 1-\alpha
+\]</span>
+Since both <span class="math inline">\(P(Z \leq z_{1-\alpha}) = 1-\alpha = P(Z \leq -z_{\alpha})\)</span>:
+<span class="math display">\[
+P(Z \leq z_{1-\alpha}) = P(Z \leq -z_{\alpha})
+\]</span>
+<span class="math display">\[
+z_{1-\alpha} = -z_{\alpha}
+\]</span>
+Similarly:
+<span class="math display">\[
+z_{\alpha} = - z_{1-\alpha}
+\]</span></p>
 </div>
 <div id="chap-normal-percentiles" class="section level3 hasAnchor" number="6.5.2">
 <h3><span class="header-section-number">6.5.2</span> Computing Normal Quantiles<a href="chap-normal-distribution.html#chap-normal-percentiles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The following Proposition states a relationship between a quantile of an arbitrary Normal distribution and the analogous quantile of the standard Normal distribution.</p>
+<p>The following proposition states a relationship between a quantile of an arbitrary normal distribution and the analogous quantile of the standard normal distribution.</p>
 <div class="colbox">
 <div class="proposition">
-<p><span id="prp:unlabeled-div-81" class="proposition"><strong>Proposition 6.1  </strong></span>Let <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span> be a Normally distributed random variable, and let <span class="math inline">\(z_p\)</span> denote the <span class="math inline">\(p\)</span>th quantile of the standard Normal distribution (i.e., <span class="math inline">\(P(Z \leq z_p) = p\)</span> for <span class="math inline">\(Z \sim N(0,1)\)</span>). Then, the <span class="math inline">\(p\)</span>th quantile of <span class="math inline">\(X\)</span> is given by:</p>
+<p><span id="prp:unlabeled-div-81" class="proposition"><strong>Proposition 6.1  </strong></span>Let <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span> be a normally distributed random variable, and let <span class="math inline">\(z_{1-p}\)</span> denote the <span class="math inline">\(1-p\)</span>th quantile of the standard normal distribution (i.e., <span class="math inline">\(P(Z \leq z_{1-p}) = 1-p\)</span> for <span class="math inline">\(Z \sim N(0,1)\)</span>). Then, the <span class="math inline">\(p\)</span>th quantile of <span class="math inline">\(X\)</span> is given by:</p>
 <p><span class="math display">\[
-x_p = \mu + z_p \cdot \sigma
+x_{1-p} = \mu + z_{1-p} \cdot \sigma
 \]</span></p>
-<p>That is, to obtain a quantile of an arbitrary Normal distribution, we can scale and shift the corresponding standard Normal quantile.</p>
+<p>That is, to obtain a quantile of an arbitrary normal distribution, we can scale and shift the corresponding standard normal quantile.</p>
 </div>
 </div>
 <div class="whitebox">
 <div class="example">
-<p><span id="exm:unlabeled-div-82" class="example"><strong>Example 6.4  </strong></span>Suppose systolic blood pressure in a particular population of adult women follows a Normal distribution with mean <span class="math inline">\(\mu = 120\)</span> mmHg and standard deviation <span class="math inline">\(\sigma = 15\)</span> mmHg (that is, <span class="math inline">\(X \sim N(120, 15^2)\)</span>). What is the 95th percentile of systolic blood pressure in this population?</p>
+<p><span id="exm:unlabeled-div-82" class="example"><strong>Example 6.4  </strong></span>Suppose systolic blood pressure in a particular population of adult women follows a normal distribution with mean <span class="math inline">\(\mu = 120\)</span> mmHg and standard deviation <span class="math inline">\(\sigma = 15\)</span> mmHg (that is, <span class="math inline">\(X \sim N(120, 15^2)\)</span>). What is the 95th percentile of systolic blood pressure in this population?</p>
 <p><em>Solution</em>: We can answer this question in two ways:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Use <code>qnorm</code> directly:</li>
 </ol>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="chap-normal-distribution.html#cb122-1" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>, <span class="at">mean =</span> <span class="dv">120</span>, <span class="at">sd =</span> <span class="dv">15</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="chap-normal-distribution.html#cb126-1" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>, <span class="at">mean =</span> <span class="dv">120</span>, <span class="at">sd =</span> <span class="dv">15</span>)</span></code></pre></div>
 <pre><code>## [1] 144.6728</code></pre>
 <p>The 95th percentile of systolic blood pressure is 144.6728 mmHg.</p>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>Use the standard Normal quantile and apply the Proposition:</li>
+<li>Use the standard normal quantile and apply the proposition:</li>
 </ol>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="chap-normal-distribution.html#cb124-1" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="chap-normal-distribution.html#cb128-1" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>)</span></code></pre></div>
 <pre><code>## [1] 1.644854</code></pre>
-<p>The 95th quantile of the standard Normal distribution is about 1.6449. Applying the formula from the Proposition gives
+<p>The 95th quantile of the standard normal distribution is about 1.6449. Applying the formula from the proposition gives
 <span class="math display">\[
 x_{0.95} = 120 + 1.6449 \cdot 15 = 144.6735
 \]</span>
-with the difference relative to the earlier result being due to rounding. Figure <a href="chap-normal-distribution.html#fig:bp-percentile">6.6</a> shows the Normal pdf with the 95th quantile marked and the area under the curve to the left of it shaded in.</p>
+with the difference relative to the earlier result being due to rounding. Figure <a href="chap-normal-distribution.html#fig:bp-percentile">6.6</a> shows the normal pdf with the 95th quantile marked and the area under the curve to the left of it shaded in.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:bp-percentile"></span>
-<img src="_main_files/figure-html/bp-percentile-1.png" alt="Normal distribution of systolic blood pressure with 95th percentile shown" width="80%" />
+<img src="_main_files/figure-html/bp-percentile-1.png" alt="normal distribution of systolic blood pressure with 95th percentile shown" width="80%" />
 <p class="caption">
-Figure 6.6: Normal distribution of systolic blood pressure with 95th percentile shown
+Figure 6.6: normal distribution of systolic blood pressure with 95th percentile shown
 </p>
 </div>
 </div>
@@ -794,12 +842,12 @@ Figure 6.6: Normal distribution of systolic blood pressure with 95th percentile 
 </div>
 </div>
 <div id="sec-QQ-plots" class="section level2 hasAnchor" number="6.6">
-<h2><span class="header-section-number">6.6</span> Q-Q Plots for Checking Normality<a href="chap-normal-distribution.html#sec-QQ-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>One of the most commonly used graphical tools for assessing whether a dataset plausibly comes from a Normal distribution is the <strong><span id="def-the-normal-distribution-q-q-plot-quantile-quantile-plot">quantile-quantile plot</span></strong>, or <strong>Q-Q plot</strong>.</p>
-<p>A Q-Q plot compares the quantiles of the observed data to the corresponding quantiles of a theoretical distribution—in this case, the Normal distribution. If the data follow a Normal distribution, then the points on the Q-Q plot will approximately fall along a straight line. Systematic deviations from linearity suggest departures from Normality.</p>
+<h2><span class="header-section-number">6.6</span> Q-Q Plots for Checking normality<a href="chap-normal-distribution.html#sec-QQ-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One of the most commonly used graphical tools for assessing whether a dataset plausibly comes from a normal distribution is the <strong><span id="def-the-normal-distribution-q-q-plot-quantile-quantile-plot">quantile-quantile plot</span></strong>, or <strong>Q-Q plot</strong>.</p>
+<p>A Q-Q plot compares the quantiles of the observed data to the corresponding quantiles of a theoretical distribution—in this case, the normal distribution. If the data follow a normal distribution, then the points on the Q-Q plot will approximately fall along a straight line. Systematic deviations from linearity suggest departures from normality.</p>
 <p>Interpretation:</p>
 <ul>
-<li>Points that fall roughly along the line indicate approximate Normality.</li>
+<li>Points that fall roughly along the line indicate approximate normality.</li>
 <li>A curved pattern suggests skewness:</li>
 <li>Points that curve upward suggest right-skewness (long right tail).</li>
 <li>Points that curve downward suggest left-skewness (long left tail).</li>
@@ -809,75 +857,75 @@ Figure 6.6: Normal distribution of systolic blood pressure with 95th percentile 
 <pre><code>1.  Normal distribution
 2.  Right-skewed distribution (exponential)
 3.  Left-skewed distribution (negative exponential)</code></pre>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="chap-normal-distribution.html#cb127-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb127-2"><a href="chap-normal-distribution.html#cb127-2" tabindex="-1"></a></span>
-<span id="cb127-3"><a href="chap-normal-distribution.html#cb127-3" tabindex="-1"></a><span class="co"># Sample size</span></span>
-<span id="cb127-4"><a href="chap-normal-distribution.html#cb127-4" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb127-5"><a href="chap-normal-distribution.html#cb127-5" tabindex="-1"></a></span>
-<span id="cb127-6"><a href="chap-normal-distribution.html#cb127-6" tabindex="-1"></a><span class="co"># Simulated data</span></span>
-<span id="cb127-7"><a href="chap-normal-distribution.html#cb127-7" tabindex="-1"></a>normal_data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb127-8"><a href="chap-normal-distribution.html#cb127-8" tabindex="-1"></a>right_skewed <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> <span class="dv">1</span>)</span>
-<span id="cb127-9"><a href="chap-normal-distribution.html#cb127-9" tabindex="-1"></a>left_skewed <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">rexp</span>(n, <span class="at">rate =</span> <span class="dv">1</span>)</span>
-<span id="cb127-10"><a href="chap-normal-distribution.html#cb127-10" tabindex="-1"></a></span>
-<span id="cb127-11"><a href="chap-normal-distribution.html#cb127-11" tabindex="-1"></a><span class="co"># Plot settings</span></span>
-<span id="cb127-12"><a href="chap-normal-distribution.html#cb127-12" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
-<span id="cb127-13"><a href="chap-normal-distribution.html#cb127-13" tabindex="-1"></a></span>
-<span id="cb127-14"><a href="chap-normal-distribution.html#cb127-14" tabindex="-1"></a><span class="co"># Normal</span></span>
-<span id="cb127-15"><a href="chap-normal-distribution.html#cb127-15" tabindex="-1"></a><span class="fu">hist</span>(normal_data, <span class="at">main =</span> <span class="st">&quot;Histogram: Normal&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>)</span>
-<span id="cb127-16"><a href="chap-normal-distribution.html#cb127-16" tabindex="-1"></a><span class="fu">qqnorm</span>(normal_data, <span class="at">main =</span> <span class="st">&quot;Q-Q Plot: Normal&quot;</span>)</span>
-<span id="cb127-17"><a href="chap-normal-distribution.html#cb127-17" tabindex="-1"></a><span class="fu">qqline</span>(normal_data, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb127-18"><a href="chap-normal-distribution.html#cb127-18" tabindex="-1"></a></span>
-<span id="cb127-19"><a href="chap-normal-distribution.html#cb127-19" tabindex="-1"></a><span class="co"># Right-skewed</span></span>
-<span id="cb127-20"><a href="chap-normal-distribution.html#cb127-20" tabindex="-1"></a><span class="fu">hist</span>(right_skewed, <span class="at">main =</span> <span class="st">&quot;Histogram: Right-Skewed&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>)</span>
-<span id="cb127-21"><a href="chap-normal-distribution.html#cb127-21" tabindex="-1"></a><span class="fu">qqnorm</span>(right_skewed, <span class="at">main =</span> <span class="st">&quot;Q-Q Plot: Right-Skewed&quot;</span>)</span>
-<span id="cb127-22"><a href="chap-normal-distribution.html#cb127-22" tabindex="-1"></a><span class="fu">qqline</span>(right_skewed, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb127-23"><a href="chap-normal-distribution.html#cb127-23" tabindex="-1"></a></span>
-<span id="cb127-24"><a href="chap-normal-distribution.html#cb127-24" tabindex="-1"></a><span class="co"># Left-skewed</span></span>
-<span id="cb127-25"><a href="chap-normal-distribution.html#cb127-25" tabindex="-1"></a><span class="fu">hist</span>(left_skewed, <span class="at">main =</span> <span class="st">&quot;Histogram: Left-Skewed&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>)</span>
-<span id="cb127-26"><a href="chap-normal-distribution.html#cb127-26" tabindex="-1"></a><span class="fu">qqnorm</span>(left_skewed, <span class="at">main =</span> <span class="st">&quot;Q-Q Plot: Left-Skewed&quot;</span>)</span>
-<span id="cb127-27"><a href="chap-normal-distribution.html#cb127-27" tabindex="-1"></a><span class="fu">qqline</span>(left_skewed, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-48"></span>
-<img src="_main_files/figure-html/unnamed-chunk-48-1.png" alt="Histograms and Q-Q plots for three datasets: Normal (top), right-skewed (middle), and left-skewed (bottom)" width="672" />
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="chap-normal-distribution.html#cb131-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb131-2"><a href="chap-normal-distribution.html#cb131-2" tabindex="-1"></a></span>
+<span id="cb131-3"><a href="chap-normal-distribution.html#cb131-3" tabindex="-1"></a><span class="co"># Sample size</span></span>
+<span id="cb131-4"><a href="chap-normal-distribution.html#cb131-4" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb131-5"><a href="chap-normal-distribution.html#cb131-5" tabindex="-1"></a></span>
+<span id="cb131-6"><a href="chap-normal-distribution.html#cb131-6" tabindex="-1"></a><span class="co"># Simulated data</span></span>
+<span id="cb131-7"><a href="chap-normal-distribution.html#cb131-7" tabindex="-1"></a>normal_data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb131-8"><a href="chap-normal-distribution.html#cb131-8" tabindex="-1"></a>right_skewed <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="at">rate =</span> <span class="dv">1</span>)</span>
+<span id="cb131-9"><a href="chap-normal-distribution.html#cb131-9" tabindex="-1"></a>left_skewed <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">rexp</span>(n, <span class="at">rate =</span> <span class="dv">1</span>)</span>
+<span id="cb131-10"><a href="chap-normal-distribution.html#cb131-10" tabindex="-1"></a></span>
+<span id="cb131-11"><a href="chap-normal-distribution.html#cb131-11" tabindex="-1"></a><span class="co"># Plot settings</span></span>
+<span id="cb131-12"><a href="chap-normal-distribution.html#cb131-12" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb131-13"><a href="chap-normal-distribution.html#cb131-13" tabindex="-1"></a></span>
+<span id="cb131-14"><a href="chap-normal-distribution.html#cb131-14" tabindex="-1"></a><span class="co"># Normal</span></span>
+<span id="cb131-15"><a href="chap-normal-distribution.html#cb131-15" tabindex="-1"></a><span class="fu">hist</span>(normal_data, <span class="at">main =</span> <span class="st">&quot;Histogram: Normal&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>)</span>
+<span id="cb131-16"><a href="chap-normal-distribution.html#cb131-16" tabindex="-1"></a><span class="fu">qqnorm</span>(normal_data, <span class="at">main =</span> <span class="st">&quot;Q-Q Plot: Normal&quot;</span>)</span>
+<span id="cb131-17"><a href="chap-normal-distribution.html#cb131-17" tabindex="-1"></a><span class="fu">qqline</span>(normal_data, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb131-18"><a href="chap-normal-distribution.html#cb131-18" tabindex="-1"></a></span>
+<span id="cb131-19"><a href="chap-normal-distribution.html#cb131-19" tabindex="-1"></a><span class="co"># Right-skewed</span></span>
+<span id="cb131-20"><a href="chap-normal-distribution.html#cb131-20" tabindex="-1"></a><span class="fu">hist</span>(right_skewed, <span class="at">main =</span> <span class="st">&quot;Histogram: Right-Skewed&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>)</span>
+<span id="cb131-21"><a href="chap-normal-distribution.html#cb131-21" tabindex="-1"></a><span class="fu">qqnorm</span>(right_skewed, <span class="at">main =</span> <span class="st">&quot;Q-Q Plot: Right-Skewed&quot;</span>)</span>
+<span id="cb131-22"><a href="chap-normal-distribution.html#cb131-22" tabindex="-1"></a><span class="fu">qqline</span>(right_skewed, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb131-23"><a href="chap-normal-distribution.html#cb131-23" tabindex="-1"></a></span>
+<span id="cb131-24"><a href="chap-normal-distribution.html#cb131-24" tabindex="-1"></a><span class="co"># Left-skewed</span></span>
+<span id="cb131-25"><a href="chap-normal-distribution.html#cb131-25" tabindex="-1"></a><span class="fu">hist</span>(left_skewed, <span class="at">main =</span> <span class="st">&quot;Histogram: Left-Skewed&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">col =</span> <span class="st">&quot;lightgray&quot;</span>)</span>
+<span id="cb131-26"><a href="chap-normal-distribution.html#cb131-26" tabindex="-1"></a><span class="fu">qqnorm</span>(left_skewed, <span class="at">main =</span> <span class="st">&quot;Q-Q Plot: Left-Skewed&quot;</span>)</span>
+<span id="cb131-27"><a href="chap-normal-distribution.html#cb131-27" tabindex="-1"></a><span class="fu">qqline</span>(left_skewed, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-50"></span>
+<img src="_main_files/figure-html/unnamed-chunk-50-1.png" alt="Histograms and Q-Q plots for three datasets: Normal (top), right-skewed (middle), and left-skewed (bottom)" width="672" />
 <p class="caption">
 Figure 6.7: Histograms and Q-Q plots for three datasets: Normal (top), right-skewed (middle), and left-skewed (bottom)
 </p>
 </div>
 <p>These plots illustrate how Q-Q plots reveal distributional shape:</p>
 <ul>
-<li>The Q-Q plot for the Normal data shows points that mostly fall along a straight line.</li>
+<li>The Q-Q plot for the normal data shows points that mostly fall along a straight line.</li>
 <li>The right-skewed data deviate upward in the tails.</li>
 <li>The left-skewed data deviate downward in the tails.</li>
 </ul>
-<p>Q-Q plots are a valuable visual diagnostic, especially when interpreted in conjunction with histograms and contextual knowledge of the data. For large datasets, even minor departures from Normality may appear in a Q-Q plot, while for small datasets, random variation may obscure real patterns.</p>
+<p>Q-Q plots are a valuable visual diagnostic, especially when interpreted in conjunction with histograms and contextual knowledge of the data. For large datasets, even minor departures from normality may appear in a Q-Q plot, while for small datasets, random variation may obscure real patterns.</p>
 </div>
 <div id="sec-t-distribution" class="section level2 hasAnchor" number="6.7">
 <h2><span class="header-section-number">6.7</span> t Distribution<a href="chap-normal-distribution.html#sec-t-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <strong>t distribution</strong> arises frequently in statistical inference, particularly when conducting inference on a population mean based on a small sample. It is similar in shape to the standard Normal distribution but has heavier tails, which reflect the additional uncertainty associated with estimating the population standard deviation from the sample.</p>
+<p>The <strong>t distribution</strong> arises frequently in statistical inference, particularly when conducting inference on a population mean based on a small sample. It is similar in shape to the standard normal distribution but has heavier tails, which reflect the additional uncertainty associated with estimating the population standard deviation from the sample.</p>
 <div class="colbox">
 <div class="definition">
-<p><span id="def:unlabeled-div-83" class="definition"><strong>Definition 6.4  </strong></span>Let <span class="math inline">\(Z\)</span> be a standard Normal random variable and let <span class="math inline">\(V\)</span> be an independent chi-squared random variable with <span class="math inline">\(\nu\)</span> degrees of freedom. Then the random variable</p>
+<p><span id="def:unlabeled-div-83" class="definition"><strong>Definition 6.4  </strong></span>Let <span class="math inline">\(Z\)</span> be a standard normal random variable and let <span class="math inline">\(V\)</span> be an independent chi-squared random variable with <span class="math inline">\(\nu\)</span> degrees of freedom. Then the random variable</p>
 <p><span class="math display">\[
 T = \frac{Z}{\sqrt{V / \nu}}
 \]</span></p>
 <p>follows a <strong>t distribution with <span class="math inline">\(\nu\)</span> degrees of freedom</strong>, denoted <span class="math inline">\(T \sim t_\nu\)</span>.</p>
 </div>
 </div>
-<p>The t distribution is symmetric about 0 and becomes increasingly similar to the standard Normal distribution as the degrees of freedom increase. Figure <a href="chap-normal-distribution.html#fig:t-distribution-pdfs">6.8</a> shows a few t distributions for various values of <span class="math inline">\(\nu\)</span>.</p>
+<p>The t distribution is symmetric about 0 and becomes increasingly similar to the standard normal distribution as the degrees of freedom increase. Figure <a href="chap-normal-distribution.html#fig:t-distribution-pdfs">6.8</a> shows a few t distributions for various values of <span class="math inline">\(\nu\)</span>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:t-distribution-pdfs"></span>
-<img src="_main_files/figure-html/t-distribution-pdfs-1.png" alt="Example t distribution pdfs compared to the standard Normal pdf" width="80%" />
+<img src="_main_files/figure-html/t-distribution-pdfs-1.png" alt="Example t distribution pdfs compared to the standard normal pdf" width="80%" />
 <p class="caption">
-Figure 6.8: Example t distribution pdfs compared to the standard Normal pdf
+Figure 6.8: Example t distribution pdfs compared to the standard normal pdf
 </p>
 </div>
-<p>As with other common named probability distributions, you can generate random numbers, compute probabilities, obtain quantiles, etc. for a t distribution with the <code>R</code> functions <code>rt</code>, <code>pt</code>, <code>qt</code>, and <code>dt</code>. Our first usage of the t distribution will be in Chapter <a href="chap-confidence-intervals.html#chap-confidence-intervals">9</a>.</p>
-<p>In particular, we will make use of the notation <span class="math inline">\(t_{\alpha,n-1}\)</span> to be the analogous object to <span class="math inline">\(z_{\alpha}\)</span> as we defined in Section <a href="chap-normal-distribution.html#sec-normal-percentiles-visual">6.5.1</a>:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="chap-normal-distribution.html#cb128-1" tabindex="-1"></a>n       <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb128-2"><a href="chap-normal-distribution.html#cb128-2" tabindex="-1"></a>nu      <span class="ot">&lt;-</span> n<span class="dv">-1</span></span>
-<span id="cb128-3"><a href="chap-normal-distribution.html#cb128-3" tabindex="-1"></a>alpha   <span class="ot">&lt;-</span> .<span class="dv">01</span></span>
-<span id="cb128-4"><a href="chap-normal-distribution.html#cb128-4" tabindex="-1"></a>t_alpha <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha,nu)</span>
-<span id="cb128-5"><a href="chap-normal-distribution.html#cb128-5" tabindex="-1"></a>t_alpha</span></code></pre></div>
+<p>As with other common named probability distributions, you can generate random numbers, compute probabilities, obtain quantiles, etc. for a t distribution with the <code>R</code> functions <code>rt</code>, <code>pt</code>, <code>qt</code>, and <code>dt</code>. Our first usage of the t distribution will be in (Chapter <a href="chap-confidence-intervals.html#chap-confidence-intervals">9</a>).</p>
+<p>In particular, we will make use of the notation <span class="math inline">\(t_{1-\alpha,n-1}\)</span> to be the analogous object to <span class="math inline">\(z_{1-\alpha}\)</span> as we defined in Section <a href="chap-normal-distribution.html#sec-normal-percentiles-visual">6.5.1</a>:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="chap-normal-distribution.html#cb132-1" tabindex="-1"></a>n       <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb132-2"><a href="chap-normal-distribution.html#cb132-2" tabindex="-1"></a>nu      <span class="ot">&lt;-</span> n<span class="dv">-1</span></span>
+<span id="cb132-3"><a href="chap-normal-distribution.html#cb132-3" tabindex="-1"></a>alpha   <span class="ot">&lt;-</span> .<span class="dv">01</span></span>
+<span id="cb132-4"><a href="chap-normal-distribution.html#cb132-4" tabindex="-1"></a>t_alpha <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha,nu)</span>
+<span id="cb132-5"><a href="chap-normal-distribution.html#cb132-5" tabindex="-1"></a>t_alpha</span></code></pre></div>
 <pre><code>## [1] 2.462021</code></pre>
-<p>This means that the degrees of freedom is <span class="math inline">\(\nu = n-1 = 29\)</span> and hence <span class="math inline">\(t_{.01,29} =\)</span> 2.4620214.</p>
+<p>This means that the degrees of freedom is <span class="math inline">\(\nu = n-1 = 29\)</span> and hence <span class="math inline">\(t_{1-.01,29} =\)</span> 2.4620214.</p>
 
 </div>
 </div>

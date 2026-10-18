@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Probability and Statistics: Making Principled Decisions in an Uncertain World</title>
-  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   
-  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
-<meta name="author" content="Alan Dabney, Scott Crawford, Darren Homrighausen" />
+<meta name="author" content="Alan Dabney, Scott Crawford, and Darren Homrighausen" />
 
 
-<meta name="date" content="2026-09-25" />
+<meta name="date" content="2026-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -282,7 +282,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.5.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-normal-percentiles-visual"><i class="fa fa-check"></i><b>6.5.1</b> Computing Standard Normal Quantiles</a></li>
 <li class="chapter" data-level="6.5.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-normal-percentiles"><i class="fa fa-check"></i><b>6.5.2</b> Computing Normal Quantiles</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking Normality</a></li>
+<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking normality</a></li>
 <li class="chapter" data-level="6.7" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-t-distribution"><i class="fa fa-check"></i><b>6.7</b> t Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html"><i class="fa fa-check"></i><b>7</b> Joint and Conditional Distributions</a>
@@ -531,18 +531,18 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="header">
 <h1 class="title">Probability and Statistics: Making Principled Decisions in an Uncertain World</h1>
-<p class="author"><em>Alan Dabney, Scott Crawford, Darren Homrighausen</em></p>
-<p class="date"><em>2026-09-25</em></p>
+<p class="author"><em>Alan Dabney, Scott Crawford, and Darren Homrighausen</em></p>
+<p class="date"><em>2026-10-18</em></p>
 </div>
 <div id="preface" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="about" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> About<a href="index.html#about" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This is an Open Educational Resource (OER) textbook on introductory statistics for audience of undergraduate students who have taken calculus. The book was written in R Markdown with the <code>bookdown</code> package <span class="citation">(<a href="#ref-xie2015">Xie 2015</a>)</span>. We have claimed an <a href="https://opensource.org/license/mit/">MIT License</a>, which enables users to freely access, modify, and share the content while adhering to the license's terms.</p>
+<p>This is an Open Educational Resource (OER) textbook on introductory Statistics for an audience of undergraduate students who have taken calculus. The book was written in R Markdown with the <code>bookdown</code> package <span class="citation">(<a href="#ref-xie2015">Xie 2015</a>)</span>. We have claimed an <a href="https://opensource.org/license/mit/">MIT License</a>, which enables users to freely access, modify, and share the content while adhering to the license's terms.</p>
 </div>
 <div id="r" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> R<a href="index.html#r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We use the <code>R</code> programming language throughout the book for data analysis, visualization, and computation. You can download the base version of <code>R</code> and view extensive documentation at the <a href="https://cran.r-project.org/">Comprehensive R Archive Network (CRAN)</a> website. <code>RStudio</code> is an integrated development environment (IDE) that many people find easier to use than base <code>R</code>. You can download <code>RStudio</code> and access many training materials at the <a href="https://www.rstudio.com/">RStudio website</a>. There is a wide array of excellent resources for learning <code>R</code>, including the <a href="https://www.datacamp.com/">DataCamp</a> and <a href="https://www.coursera.org/">Coursera</a> online learning repositories and the book <em>R for Data Science</em> <span class="citation">(<a href="#ref-RDataScience">Wickham et al. 2023</a>)</span>.</p>
+<p>We use the <code>R</code> programming language throughout the book for data analysis, visualization, and computation. You can download the base version of <code>R</code> and view extensive documentation at the <a href="https://cran.r-project.org/">Comprehensive R Archive Network (CRAN)</a> website. <code>RStudio</code> is an integrated development environment (IDE) that many people find easier to use than base <code>R</code>. You can download <code>RStudio</code> and access many training materials at the <a href="https://posit.co/downloads">RStudio website</a>. There is a wide array of excellent resources for learning <code>R</code>, including the <a href="https://www.datacamp.com/">DataCamp</a> and <a href="https://www.coursera.org/">Coursera</a> online learning repositories and the book <em>R for Data Science</em> <span class="citation">(<a href="#ref-RDataScience">Wickham et al. 2023</a>)</span>.</p>
 </div>
 <div id="supplemental-resources" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> Supplemental Resources<a href="index.html#supplemental-resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -550,7 +550,7 @@ div.csl-indent {
 </div>
 <div id="acknowledgements" class="section level2 hasAnchor" number="1.4">
 <h2><span class="header-section-number">1.4</span> Acknowledgements<a href="index.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We thank Trey Turner, Craig Cabrera, Drew Kearny, Aditya Kovilur, Shane Klingelberger, Rebecca Lee, and Yunhe Liu for their assistance with obtaining data sets, writing <code>R</code> code, and creating exercises.</p>
+<p>We thank Trey Turner, Craig Cabrera, Drew Kearny, Aditya Kovilur, Shane Klingelberger, Rebecca Lee, and Yunhe Liu for assisting in obtaining data sets, writing <code>R</code> code, and creating exercises.</p>
 
 </div>
 </div>

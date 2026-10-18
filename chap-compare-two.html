@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 Comparing Two Populations | Probability and Statistics: Making Principled Decisions in an Uncertain World</title>
-  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 Comparing Two Populations | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta property="og:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 11 Comparing Two Populations | Probability and Statistics: Making Principled Decisions in an Uncertain World" />
   
-  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
+  <meta name="twitter:description" content="OER textbook designed to support calculus-based introductory undergraduate Statistics training. At Texas A&amp;M University, this book is appropriate for the two-course sequence STAT 211 &amp; 212." />
   
 
-<meta name="author" content="Alan Dabney, Scott Crawford, Darren Homrighausen" />
+<meta name="author" content="Alan Dabney, Scott Crawford, and Darren Homrighausen" />
 
 
-<meta name="date" content="2026-09-25" />
+<meta name="date" content="2026-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -282,7 +282,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.5.1" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-normal-percentiles-visual"><i class="fa fa-check"></i><b>6.5.1</b> Computing Standard Normal Quantiles</a></li>
 <li class="chapter" data-level="6.5.2" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#chap-normal-percentiles"><i class="fa fa-check"></i><b>6.5.2</b> Computing Normal Quantiles</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking Normality</a></li>
+<li class="chapter" data-level="6.6" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-QQ-plots"><i class="fa fa-check"></i><b>6.6</b> Q-Q Plots for Checking normality</a></li>
 <li class="chapter" data-level="6.7" data-path="chap-normal-distribution.html"><a href="chap-normal-distribution.html#sec-t-distribution"><i class="fa fa-check"></i><b>6.7</b> t Distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="chap-joint-conditional.html"><a href="chap-joint-conditional.html"><i class="fa fa-check"></i><b>7</b> Joint and Conditional Distributions</a>
@@ -543,7 +543,7 @@ X_1, X_2, \dots, X_{n_1} \overset{\text{iid}}{\sim} N(\mu_1, \sigma_1^2)
 Y_1, Y_2, \dots, Y_{n_2} \overset{\text{iid}}{\sim} N(\mu_2, \sigma_2^2)
 \]</span></p>
 <p>where <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> are the population means, <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span> are the population standard deviations, and the two samples are assumed to be <em>independent of each other</em>.</p>
-<p>Alternatively, if the population distributions are not Normal, we may instead rely on the Central Limit Theorem (CLT), provided that both sample sizes <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are sufficiently large. For the purposes of this book, we will typically regard <span class="math inline">\(n_1 \geq 30\)</span> and <span class="math inline">\(n_2 \geq 30\)</span> as "large enough" for the CLT to apply.</p>
+<p>Alternatively, if the population distributions are not normal, we may instead rely on the Central Limit Theorem (CLT), provided that both sample sizes <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are sufficiently large. For the purposes of this book, we will typically regard <span class="math inline">\(n_1 \geq 30\)</span> and <span class="math inline">\(n_2 \geq 30\)</span> as "large enough" for the CLT to apply.</p>
 <p>Our goal is to conduct inference on the difference in population means:</p>
 <p><span class="math display">\[
 \Delta = \mu_1 - \mu_2
@@ -576,7 +576,7 @@ Y_1, Y_2, \dots, Y_{n_2} \overset{\text{iid}}{\sim} N(\mu_2, \sigma_2^2)
 <p>is given by:</p>
 <p><span class="math display">\[
 \left[
-(\bar{X} - \bar{Y}) \pm z_{\alpha/2} \cdot
+(\bar{X} - \bar{Y}) \pm z_{1-\alpha/2} \cdot
 \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}
 \right]
 \]</span></p>
@@ -605,20 +605,20 @@ T_{obs} = \frac{(\bar{x} - \bar{y}) - 0}
 \]</span>
 We reject <span class="math inline">\(H_0\)</span> at significance level <span class="math inline">\(\alpha\)</span> if:</p>
 <p><span class="math display">\[
-|T_{obs}| &gt; z_{\alpha/2}
+|T_{obs}| &gt; z_{1-\alpha/2}
 \]</span></p>
-<p>or, equivalently, if the p-value is less than <span class="math inline">\(\alpha\)</span>. For one-sided alternatives, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{obs} &gt; z_\alpha\)</span> (upper-tailed) or <span class="math inline">\(T_{obs} &lt; -z_\alpha\)</span> (lower-tailed).</p>
+<p>or, equivalently, if the p-value is less than <span class="math inline">\(\alpha\)</span>. For one-sided alternatives, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{obs} &gt; z_{1-\alpha}\)</span> (upper-tailed) or <span class="math inline">\(T_{obs} &lt; -z_{1-\alpha}\)</span> (lower-tailed).</p>
 </div>
 </div>
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:two-means-coffee-ex" class="example"><strong>Example 11.1  </strong></span>Consider a dataset consisting of the weights of cups of coffee (in grams of brewed coffee extracted) of two profiles (<span class="math inline">\(n_1 = 15\)</span> cups from profile 'A' and <span class="math inline">\(n_2 = 14\)</span> cups from profile 'B'); the data are available in the <code>data</code> folder for the book, in the comma-delimited text file <code>coffee_2.csv</code>.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="chap-compare-two.html#cb236-1" tabindex="-1"></a>dta <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/coffee_2.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="chap-compare-two.html#cb240-1" tabindex="-1"></a>dta <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/coffee_2.csv&quot;</span>)</span></code></pre></div>
 <p>The dataset contains the quantitative variable <code>x</code> for all 29 weights and the qualitative variable <code>grp</code> (taking values <code>A</code> and <code>B</code>) that designates the profile of each coffee cup. The following <code>R</code> code prints the dimensions of the dataset, displays the first few rows, and makes side-by-side boxplots of the weights by profile. We also create some new variables for later use.</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="chap-compare-two.html#cb237-1" tabindex="-1"></a><span class="co"># Quick inspection of data</span></span>
-<span id="cb237-2"><a href="chap-compare-two.html#cb237-2" tabindex="-1"></a><span class="fu">dim</span>(dta)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="chap-compare-two.html#cb241-1" tabindex="-1"></a><span class="co"># Quick inspection of data</span></span>
+<span id="cb241-2"><a href="chap-compare-two.html#cb241-2" tabindex="-1"></a><span class="fu">dim</span>(dta)</span></code></pre></div>
 <pre><code>## [1] 29  2</code></pre>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="chap-compare-two.html#cb239-1" tabindex="-1"></a><span class="fu">head</span>(dta)</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="chap-compare-two.html#cb243-1" tabindex="-1"></a><span class="fu">head</span>(dta)</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -655,68 +655,68 @@ We reject <span class="math inline">\(H_0\)</span> at significance level <span c
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="chap-compare-two.html#cb240-1" tabindex="-1"></a><span class="fu">boxplot</span>(x <span class="sc">~</span> grp, <span class="at">data =</span> dta)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-106-1.png" alt="" width="672" /></p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="chap-compare-two.html#cb241-1" tabindex="-1"></a><span class="co"># Extract data components</span></span>
-<span id="cb241-2"><a href="chap-compare-two.html#cb241-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">with</span>(dta, x[grp <span class="sc">==</span> <span class="st">&quot;A&quot;</span>])</span>
-<span id="cb241-3"><a href="chap-compare-two.html#cb241-3" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">with</span>(dta, x[grp <span class="sc">==</span> <span class="st">&quot;B&quot;</span>])</span>
-<span id="cb241-4"><a href="chap-compare-two.html#cb241-4" tabindex="-1"></a>n_1 <span class="ot">=</span> <span class="fu">length</span>(x)</span>
-<span id="cb241-5"><a href="chap-compare-two.html#cb241-5" tabindex="-1"></a>n_2 <span class="ot">=</span> <span class="fu">length</span>(y)</span></code></pre></div>
-<p>The sample sizes are not large enough to appeal to the CLT, so, before applying the <span class="math inline">\(z\)</span>-based methods of Proposition <a href="chap-compare-two.html#prp:ci-two-sample-means-z">11.1</a> and <a href="chap-compare-two.html#prp:z-test-two-sample-means">11.2</a>, we create Normal QQ plots to check whether the data are plausibly Normally distributed.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="chap-compare-two.html#cb242-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb242-2"><a href="chap-compare-two.html#cb242-2" tabindex="-1"></a><span class="fu">qqnorm</span>(x, <span class="at">main =</span> <span class="st">&quot;Q–Q Plot  Profile A&quot;</span>); <span class="fu">qqline</span>(x)</span>
-<span id="cb242-3"><a href="chap-compare-two.html#cb242-3" tabindex="-1"></a><span class="fu">qqnorm</span>(y, <span class="at">main =</span> <span class="st">&quot;Q–Q Plot  Profile B&quot;</span>); <span class="fu">qqline</span>(y)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-107-1.png" alt="" width="672" /></p>
-<p>As discussed in Section <a href="chap-normal-distribution.html#sec-QQ-plots">6.6</a>, our interest in QQ plots is in whether the plotted points follow roughly a linear pattern; if the pattern is linear, then we have support for the assumption that the underlying distribution is Normal. With our data, the QQ plots do support the assumption of Normality.</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="chap-compare-two.html#cb244-1" tabindex="-1"></a><span class="fu">boxplot</span>(x <span class="sc">~</span> grp, <span class="at">data =</span> dta)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-108-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="chap-compare-two.html#cb245-1" tabindex="-1"></a><span class="co"># Extract data components</span></span>
+<span id="cb245-2"><a href="chap-compare-two.html#cb245-2" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">with</span>(dta, x[grp <span class="sc">==</span> <span class="st">&quot;A&quot;</span>])</span>
+<span id="cb245-3"><a href="chap-compare-two.html#cb245-3" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">with</span>(dta, x[grp <span class="sc">==</span> <span class="st">&quot;B&quot;</span>])</span>
+<span id="cb245-4"><a href="chap-compare-two.html#cb245-4" tabindex="-1"></a>n_1 <span class="ot">=</span> <span class="fu">length</span>(x)</span>
+<span id="cb245-5"><a href="chap-compare-two.html#cb245-5" tabindex="-1"></a>n_2 <span class="ot">=</span> <span class="fu">length</span>(y)</span></code></pre></div>
+<p>The sample sizes are not large enough to appeal to the CLT, so, before applying the <span class="math inline">\(z\)</span>-based methods of Proposition <a href="chap-compare-two.html#prp:ci-two-sample-means-z">11.1</a> and <a href="chap-compare-two.html#prp:z-test-two-sample-means">11.2</a>, we create normal QQ plots to check whether the data are plausibly normally distributed.</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="chap-compare-two.html#cb246-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb246-2"><a href="chap-compare-two.html#cb246-2" tabindex="-1"></a><span class="fu">qqnorm</span>(x, <span class="at">main =</span> <span class="st">&quot;Q–Q Plot  Profile A&quot;</span>); <span class="fu">qqline</span>(x)</span>
+<span id="cb246-3"><a href="chap-compare-two.html#cb246-3" tabindex="-1"></a><span class="fu">qqnorm</span>(y, <span class="at">main =</span> <span class="st">&quot;Q–Q Plot  Profile B&quot;</span>); <span class="fu">qqline</span>(y)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-109-1.png" alt="" width="672" /></p>
+<p>As discussed in Section <a href="chap-normal-distribution.html#sec-QQ-plots">6.6</a>, our interest in QQ plots is in whether the plotted points follow roughly a linear pattern; if the pattern is linear, then we have support for the assumption that the underlying distribution is normal. With our data, the QQ plots do support the assumption of normality.</p>
 <p>We will assume for now that the population variances are known to be <span class="math inline">\(\sigma_1^2 = \sigma_2^2 = 20\)</span>. Applying the result in Proposition <a href="chap-compare-two.html#prp:ci-two-sample-means-z">11.1</a>, we compute a 95% confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span> as follows:</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="chap-compare-two.html#cb243-1" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
-<span id="cb243-2"><a href="chap-compare-two.html#cb243-2" tabindex="-1"></a>sigma_1 <span class="ot">=</span> sigma_2 <span class="ot">=</span> <span class="fu">sqrt</span>(<span class="dv">20</span>)</span>
-<span id="cb243-3"><a href="chap-compare-two.html#cb243-3" tabindex="-1"></a>xBar <span class="ot">=</span> <span class="fu">mean</span>(x) </span>
-<span id="cb243-4"><a href="chap-compare-two.html#cb243-4" tabindex="-1"></a>yBar <span class="ot">=</span> <span class="fu">mean</span>(y)</span>
-<span id="cb243-5"><a href="chap-compare-two.html#cb243-5" tabindex="-1"></a>se   <span class="ot">=</span> <span class="fu">sqrt</span>(sigma_1<span class="sc">**</span><span class="dv">2</span> <span class="sc">/</span> n_1 <span class="sc">+</span> sigma_2<span class="sc">**</span><span class="dv">2</span> <span class="sc">/</span> n_2)</span>
-<span id="cb243-6"><a href="chap-compare-two.html#cb243-6" tabindex="-1"></a><span class="fu">c</span>(xBar <span class="sc">-</span> yBar <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> se,</span>
-<span id="cb243-7"><a href="chap-compare-two.html#cb243-7" tabindex="-1"></a>  xBar <span class="sc">-</span> yBar <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> se)</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="chap-compare-two.html#cb247-1" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb247-2"><a href="chap-compare-two.html#cb247-2" tabindex="-1"></a>sigma_1 <span class="ot">=</span> sigma_2 <span class="ot">=</span> <span class="fu">sqrt</span>(<span class="dv">20</span>)</span>
+<span id="cb247-3"><a href="chap-compare-two.html#cb247-3" tabindex="-1"></a>xBar <span class="ot">=</span> <span class="fu">mean</span>(x) </span>
+<span id="cb247-4"><a href="chap-compare-two.html#cb247-4" tabindex="-1"></a>yBar <span class="ot">=</span> <span class="fu">mean</span>(y)</span>
+<span id="cb247-5"><a href="chap-compare-two.html#cb247-5" tabindex="-1"></a>se   <span class="ot">=</span> <span class="fu">sqrt</span>(sigma_1<span class="sc">**</span><span class="dv">2</span> <span class="sc">/</span> n_1 <span class="sc">+</span> sigma_2<span class="sc">**</span><span class="dv">2</span> <span class="sc">/</span> n_2)</span>
+<span id="cb247-6"><a href="chap-compare-two.html#cb247-6" tabindex="-1"></a><span class="fu">c</span>(xBar <span class="sc">-</span> yBar <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> se,</span>
+<span id="cb247-7"><a href="chap-compare-two.html#cb247-7" tabindex="-1"></a>  xBar <span class="sc">-</span> yBar <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> se)</span></code></pre></div>
 <pre><code>## [1] -0.3824982  6.1320220</code></pre>
 <p>Similarly, applying the result in Proposition <a href="chap-compare-two.html#prp:z-test-two-sample-means">11.2</a>, we test <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> as follows:</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="chap-compare-two.html#cb245-1" tabindex="-1"></a>Tobs <span class="ot">=</span> (xBar <span class="sc">-</span> yBar) <span class="sc">/</span> se</span>
-<span id="cb245-2"><a href="chap-compare-two.html#cb245-2" tabindex="-1"></a>pval <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(Tobs)))</span>
-<span id="cb245-3"><a href="chap-compare-two.html#cb245-3" tabindex="-1"></a>pval</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="chap-compare-two.html#cb249-1" tabindex="-1"></a>Tobs <span class="ot">=</span> (xBar <span class="sc">-</span> yBar) <span class="sc">/</span> se</span>
+<span id="cb249-2"><a href="chap-compare-two.html#cb249-2" tabindex="-1"></a>pval <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(Tobs)))</span>
+<span id="cb249-3"><a href="chap-compare-two.html#cb249-3" tabindex="-1"></a>pval</span></code></pre></div>
 <pre><code>## [1] 0.08366485</code></pre>
 <p>We do not have sufficient evidence to conclude that the population means are different (the confidence interval contains the value zero, and the p-value is greater than 0.05 = <span class="math inline">\(\alpha\)</span>).</p>
 </div>
 </div>
 <div id="power-and-sample-size-calculations-1" class="section level4 hasAnchor" number="11.1.1.1">
 <h4><span class="header-section-number">11.1.1.1</span> Power and Sample Size Calculations<a href="chap-compare-two.html#power-and-sample-size-calculations-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>We can approach the calculation of statistical power to detect a particular difference in population means, <span class="math inline">\(\Delta = \mu_1 - \mu_2\)</span>, and associated sample size requirements using the same principles as were used in Chapter <a href="chap-hypothesis-testing.html#chap-hypothesis-testing">10</a>. In fact, in this idealized context of Normal populations and assumed-known variances, the calculations are relatively simple and can be done manually.</p>
+<p>We can approach the calculation of statistical power to detect a particular difference in population means, <span class="math inline">\(\Delta = \mu_1 - \mu_2\)</span>, and associated sample size requirements using the same principles as were used in Chapter <a href="chap-hypothesis-testing.html#chap-hypothesis-testing">10</a>. In fact, in this idealized context of normal populations and assumed-known variances, the calculations are relatively simple and can be done manually.</p>
 <p>Suppose we wish to test <span class="math inline">\(H_0: \mu_1 - \mu_2 = \Delta_0\)</span> against the alternative <span class="math inline">\(H_a: \mu_1 - \mu_2 \neq \Delta_0\)</span>. If the true difference is actually <span class="math inline">\(\Delta&#39;\)</span>, the power of the test is the probability that we correctly reject the null hypothesis.</p>
 <div class="colbox">
 <div class="proposition">
 <p><span id="prp:power-two-sample-means-z" class="proposition"><strong>Proposition 11.3  </strong></span>For a test with Type I error rate <span class="math inline">\(\alpha\)</span>, the power <span class="math inline">\(1-\beta\)</span> to detect a true difference <span class="math inline">\(\Delta&#39;\)</span> is given by:</p>
-<p><span class="math display">\[1 - \beta = \Phi\left( -z_{\alpha/2} - \frac{\Delta&#39; - \Delta_0}{\sigma_{\bar{X} - \bar{Y}}} \right) + 1 - \Phi\left( z_{\alpha/2} - \frac{\Delta&#39; - \Delta_0}{\sigma_{\bar{X} - \bar{Y}}} \right)\]</span></p>
-<p>where <span class="math inline">\(\Phi(\cdot)\)</span> is commonly-used notation for the standard Normal CDF (i.e., <span class="math inline">\(\Phi(a) = Pr(Z \leq a)\)</span>), and the standard error of the difference is:</p>
+<p><span class="math display">\[1 - \beta = \Phi\left( -z_{1-\alpha/2} - \frac{\Delta&#39; - \Delta_0}{\sigma_{\bar{X} - \bar{Y}}} \right) + 1 - \Phi\left( z_{1-\alpha/2} - \frac{\Delta&#39; - \Delta_0}{\sigma_{\bar{X} - \bar{Y}}} \right)\]</span></p>
+<p>where <span class="math inline">\(\Phi(\cdot)\)</span> is commonly-used notation for the standard normal CDF (i.e., <span class="math inline">\(\Phi(a) = P(Z \leq a)\)</span>), and the standard error of the difference is:</p>
 <p><span class="math display">\[\sigma_{\bar{X} - \bar{Y}} = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}\]</span></p>
 </div>
 </div>
 <p>If we assume equal sample sizes (<span class="math inline">\(n_1 = n_2 = n\)</span>) and equal variances (<span class="math inline">\(\sigma_1^2 = \sigma_2^2 = \sigma^2\)</span>), the required sample size <span class="math inline">\(n\)</span> to achieve a desired power of <span class="math inline">\(1-\beta\)</span> for a specific difference <span class="math inline">\(\Delta&#39;\)</span> is:</p>
-<p><span class="math display">\[n = \frac{2\sigma^2(z_{\alpha/2} + z_{\beta})^2}{(\Delta&#39; - \Delta_0)^2}\]</span></p>
+<p><span class="math display">\[n = \frac{2\sigma^2(z_{1-\alpha/2} + z_{1-\beta})^2}{(\Delta&#39; - \Delta_0)^2}\]</span></p>
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:two-means-coffee-ex-z-pwr" class="example"><strong>Example 11.2  </strong></span>Continuing with the coffee example context of Example <a href="chap-compare-two.html#exm:two-means-coffee-ex">11.1</a>, suppose we wish to compute the power to detect a mean difference of <span class="math inline">\(\Delta&#39; = 3\)</span> grams, again assuming for now that <span class="math inline">\(\sigma_1^2 = \sigma_2^2 = 20\)</span>.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="chap-compare-two.html#cb247-1" tabindex="-1"></a>Delta_prime <span class="ot">=</span> <span class="dv">3</span> <span class="co"># the mean difference we wish to detect</span></span>
-<span id="cb247-2"><a href="chap-compare-two.html#cb247-2" tabindex="-1"></a>Delta_0 <span class="ot">=</span> <span class="dv">0</span> <span class="co"># the mean difference under H_0</span></span>
-<span id="cb247-3"><a href="chap-compare-two.html#cb247-3" tabindex="-1"></a></span>
-<span id="cb247-4"><a href="chap-compare-two.html#cb247-4" tabindex="-1"></a><span class="co"># Compute critical z-value</span></span>
-<span id="cb247-5"><a href="chap-compare-two.html#cb247-5" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
-<span id="cb247-6"><a href="chap-compare-two.html#cb247-6" tabindex="-1"></a>z_crit <span class="ot">=</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha <span class="sc">/</span> <span class="dv">2</span>)</span>
-<span id="cb247-7"><a href="chap-compare-two.html#cb247-7" tabindex="-1"></a></span>
-<span id="cb247-8"><a href="chap-compare-two.html#cb247-8" tabindex="-1"></a><span class="co"># Compute power</span></span>
-<span id="cb247-9"><a href="chap-compare-two.html#cb247-9" tabindex="-1"></a>pwr <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="sc">-</span>z_crit <span class="sc">-</span> (Delta_prime <span class="sc">-</span> Delta_0) <span class="sc">/</span> se) <span class="sc">+</span> </span>
-<span id="cb247-10"><a href="chap-compare-two.html#cb247-10" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z_crit <span class="sc">-</span> (Delta_prime <span class="sc">-</span> Delta_0) <span class="sc">/</span> se))</span>
-<span id="cb247-11"><a href="chap-compare-two.html#cb247-11" tabindex="-1"></a>pwr</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="chap-compare-two.html#cb251-1" tabindex="-1"></a>Delta_prime <span class="ot">=</span> <span class="dv">3</span> <span class="co"># the mean difference we wish to detect</span></span>
+<span id="cb251-2"><a href="chap-compare-two.html#cb251-2" tabindex="-1"></a>Delta_0 <span class="ot">=</span> <span class="dv">0</span> <span class="co"># the mean difference under H_0</span></span>
+<span id="cb251-3"><a href="chap-compare-two.html#cb251-3" tabindex="-1"></a></span>
+<span id="cb251-4"><a href="chap-compare-two.html#cb251-4" tabindex="-1"></a><span class="co"># Compute critical z-value</span></span>
+<span id="cb251-5"><a href="chap-compare-two.html#cb251-5" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb251-6"><a href="chap-compare-two.html#cb251-6" tabindex="-1"></a>z_crit <span class="ot">=</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb251-7"><a href="chap-compare-two.html#cb251-7" tabindex="-1"></a></span>
+<span id="cb251-8"><a href="chap-compare-two.html#cb251-8" tabindex="-1"></a><span class="co"># Compute power</span></span>
+<span id="cb251-9"><a href="chap-compare-two.html#cb251-9" tabindex="-1"></a>pwr <span class="ot">=</span> <span class="fu">pnorm</span>(<span class="sc">-</span>z_crit <span class="sc">-</span> (Delta_prime <span class="sc">-</span> Delta_0) <span class="sc">/</span> se) <span class="sc">+</span> </span>
+<span id="cb251-10"><a href="chap-compare-two.html#cb251-10" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z_crit <span class="sc">-</span> (Delta_prime <span class="sc">-</span> Delta_0) <span class="sc">/</span> se))</span>
+<span id="cb251-11"><a href="chap-compare-two.html#cb251-11" tabindex="-1"></a>pwr</span></code></pre></div>
 <pre><code>## [1] 0.4385731</code></pre>
 <p>Suppose we want to have power <span class="math inline">\(1 - \beta = 0.80\)</span> to reject <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> when <span class="math inline">\(\mu_1 - \mu_2 = 3\)</span>, again testing with Type I error <span class="math inline">\(\alpha = 0.05\)</span> and assuming that <span class="math inline">\(\sigma_1^2 = \sigma_2^2 = 20\)</span>, and under the condition that the sample sizes are equal (<span class="math inline">\(n_1 = n_2 = n\)</span>), the minimum required sample size <span class="math inline">\(n\)</span> can be computed as follows:</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="chap-compare-two.html#cb249-1" tabindex="-1"></a>n_req_z <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">20</span> <span class="sc">*</span> (z_crit <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.8</span>)) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">/</span> (Delta_prime <span class="sc">-</span> Delta_0) <span class="sc">^</span> <span class="dv">2</span></span>
-<span id="cb249-2"><a href="chap-compare-two.html#cb249-2" tabindex="-1"></a>n_req_z</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="chap-compare-two.html#cb253-1" tabindex="-1"></a>n_req_z <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">20</span> <span class="sc">*</span> (z_crit <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.8</span>)) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">/</span> (Delta_prime <span class="sc">-</span> Delta_0) <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb253-2"><a href="chap-compare-two.html#cb253-2" tabindex="-1"></a>n_req_z</span></code></pre></div>
 <pre><code>## [1] 34.88391</code></pre>
 <p>We thus estimate that, with the observed sample sizes <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>, our power to detect <span class="math inline">\(\Delta&#39; = \mu_1 - \mu_2 = 3\)</span> based on the two-sample <span class="math inline">\(z\)</span>-test with Type I error rate <span class="math inline">\(\alpha = 0.05\)</span> is about <span class="math inline">\(0.44\)</span>. In order to increase power to 0.8, if we were to enforce equal sample sizes, we would require <span class="math inline">\(n_1 = n_2\)</span> of at least 35.</p>
 </div>
@@ -738,7 +738,7 @@ We reject <span class="math inline">\(H_0\)</span> at significance level <span c
 <p>is given by:</p>
 <p><span class="math display">\[
 \left[
-(\bar{X} - \bar{Y}) \pm t_{\alpha/2, n_1 + n_2 - 2} \cdot
+(\bar{X} - \bar{Y}) \pm t_{1-\alpha/2, n_1 + n_2 - 2} \cdot
 s_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
 \right]
 \]</span>
@@ -774,18 +774,18 @@ T_{obs} = \frac{(\bar{x} - \bar{y}) - 0}
 \]</span>
 We reject <span class="math inline">\(H_0\)</span> at significance level <span class="math inline">\(\alpha\)</span> if:</p>
 <p><span class="math display">\[
-|T_{obs}| &gt; t_{\alpha/2, n_1 + n_2 - 2}
+|T_{obs}| &gt; t_{1-\alpha/2, n_1 + n_2 - 2}
 \]</span></p>
-<p>or, equivalently, if the p-value is less than <span class="math inline">\(\alpha\)</span>. For one-sided alternatives, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{obs} &gt; t_{\alpha, n_1 + n_2 - 2}\)</span> (upper-tailed) or <span class="math inline">\(T_{obs} &lt; -t_{\alpha, n_1 + n_2 - 2}\)</span> (lower-tailed).</p>
+<p>or, equivalently, if the p-value is less than <span class="math inline">\(\alpha\)</span>. For one-sided alternatives, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{obs} &gt; t_{\alpha, n_1 + n_2 - 2}\)</span> (upper-tailed) or <span class="math inline">\(T_{obs} &lt; -t_{1-\alpha, n_1 + n_2 - 2}\)</span> (lower-tailed).</p>
 </div>
 </div>
 <p>Here are some helpful <code>R</code> functions for computing the pooled sample variance and the degrees of freedom:</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="chap-compare-two.html#cb251-1" tabindex="-1"></a>pooledVar <span class="ot">=</span> <span class="cf">function</span>(sampVar1,sampVar2,n1,n2){</span>
-<span id="cb251-2"><a href="chap-compare-two.html#cb251-2" tabindex="-1"></a>  ((n1<span class="dv">-1</span>)<span class="sc">*</span>sampVar1 <span class="sc">+</span> (n2<span class="dv">-1</span>)<span class="sc">*</span>sampVar2)<span class="sc">/</span>(n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span>)</span>
-<span id="cb251-3"><a href="chap-compare-two.html#cb251-3" tabindex="-1"></a>}</span>
-<span id="cb251-4"><a href="chap-compare-two.html#cb251-4" tabindex="-1"></a>pooledDF <span class="ot">=</span> <span class="cf">function</span>(n1,n2){</span>
-<span id="cb251-5"><a href="chap-compare-two.html#cb251-5" tabindex="-1"></a>  n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span></span>
-<span id="cb251-6"><a href="chap-compare-two.html#cb251-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="chap-compare-two.html#cb255-1" tabindex="-1"></a>pooledVar <span class="ot">=</span> <span class="cf">function</span>(sampVar1,sampVar2,n1,n2){</span>
+<span id="cb255-2"><a href="chap-compare-two.html#cb255-2" tabindex="-1"></a>  ((n1<span class="dv">-1</span>)<span class="sc">*</span>sampVar1 <span class="sc">+</span> (n2<span class="dv">-1</span>)<span class="sc">*</span>sampVar2)<span class="sc">/</span>(n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb255-3"><a href="chap-compare-two.html#cb255-3" tabindex="-1"></a>}</span>
+<span id="cb255-4"><a href="chap-compare-two.html#cb255-4" tabindex="-1"></a>pooledDF <span class="ot">=</span> <span class="cf">function</span>(n1,n2){</span>
+<span id="cb255-5"><a href="chap-compare-two.html#cb255-5" tabindex="-1"></a>  n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span></span>
+<span id="cb255-6"><a href="chap-compare-two.html#cb255-6" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="unequal-variances-i.e.-welchs-or-satterthwaite" class="section level4 hasAnchor" number="11.1.2.2">
 <h4><span class="header-section-number">11.1.2.2</span> Unequal Variances (i.e. 'Welch's' or 'Satterthwaite')<a href="chap-compare-two.html#unequal-variances-i.e.-welchs-or-satterthwaite" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -799,7 +799,7 @@ We reject <span class="math inline">\(H_0\)</span> at significance level <span c
 <p>is given by:</p>
 <p><span class="math display">\[
 \left[
-(\bar{X} - \bar{Y}) \pm t_{\alpha/2, df_{sw}} \cdot
+(\bar{X} - \bar{Y}) \pm t_{1-\alpha/2, df_{sw}} \cdot
 \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
 \right]
 \]</span>
@@ -811,13 +811,13 @@ To emphasize: there is no reference to the pooled sample variance <span class="m
 <span class="math display">\[
 df_{sw} = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{\left(\frac{s_1^2}{n_1}\right)^2}{(n_1 - 1)}+\frac{\left(\frac{s_2^2}{n_2}\right)^2}{(n_2 - 1)}}
 \]</span>
-and is itself still just an approximation to the correct degrees of freedom. However, we will be interacting with it via software and hence should never need to compute it 'by hand. Here is an R function for doing this computation:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="chap-compare-two.html#cb252-1" tabindex="-1"></a>unequalVar <span class="ot">=</span> <span class="cf">function</span>(sampVar1,sampVar2,n1,n2){</span>
-<span id="cb252-2"><a href="chap-compare-two.html#cb252-2" tabindex="-1"></a>  sampVar1<span class="sc">/</span>n1 <span class="sc">+</span> sampVar2<span class="sc">/</span>n2</span>
-<span id="cb252-3"><a href="chap-compare-two.html#cb252-3" tabindex="-1"></a>}</span>
-<span id="cb252-4"><a href="chap-compare-two.html#cb252-4" tabindex="-1"></a>unequalDF <span class="ot">=</span> <span class="cf">function</span>(sampVar1,sampVar2,n1,n2){  </span>
-<span id="cb252-5"><a href="chap-compare-two.html#cb252-5" tabindex="-1"></a>  (sampVar1<span class="sc">/</span>n1 <span class="sc">+</span> sampVar2<span class="sc">/</span>n2)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>((sampVar1<span class="sc">/</span>n1)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(n1 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">+</span> (sampVar2<span class="sc">/</span>n2)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(n2 <span class="sc">-</span> <span class="dv">1</span>))</span>
-<span id="cb252-6"><a href="chap-compare-two.html#cb252-6" tabindex="-1"></a>}</span></code></pre></div>
+and is itself still just an approximation to the correct degrees of freedom. However, we will be interacting with it via software and hence should never need to compute it by hand. Here is an R function for doing this computation:</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="chap-compare-two.html#cb256-1" tabindex="-1"></a>unequalVar <span class="ot">=</span> <span class="cf">function</span>(sampVar1,sampVar2,n1,n2){</span>
+<span id="cb256-2"><a href="chap-compare-two.html#cb256-2" tabindex="-1"></a>  sampVar1<span class="sc">/</span>n1 <span class="sc">+</span> sampVar2<span class="sc">/</span>n2</span>
+<span id="cb256-3"><a href="chap-compare-two.html#cb256-3" tabindex="-1"></a>}</span>
+<span id="cb256-4"><a href="chap-compare-two.html#cb256-4" tabindex="-1"></a>unequalDF <span class="ot">=</span> <span class="cf">function</span>(sampVar1,sampVar2,n1,n2){  </span>
+<span id="cb256-5"><a href="chap-compare-two.html#cb256-5" tabindex="-1"></a>  (sampVar1<span class="sc">/</span>n1 <span class="sc">+</span> sampVar2<span class="sc">/</span>n2)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>((sampVar1<span class="sc">/</span>n1)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(n1 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">+</span> (sampVar2<span class="sc">/</span>n2)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(n2 <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb256-6"><a href="chap-compare-two.html#cb256-6" tabindex="-1"></a>}</span></code></pre></div>
 <div class="colbox">
 <div class="proposition">
 <p><span id="prp:t-test-two-sample-means-welch" class="proposition"><strong>Proposition 11.7  </strong></span>Under the same assumptions as Proposition <a href="chap-compare-two.html#prp:ci-two-sample-means-t-welch">11.6</a>, to test</p>
@@ -841,52 +841,52 @@ T_{obs} = \frac{(\bar{x} - \bar{y}) - 0}
 \]</span>
 We reject <span class="math inline">\(H_0\)</span> at significance level <span class="math inline">\(\alpha\)</span> if:</p>
 <p><span class="math display">\[
-|T_{obs}| &gt; t_{\alpha/2, df_{sw}}
+|T_{obs}| &gt; t_{1-\alpha/2, df_{sw}}
 \]</span></p>
-<p>or, equivalently, if the p-value is less than <span class="math inline">\(\alpha\)</span>. For one-sided alternatives, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{obs} &gt; t_{\alpha, df_{sw}}\)</span> (upper-tailed) or <span class="math inline">\(T_{obs} &lt; -t_{\alpha, df_{sw}}\)</span> (lower-tailed).</p>
+<p>or, equivalently, if the p-value is less than <span class="math inline">\(\alpha\)</span>. For one-sided alternatives, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{obs} &gt; t_{1-\alpha, df_{sw}}\)</span> (upper-tailed) or <span class="math inline">\(T_{obs} &lt; -t_{1-\alpha, df_{sw}}\)</span> (lower-tailed).</p>
 </div>
 </div>
 <p>Let's consider the previous example (Example <a href="chap-compare-two.html#exm:two-means-coffee-ex">11.1</a>) but this time relaxing the assumption that we know the population variance. The same discussion applies about loading in the data, creating variables, and checking for normality. This part has been ommitted below for brevity.</p>
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:two-means-coffee-unknownvar-ex" class="example"><strong>Example 11.3  </strong></span>We will assume now that the population variances are <strong>unknown</strong> but are <strong>equal</strong>: <span class="math inline">\(\sigma_1^2 = \sigma_2^2 = ?\)</span>. Applying the result in Proposition <a href="chap-compare-two.html#prp:ci-two-sample-means-t">11.4</a>, we compute a 95% confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span> as follows:</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="chap-compare-two.html#cb253-1" tabindex="-1"></a>alpha    <span class="ot">=</span> <span class="fl">0.05</span></span>
-<span id="cb253-2"><a href="chap-compare-two.html#cb253-2" tabindex="-1"></a>s_1      <span class="ot">=</span> <span class="fu">sd</span>(x)</span>
-<span id="cb253-3"><a href="chap-compare-two.html#cb253-3" tabindex="-1"></a>s_2      <span class="ot">=</span> <span class="fu">sd</span>(y)</span>
-<span id="cb253-4"><a href="chap-compare-two.html#cb253-4" tabindex="-1"></a>s_p      <span class="ot">=</span> <span class="fu">sqrt</span>(<span class="fu">pooledVar</span>(s_1<span class="sc">**</span><span class="dv">2</span>, s_2<span class="sc">**</span><span class="dv">2</span>, n_1, n_2))</span>
-<span id="cb253-5"><a href="chap-compare-two.html#cb253-5" tabindex="-1"></a>xBar     <span class="ot">=</span> <span class="fu">mean</span>(x) </span>
-<span id="cb253-6"><a href="chap-compare-two.html#cb253-6" tabindex="-1"></a>yBar     <span class="ot">=</span> <span class="fu">mean</span>(y)</span>
-<span id="cb253-7"><a href="chap-compare-two.html#cb253-7" tabindex="-1"></a>sePooled <span class="ot">=</span> s_p<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">/</span> n_1 <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> n_2)</span>
-<span id="cb253-8"><a href="chap-compare-two.html#cb253-8" tabindex="-1"></a></span>
-<span id="cb253-9"><a href="chap-compare-two.html#cb253-9" tabindex="-1"></a><span class="fu">c</span>(xBar <span class="sc">-</span> yBar <span class="sc">-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, <span class="fu">pooledDF</span>(n_1,n_2)) <span class="sc">*</span> sePooled,</span>
-<span id="cb253-10"><a href="chap-compare-two.html#cb253-10" tabindex="-1"></a>  xBar <span class="sc">-</span> yBar <span class="sc">+</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, <span class="fu">pooledDF</span>(n_1,n_2)) <span class="sc">*</span> sePooled)</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="chap-compare-two.html#cb257-1" tabindex="-1"></a>alpha    <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb257-2"><a href="chap-compare-two.html#cb257-2" tabindex="-1"></a>s_1      <span class="ot">=</span> <span class="fu">sd</span>(x)</span>
+<span id="cb257-3"><a href="chap-compare-two.html#cb257-3" tabindex="-1"></a>s_2      <span class="ot">=</span> <span class="fu">sd</span>(y)</span>
+<span id="cb257-4"><a href="chap-compare-two.html#cb257-4" tabindex="-1"></a>s_p      <span class="ot">=</span> <span class="fu">sqrt</span>(<span class="fu">pooledVar</span>(s_1<span class="sc">**</span><span class="dv">2</span>, s_2<span class="sc">**</span><span class="dv">2</span>, n_1, n_2))</span>
+<span id="cb257-5"><a href="chap-compare-two.html#cb257-5" tabindex="-1"></a>xBar     <span class="ot">=</span> <span class="fu">mean</span>(x) </span>
+<span id="cb257-6"><a href="chap-compare-two.html#cb257-6" tabindex="-1"></a>yBar     <span class="ot">=</span> <span class="fu">mean</span>(y)</span>
+<span id="cb257-7"><a href="chap-compare-two.html#cb257-7" tabindex="-1"></a>sePooled <span class="ot">=</span> s_p<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">/</span> n_1 <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> n_2)</span>
+<span id="cb257-8"><a href="chap-compare-two.html#cb257-8" tabindex="-1"></a></span>
+<span id="cb257-9"><a href="chap-compare-two.html#cb257-9" tabindex="-1"></a><span class="fu">c</span>(xBar <span class="sc">-</span> yBar <span class="sc">-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, <span class="fu">pooledDF</span>(n_1,n_2)) <span class="sc">*</span> sePooled,</span>
+<span id="cb257-10"><a href="chap-compare-two.html#cb257-10" tabindex="-1"></a>  xBar <span class="sc">-</span> yBar <span class="sc">+</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, <span class="fu">pooledDF</span>(n_1,n_2)) <span class="sc">*</span> sePooled)</span></code></pre></div>
 <pre><code>## [1] -0.6633525  6.4128763</code></pre>
-<p>If we do not feel compfortable with the `equal variances' assumption, this can be removed in favor of the Welch's version:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="chap-compare-two.html#cb255-1" tabindex="-1"></a>alpha   <span class="ot">=</span> <span class="fl">0.05</span></span>
-<span id="cb255-2"><a href="chap-compare-two.html#cb255-2" tabindex="-1"></a>s_1     <span class="ot">=</span> <span class="fu">sd</span>(x)</span>
-<span id="cb255-3"><a href="chap-compare-two.html#cb255-3" tabindex="-1"></a>s_2     <span class="ot">=</span> <span class="fu">sd</span>(y)</span>
-<span id="cb255-4"><a href="chap-compare-two.html#cb255-4" tabindex="-1"></a>xBar    <span class="ot">=</span> <span class="fu">mean</span>(x) </span>
-<span id="cb255-5"><a href="chap-compare-two.html#cb255-5" tabindex="-1"></a>yBar    <span class="ot">=</span> <span class="fu">mean</span>(y)</span>
-<span id="cb255-6"><a href="chap-compare-two.html#cb255-6" tabindex="-1"></a>seWelch <span class="ot">=</span> <span class="fu">sqrt</span>(s_1<span class="sc">**</span><span class="dv">2</span> <span class="sc">/</span> n_1 <span class="sc">+</span> s_2<span class="sc">**</span><span class="dv">2</span> <span class="sc">/</span> n_2)</span>
-<span id="cb255-7"><a href="chap-compare-two.html#cb255-7" tabindex="-1"></a>df_sw   <span class="ot">=</span> <span class="fu">unequalDF</span>(s_1<span class="sc">**</span><span class="dv">2</span>, s_2<span class="sc">**</span><span class="dv">2</span>, n_1, n_2)</span>
-<span id="cb255-8"><a href="chap-compare-two.html#cb255-8" tabindex="-1"></a></span>
-<span id="cb255-9"><a href="chap-compare-two.html#cb255-9" tabindex="-1"></a><span class="fu">c</span>(xBar <span class="sc">-</span> yBar <span class="sc">-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, df_sw) <span class="sc">*</span> seWelch,</span>
-<span id="cb255-10"><a href="chap-compare-two.html#cb255-10" tabindex="-1"></a>  xBar <span class="sc">-</span> yBar <span class="sc">+</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, df_sw) <span class="sc">*</span> seWelch)</span></code></pre></div>
+<p>If we do not feel comfortable with the `equal variances' assumption, this can be removed in favor of the Welch's version:</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="chap-compare-two.html#cb259-1" tabindex="-1"></a>alpha   <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb259-2"><a href="chap-compare-two.html#cb259-2" tabindex="-1"></a>s_1     <span class="ot">=</span> <span class="fu">sd</span>(x)</span>
+<span id="cb259-3"><a href="chap-compare-two.html#cb259-3" tabindex="-1"></a>s_2     <span class="ot">=</span> <span class="fu">sd</span>(y)</span>
+<span id="cb259-4"><a href="chap-compare-two.html#cb259-4" tabindex="-1"></a>xBar    <span class="ot">=</span> <span class="fu">mean</span>(x) </span>
+<span id="cb259-5"><a href="chap-compare-two.html#cb259-5" tabindex="-1"></a>yBar    <span class="ot">=</span> <span class="fu">mean</span>(y)</span>
+<span id="cb259-6"><a href="chap-compare-two.html#cb259-6" tabindex="-1"></a>seWelch <span class="ot">=</span> <span class="fu">sqrt</span>(s_1<span class="sc">**</span><span class="dv">2</span> <span class="sc">/</span> n_1 <span class="sc">+</span> s_2<span class="sc">**</span><span class="dv">2</span> <span class="sc">/</span> n_2)</span>
+<span id="cb259-7"><a href="chap-compare-two.html#cb259-7" tabindex="-1"></a>df_sw   <span class="ot">=</span> <span class="fu">unequalDF</span>(s_1<span class="sc">**</span><span class="dv">2</span>, s_2<span class="sc">**</span><span class="dv">2</span>, n_1, n_2)</span>
+<span id="cb259-8"><a href="chap-compare-two.html#cb259-8" tabindex="-1"></a></span>
+<span id="cb259-9"><a href="chap-compare-two.html#cb259-9" tabindex="-1"></a><span class="fu">c</span>(xBar <span class="sc">-</span> yBar <span class="sc">-</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, df_sw) <span class="sc">*</span> seWelch,</span>
+<span id="cb259-10"><a href="chap-compare-two.html#cb259-10" tabindex="-1"></a>  xBar <span class="sc">-</span> yBar <span class="sc">+</span> <span class="fu">qt</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>, df_sw) <span class="sc">*</span> seWelch)</span></code></pre></div>
 <pre><code>## [1] -0.643971  6.393495</code></pre>
 <p>In this case, the two CIs are remarkedly similar. This is due to two factors: the sample sizes are equal and, more importantly, the sample variances are very similar (24.9398095 and 17.8618132)</p>
 <p>Similarly, applying the result in Proposition <a href="chap-compare-two.html#prp:t-test-two-sample-means">11.5</a>, we test <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> as follows:</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="chap-compare-two.html#cb257-1" tabindex="-1"></a>Tobs <span class="ot">=</span> (xBar <span class="sc">-</span> yBar) <span class="sc">/</span> sePooled</span>
-<span id="cb257-2"><a href="chap-compare-two.html#cb257-2" tabindex="-1"></a>pval <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Tobs), n_1 <span class="sc">+</span> n_2 <span class="sc">-</span> <span class="dv">2</span>))</span>
-<span id="cb257-3"><a href="chap-compare-two.html#cb257-3" tabindex="-1"></a>pval</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="chap-compare-two.html#cb261-1" tabindex="-1"></a>Tobs <span class="ot">=</span> (xBar <span class="sc">-</span> yBar) <span class="sc">/</span> sePooled</span>
+<span id="cb261-2"><a href="chap-compare-two.html#cb261-2" tabindex="-1"></a>pval <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Tobs), n_1 <span class="sc">+</span> n_2 <span class="sc">-</span> <span class="dv">2</span>))</span>
+<span id="cb261-3"><a href="chap-compare-two.html#cb261-3" tabindex="-1"></a>pval</span></code></pre></div>
 <pre><code>## [1] 0.1070469</code></pre>
 <p>Likewise, we could relax the equal variances assumption using <a href="chap-compare-two.html#prp:t-test-two-sample-means-welch">11.7</a>:</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="chap-compare-two.html#cb259-1" tabindex="-1"></a>Tobs <span class="ot">=</span> (xBar <span class="sc">-</span> yBar) <span class="sc">/</span> seWelch</span>
-<span id="cb259-2"><a href="chap-compare-two.html#cb259-2" tabindex="-1"></a>pval <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Tobs), df_sw))</span>
-<span id="cb259-3"><a href="chap-compare-two.html#cb259-3" tabindex="-1"></a>pval</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="chap-compare-two.html#cb263-1" tabindex="-1"></a>Tobs <span class="ot">=</span> (xBar <span class="sc">-</span> yBar) <span class="sc">/</span> seWelch</span>
+<span id="cb263-2"><a href="chap-compare-two.html#cb263-2" tabindex="-1"></a>pval <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(Tobs), df_sw))</span>
+<span id="cb263-3"><a href="chap-compare-two.html#cb263-3" tabindex="-1"></a>pval</span></code></pre></div>
 <pre><code>## [1] 0.1051827</code></pre>
 <p>The conclusion remains the same via any of the considered tests: we do not have sufficient evidence to conclude that the population means are different (the confidence interval contains the value zero, and the p-value is greater than 0.05 = <span class="math inline">\(\alpha\)</span>).</p>
 <p>Note that the very useful function <strong>t.test</strong> can do all of the above in a streamlined fashion:</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="chap-compare-two.html#cb261-1" tabindex="-1"></a><span class="fu">t.test</span>(x, y, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="chap-compare-two.html#cb265-1" tabindex="-1"></a><span class="fu">t.test</span>(x, y, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -898,7 +898,7 @@ We reject <span class="math inline">\(H_0\)</span> at significance level <span c
 ## sample estimates:
 ## mean of x mean of y 
 ##  252.9533  250.0786</code></pre>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="chap-compare-two.html#cb263-1" tabindex="-1"></a><span class="fu">t.test</span>(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="chap-compare-two.html#cb267-1" tabindex="-1"></a><span class="fu">t.test</span>(x, y)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -945,40 +945,40 @@ and
 <div class="proposition">
 <p><span id="prp:ci-2pop-proportion-z" class="proposition"><strong>Proposition 11.8  </strong></span>Presuming the conditions stated about about <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> being large enough for the CLT, then a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval for the difference in population proportions <span class="math inline">\(p_1 - p_2\)</span> is:</p>
 <p><span class="math display">\[
-\left[ \, \widehat{p_1} -  \widehat{p_2} \pm z_{\alpha/2} \cdot \sqrt{ \frac{\widehat{p_1}(1 - \widehat{p_1})}{n_1} + \frac{\widehat{p_2}(1 - \widehat{p_2})}{n_2} } \, \right]
+\left[ \, \widehat{p_1} -  \widehat{p_2} \pm z_{1-\alpha/2} \cdot \sqrt{ \frac{\widehat{p_1}(1 - \widehat{p_1})}{n_1} + \frac{\widehat{p_2}(1 - \widehat{p_2})}{n_2} } \, \right]
 \]</span></p>
-<p>where <span class="math inline">\(z_{\alpha/2}\)</span> is the critical value from the standard Normal distribution.</p>
+<p>where <span class="math inline">\(z_{1-\alpha/2}\)</span> is the critical value from the standard normal distribution.</p>
 </div>
 </div>
 <p>Let's formalize this result via an example.</p>
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:ci-2pop-proportion-example" class="example"><strong>Example 11.4  </strong></span>Here is some <code>R</code> code for this next example:</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="chap-compare-two.html#cb265-1" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">117</span></span>
-<span id="cb265-2"><a href="chap-compare-two.html#cb265-2" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">150</span></span>
-<span id="cb265-3"><a href="chap-compare-two.html#cb265-3" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="dv">112</span></span>
-<span id="cb265-4"><a href="chap-compare-two.html#cb265-4" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">148</span></span>
-<span id="cb265-5"><a href="chap-compare-two.html#cb265-5" tabindex="-1"></a></span>
-<span id="cb265-6"><a href="chap-compare-two.html#cb265-6" tabindex="-1"></a>alpha <span class="ot">=</span> .<span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="chap-compare-two.html#cb269-1" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">117</span></span>
+<span id="cb269-2"><a href="chap-compare-two.html#cb269-2" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">150</span></span>
+<span id="cb269-3"><a href="chap-compare-two.html#cb269-3" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="dv">112</span></span>
+<span id="cb269-4"><a href="chap-compare-two.html#cb269-4" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">148</span></span>
+<span id="cb269-5"><a href="chap-compare-two.html#cb269-5" tabindex="-1"></a></span>
+<span id="cb269-6"><a href="chap-compare-two.html#cb269-6" tabindex="-1"></a>alpha <span class="ot">=</span> .<span class="dv">1</span></span></code></pre></div>
 <p>A marketing team conducts a survey to estimate the proportion of customers who are satisfied with a new product. We want to compare the satisfaction of the brand name product (population 1) to the generic version (population 2). We randomly sample <span class="math inline">\(n_1 = 150\)</span> and <span class="math inline">\(n_2 = 148\)</span> customers and find that <span class="math inline">\(x = 117\)</span> and <span class="math inline">\(y = 112\)</span> report that they are satisfied with each product, respectively.</p>
 <p>Construct a 90% confidence interval for the difference in satisfaction rates: <span class="math inline">\(p_1- p_2\)</span>.</p>
-<p><em>Solution</em>: The sample proportions are <span class="math inline">\(\widehat{p_1} = 0.78\)</span> and <span class="math inline">\(\widehat{p_2} = 0.76\)</span>. Let's form a confidence interval. The quantile is approximately <span class="math inline">\(z_{\alpha/2} = z_{.05} = 1.6449\)</span>. Putting this all together:</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="chap-compare-two.html#cb266-1" tabindex="-1"></a>pHat1 <span class="ot">&lt;-</span> x1 <span class="sc">/</span> n1</span>
-<span id="cb266-2"><a href="chap-compare-two.html#cb266-2" tabindex="-1"></a>pHat2 <span class="ot">&lt;-</span> x2 <span class="sc">/</span> n2</span></code></pre></div>
-<!-- Because all combinations of $n_ \hat{p} = 117$ and $n(1 - \hat{p}) = 33$ are both greater than 10, the Normal approximation is appropriate.-->
+<p><em>Solution</em>: The sample proportions are <span class="math inline">\(\widehat{p_1} = 0.78\)</span> and <span class="math inline">\(\widehat{p_2} = 0.76\)</span>. Let's form a confidence interval. The quantile is approximately <span class="math inline">\(z_{1-\alpha/2} = z_{1-.05} = 1.6449\)</span>. Putting this all together:</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="chap-compare-two.html#cb270-1" tabindex="-1"></a>pHat1 <span class="ot">&lt;-</span> x1 <span class="sc">/</span> n1</span>
+<span id="cb270-2"><a href="chap-compare-two.html#cb270-2" tabindex="-1"></a>pHat2 <span class="ot">&lt;-</span> x2 <span class="sc">/</span> n2</span></code></pre></div>
+<!-- Because all combinations of $n_ \hat{p} = 117$ and $n(1 - \hat{p}) = 33$ are both greater than 10, the normal approximation is appropriate.-->
 <p>We can compute the standard error and margin of error:</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="chap-compare-two.html#cb267-1" tabindex="-1"></a>se      <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pHat1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pHat1) <span class="sc">/</span> n1 <span class="sc">+</span> pHat2 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pHat2) <span class="sc">/</span> n2)</span>
-<span id="cb267-2"><a href="chap-compare-two.html#cb267-2" tabindex="-1"></a>margin  <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> se</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="chap-compare-two.html#cb271-1" tabindex="-1"></a>se      <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pHat1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pHat1) <span class="sc">/</span> n1 <span class="sc">+</span> pHat2 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pHat2) <span class="sc">/</span> n2)</span>
+<span id="cb271-2"><a href="chap-compare-two.html#cb271-2" tabindex="-1"></a>margin  <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> se</span></code></pre></div>
 <p>And get the associated confidence interval:</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="chap-compare-two.html#cb268-1" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">c</span>(pHat1 <span class="sc">-</span> pHat2 <span class="sc">-</span> margin, pHat1 <span class="sc">-</span> pHat2 <span class="sc">+</span> margin)</span>
-<span id="cb268-2"><a href="chap-compare-two.html#cb268-2" tabindex="-1"></a><span class="fu">round</span>(ci, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="chap-compare-two.html#cb272-1" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">c</span>(pHat1 <span class="sc">-</span> pHat2 <span class="sc">-</span> margin, pHat1 <span class="sc">-</span> pHat2 <span class="sc">+</span> margin)</span>
+<span id="cb272-2"><a href="chap-compare-two.html#cb272-2" tabindex="-1"></a><span class="fu">round</span>(ci, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] -0.057  0.104</code></pre>
 <p>We are 90% confident that the difference in population proportions of satisfied customers is between -0.057 and 0.104.</p>
 </div>
 </div>
 <p>We do not have sufficient evidence to conclude that the satisfaction rating is any different between the name brand and the generic brand. This could mean that there is more work to be done by the marketing firm to differentiate these two products. Or, if this experiment was performed on behalf of a supermarket chain, we should give more equal share of the shelf space to both products.</p>
 <p>Just like using <code>t.test</code> for problems involving <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\mu_D\)</span>, or <span class="math inline">\(\mu_1 - \mu_2\)</span>; we can use <code>prop.test</code> for problems involving <span class="math inline">\(p\)</span> or, as in this case, <span class="math inline">\(p_1 - p_2\)</span>:</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="chap-compare-two.html#cb270-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x1, x2), <span class="fu">c</span>(n1, n2), <span class="at">conf.level =</span> <span class="dv">1</span><span class="sc">-</span>alpha, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="chap-compare-two.html#cb274-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x1, x2), <span class="fu">c</span>(n1, n2), <span class="at">conf.level =</span> <span class="dv">1</span><span class="sc">-</span>alpha, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  2-sample test for equality of proportions without continuity correction
 ## 
@@ -1023,35 +1023,35 @@ T \;\sim\; N(0,1)
 \]</span></p>
 <p>After forming the observed test statistic in the usual way, we reject <span class="math inline">\(H_0\)</span> at significance level <span class="math inline">\(\alpha\)</span> if:</p>
 <p><span class="math display">\[
-|T_{obs}| &gt; z_{\alpha/2}
+|T_{obs}| &gt; z_{1-\alpha/2}
 \]</span></p>
-<p>For one-sided alternatives, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{obs} &gt; z_{\alpha}\)</span> (upper-tailed) or <span class="math inline">\(T_{obs} &lt; -z_{\alpha}\)</span> (lower-tailed). In all three cases, an equivent decision will be reached if the p-value is less than <span class="math inline">\(\alpha\)</span>.</p>
+<p>For one-sided alternatives, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(T_{obs} &gt; z_{1-\alpha}\)</span> (upper-tailed) or <span class="math inline">\(T_{obs} &lt; -z_{1-\alpha}\)</span> (lower-tailed). In all three cases, an equivalent decision will be reached if the p-value is less than <span class="math inline">\(\alpha\)</span>.</p>
 </div>
 </div>
 <p>Returning to the previous example (Example <a href="chap-compare-two.html#exm:ci-2pop-proportion-example">11.4</a>):</p>
 <div class="whitebox">
 <div class="example">
 <p><span id="exm:ht-2pop-proportion-example" class="example"><strong>Example 11.5  </strong></span>We want to test to see if the population proportions, <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> are equal or not using a 0.1 significance level.</p>
-<p><em>Solution</em>: Now, the quantile <span class="math inline">\(z_{\alpha/2} = z_{.05} = 1.6449\)</span> is the <strong>critical value</strong> for the test; we will reject if we observe a test statistic larger than this number in magnitude.</p>
+<p><em>Solution</em>: Now, the quantile <span class="math inline">\(z_{1-\alpha/2} = z_{1-.05} = 1.6449\)</span> is the <strong>critical value</strong> for the test; we will reject if we observe a test statistic larger than this number in magnitude.</p>
 <p>Let's compute the <strong>combined proportion</strong></p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="chap-compare-two.html#cb272-1" tabindex="-1"></a>pHat_c <span class="ot">&lt;-</span> (n1 <span class="sc">*</span> pHat1 <span class="sc">+</span> n2 <span class="sc">*</span> pHat2)<span class="sc">/</span>(n1 <span class="sc">+</span> n2)</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="chap-compare-two.html#cb276-1" tabindex="-1"></a>pHat_c <span class="ot">&lt;-</span> (n1 <span class="sc">*</span> pHat1 <span class="sc">+</span> n2 <span class="sc">*</span> pHat2)<span class="sc">/</span>(n1 <span class="sc">+</span> n2)</span></code></pre></div>
 <p>This combined proportion is <span class="math inline">\(\widehat{p_c} = 0.77\)</span>. Observe that it is about halfway between <span class="math inline">\(\widehat{p_1} = 0.78\)</span> and <span class="math inline">\(\widehat{p_2} = 0.76\)</span>; this is due to the sample sizes being approximately equal.</p>
 <p>We can compute the standard error using this combined proportion</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="chap-compare-two.html#cb273-1" tabindex="-1"></a>se      <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pHat_c <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pHat_c) <span class="sc">*</span> (<span class="dv">1</span><span class="sc">/</span>n1 <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n2))</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="chap-compare-two.html#cb277-1" tabindex="-1"></a>se      <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pHat_c <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pHat_c) <span class="sc">*</span> (<span class="dv">1</span><span class="sc">/</span>n1 <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n2))</span></code></pre></div>
 <p>making the observed test statistic <span class="math inline">\(T_{obs} = 0.0232432/0.0488717 = 0.476\)</span></p>
 <p>Comparing this to the critical value:</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="chap-compare-two.html#cb274-1" tabindex="-1"></a>Tobs <span class="ot">=</span> (pHat1 <span class="sc">-</span> pHat2)<span class="sc">/</span>se</span>
-<span id="cb274-2"><a href="chap-compare-two.html#cb274-2" tabindex="-1"></a><span class="fu">abs</span>(Tobs) <span class="sc">&gt;</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="chap-compare-two.html#cb278-1" tabindex="-1"></a>Tobs <span class="ot">=</span> (pHat1 <span class="sc">-</span> pHat2)<span class="sc">/</span>se</span>
+<span id="cb278-2"><a href="chap-compare-two.html#cb278-2" tabindex="-1"></a><span class="fu">abs</span>(Tobs) <span class="sc">&gt;</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>This false indicates that there is not enough evidence to reject the null hypothesis. Equivalently, we can compute the p-value:</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="chap-compare-two.html#cb276-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(Tobs)) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(Tobs)))</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="chap-compare-two.html#cb280-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(Tobs)) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fu">abs</span>(Tobs)))</span></code></pre></div>
 <pre><code>## [1] 0.6343615</code></pre>
 <p>Which is indeed greater than <span class="math inline">\(\alpha = 0.1\)</span>.</p>
 </div>
 </div>
 <p>Overall, we do not have sufficient evidence to conclude that the satisfaction rating is any different between the name brand and the generic brand.</p>
 <p>As in the previous example, we can use <code>prop.test</code> as well with exactly the same syntax:</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="chap-compare-two.html#cb278-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x1, x2), <span class="fu">c</span>(n1, n2), <span class="at">conf.level =</span> <span class="dv">1</span><span class="sc">-</span>alpha, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="chap-compare-two.html#cb282-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x1, x2), <span class="fu">c</span>(n1, n2), <span class="at">conf.level =</span> <span class="dv">1</span><span class="sc">-</span>alpha, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  2-sample test for equality of proportions without continuity correction
 ## 
@@ -1072,13 +1072,13 @@ H_0 : p_1 - p_2 \leq 0
 H_A : p_1 - p_2 &gt; 0
 \]</span></p>
 <p>The observed test statistic is the same: <span class="math inline">\(T_{obs} = 0.476\)</span>. Our rejection rule is different, however:</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="chap-compare-two.html#cb280-1" tabindex="-1"></a>Tobs <span class="sc">&gt;</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="chap-compare-two.html#cb284-1" tabindex="-1"></a>Tobs <span class="sc">&gt;</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>As well as the p-value:</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="chap-compare-two.html#cb282-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(Tobs)</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="chap-compare-two.html#cb286-1" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(Tobs)</span></code></pre></div>
 <pre><code>## [1] 0.3171808</code></pre>
 <p>We can modify the syntax of <code>prop.test</code> as follows:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="chap-compare-two.html#cb284-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x1, x2), <span class="fu">c</span>(n1, n2), <span class="at">conf.level =</span> <span class="dv">1</span><span class="sc">-</span>alpha, <span class="at">alternative =</span> <span class="st">&#39;greater&#39;</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="chap-compare-two.html#cb288-1" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(x1, x2), <span class="fu">c</span>(n1, n2), <span class="at">conf.level =</span> <span class="dv">1</span><span class="sc">-</span>alpha, <span class="at">alternative =</span> <span class="st">&#39;greater&#39;</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  2-sample test for equality of proportions without continuity correction
 ## 
@@ -1099,7 +1099,7 @@ H_A : p_1 - p_2 &gt; 0
 <div id="inference-on-a-ratio-of-two-population-variances" class="section level2 hasAnchor" number="11.3">
 <h2><span class="header-section-number">11.3</span> Inference on a Ratio of Two Population Variances<a href="chap-compare-two.html#inference-on-a-ratio-of-two-population-variances" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This section is still under construction</p>
-<div class="figure" style="text-align: left"><span style="display:block;" id="fig:unnamed-chunk-129"></span>
+<div class="figure" style="text-align: left"><span style="display:block;" id="fig:unnamed-chunk-131"></span>
 <img src="figures/underConstruction.png" alt="Picture of a traffic sign warning of a section of road being under construction." width="50%" />
 <p class="caption">
 Figure 11.1: Under construction sign
